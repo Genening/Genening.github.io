@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html  lang="Ch">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Markdown学习笔记 - Genening&#39;s blog</title>
+
+
+    <meta name="description" content="Introduction 接下来我将会以简单明了的方式介绍Markdown的语法，介绍的过程也是我学习实践的过程，这也是我第一次全文用Markdown语法书写文章，还很生疏，有些语法可能也还不太了解，所以会有翻车的现象。  Markdown 由 John Gruber 在2004年创建，至今已经是12年的时间。这门语言的宗旨是易读易写，而它的语法也确实如此，简单强大！接下来开始学习！">
+<meta name="keywords" content="博客建设,Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown学习笔记">
+<meta property="og:url" content="https://genening.github.io/2019/08/29/Markdown学习笔记/index.html">
+<meta property="og:site_name" content="Genening&#39;s blog">
+<meta property="og:description" content="Introduction 接下来我将会以简单明了的方式介绍Markdown的语法，介绍的过程也是我学习实践的过程，这也是我第一次全文用Markdown语法书写文章，还很生疏，有些语法可能也还不太了解，所以会有翻车的现象。  Markdown 由 John Gruber 在2004年创建，至今已经是12年的时间。这门语言的宗旨是易读易写，而它的语法也确实如此，简单强大！接下来开始学习！">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://genening.github.io/gallery/thumbnail/markdown.png">
+<meta property="og:updated_time" content="2019-08-29T15:39:51.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown学习笔记">
+<meta name="twitter:description" content="Introduction 接下来我将会以简单明了的方式介绍Markdown的语法，介绍的过程也是我学习实践的过程，这也是我第一次全文用Markdown语法书写文章，还很生疏，有些语法可能也还不太了解，所以会有翻车的现象。  Markdown 由 John Gruber 在2004年创建，至今已经是12年的时间。这门语言的宗旨是易读易写，而它的语法也确实如此，简单强大！接下来开始学习！">
+<meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/markdown.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Markdown学习笔记" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnail/markdown.png" alt="Markdown学习笔记">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-29T15:25:52.000Z">2019-08-29</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes membaca (Sekitar 1142 kata)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Markdown学习笔记
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
+<p>接下来我将会以简单明了的方式介绍Markdown的语法，介绍的过程也是我学习实践的过程，这也是我第一次全文用<em>Markdown</em>语法书写文章，还很生疏，有些语法可能也还不太了解，所以会有翻车的现象。</p>
+</blockquote>
+<p><code>Markdown</code> 由 John Gruber 在2004年创建，至今已经是12年的时间。这门语言的宗旨是<strong>易读易写</strong>，而它的语法也确实如此，简单强大！接下来开始学习！</p>
+<a id="more"></a>
+<h2 id="基本写作"><a href="#基本写作" class="headerlink" title="基本写作"></a>基本写作</h2><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><p>标题分为6级，如下</p>
+<blockquote>
+<p>#一级标题<br></p>
+</blockquote>
+<p>##二级标题<br></p>
+<p>###三级标题<br></p>
+<p>####四级标题<br></p>
+<p>#####五级标题<br></p>
+<p>######六级标题<br></p>
+<p>效果如下</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题<br></h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题<br></h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题<br></h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题<br></h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题<br></h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题<br></h6><hr>
+<h3 id="2-强调"><a href="#2-强调" class="headerlink" title="2.强调"></a>2.强调</h3><blockquote>
+<p><em>斜体</em>—包括在两个 ‘<em>’或‘_’ 之间的字符<br><br>*</em>黑体<strong>—包括在两个‘</strong>’或‘__’之间的字符<br><br><del>删除线</del>—包括在两个‘~~’之间的字符<br><br><em>全部复合</em>使用（有待补充）</p>
+</blockquote>
+<h3 id="3-列表"><a href="#3-列表" class="headerlink" title="3.列表"></a>3.列表</h3><blockquote>
+<p>无序列表</p>
+<ul>
+<li>苹果</li>
+<li>香蕉<br>有序列表</li>
+</ul>
+<ol>
+<li>苹果</li>
+<li>香蕉</li>
+</ol>
+</blockquote>
+<h3 id="4-引用"><a href="#4-引用" class="headerlink" title="4.引用"></a>4.引用</h3><p>引用如下</p>
+<blockquote>
+<p>这里面是引用的内容，通过在段前添加‘&gt;’符号开始引用段落，在此段后空一行即结束引用，在段落间使用</p>
+<blockquote>
+<p>这是嵌套引用</p>
+<blockquote>
+<p>这也是</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="5-代码"><a href="#5-代码" class="headerlink" title="5.代码"></a>5.代码</h3><blockquote>
+<p><code>print &#39;Hello world&#39;</code></p>
+<blockquote>
+<p>在两个反引号‘`’之间为行内代码</p>
+</blockquote>
+</blockquote>
+<figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function</span><span class="hljs-params">(x)</span></span><span class="hljs-symbol">:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> x^<span class="hljs-number">2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在连用三个反引号‘`’之间的符号为代码区块，如上所示</p>
+</blockquote>
+<h3 id="6-分割线"><a href="#6-分割线" class="headerlink" title="6.分割线"></a>6.分割线</h3><blockquote>
+<p>如下（连续三个或以上‘*’），即表示分割线</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>或者如下（空一行，连续三个或以上‘-’）</p>
+</blockquote>
+<hr>
+<h3 id="7-表格"><a href="#7-表格" class="headerlink" title="7.表格"></a>7.表格</h3><p>通过如下方式可以渲染出表格</p>
+<figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-params">|table|</span>head<span class="hljs-params">|here|</span></span><br><span class="line"><span class="hljs-params">|:-----|</span><span class="hljs-symbol">:-----</span><span class="hljs-symbol">:|-----</span><span class="hljs-symbol">:|</span></span><br><span class="line"><span class="hljs-params">|content1|</span>content2<span class="hljs-params">|content3|</span></span><br><span class="line"><span class="hljs-params">|content1|</span>content2<span class="hljs-params">|content3|</span></span><br><span class="line"><span class="hljs-params">|content1|</span>content2<span class="hljs-params">|content3|</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>效果如下</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">table</th>
+<th align="center">head</th>
+<th align="right">here</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">content1</td>
+<td align="center">content2</td>
+<td align="right">content3</td>
+</tr>
+<tr>
+<td align="left">content1</td>
+<td align="center">content2</td>
+<td align="right">content3</td>
+</tr>
+<tr>
+<td align="left">content1</td>
+<td align="center">content2</td>
+<td align="right">content3</td>
+</tr>
+<tr>
+<td align="left">### 8.图片</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><img src="/2019/08/29/Markdown学习笔记/Von_Gogh.jpg" alt="Von Gogh"></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left"><code>![Von Gogh](./Markdown简易教程/Von_Gogh.jpg)</code></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>就是上面这段格式的代码就是引用了这张梵高的图片了，注意的是其中的图片的地址，这个是同级目录下的直接引用，属于相对目录，也可以用绝对路径，不管相对还是绝对，路径一定要准确，这样才能定位到需要引用的图片上，才能展示出来</p>
+</blockquote>
+<h3 id="9-链接"><a href="#9-链接" class="headerlink" title="9.链接"></a>9.链接</h3><blockquote>
+<p>链接就是比上面的图片的引用少了前面的‘！’，去掉这个感叹号后，再把需要的链接URL放在后面的括号里就可以了<br><br><code>[My github page site](https://genening.github.io)</code></p>
+</blockquote>
+<p><a href="https://genening.github.io">My github page site</a><br>或者<a href="http://www.baidu.com" target="_blank" rel="noopener">百度首页</a></p>
+<h3 id="10-公式"><a href="#10-公式" class="headerlink" title="10.公式"></a>10.公式</h3><blockquote>
+<p>公式的展示是采用LaTeX的语法，通过<a href="https://www.codecogs.com/latex/eqneditor.php" target="_blank" rel="noopener">这个网站</a><br>可以把公式对应的LaTeX的写法转换出来</p>
+</blockquote>
+<p>如下为行内公式</p>
+<blockquote>
+<p><code>$E=mc^2$</code>对应 $E=mc^2$ 有待尝试</p>
+</blockquote>
+<p>如下为公式块</p>
+<figure class="highlight tex hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-formula">$$</span></span><br><span class="line"><span class="hljs-formula">e^&#123;i<span class="hljs-tag">\<span class="hljs-name">theta</span></span>&#125; = <span class="hljs-tag">\<span class="hljs-name">cos</span></span> <span class="hljs-tag">\<span class="hljs-name">theta</span></span> +i<span class="hljs-tag">\<span class="hljs-name">sin</span></span> <span class="hljs-tag">\<span class="hljs-name">theta</span></span> <span class="hljs-tag">\</span></span></span><br><span class="line"><span class="hljs-formula">e^z = 1 + <span class="hljs-tag">\<span class="hljs-name">frac</span><span class="hljs-string">&#123;z&#125;</span><span class="hljs-string">&#123;1!&#125;</span></span> + <span class="hljs-tag">\<span class="hljs-name">frac</span><span class="hljs-string">&#123;z^2&#125;</span><span class="hljs-string">&#123;2!&#125;</span></span> + <span class="hljs-tag">\<span class="hljs-name">frac</span><span class="hljs-string">&#123;z^3&#125;</span><span class="hljs-string">&#123;3!&#125;</span></span> + <span class="hljs-tag">\<span class="hljs-name">cdots</span> = </span><span class="hljs-tag">\<span class="hljs-name">sum</span></span>_&#123;n=0&#125;^&#123;<span class="hljs-tag">\<span class="hljs-name">infty</span></span>&#125;<span class="hljs-tag">\<span class="hljs-name">frac</span><span class="hljs-string">&#123;z^n&#125;</span><span class="hljs-string">&#123;n!&#125;</span></span></span></span><br><span class="line"><span class="hljs-formula">$$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>效果出不来，比较尴尬</p>
+</blockquote>
+<h3 id="11-反斜线"><a href="#11-反斜线" class="headerlink" title="11.反斜线"></a>11.反斜线</h3><blockquote>
+<p>如果想插入一些特殊字符的话需要转义符号反斜线‘\’，引入这个反斜线后，就可以使用上面的那些特殊的字符了，这样不会触发对应的渲染效果</p>
+<blockquote>
+<p>\反斜线<br><br>`反引号<br><br>*星号<br><br>_底线<br><br>{}花括号<br><br>如上符号等等</p>
+</blockquote>
+</blockquote>
+<h3 id="12-脚注"><a href="#12-脚注" class="headerlink" title="12.脚注"></a>12.脚注</h3><p>脚注可以用于编辑参考文献</p>
+<blockquote>
+<ol>
+<li><code>在文中使用[^1]的方式标记脚注</code><br></li>
+<li><code>在文末使用[^1]:加入参考文献，注意要使用英文冒号，后面有无空格均可</code></li>
+</ol>
+</blockquote>
+<p>效果如此[^1]，或者是参考文献[^1]:</p>
+<blockquote>
+<p>此处尝试又出bug了，接着完善</p>
+</blockquote>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p><em>Markdown</em>是所谓的<strong>轻量标记语言</strong>(lightweight markup language)，它可以让我们在写文章的时候专注于写作本身，而不用费心于排版，这种思想和<em>LaTeX</em>的思想不谋而合。现在很多网站都支持<em>Markdown</em>，也有很多相应的编辑软件，例如<code>Typora</code>，这是个很好用的<em>Markdown</em>的编辑软件。<br><br>另外，让<em>Markdown</em>更强大的是，<em>Markdown</em>支持直接插入<strong>HTML</strong>的语法，也能插入<strong>LaTeX</strong>的语法，这样的扩展能力，让<em>Markdown</em>即满足了轻便易用的基础上，进一步增强了能力，这也是<em>Markdown</em>现在炙手可热的原因之一。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Markdown/">Markdown</a>, <a class="has-link-grey -link" href="/tags/博客建设/">博客建设</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Suka dengan artikel ini? Bantu penulis dengan donasi melalui</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/30/夏天的太阳/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">夏天的太阳</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/29/以梦为马/">
+                <span class="level-item">以梦为马</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Genening">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Genening
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Nothing is everything
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>SYSU</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Artikel
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        17
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Kategori
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tag
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                IKUTI</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Tautan
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Kategori
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Poetry-of-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry of Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Poetry-with-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry with Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/log/">
+            <span class="level-start">
+                <span class="level-item">log</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Awan tag
+        </h3>
+        <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Terbaru
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/08/30/test3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="test3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-30T15:53:11.000Z">2019-08-30</time></div>
+                    <a href="/2019/08/30/test3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">test3</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/30/夏天的太阳/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/desert.jpg" alt="夏天的太阳">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-30T15:00:12.000Z">2019-08-30</time></div>
+                    <a href="/2019/08/30/夏天的太阳/" class="title has-link-black-ter is-size-6 has-text-weight-normal">夏天的太阳</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-of-Life/">Poetry of Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/Markdown学习笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/markdown.png" alt="Markdown学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T15:25:52.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/Markdown学习笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Markdown学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/以梦为马/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/plant.jpg" alt="以梦为马">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T15:06:21.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/以梦为马/" class="title has-link-black-ter is-size-6 has-text-weight-normal">以梦为马</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/博客写作流程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://magazine.a-n-t.jp/2017/08/blog-hexo-1/cover.png" alt="hexo博客写作流程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T07:54:09.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/博客写作流程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo博客写作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/log/">log</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Arsip
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tag
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Terbaru
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/08/30/test3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="test3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-30T15:53:11.000Z">2019-08-30</time></div>
+                    <a href="/2019/08/30/test3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">test3</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/30/夏天的太阳/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/desert.jpg" alt="夏天的太阳">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-30T15:00:12.000Z">2019-08-30</time></div>
+                    <a href="/2019/08/30/夏天的太阳/" class="title has-link-black-ter is-size-6 has-text-weight-normal">夏天的太阳</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-of-Life/">Poetry of Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/Markdown学习笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/markdown.png" alt="Markdown学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T15:25:52.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/Markdown学习笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Markdown学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/以梦为马/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/plant.jpg" alt="以梦为马">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T15:06:21.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/以梦为马/" class="title has-link-black-ter is-size-6 has-text-weight-normal">以梦为马</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/29/博客写作流程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://magazine.a-n-t.jp/2017/08/blog-hexo-1/cover.png" alt="hexo博客写作流程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-29T07:54:09.000Z">2019-08-29</time></div>
+                    <a href="/2019/08/29/博客写作流程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo博客写作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/log/">log</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Arsip
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tag
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Markdown学习笔记" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Genening&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("Chinese");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
