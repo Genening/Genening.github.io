@@ -19,7 +19,7 @@
 <meta property="og:description" content="写在前面 这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。  1. 什么是算法？ 算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。     基本特征 具体描述    可行性 步骤可以实现，执行能够达到预期目的   确">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_structure.jpg">
-<meta property="og:updated_time" content="2019-09-04T15:18:45.231Z">
+<meta property="og:updated_time" content="2019-09-05T03:01:39.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法">
 <meta name="twitter:description" content="写在前面 这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。  1. 什么是算法？ 算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。     基本特征 具体描述    可行性 步骤可以实现，执行能够达到预期目的   确">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 2951 words)
+                    20 minutes read (About 3005 words)
                 </span>
                 
                 
@@ -189,27 +189,12 @@
 <td>有穷性</td>
 <td>有限步骤，有限时间内能完成</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a id="more"></a></td>
-<td></td>
-</tr>
-<tr>
-<td>### 算法的复杂度</td>
-<td></td>
-</tr>
-<tr>
-<td>1. 时间复杂度：执行算法所需要的计算工作量</td>
-<td></td>
-</tr>
-<tr>
-<td>2. 空间复杂度：执行算法需要的内存空间</td>
-<td></td>
-</tr>
 </tbody></table>
+<a id="more"></a>
+<h3 id="算法的复杂度"><a href="#算法的复杂度" class="headerlink" title="算法的复杂度"></a>算法的复杂度</h3><ol>
+<li>时间复杂度：执行算法所需要的计算工作量</li>
+<li>空间复杂度：执行算法需要的内存空间</li>
+</ol>
 <h2 id="2-数据结构的基本概念"><a href="#2-数据结构的基本概念" class="headerlink" title="2. 数据结构的基本概念"></a>2. 数据结构的基本概念</h2><h3 id="（1）什么是数据结构？"><a href="#（1）什么是数据结构？" class="headerlink" title="（1）什么是数据结构？"></a>（1）什么是数据结构？</h3><blockquote>
 <p><strong>数据结构值得是相互有关联的数据元素的集合。</strong></p>
 <ul>
@@ -239,10 +224,6 @@
 <td>除了根节点和叶子节点外的节点</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td>### （3）线性结构与非线性结构</td>
 <td></td>
 </tr>
@@ -262,17 +243,13 @@
 <td>非线性结构</td>
 <td>非空，每一个节点可以有多于一个前件或后件的数据结构</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
 <h2 id="3-线性表及其顺序储存结构"><a href="#3-线性表及其顺序储存结构" class="headerlink" title="3. 线性表及其顺序储存结构"></a>3. 线性表及其顺序储存结构</h2><h3 id="（1）线性表"><a href="#（1）线性表" class="headerlink" title="（1）线性表"></a>（1）线性表</h3><blockquote>
 <p>线性表即<strong>线性数据结构</strong>，表示如下</p>
 </blockquote>
 <figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-built_in">a1</span>, <span class="hljs-built_in">a2</span>, <span class="hljs-built_in">a3</span>, ...,ai,...,an)</span><br></pre></td></tr></table></figure>
 
-<p><strong>通常</strong>，线性表可以采用<em>顺序存储</em>和<em>链接存储</em>两种存储结构<br>|基本概念|含义|<br>|—-|—-|<br>|顺序存储|存储地址是连续的、相邻的|<br>|链接存储|存储地址可以不连续，不过在逻辑上是连续的，<br>由头指针和尾指针进行定位|<br>|</p>
+<p><strong>通常</strong>，线性表可以采用<em>顺序存储</em>和<em>链接存储</em>两种存储结构<br>|基本概念|含义|<br>|—-|—-|<br>|顺序存储|存储地址是连续的、相邻的|<br>|链接存储|存储地址可以不连续，不过在逻辑上是连续的，<br>由头指针和尾指针进行定位|</p>
 <blockquote>
 <p>采用顺序存储是表示线性表最为简单的方法，这种顺序表示的线性表也称<strong>顺序表</strong></p>
 </blockquote>
@@ -305,11 +282,6 @@
 <td>链表</td>
 <td>（1）插入、删除只需移动指针，无需移动储存位置<br>（2）空间易扩展，方便动态分配空间</td>
 <td>需要额外的空间储存逻辑关系，存储密度比顺序表低</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody></table>
 <p>（2）循环链表</p>
@@ -356,18 +328,8 @@
 <td>在树中，以某一个节点为根构建的新的树，称为该树的子树</td>
 <td>相当于树上的大树枝，如果把大树枝看成是起点的话，那这个构建的新的树就是原来树的子树</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>### （2）二叉树</td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
-<blockquote>
+<h3 id="（2）二叉树"><a href="#（2）二叉树" class="headerlink" title="（2）二叉树"></a>（2）二叉树</h3><blockquote>
 <p>二叉树与树不同，但是与树的结构很相似。（我个人觉得，二叉树就是一种特殊的树结构）</p>
 </blockquote>
 <p><strong>特点如下</strong></p>
@@ -429,57 +391,49 @@
 <td>在有序的线性表中，将查找元素与中间元素进行比较，以指数级速度缩小查找范围，最终锁定目标元素。</td>
 <td>最好情况为比较1次，最差情况为比较log..n次（‘..’表示数字‘2’）。</td>
 </tr>
+</tbody></table>
+<h2 id="8-排序技术"><a href="#8-排序技术" class="headerlink" title="8. 排序技术"></a>8. 排序技术</h2><table>
+<thead>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<th align="left">概念</th>
+<th>含义</th>
+<th>分析</th>
 </tr>
-<tr>
-<td>## 8. 排序技术</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>概念</td>
-<td>含义</td>
-<td>分析</td>
-</tr>
-<tr>
-<td>:—-</td>
-<td>—-</td>
-<td>—-</td>
-</tr>
-<tr>
-<td>冒泡排序法</td>
+</thead>
+<tbody><tr>
+<td align="left">冒泡排序法</td>
 <td>通过两两相邻的数据之间比较，不断调整大小顺序，不断的重复，直到所有的数据都有序为止</td>
 <td>最坏情况，比较次数为(n-1)n/2</td>
 </tr>
 <tr>
-<td>快速排序法</td>
+<td align="left">快速排序法</td>
 <td>在待排序元素中选取一个数K（一般为第一个数），以K为标准，大于K的排在K后面，小于K的排在K前面，得到两个子表，对这两个子表进行同样的操作，直到所有的数均有序后停止。</td>
 <td>最坏情况，比较次数为(n-1)n/2</td>
 </tr>
 <tr>
-<td>简单插入排序法</td>
+<td align="left">简单插入排序法</td>
 <td>把待排序的n个元素看成是有序表和无序表，最开始有序表只有1个元素，无序表有n-1个元素，接下来在无序表中选取元素插入有序表中的正确位置，重复操作直到所有元素都插入到了正确的位置即停止。</td>
 <td>最多比较(n-1)n/2次</td>
 </tr>
 <tr>
-<td>希尔排序</td>
+<td align="left">希尔排序</td>
 <td>将n个元素分为a1个组（a &lt; n），在每一组之间进行简单排序，再将序列分为a2个组（a2 &lt; a1），重复操作，直到最后an=1，即只有一个分组时排序完成。</td>
 <td>最多次数为n^r，其中（1&lt; r &lt; 2）。</td>
 </tr>
 <tr>
-<td>简单选择排序法</td>
+<td align="left">简单选择排序法</td>
 <td>先选出最小元素与第一个元素交换位置，剩下元素再找最小元素与第二个元素交换位置，直到所有排序完毕。</td>
 <td>最多比较(n-1)n/2次</td>
 </tr>
 <tr>
-<td>堆排序法</td>
+<td align="left">堆排序法</td>
 <td><code>堆</code>是一个比较特别的完全二叉树的结构，在这种特殊情况下进行特殊排序，称为<strong>堆</strong>排序法。</td>
 <td>最多nlog..n次，其中‘..’表示数字‘2’。</td>
 </tr>
 </tbody></table>
+<blockquote>
+<p><strong>堆</strong>是用数组表示的二叉树，在堆里面，只有数组元素的排列顺序，没有额外的逻辑数据，在某些条件下，堆的优势很明显。</p>
+</blockquote>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
 <p>写到这，关于数据结构与算法的基础入门知识就是这些了，还有一些其他内容还要进一步学习。</p>
 </blockquote>
