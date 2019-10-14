@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html  lang="Ch">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>数据结构与算法 - Genening&#39;s blog</title>
+
+
+    <meta name="description" content="写在前面 这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。  1. 什么是算法？ 算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。     基本特征 具体描述    可行性 步骤可以实现，执行能够达到预期目的   确">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法">
+<meta property="og:url" content="https://genening.github.io/2019/09/03/数据结构与算法/index.html">
+<meta property="og:site_name" content="Genening&#39;s blog">
+<meta property="og:description" content="写在前面 这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。  1. 什么是算法？ 算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。     基本特征 具体描述    可行性 步骤可以实现，执行能够达到预期目的   确">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_structure.jpg">
+<meta property="og:updated_time" content="2019-09-05T03:01:39.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法">
+<meta name="twitter:description" content="写在前面 这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。  1. 什么是算法？ 算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。     基本特征 具体描述    可行性 步骤可以实现，执行能够达到预期目的   确">
+<meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/data_structure.jpg">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                NOTHING IS EVERYTHING
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnail/data_structure.jpg" alt="数据结构与算法">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-03T14:19:30.000Z">2019-09-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机基础/">计算机基础</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 minutes read (About 3005 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                数据结构与算法
+            
+        </h1>
+        <div class="content">
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><blockquote>
+<p>这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。</p>
+</blockquote>
+<h2 id="1-什么是算法？"><a href="#1-什么是算法？" class="headerlink" title="1. 什么是算法？"></a>1. 什么是算法？</h2><blockquote>
+<p><strong>算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>基本特征</th>
+<th>具体描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可行性</td>
+<td>步骤可以实现，执行能够达到预期目的</td>
+</tr>
+<tr>
+<td>确定性</td>
+<td>步骤明确，每一步意义清晰</td>
+</tr>
+<tr>
+<td>有穷性</td>
+<td>有限步骤，有限时间内能完成</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h3 id="算法的复杂度"><a href="#算法的复杂度" class="headerlink" title="算法的复杂度"></a>算法的复杂度</h3><ol>
+<li>时间复杂度：执行算法所需要的计算工作量</li>
+<li>空间复杂度：执行算法需要的内存空间</li>
+</ol>
+<h2 id="2-数据结构的基本概念"><a href="#2-数据结构的基本概念" class="headerlink" title="2. 数据结构的基本概念"></a>2. 数据结构的基本概念</h2><h3 id="（1）什么是数据结构？"><a href="#（1）什么是数据结构？" class="headerlink" title="（1）什么是数据结构？"></a>（1）什么是数据结构？</h3><blockquote>
+<p><strong>数据结构值得是相互有关联的数据元素的集合。</strong></p>
+<ul>
+<li>逻辑结构</li>
+<li>存储结构</li>
+</ul>
+</blockquote>
+<h3 id="（2）数据结构的表示"><a href="#（2）数据结构的表示" class="headerlink" title="（2）数据结构的表示"></a>（2）数据结构的表示</h3><figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">B </span>= (D, R)</span><br><span class="line"><span class="hljs-keyword">B表示数据结构</span></span><br><span class="line"><span class="hljs-keyword">D是数据元素的集合</span></span><br><span class="line"><span class="hljs-keyword">R是数据各元素之间的关系</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>基本概念</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>根节点</td>
+<td>数据结构中没有前件的节点</td>
+</tr>
+<tr>
+<td>叶子节点</td>
+<td>没有后件的节点</td>
+</tr>
+<tr>
+<td>内部节点</td>
+<td>除了根节点和叶子节点外的节点</td>
+</tr>
+<tr>
+<td>### （3）线性结构与非线性结构</td>
+<td></td>
+</tr>
+<tr>
+<td>基本概念</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>—-</td>
+<td>—-</td>
+</tr>
+<tr>
+<td>线性结构</td>
+<td>非空，每一个节点最多有一个前件和一个后件</td>
+</tr>
+<tr>
+<td>非线性结构</td>
+<td>非空，每一个节点可以有多于一个前件或后件的数据结构</td>
+</tr>
+</tbody></table>
+<h2 id="3-线性表及其顺序储存结构"><a href="#3-线性表及其顺序储存结构" class="headerlink" title="3. 线性表及其顺序储存结构"></a>3. 线性表及其顺序储存结构</h2><h3 id="（1）线性表"><a href="#（1）线性表" class="headerlink" title="（1）线性表"></a>（1）线性表</h3><blockquote>
+<p>线性表即<strong>线性数据结构</strong>，表示如下</p>
+</blockquote>
+<figure class="highlight armasm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-built_in">a1</span>, <span class="hljs-built_in">a2</span>, <span class="hljs-built_in">a3</span>, ...,ai,...,an)</span><br></pre></td></tr></table></figure>
+
+<p><strong>通常</strong>，线性表可以采用<em>顺序存储</em>和<em>链接存储</em>两种存储结构<br>|基本概念|含义|<br>|—-|—-|<br>|顺序存储|存储地址是连续的、相邻的|<br>|链接存储|存储地址可以不连续，不过在逻辑上是连续的，<br>由头指针和尾指针进行定位|</p>
+<blockquote>
+<p>采用顺序存储是表示线性表最为简单的方法，这种顺序表示的线性表也称<strong>顺序表</strong></p>
+</blockquote>
+<h2 id="4-栈（Stack）与队列（Queue）"><a href="#4-栈（Stack）与队列（Queue）" class="headerlink" title="4. 栈（Stack）与队列（Queue）"></a>4. 栈（Stack）与队列（Queue）</h2><h3 id="1-栈及其基本运算"><a href="#1-栈及其基本运算" class="headerlink" title="(1)栈及其基本运算"></a>(1)栈及其基本运算</h3><blockquote>
+<p>栈是一种特殊的<strong>线性表</strong>，先进后出、后进先出原则，操作有三：入栈、退栈、读栈</p>
+</blockquote>
+<h3 id="（2）队列及其基本运算"><a href="#（2）队列及其基本运算" class="headerlink" title="（2）队列及其基本运算"></a>（2）队列及其基本运算</h3><blockquote>
+<p>队列也是一种特殊的<strong>线性表</strong>，先进先出、后进后出，运算多为指针头移动</p>
+<blockquote>
+<p>循环队列：即最后一个元素的指针将指回第一个元素前一个空元素的位置，导致前后相连。</p>
+</blockquote>
+</blockquote>
+<h2 id="5-线性链表"><a href="#5-线性链表" class="headerlink" title="5. 线性链表"></a>5. 线性链表</h2><h3 id="（1）线性链表的基本概念"><a href="#（1）线性链表的基本概念" class="headerlink" title="（1）线性链表的基本概念"></a>（1）线性链表的基本概念</h3><blockquote>
+<p><strong>线性链表</strong>是指在线性表的链式存储结构，简称链表。占用空间除了数据域，还有指针域，故而会比较多空间。一般链表为单向链表，但是如果在每一项之中添加一个指向前一个元素的指针，那就可以变成<strong>双向链表</strong>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序表</td>
+<td>（1）可以随机存取表中任意节点<br>（2）地址顺序即逻辑顺序，无需额外空间</td>
+<td>（1）插入和删除的运算效率低下<br>（2）储存空间不便于扩展<br>（3）不便于储存空间动态分配</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>（1）插入、删除只需移动指针，无需移动储存位置<br>（2）空间易扩展，方便动态分配空间</td>
+<td>需要额外的空间储存逻辑关系，存储密度比顺序表低</td>
+</tr>
+</tbody></table>
+<p>（2）循环链表</p>
+<blockquote>
+<p>在单链表的第一个节点前增加一个表头节点，队头指针指向表头节点，最后一个节点的指针域的值由NULL改为指向表头节点，这样就形成了一个循环链表。</p>
+<blockquote>
+<p>在循环链表中，只要知道了一个节点的位置，就可以从它出发访问到所有的节点，并且在链表为空时，链表中仍然还有表头节点这个节点，因此能够当成非空链表运算，因此统一了空链表与非空链表的运算。</p>
+</blockquote>
+</blockquote>
+<p><img src="/2019/09/03/数据结构与算法/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png" alt="循环链表示意图"></p>
+<h2 id="6-树与二叉树"><a href="#6-树与二叉树" class="headerlink" title="6. 树与二叉树"></a>6. 树与二叉树</h2><h3 id="（1）树的基本概念"><a href="#（1）树的基本概念" class="headerlink" title="（1）树的基本概念"></a>（1）树的基本概念</h3><blockquote>
+<p>树（Tree）是一种简单的非线性结构。例如家族族谱关系等。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>基本概念</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>父节点</td>
+<td>在树结构中，每一个节点只有一个前件，<br>即它的父节点，所有节点最终的父节点<br>为根节点。</td>
+<td>如从一棵树的所有枝丫都发源于树干，树干有个根。</td>
+</tr>
+<tr>
+<td>子节点</td>
+<td>每个节点可以有多个后件，这些后件即为子节点，没有后件的节点称为叶子节点</td>
+<td>正如树的叶子是树的结构的末端，其后没有其他节点了</td>
+</tr>
+<tr>
+<td>度</td>
+<td>一个节点拥有的后件的个数称为该节点的度，所有节点中最大的度即为该树的度（注意，<strong>后件的后件不是该节点的后件</strong>）。</td>
+<td>例如树的各个枝丫上有数量不同的枝丫或者树叶，这个数量就是目前枝丫的度</td>
+</tr>
+<tr>
+<td>深度</td>
+<td>定义根所在的层次为1，其他节点所在层次等于它的父节点所在层次+1，树最大的层次即为树的深度</td>
+<td>如果从根算起，最多共经过4次转折到达了叶子的节点，那么这棵树的深度即为4+1=5</td>
+</tr>
+<tr>
+<td>子树</td>
+<td>在树中，以某一个节点为根构建的新的树，称为该树的子树</td>
+<td>相当于树上的大树枝，如果把大树枝看成是起点的话，那这个构建的新的树就是原来树的子树</td>
+</tr>
+</tbody></table>
+<h3 id="（2）二叉树"><a href="#（2）二叉树" class="headerlink" title="（2）二叉树"></a>（2）二叉树</h3><blockquote>
+<p>二叉树与树不同，但是与树的结构很相似。（我个人觉得，二叉树就是一种特殊的树结构）</p>
+</blockquote>
+<p><strong>特点如下</strong></p>
+<ul>
+<li>可以为空，空的二叉树没有节点，非空的二叉树有且只有一个根节点。</li>
+<li>每个节点最多有两棵子树，即不存在度大于2的节点。</li>
+<li>子树有左右之分，次序不能颠倒。</li>
+</ul>
+<p><strong>性质如下</strong></p>
+<ol>
+<li>在二叉树的第k层上最多有2^(k-1)个几点，k大于等于1。</li>
+<li>深度为m的二叉树，最多有2^m-1个节点（比如深度为4的树最多有2^4-1=16-1=15个节点）。</li>
+<li>任何一棵树，其中度为0的叶子节点总是比度为2的节点的数量多1个（可以自己分类讨论进行验证）。</li>
+<li>具有n个节点的二叉树，其深度至少为n对2取对数运算的整数部分（记为d），则深度至少为d+1,即相当于是2^d-1=n。</li>
+<li>具有n个节点的完全二叉树的深度为d+1（d含义同上）。<blockquote>
+<p><code>满二叉树</code>是指除了最后一层外，其他层的节点都是度为2的节点。<br><code>完全二叉树</code>是指除了最后一层外，每一层的节点数均达到最大值，在最后一层上只缺少右边的若干节点的二叉树。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="（3）二叉树的存储结构"><a href="#（3）二叉树的存储结构" class="headerlink" title="（3）二叉树的存储结构"></a>（3）二叉树的存储结构</h3><blockquote>
+<p>在计算机中，二叉树通常采用链式存储结构。其存储的节点由数据域与指针域两部分组成，由于每一个节点可以有两个后件，所以每个节点需要有2个指针，分别为左指针域和右指针域。<em>二叉树的链式存储结构也叫二叉链表</em>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>遍历方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前序遍历</td>
+<td>首先访问根节点，然后按照先左后右的原则一直访问到叶子节点，例子如下图前序遍历，遍历顺序为A B D H E I C F G。</td>
+</tr>
+<tr>
+<td>中序遍历</td>
+<td>首先遍历左子树，然后访问根节点，最后遍历右子树。例子如下图，遍历顺序为H D B E I A C G F。</td>
+</tr>
+<tr>
+<td>后序遍历</td>
+<td>先左子树，后右子树，最后根节点。如下图，遍历顺序为H D I E B G F C A。</td>
+</tr>
+</tbody></table>
+<p><img src="/2019/09/03/数据结构与算法/%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="一棵二叉树"></p>
+<h2 id="7-查找技术"><a href="#7-查找技术" class="headerlink" title="7. 查找技术"></a>7. 查找技术</h2><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+<th>分析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序查找</td>
+<td>从线性表的第一个元素开始，逐个比较最终找出目标元素，查找停止</td>
+<td>（1）最好的时候，第一个即为查找元素，比较次数为1。<br>（2）最坏情况，最后一个才是目标元素，比较次数为n。<br>综上，平均为(n+1)/2</td>
+</tr>
+<tr>
+<td>二分法查找</td>
+<td>在有序的线性表中，将查找元素与中间元素进行比较，以指数级速度缩小查找范围，最终锁定目标元素。</td>
+<td>最好情况为比较1次，最差情况为比较log..n次（‘..’表示数字‘2’）。</td>
+</tr>
+</tbody></table>
+<h2 id="8-排序技术"><a href="#8-排序技术" class="headerlink" title="8. 排序技术"></a>8. 排序技术</h2><table>
+<thead>
+<tr>
+<th align="left">概念</th>
+<th>含义</th>
+<th>分析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">冒泡排序法</td>
+<td>通过两两相邻的数据之间比较，不断调整大小顺序，不断的重复，直到所有的数据都有序为止</td>
+<td>最坏情况，比较次数为(n-1)n/2</td>
+</tr>
+<tr>
+<td align="left">快速排序法</td>
+<td>在待排序元素中选取一个数K（一般为第一个数），以K为标准，大于K的排在K后面，小于K的排在K前面，得到两个子表，对这两个子表进行同样的操作，直到所有的数均有序后停止。</td>
+<td>最坏情况，比较次数为(n-1)n/2</td>
+</tr>
+<tr>
+<td align="left">简单插入排序法</td>
+<td>把待排序的n个元素看成是有序表和无序表，最开始有序表只有1个元素，无序表有n-1个元素，接下来在无序表中选取元素插入有序表中的正确位置，重复操作直到所有元素都插入到了正确的位置即停止。</td>
+<td>最多比较(n-1)n/2次</td>
+</tr>
+<tr>
+<td align="left">希尔排序</td>
+<td>将n个元素分为a1个组（a &lt; n），在每一组之间进行简单排序，再将序列分为a2个组（a2 &lt; a1），重复操作，直到最后an=1，即只有一个分组时排序完成。</td>
+<td>最多次数为n^r，其中（1&lt; r &lt; 2）。</td>
+</tr>
+<tr>
+<td align="left">简单选择排序法</td>
+<td>先选出最小元素与第一个元素交换位置，剩下元素再找最小元素与第二个元素交换位置，直到所有排序完毕。</td>
+<td>最多比较(n-1)n/2次</td>
+</tr>
+<tr>
+<td align="left">堆排序法</td>
+<td><code>堆</code>是一个比较特别的完全二叉树的结构，在这种特殊情况下进行特殊排序，称为<strong>堆</strong>排序法。</td>
+<td>最多nlog..n次，其中‘..’表示数字‘2’。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>堆</strong>是用数组表示的二叉树，在堆里面，只有数组元素的排列顺序，没有额外的逻辑数据，在某些条件下，堆的优势很明显。</p>
+</blockquote>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<p>写到这，关于数据结构与算法的基础入门知识就是这些了，还有一些其他内容还要进一步学习。</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数据结构与算法/">数据结构与算法</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/05/偶然/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">偶然</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/30/夏天的太阳/">
+                <span class="level-item">夏天的太阳</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Genening">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Genening
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Nothing is everything
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>SYSU</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        25
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/genening">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Bioinformatics/">
+            <span class="level-start">
+                <span class="level-item">Bioinformatics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Poetry-with-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry with Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Tech-learning/">
+            <span class="level-start">
+                <span class="level-item">Tech_learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/log/">
+            <span class="level-start">
+                <span class="level-item">log</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/技术学习/">
+            <span class="level-start">
+                <span class="level-item">技术学习</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机基础/">
+            <span class="level-start">
+                <span class="level-item">计算机基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js学习/">
+                        <span class="tag">js学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python基础/">
+                        <span class="tag">python基础</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构与算法/">
+                        <span class="tag">数据结构与算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/转录组/">
+                        <span class="tag">转录组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/04/无参转录组分析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T08:16:42.000Z">2019-10-04</time></div>
+                    <a href="/2019/10/04/无参转录组分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组分析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/29/Python基础/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/python.jpg" alt="Python基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T15:23:19.000Z">2019-09-29</time></div>
+                    <a href="/2019/09/29/Python基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/技术学习/">技术学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/再别康桥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="再别康桥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-25T13:52:31.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/再别康桥/" class="title has-link-black-ter is-size-6 has-text-weight-normal">再别康桥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/17/半截的诗/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/snowmountain.jpg" alt="半截的诗">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T15:16:45.000Z">2019-09-17</time></div>
+                    <a href="/2019/09/17/半截的诗/" class="title has-link-black-ter is-size-6 has-text-weight-normal">半截的诗</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/暮色/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/暮色/" class="title has-link-black-ter is-size-6 has-text-weight-normal">暮色</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/04/无参转录组分析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T08:16:42.000Z">2019-10-04</time></div>
+                    <a href="/2019/10/04/无参转录组分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组分析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/29/Python基础/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/python.jpg" alt="Python基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T15:23:19.000Z">2019-09-29</time></div>
+                    <a href="/2019/09/29/Python基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/技术学习/">技术学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/再别康桥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="再别康桥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-25T13:52:31.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/再别康桥/" class="title has-link-black-ter is-size-6 has-text-weight-normal">再别康桥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/17/半截的诗/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/snowmountain.jpg" alt="半截的诗">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T15:16:45.000Z">2019-09-17</time></div>
+                    <a href="/2019/09/17/半截的诗/" class="title has-link-black-ter is-size-6 has-text-weight-normal">半截的诗</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/暮色/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/暮色/" class="title has-link-black-ter is-size-6 has-text-weight-normal">暮色</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    NOTHING IS EVERYTHING
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Genening&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("Chinese");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
