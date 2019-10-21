@@ -142,6 +142,70 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/10/21/无参转录组实测1/" class="image is-7by1">
+            <img class="thumbnail" src="/_post/无参转录组实测1/trinity_tb.jpg" alt="无参转录组实测1">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-21T13:10:15.000Z">2019-10-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 936 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/21/无参转录组实测1/">无参转录组实测1</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程</p>
+</blockquote>
+<p><strong>输入命令</strong></p>
+<blockquote>
+<p>Trinity –seqType fq –max_memory 50G –left LJG-134_TTAGGC_L008_R1_001.fastq LJG-144_TGACCA_L008_R1_001.fastq LJG-155_ACAGTG_L008_R1_001.fastq LJG-531_GCCAAT_L008_R1_001.fastq LJG-543new_CAGATC_L008_R1_001.fastq LJG-556_ACTTGA_L008_R1_001.fastq LJG-B1_CGATGT_L008_R1_001.fastq LJG-Xnew_GATCAG_L008_R1_001.fastq LJG-Y1_ATCACG_L008_R1_001.fastq –right LJG-134_TTAGGC_L008_R2_001.fastq LJG-144_TGACCA_L008_R2_001.fastq LJG-155_ACAGTG_L008_R2_001.fastq LJG-531_GCCAAT_L008_R2_001.fastq LJG-543new_CAGATC_L008_R2_001.fastq LJG-556_ACTTGA_L008_R2_001.fastq LJG-B1_CGATGT_L008_R2_001.fastq LJG-Xnew_GATCAG_L008_R2_001.fastq LJG-Y1_ATCACG_L008_R2_001.fastq –CPU 12 –min_kmer_cov 2 –min_eff_read_cov 4</p>
+</blockquote>
+<p><strong>反馈如下</strong><br><img src="/2019/10/21/无参转录组实测1/Trinity_p1.jpg" alt="Trinity"></p>
+<p><strong>实测失败，报错如下</strong></p>
+<blockquote>
+<p>Monday, October 21, 2019: 21:14:06    CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl –seqType fq –JM 50G  –max_cov 200 –min_cov 2 –CPU 12 –output /home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normalization   –max_pct_stdev 10000  –left /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq –right /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R2_001.fastq –pairs_together –PARALLEL_STATS<br>Converting input files. (both directions in parallel)CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq &gt;&gt; right.fa<br>CMD finished (29 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa<br>CMD finished (29 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq &gt;&gt; left.fa<br>Error, not recognizing read name formatting: [GWZHISEQ02:77:C3VBWACXX:8:1203:2388:]<br><br>If your data come from SRA, be sure to dump the fastq file like so:</p>
+<p>   SRA_TOOLKIT/fastq-dump –defline-seq ‘@$sn[_$rn]/$ri’ –split-files file.sra </p>
+<p><br>Thread 2 terminated abnormally: Error, cmd: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa died with ret 512 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 762.<br>CMD finished (56 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (1 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>Error, conversion thread failed at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 333.<br>Error, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl –seqType fq –JM 50G  –max_cov 200 –min_cov 2 –CPU 12 –output /home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normalization   –max_pct_stdev 10000  –left /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq –right /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R2_001.fastq –pairs_together –PARALLEL_STATS   died with ret 7424 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 2689.<br>    main::process_cmd(“/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insil”…) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 3235<br>    main::normalize(“/home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normali”…, 200, ARRAY(0x7f0484948480), ARRAY(0x7f04849484b0)) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 3182<br>    main::run_normalization(200, ARRAY(0x7f0484948480), ARRAY(0x7f04849484b0)) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 1319</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/10/04/无参转录组分析/" class="image is-7by1">
             <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
         </a>
@@ -269,7 +333,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -289,7 +353,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        9
                     </p>
                 </div>
             </div>
@@ -362,7 +426,7 @@
                 <span class="level-item">Bioinformatics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Poetry-with-Life/">
@@ -416,7 +480,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实测/" style="font-size: 10px;">无参转录组实测</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -472,6 +536,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/无参转录组实测/">
+                        <span class="tag">无参转录组实测</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/生活的诗/">
                         <span class="tag">生活的诗</span>
                         <span class="tag is-grey">17</span>
@@ -499,6 +570,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/21/无参转录组实测1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/_post/无参转录组实测1/trinity_tb.jpg" alt="无参转录组实测1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:10:15.000Z">2019-10-21</time></div>
+                    <a href="/2019/10/21/无参转录组实测1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组实测1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -576,25 +666,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/14/暮色/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/暮色/" class="title has-link-black-ter is-size-6 has-text-weight-normal">暮色</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -613,7 +684,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -676,6 +747,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/21/无参转录组实测1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/_post/无参转录组实测1/trinity_tb.jpg" alt="无参转录组实测1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:10:15.000Z">2019-10-21</time></div>
+                    <a href="/2019/10/21/无参转录组实测1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组实测1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/04/无参转录组分析/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
@@ -750,25 +840,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/14/暮色/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/暮色/" class="title has-link-black-ter is-size-6 has-text-weight-normal">暮色</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -787,7 +858,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

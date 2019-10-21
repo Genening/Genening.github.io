@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>暮色 - Genening&#39;s blog</title>
+<title>无参转录组实测1 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="—-席慕蓉 在一个年轻的夜里 听过一首歌 清冽 缠绵 如山风拂过百合 再渴望时 却声息寂灭 不见踪迹 亦无来处 空留那月光沁人肌肤 而在而十年后的一个黄昏里 有什么是与那夜相似 进而使那旋律翩然来临 山鸣谷应 直逼我心 回顾所来径啊 苍苍横着的翠微 这半生的坎坷啊 在暮色中 竟化为甜蜜的热泪">
-<meta name="keywords" content="生活的诗">
+    <meta name="description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  输入命令  Trinity –seqType fq –max_memory 50G –left LJG-134_TTAGGC_L008_R1_001.fastq LJG-144_TGACCA_L008_R1_001.fastq LJG-155_ACAGTG_L008_R1_001.fastq LJG-531_GCCAAT_L008">
+<meta name="keywords" content="无参转录组实测">
 <meta property="og:type" content="article">
-<meta property="og:title" content="暮色">
-<meta property="og:url" content="https://genening.github.io/2019/09/14/暮色/index.html">
+<meta property="og:title" content="无参转录组实测1">
+<meta property="og:url" content="https://genening.github.io/2019/10/21/无参转录组实测1/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="—-席慕蓉 在一个年轻的夜里 听过一首歌 清冽 缠绵 如山风拂过百合 再渴望时 却声息寂灭 不见踪迹 亦无来处 空留那月光沁人肌肤 而在而十年后的一个黄昏里 有什么是与那夜相似 进而使那旋律翩然来临 山鸣谷应 直逼我心 回顾所来径啊 苍苍横着的翠微 这半生的坎坷啊 在暮色中 竟化为甜蜜的热泪">
+<meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  输入命令  Trinity –seqType fq –max_memory 50G –left LJG-134_TTAGGC_L008_R1_001.fastq LJG-144_TGACCA_L008_R1_001.fastq LJG-155_ACAGTG_L008_R1_001.fastq LJG-531_GCCAAT_L008">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://genening.github.io/gallery/thumbnail/dawn.jpg">
-<meta property="og:updated_time" content="2019-09-14T11:45:33.844Z">
+<meta property="og:image" content="https://genening.github.io/_post/无参转录组实测1/trinity_tb.jpg">
+<meta property="og:updated_time" content="2019-10-21T13:39:24.072Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="暮色">
-<meta name="twitter:description" content="—-席慕蓉 在一个年轻的夜里 听过一首歌 清冽 缠绵 如山风拂过百合 再渴望时 却声息寂灭 不见踪迹 亦无来处 空留那月光沁人肌肤 而在而十年后的一个黄昏里 有什么是与那夜相似 进而使那旋律翩然来临 山鸣谷应 直逼我心 回顾所来径啊 苍苍横着的翠微 这半生的坎坷啊 在暮色中 竟化为甜蜜的热泪">
-<meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/dawn.jpg">
+<meta name="twitter:title" content="无参转录组实测1">
+<meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  输入命令  Trinity –seqType fq –max_memory 50G –left LJG-134_TTAGGC_L008_R1_001.fastq LJG-144_TGACCA_L008_R1_001.fastq LJG-155_ACAGTG_L008_R1_001.fastq LJG-531_GCCAAT_L008">
+<meta name="twitter:image" content="https://genening.github.io/_post/无参转录组实测1/trinity_tb.jpg">
 
 
 
@@ -133,7 +133,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
+            <img class="thumbnail" src="/_post/无参转录组实测1/trinity_tb.jpg" alt="无参转录组实测1">
         </span>
     </div>
     
@@ -141,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2019-10-21T13:10:15.000Z">2019-10-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 458 words)
+                    6 minutes read (About 936 words)
                 </span>
                 
                 
@@ -160,40 +160,32 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                暮色
+                无参转录组实测1
             
         </h1>
         <div class="content">
-            <div align="center">
+            <blockquote>
+<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程</p>
+</blockquote>
+<p><strong>输入命令</strong></p>
+<blockquote>
+<p>Trinity –seqType fq –max_memory 50G –left LJG-134_TTAGGC_L008_R1_001.fastq LJG-144_TGACCA_L008_R1_001.fastq LJG-155_ACAGTG_L008_R1_001.fastq LJG-531_GCCAAT_L008_R1_001.fastq LJG-543new_CAGATC_L008_R1_001.fastq LJG-556_ACTTGA_L008_R1_001.fastq LJG-B1_CGATGT_L008_R1_001.fastq LJG-Xnew_GATCAG_L008_R1_001.fastq LJG-Y1_ATCACG_L008_R1_001.fastq –right LJG-134_TTAGGC_L008_R2_001.fastq LJG-144_TGACCA_L008_R2_001.fastq LJG-155_ACAGTG_L008_R2_001.fastq LJG-531_GCCAAT_L008_R2_001.fastq LJG-543new_CAGATC_L008_R2_001.fastq LJG-556_ACTTGA_L008_R2_001.fastq LJG-B1_CGATGT_L008_R2_001.fastq LJG-Xnew_GATCAG_L008_R2_001.fastq LJG-Y1_ATCACG_L008_R2_001.fastq –CPU 12 –min_kmer_cov 2 –min_eff_read_cov 4</p>
+</blockquote>
+<p><strong>反馈如下</strong><br><img src="/2019/10/21/无参转录组实测1/Trinity_p1.jpg" alt="Trinity"></p>
+<p><strong>实测失败，报错如下</strong></p>
+<blockquote>
+<p>Monday, October 21, 2019: 21:14:06    CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl –seqType fq –JM 50G  –max_cov 200 –min_cov 2 –CPU 12 –output /home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normalization   –max_pct_stdev 10000  –left /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq –right /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R2_001.fastq –pairs_together –PARALLEL_STATS<br>Converting input files. (both directions in parallel)CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq &gt;&gt; right.fa<br>CMD finished (29 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa<br>CMD finished (29 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq &gt;&gt; left.fa<br>Error, not recognizing read name formatting: [GWZHISEQ02:77:C3VBWACXX:8:1203:2388:]<br><br>If your data come from SRA, be sure to dump the fastq file like so:</p>
+<p>   SRA_TOOLKIT/fastq-dump –defline-seq ‘@$sn[_$rn]/$ri’ –split-files file.sra </p>
+<p><br>Thread 2 terminated abnormally: Error, cmd: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa died with ret 512 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 762.<br>CMD finished (56 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (1 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>CMD: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq &gt;&gt; left.fa<br>CMD finished (0 seconds)<br>Error, conversion thread failed at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 333.<br>Error, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl –seqType fq –JM 50G  –max_cov 200 –min_cov 2 –CPU 12 –output /home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normalization   –max_pct_stdev 10000  –left /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R1_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R1_001.fastq –right /home/gaodong/Zhangjlin/LJG-134_TTAGGC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-155_ACAGTG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-531_GCCAAT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-543new_CAGATC_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-556_ACTTGA_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-B1_CGATGT_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Xnew_GATCAG_L008_R2_001.fastq,/home/gaodong/Zhangjlin/LJG-Y1_ATCACG_L008_R2_001.fastq –pairs_together –PARALLEL_STATS   died with ret 7424 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 2689.<br>    main::process_cmd(“/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insil”…) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 3235<br>    main::normalize(“/home/gaodong/Zhangjlin/trinity_out_dir/insilico_read_normali”…, 200, ARRAY(0x7f0484948480), ARRAY(0x7f04849484b0)) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 3182<br>    main::run_normalization(200, ARRAY(0x7f0484948480), ARRAY(0x7f04849484b0)) called at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Trinity line 1319</p>
+</blockquote>
 
-<p><em>—-席慕蓉</em><br></p>
-<p>在一个年轻的夜里<br></p>
-<p>听过一首歌<br></p>
-<p>清冽 缠绵<br></p>
-<p>如山风拂过百合<br></p>
-<p>再渴望时<br></p>
-<p>却声息寂灭<br></p>
-<p>不见踪迹 亦无来处<br></p>
-<p>空留那月光沁人肌肤<br></p>
-<p>而在而十年后的一个黄昏里<br></p>
-<p>有什么是与那夜相似<br></p>
-<p>进而使那旋律翩然来临<br></p>
-<p>山鸣谷应 直逼我心<br></p>
-<p>回顾所来径啊<br></p>
-<p>苍苍横着的翠微<br></p>
-<p>这半生的坎坷啊<br></p>
-<p>在暮色中<br></p>
-<p>竟化为甜蜜的热泪<br></p>
-</div>
-<a id="more"></a>
->青春易逝，当人至暮年，回首数十年前的风华正茂，不知道是什么感想，从席慕蓉的诗来看，似乎每当暮年回顾年轻的夜总是甜的，令人感叹的，值得珍惜的，可能也是这样的，在人文主义的角度看来，人的体验是神圣的，这是人生命意义的来源，因此不管在年少时经历过什么风雨，当人至暮年，即将走向生命的终点站的时候，这一切都是这一生意义的来源，都应该是值得感悟的经历。在这样一个年纪，伴随着荷尔蒙的分泌，或是激情四射，或是思绪萦绕，这一切都是青春的味道，这样的味道是值得人去铭记一生的，值得人去反复品味的。<br>这让我想起了《钢铁是怎么炼成的》里的一段话，当人至暮年时，你会怎么看待你的人生呢？怎样的人生才能够让你无悔呢？才能够让你觉得没有白来人间走一遭呢？这是个值得思考的问题，我仍需多思考思考。
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/生活的诗/">生活的诗</a>
+                    <a class="has-link-grey -link" href="/tags/无参转录组实测/">无参转录组实测</a>
                 </div>
             </div>
         </div>
@@ -210,17 +202,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/17/半截的诗/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">半截的诗</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/初相遇/">
-                <span class="level-item">初相遇</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/04/无参转录组分析/">
+                <span class="level-item">无参转录组分析</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
