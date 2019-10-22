@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学概述： 转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRN">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity.jpg">
-<meta property="og:updated_time" content="2019-10-04T10:10:02.161Z">
+<meta property="og:updated_time" content="2019-10-22T10:03:03.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组分析">
 <meta name="twitter:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学概述： 转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRN">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1159 words)
+                    14 minutes read (About 2036 words)
                 </span>
                 
                 
@@ -230,6 +230,10 @@
 <h5 id="几个重要参数介绍："><a href="#几个重要参数介绍：" class="headerlink" title="几个重要参数介绍："></a>几个重要参数介绍：<br></h5><blockquote>
 <p><code>--seqType</code> 支持输入数据格式为 fq 或者 fa<br><br><strong>双端测序：</strong><code>--left</code>为read1 <code>--right</code>为read2 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br><br><strong>单端测序：</strong><code>--single</code> 加上文件 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br><br><code>--CPU</code> 软件所用CPU数量<br><br><code>--max_memory</code> 内存控制（组装过程中，jellyfish这一步是最耗费资源的一步 所以这个内存主要由jellyfish控制）<br><br><code>--SS_lib_type RF</code>   链特异性文库需要加上这个参数，其中RF表示文库的构建方法，<a href="http://www.genek.tv/article/27" target="_blank" rel="noopener">点这了解，最好看看</a><br><br><code>--no_run_butterfly</code> 不进行butterfly步骤，在Chrysalis这一步完成后中断<br><br><code>--no_run_quantifygraph</code> 不进行quantifygraph这一步<br><br><code>--output</code> trinity的输出文件夹，默认在<em>trinity_out_dir/Trinity.fasta</em><br><br><code>--no_version_check</code> 不汇报版本信息<br></p>
 </blockquote>
+<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><h2 id="Misc："><a href="#Misc：" class="headerlink" title="Misc："></a>Misc：</h2><p><code>--SS_lib_type</code>       reads的方向。成对的reads: RF or FR; 不成对的reads: F or R。在数据具有链特异性的时候，设置此参数，则正义和反义转录子能得到区分。默认情况下，不设置此参数，reads被当作非链特异性处理。FR: 匹配时，read1在5’端上游, 和前导链一致, read2在3’下游, 和前导链反向互补. 或者read2在上游, read1在下游反向互补; RF: read1在5’端上游, 和前导链反向互补, read2在3’端下游, 和前导链一致;<br><br><code>--output</code>             输出结果文件夹。默认情况下生成trinity_out_dir文件夹并将输出结果保存到此文件夹中。<br><br><code>--min_contig_length</code>  报告出的最短的contig长度。默认为200<br><br><code>--jaccard_clip</code>       如果两个转录子之间有UTR区重叠，则这两个转录子很有可能在de novo组装的时候被拼接成一条序列，称为融合转录子(Fusion Transcript)。如果有fastq格式的paired reads，并尽可能减少此类组装错误，则选用此参数。值得说明的是：1. 适合于基因在基因组比较稠密，转录子经常在UTR区域重叠的物种，比如真菌基因组。而对于脊椎动物和植物，则不推荐使用此参数; 2. 要求fastq格式的paired reads文件(文件中reads名分别以/1和/2结尾，以利于软件识别)，同时还需要安装bowtie软件用于reads的比对; 3. 单独使用具有链特异性的RNA-seq数据的时候，能极大地减少UTR重叠区很小的融合转录子; 4. 此选项耗费运算，若没必要，则不用此参数。<br><br><code>--prep</code>               仅仅准备一些文件(利于I/O）并在kmer计算前停止程序运行<br><br><code>--no_cleanup</code>         保留所有的中间输入文件<br><br><code>--full_cleanup</code>  仅保留Trinity fasta文件，并重命名成${output_dir}.Trinity.fasta<br><br><code>--cite</code>               显示Trinity文献引证和一些参与的软件工具<br><br><code>--version</code>            报告Trinity版本并推出</p>
+<h2 id="Inchworm-和-K-mer-计算相关选项："><a href="#Inchworm-和-K-mer-计算相关选项：" class="headerlink" title="Inchworm 和 K-mer 计算相关选项："></a>Inchworm 和 K-mer 计算相关选项：</h2><p><code>--min_kmer_cov</code>     使用Inchworm来计算K-mer数量时候，设置的Kmer的最小值。默认为1<br><br><code>--inchworm_cpu</code>     Inchworm使用的CPU线程数，默认为6和–CPU设置的值中的小值。</p>
+<h2 id="Chrysalis相关选项："><a href="#Chrysalis相关选项：" class="headerlink" title="Chrysalis相关选项："></a>Chrysalis相关选项：</h2><p><code>--max_reads_per_graph</code>   在一个Bruijn图中锚定的最大的reads数目，默认为200000<br><code>--no_run_chrysalis</code>      运行Inchworm完毕，在运行chrysalis之前停止运行Trinity<br><code>--no_run_quantifygraph</code>  在平行化运算quantifygrahp前停止运行Trinity</p>
+<h2 id="Butterfly相关选项："><a href="#Butterfly相关选项：" class="headerlink" title="Butterfly相关选项："></a>Butterfly相关选项：</h2><p><code>--bfly_opts</code>                    Butterfly额外的参数<br><br><code>--max_number_of_paths_per_node</code> 从node A -&gt; B,最多允许多少条路径。默认为10<br><br><code>--group_pairs_distance</code>        最大插入片读长度，默认为500<br><br><code>--path_reinforcement_distance</code>  延长转录子路径时候，reads间最小的重叠碱基数。默认PE:75; SE：25<br><br><code>--no_triplet_lock</code>             不锁定triplet-supported nodes<br><br><code>--bflyHeapSpaceMax</code>             运行Butterfly时java最大的堆积空间，默认为20G<br><br><code>--bflyHeapSpaceInit</code>          java初始的堆积空间，默认为1G<br><br><code>--bflyGCThreads</code>              java进行无用信息的整理时使用的线程数，默认由java来决定<br><br><code>--bflyCPU</code>                     运行Butterfly时使用的CPU线程数，默认为2<br><br><code>--bflyCalculateCPU</code>          计算Butterfly所运行的CPU线程数，由公式80% * max_memory / maxbflyHeapSpaceMax 得到<br><br><code>--no_run_butterfly</code>             在Chrysalis运行完毕后，停止运行Butterfly<br></p>
 <h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><blockquote>
 <p>最终会得到一个Trinity.fasta的文件，在同文件夹下还会有其他的中间过程产生的文件，其中这个文件最为重要，是最终的组装结果</p>
 </blockquote>
