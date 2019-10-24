@@ -10,19 +10,19 @@
 <title>无参转录组实测1 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_A">
+    <meta name="description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_">
 <meta name="keywords" content="无参转录组实测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无参转录组实测1">
 <meta property="og:url" content="https://genening.github.io/2019/10/21/无参转录组实测1/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_A">
+<meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-10-22T13:49:16.520Z">
+<meta property="og:updated_time" content="2019-10-24T02:56:05.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实测1">
-<meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_A">
+<meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列 Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_">
 <meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
 
 
@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Pencarian" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes membaca (Sekitar 437 kata)
+                    7 minutes read (About 1012 words)
                 </span>
                 
                 
@@ -168,25 +168,50 @@
 <p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程</p>
 </blockquote>
 <h2 id="1-拼接序列"><a href="#1-拼接序列" class="headerlink" title="1. 拼接序列"></a><strong>1. 拼接序列</strong></h2><blockquote>
-<p>Trinity  –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_ACAGTG_L008_R1_001.fastq_trimmed LJG-531_GCCAAT_L008_R1_001.fastq_trimmed LJG-543new_CAGATC_L008_R1_001.fastq_trimmed LJG-556_ACTTGA_L008_R1_001.fastq_trimmed LJG-B1_CGATGT_L008_R1_001.fastq_trimmed LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed LJG-144_TGACCA_L008_R2_001.fastq_trimmed LJG-155_ACAGTG_L008_R2_001.fastq_trimmed LJG-531_GCCAAT_L008_R2_001.fastq_trimmed LJG-543new_CAGATC_L008_R2_001.fastq_trimmed LJG-556_ACTTGA_L008_R2_001.fastq_trimmed LJG-B1_CGATGT_L008_R2_001.fastq_trimmed LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 12 –min_kmer_cov 2</p>
+<p>Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 25 –min_kmer_cov 2</p>
+</blockquote>
+<blockquote>
+<p>Trinity –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 30 –min_kmer_cov 2</p>
 </blockquote>
 <a id="more"></a>
 <p><strong>反馈如下</strong><br><img src="/2019/10/21/无参转录组实测1/Trinity_p1.jpg" alt="Trinity"></p>
-<p><strong>实测失败，报错如下</strong></p>
+<p><strong>（1）实测失败，报错如下</strong></p>
 <blockquote>
 <p>Error, not recognizing read name formatting: [GWZHISEQ02:77:C3VBWACXX:8:1203:2388:]<br><br>If your data come from SRA, be sure to dump the fastq file like so:</p>
 <p>   SRA_TOOLKIT/fastq-dump –defline-seq ‘@$sn[_$rn]/$ri’ –split-files file.sra </p>
 <p><br>Thread 2 terminated abnormally: Error, cmd: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa died with ret 512 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 762.<br>Error, conversion thread failed at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 333.<br>Error, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl </p>
 </blockquote>
-<p>已解决</p>
+<p><strong>已解决</strong></p>
 <blockquote>
 <p>通过 <em>df -h</em>查看到系统中内存不足，切换到新的文件夹后可以运行，同时将.fastq文件替换成了.fastq_trimed</p>
 </blockquote>
 <p>新反馈如下<br><img src="/2019/10/21/无参转录组实测1/clustering.jpg" alt="clustering"><br><img src="/2019/10/21/无参转录组实测1/jellyfish.jpg" alt="jellyfish"></p>
-<h2 id="补充：Linux技巧"><a href="#补充：Linux技巧" class="headerlink" title="补充：Linux技巧"></a>补充：Linux技巧</h2><blockquote>
-<p>考虑到在运行过程中可能会突然断网，在运行程序是切换到后台运行，有两种方法，第一种是<em>nouhub</em>，第二种是<em>screen</em>，具体的操作方法可以查看印象笔记中的记录</p>
+<h3 id="补充：Linux技巧"><a href="#补充：Linux技巧" class="headerlink" title="补充：Linux技巧"></a>补充：Linux技巧</h3><blockquote>
+<p>考虑到在运行过程中可能会突然断网，在运行程序是切换到后台运行，有两种方法，第一种是<em>nohub</em>，第二种是<em>screen</em>，具体的操作方法可以使用-h参数查看</p>
 </blockquote>
-
+<p><strong>（2）报错如下</strong></p>
+<blockquote>
+<p>Trinity run failed. Must investigate error above.<br>There is insufficient memory for the Java Runtime Environment to continue.<br>Cannot create GC thread. Out of system resources.<br>An error report file with more information is saved as:<br>/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_23/c2318.trinity.reads.fa.out/hs_err_pid142493.log<br>warning, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/support_scripts/../../Trinity –single “/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa” –output “/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out” –CPU 1 –max_memory 1G –run_as_paired –seqType fa –trinity_complete –full_cleanup –min_kmer_cov 2   failed with ret: 65280, going to retry.</p>
+</blockquote>
+<p><strong>（3）报错如下</strong></p>
+<blockquote>
+<p>Thursday, October 24, 2019: 00:40:07    CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c recursive_trinity.cmds -CPU 30 -v -shuffle<br>Number of Commands: 38759<br>succeeded(1)   0.00258005% completed.    Error occurred during initialization of VM</p>
+</blockquote>
+<p>(4)<strong>报错如下</strong></p>
+<blockquote>
+<p>Error encountered::  &lt;!—-<br>CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c /B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out/chrysalis/butterfly_commands -shuffle -CPU 1 -failed_cmds failed_butterfly_commands.138858.txt  2&gt;tmp.138858.1571848809.stderr</p>
+</blockquote>
+<h3 id="拼接结果"><a href="#拼接结果" class="headerlink" title="拼接结果"></a><strong>拼接结果</strong></h3><p><img src="/2019/10/21/无参转录组实测1/result.jpg" alt="result"></p>
+<h2 id="2-利用TrinityStats-pl进行结果统计"><a href="#2-利用TrinityStats-pl进行结果统计" class="headerlink" title="2. 利用TrinityStats.pl进行结果统计"></a>2. 利用TrinityStats.pl进行结果统计</h2><p>命令如下</p>
+<blockquote>
+<p>TrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity.fasta</p>
+</blockquote>
+<p>结果反馈如下：<br><img src="/2019/10/21/无参转录组实测1/result_counts.jpg" alt="counts"></p>
+<h2 id="3-表达丰度评估"><a href="#3-表达丰度评估" class="headerlink" title="3. 表达丰度评估"></a>3. 表达丰度评估</h2><p>命令如下：</p>
+<blockquote>
+<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed<br>–seqType fq –target Trinity.fasta –aligner bowtie –retain_intermediate_files</p>
+</blockquote>
+<h2 id="4-差异表达分析"><a href="#4-差异表达分析" class="headerlink" title="4. 差异表达分析"></a>4. 差异表达分析</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -262,7 +287,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         26
@@ -272,7 +297,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         6
@@ -282,7 +307,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         9
@@ -292,7 +317,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                IKUTI</a>
+                Follow</a>
         </div>
         
         
@@ -349,7 +374,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -410,7 +435,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Awan tag
+            Tag Cloud
         </h3>
         <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实测/" style="font-size: 10px;">无参转录组实测</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -421,7 +446,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tag
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -500,7 +525,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -606,7 +631,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -674,7 +699,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -780,7 +805,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -969,7 +994,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -988,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1000,11 +1025,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
