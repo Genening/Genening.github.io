@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列  Trinity Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-10-27T13:47:12.871Z">
+<meta property="og:updated_time" content="2019-10-27T13:52:02.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程  1. 拼接序列  Trinity Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed">
@@ -241,7 +241,7 @@
 </blockquote>
 <p>输出文件：output.fasta</p>
 <p>反馈如下<br><img src="/2019/10/21/无参转录组实测1/cd-hit-est.jpg" alt="cd-hit"></p>
-<p><strong>参数注释</strong><br>|参数|参数注释|<br>|:—-:|:—-|<br>| <strong>-i</strong>| input filename in fasta format, required, can be in .gz format|<br>| <strong>-o</strong>| output filename, required|<br>|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit’s “global sequence identity” calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence<br>|<br>|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don’t use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS |<br>|-b    |band_width of alignment, default 20|<br>|-M    |memory limit (in MB) for the program, default 800; 0 for unlimitted;<br>|<br>|-T|    number of threads, default 1; with 0, all CPUs will be used|<br>|-n|    word_length, default 5, see user’s guide for choosing it|<br>|-l|    length of throw_away_sequences, default 10|<br>|-t|    tolerance for redundance, default 2|<br>|-d|    length of description in .clstr file, default 20|<br>|if| set to 0, it takes the fasta defline and stops at first space|<br>|-s|    length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|<br>|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|<br>|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AL|    alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-aS|    alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AS|    alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover &gt;= this value for both sequences|<br>|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|<br>|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|<br>|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|<br>|-g|1 or 0, default 0, by cd-hit’s default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won’t change the representatives of final clusters|<br>|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|<br>|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|<br>|-bak|    write backup cluster file (1 or 0, default 0)|<br>|-h|    print this help|</p>
+<p><strong>参数注释</strong><br>|参数|参数注释|<br>|:—-:|:—-:|<br>| <strong>-i</strong>|input filename in fasta format, required, can be in .gz format|<br>| <strong>-o</strong>|output filename, required|<br>|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit’s “global sequence identity” calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence|<br>|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don’t use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS|<br>|-b|band_width of alignment, default 20|<br>|-M|memory limit (in MB) for the program, default 800; 0 for unlimitted;|<br>|-T|number of threads, default 1; with 0, all CPUs will be used|<br>|-n|word_length, default 5, see user’s guide for choosing it|<br>|-l|length of throw_away_sequences, default 10|<br>|-t|tolerance for redundance, default 2|<br>|-d|length of description in .clstr file, default 20|<br>|if|set to 0, it takes the fasta defline and stops at first space|<br>|-s|length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|<br>|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|<br>|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AL|alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-aS|alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AS|alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover &gt;= this value for both sequences|<br>|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|<br>|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|<br>|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|<br>|-g|1 or 0, default 0, by cd-hit’s default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won’t change the representatives of final clusters|<br>|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|<br>|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|<br>|-bak|write backup cluster file (1 or 0, default 0)|<br>|-h| print this help|</p>
 <p>再做一次结果统计</p>
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/utilTrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta</p>
@@ -349,7 +349,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         26
@@ -359,7 +359,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         6
@@ -369,7 +369,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         9
@@ -379,7 +379,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -436,7 +436,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -497,7 +497,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -508,7 +508,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -587,7 +587,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -693,7 +693,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -761,7 +761,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -867,7 +867,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1087,10 +1087,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
