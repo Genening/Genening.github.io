@@ -226,9 +226,7 @@
 <li><h3 id="1-基础画图"><a href="#1-基础画图" class="headerlink" title="1. 基础画图"></a>1. 基础画图</h3></li>
 <li><h3 id="2-画图进阶"><a href="#2-画图进阶" class="headerlink" title="2. 画图进阶"></a>2. 画图进阶</h3></li>
 </ul>
-<h3 id="第一部分：基础画图"><a href="#第一部分：基础画图" class="headerlink" title="第一部分：基础画图"></a>第一部分：基础画图</h3><h4 id="1-通用画图步骤"><a href="#1-通用画图步骤" class="headerlink" title="1. 通用画图步骤"></a>1. 通用画图步骤</h4><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">① 引包：<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt；</span><br><span class="line">② 创建画布：fig = plt.figure()；</span><br><span class="line">③ 添加分区：ax = fig.add_subplot(<span class="hljs-number">311</span>)   <span class="hljs-comment"># 3个数字分别代表 行、列 及 本图所处位置；</span></span><br><span class="line">④ ax.axis([<span class="hljs-number">-5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>])    <span class="hljs-comment"># 设置x轴最小、最大值，y轴最小、最大值；</span></span><br><span class="line">⑤ ax.scatter(xcord1,ycord1, s=<span class="hljs-number">30</span>, c=<span class="hljs-string">'red'</span>, marker=<span class="hljs-string">'s'</span>)  <span class="hljs-comment"># 用于画散点图；</span></span><br><span class="line">⑥ ax.plot(x, y)                     <span class="hljs-comment"># 用于画线图；</span></span><br><span class="line">⑦ plt.title(“this <span class="hljs-keyword">is</span> a title”)      <span class="hljs-comment"># 图形添加标题；</span></span><br><span class="line">⑧ plt.xlabel(<span class="hljs-string">'x'</span>)、plt.ylabel(<span class="hljs-string">'y'</span>)  <span class="hljs-comment"># 分别对坐标轴添加标题</span></span><br><span class="line">⑨ plt.savefig(<span class="hljs-string">"/path_way/img_name.jpg"</span>)  <span class="hljs-comment">#调整好后，保存图片</span></span><br><span class="line">⑩ plt.show()                        <span class="hljs-comment"># 显示图形；</span></span><br><span class="line">——————————————————————————————————————————————————————————</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第一步：导入工具包——matplotlib、numpy、matplotlib.pyplot</span></span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第二步：数据准备——将数据处理成对应图片所需的格式</span></span><br><span class="line">labels = [<span class="hljs-string">'G1'</span>, <span class="hljs-string">'G2'</span>, <span class="hljs-string">'G3'</span>, <span class="hljs-string">'G4'</span>, <span class="hljs-string">'G5'</span>]</span><br><span class="line">men_means = [<span class="hljs-number">20</span>, <span class="hljs-number">34</span>, <span class="hljs-number">30</span>, <span class="hljs-number">35</span>, <span class="hljs-number">27</span>]</span><br><span class="line">women_means = [<span class="hljs-number">25</span>, <span class="hljs-number">32</span>, <span class="hljs-number">34</span>, <span class="hljs-number">20</span>, <span class="hljs-number">25</span>]</span><br><span class="line"></span><br><span class="line">x = np.arange(len(labels))  <span class="hljs-comment"># the label locations</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第三步：图片通用设置</span></span><br><span class="line"><span class="hljs-comment"># Add some text for labels, title and custom x-axis tick labels, etc.</span></span><br><span class="line">ax.set_ylabel(<span class="hljs-string">'Scores'</span>)</span><br><span class="line">ax.set_title(<span class="hljs-string">'Scores by group and gender'</span>)</span><br><span class="line">ax.set_xticks(x)</span><br><span class="line">ax.set_xticklabels(labels)</span><br><span class="line">ax.legend()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第四步：作图</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">rects1 = ax.bar(x - width/<span class="hljs-number">2</span>, men_means, width, label=<span class="hljs-string">'Men'</span>)</span><br><span class="line">rects2 = ax.bar(x + width/<span class="hljs-number">2</span>, women_means, width, label=<span class="hljs-string">'Women'</span>)</span><br><span class="line"></span><br><span class="line">width = <span class="hljs-number">0.35</span>  <span class="hljs-comment"># the width of the bars</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">autolabel</span><span class="hljs-params">(rects)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""Attach a text label above each bar in *rects*, displaying its height."""</span></span><br><span class="line">    <span class="hljs-keyword">for</span> rect <span class="hljs-keyword">in</span> rects:</span><br><span class="line">        height = rect.get_height()</span><br><span class="line">        ax.annotate(<span class="hljs-string">'&#123;&#125;'</span>.format(height),</span><br><span class="line">                    xy=(rect.get_x() + rect.get_width() / <span class="hljs-number">2</span>, height),</span><br><span class="line">                    xytext=(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>),  <span class="hljs-comment"># 3 points vertical offset</span></span><br><span class="line">                    textcoords=<span class="hljs-string">"offset points"</span>,</span><br><span class="line">                    ha=<span class="hljs-string">'center'</span>, va=<span class="hljs-string">'bottom'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">autolabel(rects1)</span><br><span class="line">autolabel(rects2)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第六步：确认完成后，以img_name.jpg文件名保存到目标路径下</span></span><br><span class="line">plt.savefig(<span class="hljs-string">"D:/TECHENICLEARNING/Data_visualization/img_name.jpg"</span>) <span class="hljs-comment"># 导入.savefig()方法，添加路径，将图片保存到目标路径下</span></span><br><span class="line"><span class="hljs-comment">### 这一步必须放在show之前，可以考虑先注释掉这一步，等到图片调整好后再取消注释保存图片！！！</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第五步：展示图片</span></span><br><span class="line">plt.show() <span class="hljs-comment"># 调用.show()方法展示图片，以便修改</span></span><br></pre></td></tr></table></figure>
-
-<p>示例图片如下：</p>
+<h3 id="第一部分：基础画图"><a href="#第一部分：基础画图" class="headerlink" title="第一部分：基础画图"></a>第一部分：基础画图</h3>
         </div>
         
         
@@ -488,367 +486,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/25/Poetry with Life/再别康桥/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="再别康桥">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-25T13:52:31.000Z">2019-09-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 391 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/25/Poetry with Life/再别康桥/">再别康桥</a>
-            
-        </h1>
-        <div class="content">
-            <div align="center">
-
-<p>—-<em>徐志摩</em><br></p>
-<p>轻轻的我走了，<br><br>正如我轻轻的来；<br><br>我轻轻的招手，<br><br>作别西天的云彩。<br><br><br><br>那河畔的金柳，<br><br>是夕阳中的新娘；<br><br>波光里的艳影，<br><br>在我的心头荡漾。<br><br><br><br>软泥上的青荇，<br><br>油油的在水底招摇；<br><br>在康河的柔波里，<br><br>我甘心做一条水草！<br><br><br><br>那榆阴下的一潭，<br><br>不是清泉，是天上虹；<br><br>揉碎在浮藻间，<br><br>沉淀着彩虹似的梦。<br><br><br><br>寻梦？撑一支长蒿，<br><br>向青草更青处漫溯；<br><br>载满一船星辉，<br><br>在星辉斑斓里放歌。<br><br><br><br>但是我不能放歌，<br><br>悄悄是别离的笙箫；<br><br>夏虫也为我沉默，<br><br>沉默是今晚的康桥！<br><br><br><br>悄悄的我走了，<br><br>正如我悄悄的来；<br><br>我挥一挥衣袖，<br><br>不带走一片云彩。<br></p>
-</div>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/25/Poetry with Life/再别康桥/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/17/Poetry with Life/半截的诗/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/snowmountain.jpg" alt="半截的诗">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-17T15:16:45.000Z">2019-09-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 147 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/17/Poetry with Life/半截的诗/">半截的诗</a>
-            
-        </h1>
-        <div class="content">
-            <div align="center">
-
-<p><em>—-海子</em><br></p>
-<p>你是我的半截的诗，不许别人更改一个字。<br></p></div>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/17/Poetry with Life/半截的诗/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/14/Poetry with Life/暮色/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/dawn.jpg" alt="暮色">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T10:36:44.000Z">2019-09-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 458 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/14/Poetry with Life/暮色/">暮色</a>
-            
-        </h1>
-        <div class="content">
-            <div align="center">
-
-<p><em>—-席慕蓉</em><br></p>
-<p>在一个年轻的夜里<br></p>
-<p>听过一首歌<br></p>
-<p>清冽 缠绵<br></p>
-<p>如山风拂过百合<br></p>
-<p>再渴望时<br></p>
-<p>却声息寂灭<br></p>
-<p>不见踪迹 亦无来处<br></p>
-<p>空留那月光沁人肌肤<br></p>
-<p>而在而十年后的一个黄昏里<br></p>
-<p>有什么是与那夜相似<br></p>
-<p>进而使那旋律翩然来临<br></p>
-<p>山鸣谷应 直逼我心<br></p>
-<p>回顾所来径啊<br></p>
-<p>苍苍横着的翠微<br></p>
-<p>这半生的坎坷啊<br></p>
-<p>在暮色中<br></p>
-<p>竟化为甜蜜的热泪<br></p>
-</div>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/14/Poetry with Life/暮色/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/13/Poetry with Life/初相遇/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/meeting.jpg" alt="初相遇">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T07:39:46.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 308 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/Poetry with Life/初相遇/">初相遇</a>
-            
-        </h1>
-        <div class="content">
-            <div align="center">
-
-<p><em>—-席慕蓉</em><br></p>
-<p>美丽的诗和美丽的梦一样<br></p>
-<p>都是可遇不可求的<br></p>
-<p>常常在最没料的时刻里出现<br></p>
-<p>我喜欢那样的梦<br></p>
-<p>在梦里，一切都可以重新开始<br></p>
-<p>一切都可以慢慢解释<br></p>
-<p>心里甚至还能感觉到所有被浪费的时光<br></p>
-<p>竟然能够重回时的狂喜和感激<br></p>
-<p>胸怀中满溢着幸福<br></p>
-<p>只因为你就在我眼前<br></p>
-<p>对我微笑 一如当年<br></p>
-<p>我真喜欢那样的梦<br></p>
-<p>明明知道你已为我跋涉千里<br></p>
-<p>却又觉得芳草鲜美 落英缤纷<br></p>
-<p>好像你我才初相遇<br></p>
-</div>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/Poetry with Life/初相遇/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/07/Tech_learning/JS学习笔记/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/javascript.jpg" alt="JS学习笔记">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-07T15:17:43.000Z">2019-09-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 469 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/07/Tech_learning/JS学习笔记/">JS学习笔记</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="第一部分：JS介绍及基础知识"><a href="#第一部分：JS介绍及基础知识" class="headerlink" title="第一部分：JS介绍及基础知识"></a><strong>第一部分：JS介绍及基础知识</strong></h2><blockquote>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ol>
-<li>初识JavaScript</li>
-<li>变量和常量的知识</li>
-<li>基本数据类型</li>
-<li>运算符</li>
-<li>基本数据类型间的转换</li>
-<li>流程控制语句</li>
-</ol>
-</blockquote>
-<h3 id="1-初识JavaScript"><a href="#1-初识JavaScript" class="headerlink" title="1. 初识JavaScript"></a>1. <strong>初识JavaScript</strong></h3><p><strong>概述</strong>：</p>
-<blockquote>
-<p><strong>JavaScript</strong>一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为<strong>JavaScript引擎</strong>，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。<br></p>
-</blockquote>
-<p><strong>javascript组成</strong> </p>
-<blockquote>
-<p>（1）<strong>ECMAScript</strong>，描述了该语言的语法和基本对象。<br><br>（2）文档对象模型（<strong>DOM</strong>），描述处理网页内容的方法和接口。<br><br>（3）浏览器对象模型（<strong>BOM</strong>），描述与浏览器进行交互的方法和接口<br><br><img src="/2019/09/07/Tech_learning/JS学习笔记/js%E7%BB%84%E6%88%90.jpg" alt="javascript组成"></p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/07/Tech_learning/JS学习笔记/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Préc</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Suiv</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -856,7 +502,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/archives/2/">2</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/archives/3/">3</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/6/">6</a></li>
             
         </ul>
     </nav>
@@ -901,7 +549,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -911,7 +559,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -931,7 +579,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -988,7 +636,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1041,7 +689,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -1145,7 +793,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1319,7 +967,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1645,9 +1293,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
