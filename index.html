@@ -131,6 +131,115 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/10/31/Linux/working-with-files/" class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnail/awk.jpg" alt="working_with_files">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 484 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/31/Linux/working-with-files/">working_with_files</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>在Linux中，有着处理文本的三大常用的、非常强大的工具——<strong>awk</strong>/<strong>grep</strong>/<strong>sed</strong>，其中awk是报告生成工具，适合处理列数据；grep是文本过滤搜索工具；sed是文本编辑工具，完成一般的编辑工作。接下来我将学习如何使用这3个工具。PS：这三个工具操作的文本都可以通过重定向的方式输出到新文件中保存下来。</p>
+</blockquote>
+<h2 id="1-预备内容"><a href="#1-预备内容" class="headerlink" title="1. 预备内容"></a>1. 预备内容</h2><blockquote>
+<p>在正式学习这三个工具之前，先来了解一下Linux中的正则表达式。</p>
+</blockquote>
+<p>在Linux中可以通过正则的方式对文本进行匹配处理，这就相当于是一个通用模板，<strong>awk</strong>、<strong>grep</strong>和<strong>sed</strong>都可以识别这套模板，相当于正则表达式可以成为这3个工具的拓展模板，通过结合正则，让这3个工具更加强大。 </p>
+<h3 id="1-1-正则的组成"><a href="#1-1-正则的组成" class="headerlink" title="1.1. 正则的组成"></a>1.1. 正则的组成</h3><table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="left">功能</th>
+<th align="left">意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^</td>
+<td align="left">匹配行首</td>
+<td align="left">表示以某个字符开头</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="left">匹配行尾</td>
+<td align="left">表示以某个字符结尾</td>
+</tr>
+<tr>
+<td align="center">^$</td>
+<td align="left">空行的意思</td>
+<td align="left">表示空行的意思</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="left">匹配任意单个字符</td>
+<td align="left">表示任意一个字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="left">字符* 匹配0或多个此字符</td>
+<td align="left">示重复的任意多个字</td>
+</tr>
+<tr>
+<td align="center">|屏蔽一个元字符的特殊含义</td>
+<td align="left">表示去掉有意义的元字符的含</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">[]</td>
+<td align="left">匹配中括号内的字符</td>
+<td align="left">表示过滤括号内的字符</td>
+</tr>
+<tr>
+<td align="center">.*</td>
+<td align="left">代表任意多个字符</td>
+<td align="left">就是代表任意多个字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>以上就是常见的元字符，正则还有一些其他字符，如下图</p>
+</blockquote>
+<p><img src="/2019/10/31/Linux/working-with-files/re.jpg" alt="Regular expression"></p>
+<h2 id="2-awk使用"><a href="#2-awk使用" class="headerlink" title="2. awk使用"></a>2. awk使用</h2><p><em>使用文档如下：</em><br><img src="/2019/10/31/Linux/working-with-files/awk.jpg" alt="awk"></p>
+<h2 id="3-grep使用"><a href="#3-grep使用" class="headerlink" title="3. grep使用"></a>3. grep使用</h2><p><em>使用文档如下：</em><br><img src="/2019/10/31/Linux/working-with-files/grep1.jpg" alt="grep1"><br><img src="/2019/10/31/Linux/working-with-files/grep2.jpg" alt="grep2"></p>
+<h2 id="4-sed使用"><a href="#4-sed使用" class="headerlink" title="4. sed使用"></a>4. sed使用</h2><p><em>使用文档如下：</em><br><img src="/2019/10/31/Linux/working-with-files/sed.jpg" alt="sed"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/10/27/Tech_learning/data-visualization/" class="image is-7by1">
             <img class="thumbnail" src="/gallery/thumbnail/data_visualization.jpg" alt="data_visualization">
         </a>
@@ -771,75 +880,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/05/Poetry with Life/偶然/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/plant.jpg" alt="偶然">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-05T13:31:20.000Z">2019-09-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 380 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/05/Poetry with Life/偶然/">偶然</a>
-            
-        </h1>
-        <div class="content">
-            <div align="center">
-
-<h2 id="偶然"><a href="#偶然" class="headerlink" title="偶然"></a>偶然<br></h2><p>—-徐志摩<br></p>
-<p>我是天空里的一片云，<br></p>
-<p>偶尔投影在你的波心。<br></p>
-<p>你不必讶异，更无须欢喜，<br></p>
-<p>在转瞬间消灭了踪影。<br></p>
-<p>你我相逢在黑夜的海上，<br></p>
-<p>你有你的，我有我的，方向；<br></p>
-<p>你记得也好，最好你忘掉，<br></p>
-<p>在这交会时互放的光亮！<br></p>
-</div>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/05/Poetry with Life/偶然/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -904,7 +944,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </div>
             </div>
@@ -924,7 +964,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -1043,7 +1083,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -1055,6 +1095,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux文本操作/">
+                        <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Markdown/">
@@ -1143,6 +1190,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/31/Linux/working-with-files/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/awk.jpg" alt="working_with_files">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time></div>
+                    <a href="/2019/10/31/Linux/working-with-files/" class="title has-link-black-ter is-size-6 has-text-weight-normal">working_with_files</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/Tech_learning/data-visualization/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/thumbnail/data_visualization.jpg" alt="data_visualization">
@@ -1217,25 +1283,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/25/Poetry with Life/再别康桥/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="再别康桥">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-25T13:52:31.000Z">2019-09-25</time></div>
-                    <a href="/2019/09/25/Poetry with Life/再别康桥/" class="title has-link-black-ter is-size-6 has-text-weight-normal">再别康桥</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1254,7 +1301,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1317,6 +1364,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/31/Linux/working-with-files/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/awk.jpg" alt="working_with_files">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time></div>
+                    <a href="/2019/10/31/Linux/working-with-files/" class="title has-link-black-ter is-size-6 has-text-weight-normal">working_with_files</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/Tech_learning/data-visualization/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/thumbnail/data_visualization.jpg" alt="data_visualization">
@@ -1391,25 +1457,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/25/Poetry with Life/再别康桥/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="再别康桥">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-25T13:52:31.000Z">2019-09-25</time></div>
-                    <a href="/2019/09/25/Poetry with Life/再别康桥/" class="title has-link-black-ter is-size-6 has-text-weight-normal">再别康桥</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1428,7 +1475,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
