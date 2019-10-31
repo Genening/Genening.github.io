@@ -10,19 +10,19 @@
 <title>data_visualization - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  例子如下：">
+    <meta name="description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  1. 通用画图步骤12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 <meta name="keywords" content="数据可视化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="data_visualization">
 <meta property="og:url" content="https://genening.github.io/2019/10/27/Tech_learning/data-visualization/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  例子如下：">
+<meta property="og:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  1. 通用画图步骤12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_visualization.jpg">
-<meta property="og:updated_time" content="2019-10-27T14:30:49.697Z">
+<meta property="og:updated_time" content="2019-10-31T09:04:26.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="data_visualization">
-<meta name="twitter:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  例子如下：">
+<meta name="twitter:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  1. 通用画图步骤12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
 <meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/data_visualization.jpg">
 
 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 90 words)
+                    4 minutes read (About 623 words)
                 </span>
                 
                 
@@ -167,8 +167,15 @@
             <blockquote>
 <p>开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。</p>
 </blockquote>
-<p>例子如下：<br><img src="/2019/10/27/Tech_learning/data-visualization/example.jpg" alt="example"></p>
+<h2 id="1-通用画图步骤"><a href="#1-通用画图步骤" class="headerlink" title="1. 通用画图步骤"></a>1. 通用画图步骤</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">① 引包：<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt；</span><br><span class="line">② 创建画布：fig = plt.figure()；</span><br><span class="line">③ 添加分区：ax = fig.add_subplot(<span class="hljs-number">311</span>)   <span class="hljs-comment"># 3个数字分别代表 行、列 及 本图所处位置；</span></span><br><span class="line">④ ax.axis([<span class="hljs-number">-5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>])    <span class="hljs-comment"># 设置x轴最小、最大值，y轴最小、最大值；</span></span><br><span class="line">⑤ ax.scatter(xcord1,ycord1, s=<span class="hljs-number">30</span>, c=<span class="hljs-string">'red'</span>, marker=<span class="hljs-string">'s'</span>)  <span class="hljs-comment"># 用于画散点图；</span></span><br><span class="line">⑥ ax.plot(x, y)                     <span class="hljs-comment"># 用于画线图；</span></span><br><span class="line">⑦ plt.title(“this <span class="hljs-keyword">is</span> a title”)      <span class="hljs-comment"># 图形添加标题；</span></span><br><span class="line">⑧ plt.xlabel(<span class="hljs-string">'x'</span>)、plt.ylabel(<span class="hljs-string">'y'</span>)  <span class="hljs-comment"># 分别对坐标轴添加标题</span></span><br><span class="line">⑨ plt.show()                        <span class="hljs-comment"># 显示图形；</span></span><br><span class="line">⑩ plt.savefig(<span class="hljs-string">"/path_way/img_name.jpg"</span>)  <span class="hljs-comment">#调整好后，保存图片</span></span><br><span class="line">——————————————————————————————————————————————————————————</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第一步：导入工具包——matplotlib、numpy、matplotlib.pyplot</span></span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第二步：数据准备——将数据处理成对应图片所需的格式</span></span><br><span class="line">labels = [<span class="hljs-string">'G1'</span>, <span class="hljs-string">'G2'</span>, <span class="hljs-string">'G3'</span>, <span class="hljs-string">'G4'</span>, <span class="hljs-string">'G5'</span>]</span><br><span class="line">men_means = [<span class="hljs-number">20</span>, <span class="hljs-number">34</span>, <span class="hljs-number">30</span>, <span class="hljs-number">35</span>, <span class="hljs-number">27</span>]</span><br><span class="line">women_means = [<span class="hljs-number">25</span>, <span class="hljs-number">32</span>, <span class="hljs-number">34</span>, <span class="hljs-number">20</span>, <span class="hljs-number">25</span>]</span><br><span class="line"></span><br><span class="line">x = np.arange(len(labels))  <span class="hljs-comment"># the label locations</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第三步：图片通用设置</span></span><br><span class="line"><span class="hljs-comment"># Add some text for labels, title and custom x-axis tick labels, etc.</span></span><br><span class="line">ax.set_ylabel(<span class="hljs-string">'Scores'</span>)</span><br><span class="line">ax.set_title(<span class="hljs-string">'Scores by group and gender'</span>)</span><br><span class="line">ax.set_xticks(x)</span><br><span class="line">ax.set_xticklabels(labels)</span><br><span class="line">ax.legend()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第四步：作图</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">rects1 = ax.bar(x - width/<span class="hljs-number">2</span>, men_means, width, label=<span class="hljs-string">'Men'</span>)</span><br><span class="line">rects2 = ax.bar(x + width/<span class="hljs-number">2</span>, women_means, width, label=<span class="hljs-string">'Women'</span>)</span><br><span class="line"></span><br><span class="line">width = <span class="hljs-number">0.35</span>  <span class="hljs-comment"># the width of the bars</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">autolabel</span><span class="hljs-params">(rects)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""Attach a text label above each bar in *rects*, displaying its height."""</span></span><br><span class="line">    <span class="hljs-keyword">for</span> rect <span class="hljs-keyword">in</span> rects:</span><br><span class="line">        height = rect.get_height()</span><br><span class="line">        ax.annotate(<span class="hljs-string">'&#123;&#125;'</span>.format(height),</span><br><span class="line">                    xy=(rect.get_x() + rect.get_width() / <span class="hljs-number">2</span>, height),</span><br><span class="line">                    xytext=(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>),  <span class="hljs-comment"># 3 points vertical offset</span></span><br><span class="line">                    textcoords=<span class="hljs-string">"offset points"</span>,</span><br><span class="line">                    ha=<span class="hljs-string">'center'</span>, va=<span class="hljs-string">'bottom'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">autolabel(rects1)</span><br><span class="line">autolabel(rects2)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第五步：展示图片</span></span><br><span class="line">plt.show() <span class="hljs-comment"># 调用.show()方法展示图片，以便修改</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第六步：确认完成后，以img_name.jpg文件名保存到目标路径下</span></span><br><span class="line">plt.savefig(<span class="hljs-string">"D:/TECHENICLEARNING/Data_visualization/img_name.jpg"</span>) <span class="hljs-comment"># 导入.savefig()方法，添加路径，将图片保存到目标路径下</span></span><br></pre></td></tr></table></figure>
 
+<p>示例图片如下：</p>
+<a id="more"></a>
+<p><img src="/2019/10/27/Tech_learning/data-visualization/img_name.jpg" alt="img_name"></p>
+<!-- 例子如下：
+![example](data-visualization/example.jpg) -->
+
+<h2 id="2-散点图"><a href="#2-散点图" class="headerlink" title="2. 散点图"></a>2. 散点图</h2><h2 id="3-折线图"><a href="#3-折线图" class="headerlink" title="3. 折线图"></a>3. 折线图</h2><h2 id="4-柱状图"><a href="#4-柱状图" class="headerlink" title="4. 柱状图"></a>4. 柱状图</h2><h2 id="5-饼图"><a href="#5-饼图" class="headerlink" title="5. 饼图"></a>5. 饼图</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -251,7 +258,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -261,7 +268,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -281,7 +288,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -338,7 +345,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -391,7 +398,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -495,7 +502,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -669,7 +676,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -995,9 +1002,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
