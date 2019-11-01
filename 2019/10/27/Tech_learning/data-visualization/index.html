@@ -19,7 +19,7 @@
 <meta property="og:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_visualization.jpg">
-<meta property="og:updated_time" content="2019-11-01T13:40:43.418Z">
+<meta property="og:updated_time" content="2019-11-01T13:49:56.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="data_visualization">
 <meta name="twitter:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1860 words)
+                    13 minutes read (About 1955 words)
                 </span>
                 
                 
@@ -222,6 +222,11 @@
 <blockquote>
 <p>Be careful about that, in python, if you want to draw a image with mathmatics functions, you should import the pakage named numpy.</p>
 </blockquote>
+<h2 id="2-虚线"><a href="#2-虚线" class="headerlink" title="2. 虚线"></a>2. 虚线</h2><p>代码如下：</p>
+<figure class="highlight vim hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line">import numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">x</span> = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">500</span>)</span><br><span class="line"><span class="hljs-keyword">y</span> = np.<span class="hljs-built_in">sin</span>(<span class="hljs-keyword">x</span>)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line"># Using set_dashes() <span class="hljs-keyword">to</span> modify dashing of <span class="hljs-keyword">an</span> existing <span class="hljs-built_in">line</span></span><br><span class="line">line1, = ax.plot(<span class="hljs-keyword">x</span>, <span class="hljs-keyword">y</span>, label=<span class="hljs-string">'Usinghahahha'</span>)</span><br><span class="line">line1.set_dashes([<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>])  # <span class="hljs-number">2</span><span class="hljs-keyword">pt</span> <span class="hljs-built_in">line</span>, <span class="hljs-number">2</span><span class="hljs-keyword">pt</span> <span class="hljs-keyword">break</span>, <span class="hljs-number">10</span><span class="hljs-keyword">pt</span> <span class="hljs-built_in">line</span>, <span class="hljs-number">2</span><span class="hljs-keyword">pt</span> <span class="hljs-keyword">break</span></span><br><span class="line"></span><br><span class="line"># Using plot(..., dashes=...) <span class="hljs-keyword">to</span> <span class="hljs-keyword">set</span> the dashing when creating <span class="hljs-keyword">a</span> <span class="hljs-built_in">line</span></span><br><span class="line">line2, = ax.plot(<span class="hljs-keyword">x</span>, <span class="hljs-keyword">y</span> - <span class="hljs-number">0.2</span>, dashes=[<span class="hljs-number">6</span>, <span class="hljs-number">2</span>], label=<span class="hljs-string">'Using the dashes parameter'</span>)</span><br><span class="line"></span><br><span class="line">ax.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>图片输出：</p>
+<p><img src="/2019/10/27/Tech_learning/data-visualization/set_dashes.png" alt="set_dashes"></p>
 
         </div>
         
@@ -305,7 +310,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -315,7 +320,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -325,7 +330,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -335,7 +340,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -392,7 +397,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -445,7 +450,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -456,7 +461,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -549,7 +554,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -655,7 +660,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -723,7 +728,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -829,7 +834,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1049,10 +1054,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
