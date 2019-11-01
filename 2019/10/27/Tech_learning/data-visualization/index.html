@@ -19,7 +19,7 @@
 <meta property="og:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_visualization.jpg">
-<meta property="og:updated_time" content="2019-10-31T13:34:14.984Z">
+<meta property="og:updated_time" content="2019-11-01T13:32:57.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="data_visualization">
 <meta name="twitter:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1671 words)
+                    12 minutes read (About 1823 words)
                 </span>
                 
                 
@@ -213,6 +213,14 @@
 <p><img src="/2019/10/27/Tech_learning/data-visualization/parameters2.jpg" alt="parameters2"></p>
 <blockquote>
 <p>如果这些颜色不够用的话，还可以这么做：<br>（1）通过十六进制字符串 color=’#123456’指定或者使用合法的HTML颜色名字（’red’,’chartreuse’等）。<br><br>(2)传入一个归一化到[0,1]的RGB元组，如color=(0.3,0.3,0.4)</p>
+</blockquote>
+<h1 id="第二部分：画图进阶"><a href="#第二部分：画图进阶" class="headerlink" title="第二部分：画图进阶"></a>第二部分：画图进阶</h1><h2 id="1-数学函数图像"><a href="#1-数学函数图像" class="headerlink" title="1. 数学函数图像"></a>1. 数学函数图像</h2><p>命令如下：</p>
+<figure class="highlight lsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># Data for plotting</span><br><span class="line">t = np.arange(<span class="hljs-number">-2.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">0.01</span>)</span><br><span class="line">x = np.arange(<span class="hljs-number">-2.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">0.01</span>)</span><br><span class="line">x2 = np.arange(<span class="hljs-number">0.1</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">0.1</span>)</span><br><span class="line"></span><br><span class="line">s = np.sin(<span class="hljs-number">2</span> * np.pi * t)</span><br><span class="line">S = np.cos(<span class="hljs-number">2</span> * np.pi * t)</span><br><span class="line">y = <span class="hljs-number">2</span>*x*x</span><br><span class="line">z = np.log10(x2) + <span class="hljs-number">1</span></span><br><span class="line">a = <span class="hljs-number">4</span>*x*x*x + x*x + x</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.axis([<span class="hljs-number">-2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">4</span>])</span><br><span class="line">ax.plot(t, s)</span><br><span class="line">ax.plot(t, S)</span><br><span class="line">ax.plot(x, y)</span><br><span class="line">ax.plot(x2, z)</span><br><span class="line">ax.plot(x, a)</span><br><span class="line"></span><br><span class="line">ax.set(xlabel='time (s)', ylabel='voltage (mV)',</span><br><span class="line">       title='About as simple as it gets, folks')</span><br><span class="line">ax.grid()</span><br><span class="line"></span><br><span class="line">fig.savefig(<span class="hljs-string">"test.png"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>输出图片：</p>
+<p><img src="/2019/10/27/Tech_learning/data-visualization/test.png" alt="math"></p>
+<blockquote>
+<p>Be careful about that, in python, if you want to draw a image with mathmatics functions, you should import the pakage named numpy.</p>
 </blockquote>
 
         </div>
@@ -297,7 +305,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -307,7 +315,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -317,7 +325,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -327,7 +335,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SUIVRE</a>
+                SEGUIR</a>
         </div>
         
         
@@ -384,7 +392,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -437,7 +445,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Nube de etiquetas
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -448,7 +456,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -541,7 +549,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recientes
         </h3>
         
         <article class="media">
@@ -647,7 +655,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -715,7 +723,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recientes
         </h3>
         
         <article class="media">
@@ -821,7 +829,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1041,10 +1049,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
