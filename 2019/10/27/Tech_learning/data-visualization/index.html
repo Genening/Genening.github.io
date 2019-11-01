@@ -19,7 +19,7 @@
 <meta property="og:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/data_visualization.jpg">
-<meta property="og:updated_time" content="2019-11-01T14:05:58.773Z">
+<meta property="og:updated_time" content="2019-11-01T14:23:07.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="data_visualization">
 <meta name="twitter:description" content="开始学习数据可视化，在此记录，目前主要是先学Python中的matplotlib这个包，这个包和MATLAB中的作图很相似，具有很高的自定义性，等到这个学习的比较深入后再考虑了解拓展其他工具的作图。  目录 1. 基础画图 2. 画图进阶  第一部分：基础画图">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 2001 words)
+                    15 minutes read (About 2261 words)
                 </span>
                 
                 
@@ -227,6 +227,14 @@
 
 <p>图片输出：</p>
 <p><img src="/2019/10/27/Tech_learning/data-visualization/set_dashes.png" alt="set_dashes"></p>
+<h2 id="3-引入ggplot-style"><a href="#3-引入ggplot-style" class="headerlink" title="3. 引入ggplot style"></a>3. 引入ggplot style</h2><p>code:</p>
+<figure class="highlight maxima hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import numpy as <span class="hljs-built_in">np</span></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">plt.<span class="hljs-built_in">style</span>.use('ggplot')   # use the line of code to import the ggplot <span class="hljs-built_in">style</span></span><br><span class="line"></span><br><span class="line"># Fixing <span class="hljs-built_in">random</span> state <span class="hljs-keyword">for</span> reproducibility</span><br><span class="line"><span class="hljs-built_in">np</span>.<span class="hljs-built_in">random</span>.seed(<span class="hljs-number">19680801</span>)</span><br><span class="line"></span><br><span class="line">fig, <span class="hljs-built_in">axes</span> = plt.subplots(ncols=<span class="hljs-number">2</span>, nrows=<span class="hljs-number">2</span>)</span><br><span class="line">ax1, ax2, ax3, ax4 = <span class="hljs-built_in">axes</span>.ravel()</span><br><span class="line"></span><br><span class="line"># scatter plot (Note: `plt.scatter` doesn't use default colors)</span><br><span class="line">x, y = <span class="hljs-built_in">np</span>.<span class="hljs-built_in">random</span>.normal(size=(<span class="hljs-number">2</span>, <span class="hljs-number">200</span>))</span><br><span class="line">ax1.plot(x, y, 'o')</span><br><span class="line"></span><br><span class="line"># sinusoidal lines with colors from default <span class="hljs-built_in">color</span> cycle</span><br><span class="line">L = <span class="hljs-number">2</span>*<span class="hljs-built_in">np</span>.pi</span><br><span class="line">x = <span class="hljs-built_in">np</span>.linspace(<span class="hljs-number">0</span>, L)</span><br><span class="line">ncolors = len(plt.rcParams['<span class="hljs-built_in">axes</span>.prop_cycle'])</span><br><span class="line">shift = <span class="hljs-built_in">np</span>.linspace(<span class="hljs-number">0</span>, L, ncolors, endpoint=False)</span><br><span class="line"><span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> shift:</span><br><span class="line">    ax2.plot(x, <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sin</span>(x + s), '-')</span><br><span class="line">ax2.margins(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line"># bar graphs</span><br><span class="line">x = <span class="hljs-built_in">np</span>.arange(<span class="hljs-number">5</span>)</span><br><span class="line">y1, y2 = <span class="hljs-built_in">np</span>.<span class="hljs-built_in">random</span>.randint(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>, size=(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))</span><br><span class="line"><span class="hljs-built_in">width</span> = <span class="hljs-number">0.25</span></span><br><span class="line">ax3.bar(x, y1, <span class="hljs-built_in">width</span>)</span><br><span class="line">ax3.bar(x + <span class="hljs-built_in">width</span>, y2, <span class="hljs-built_in">width</span>,</span><br><span class="line">        <span class="hljs-built_in">color</span>=list(plt.rcParams['<span class="hljs-built_in">axes</span>.prop_cycle'])[<span class="hljs-number">2</span>]['<span class="hljs-built_in">color</span>'])</span><br><span class="line">ax3.set_xticks(x + <span class="hljs-built_in">width</span>)</span><br><span class="line">ax3.set_xticklabels(['a', 'b', 'c', 'd', 'e'])</span><br><span class="line"></span><br><span class="line"># circles with colors from default <span class="hljs-built_in">color</span> cycle</span><br><span class="line"><span class="hljs-keyword">for</span> i, <span class="hljs-built_in">color</span> <span class="hljs-keyword">in</span> enumerate(plt.rcParams['<span class="hljs-built_in">axes</span>.prop_cycle']):</span><br><span class="line">    xy = <span class="hljs-built_in">np</span>.<span class="hljs-built_in">random</span>.normal(size=<span class="hljs-number">2</span>)</span><br><span class="line">    ax4.add_patch(plt.Circle(xy, <span class="hljs-built_in">radius</span>=<span class="hljs-number">0.3</span>, <span class="hljs-built_in">color</span>=<span class="hljs-built_in">color</span>['<span class="hljs-built_in">color</span>']))</span><br><span class="line">ax4.axis('<span class="hljs-built_in">equal</span>')</span><br><span class="line">ax4.margins(<span class="hljs-number">0</span>)  # control the elements to be on the right place.</span><br><span class="line"></span><br><span class="line">plt.<span class="hljs-built_in">show</span>()</span><br></pre></td></tr></table></figure>
+
+<p>图片输出</p>
+<p><img src="/2019/10/27/Tech_learning/data-visualization/ggplot_style.jpeg" alt="ggplot_style"></p>
+<blockquote>
+<p>图片一下子的就精美多了，当然主要是替换了图片的通用设置，图片中元素的颜色还是需要自己搭配的。</p>
+</blockquote>
 
         </div>
         
@@ -310,7 +318,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -320,7 +328,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -330,7 +338,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -340,7 +348,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                SUIVRE</a>
         </div>
         
         
@@ -397,7 +405,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -450,7 +458,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Nuage de tags
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -461,7 +469,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -554,7 +562,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
         
         <article class="media">
@@ -660,7 +668,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -728,7 +736,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
         
         <article class="media">
@@ -834,7 +842,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1054,10 +1062,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
