@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 797 words)
+                    12 minutes read (About 1851 words)
                 </span>
                 
                 
@@ -175,7 +175,10 @@
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><h3 id="可视化统计关系"><a href="#可视化统计关系" class="headerlink" title="可视化统计关系"></a>可视化统计关系</h3></li>
 <li><h3 id="绘制分类数据"><a href="#绘制分类数据" class="headerlink" title="绘制分类数据"></a>绘制分类数据</h3></li>
+<li><h3 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h3></li>
+<li><h3 id="双变量分布"><a href="#双变量分布" class="headerlink" title="双变量分布"></a>双变量分布</h3></li>
 </ul>
+<hr>
 <h2 id="Step0：什么是seaborn"><a href="#Step0：什么是seaborn" class="headerlink" title="Step0：什么是seaborn"></a>Step0：什么是seaborn</h2><blockquote>
 <ul>
 <li>Seaborn是基于matplotlib的图形可视化python包。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。</li>
@@ -183,55 +186,16 @@
 <li>seaborn 有五种风格，分别为”darkgrid”, “whitegrid”, “dark”, “white”, “ticks”</li>
 </ul>
 </blockquote>
-<h2 id="Step1-数据来源"><a href="#Step1-数据来源" class="headerlink" title="Step1: 数据来源"></a>Step1: 数据来源</h2><blockquote>
-<p><a href="https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/</a><br><a href="https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/</a></p>
-</blockquote>
-<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/data1.jpg" alt="data1"><br><img src="/2019/11/02/Tech_learning/seaborn-visualization/data2.jpg" alt="data2"></p>
-<blockquote>
-<p>这是从相关的数据科学竞赛网站上下载的数据，需要先注册并且参加竞赛才能下载数据。</p>
-</blockquote>
-<h2 id="Step2-准备工作"><a href="#Step2-准备工作" class="headerlink" title="Step2: 准备工作"></a>Step2: 准备工作</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">### 导入package和依赖包</span></span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 导入数据，探索数据，了解数据</span></span><br><span class="line">data1 = pd.read_csv(<span class="hljs-string">r'./data/hr.csv'</span>)</span><br><span class="line"><span class="hljs-comment"># data1.head()</span></span><br><span class="line"><span class="hljs-comment"># data1.describe()</span></span><br><span class="line"><span class="hljs-comment"># data1.columns</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">da.columns</span></span><br><span class="line"><span class="hljs-string">Out[6]: </span></span><br><span class="line"><span class="hljs-string">Index(['employee_id', 'department', 'region', 'education', 'gender',</span></span><br><span class="line"><span class="hljs-string">       'recruitment_channel', 'no_of_trainings', 'age', 'previous_year_rating',</span></span><br><span class="line"><span class="hljs-string">       'length_of_service', 'KPIs_met &gt;80%', 'awards_won?',</span></span><br><span class="line"><span class="hljs-string">       'avg_training_score', 'is_promoted'],</span></span><br><span class="line"><span class="hljs-string">      dtype='object')</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># seaborn使用测试</span></span><br><span class="line">test = sns.relplot(x=<span class="hljs-string">"Views"</span>, y=<span class="hljs-string">"Upvotes"</span>, data = data2)  <span class="hljs-comment"># sns.relplot()作图</span></span><br><span class="line"></span><br><span class="line">test.savefig(<span class="hljs-string">'test.png'</span>)  <span class="hljs-comment"># 保存图片，通用操作</span></span><br><span class="line">plt.show()  <span class="hljs-comment"># 展示图片</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-可视化统计关系"><a href="#1-可视化统计关系" class="headerlink" title="1. 可视化统计关系"></a>1. 可视化统计关系</h2><blockquote>
-<p>包括以下内容：</p>
-<ul>
-<li>Scatter plot (散点图)</li>
-<li>SNS.relplot</li>
-<li>Hue plot (Hue图)</li>
-</ul>
-</blockquote>
-<h3 id="1-1-散点图"><a href="#1-1-散点图" class="headerlink" title="1.1. 散点图"></a>1.1. 散点图</h3><figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开始使用seaborn</span></span><br><span class="line">scatters = sns.relplot(x=<span class="hljs-string">'Views'</span>, y=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-keyword">data</span>=<span class="hljs-keyword">data</span>2)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="hljs-string">'scatters with seaborn'</span>)</span><br><span class="line">scatters.savefig(<span class="hljs-string">'scatters.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>图片输出：</li>
-</ol>
-<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters.png" alt="scatters"></p>
-<p>relplot的参数：</p>
-<ul>
-<li>relplot(x=None, y=None, hue=None, size=None, style=None, data=None, row=None, col=None, col_wrap=None, row_order=None, col_order=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=None, dashes=None, style_order=None, legend=’brief’, kind=’scatter’, height=5, aspect=1, facet_kws=None, **kwargs)</li>
-</ul>
-<blockquote>
-<p>SNS.relplot是来自SNS类的relplot函数，SNS类是我们在上面与其他依赖项一起导入的一个seaborn类。<br>这里，参数是x、y，数据有在X,Y轴上表示的变量和我们要分别画出来的数据点，通过图片，我们发现了views和upvotes之间的关系。</p>
-</blockquote>
-<ol start="2">
-<li>展示标签<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Tag'</span>, <span class="hljs-attribute">data</span>=data2)</span><br><span class="line"><span class="hljs-comment"># 增加hue（色调），可以展示标签</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters2.png" alt="scatters2"></p>
-<ol start="3">
-<li>Hue图<blockquote>
-<p>我们可以在色调(Hue)的帮助下在我们的图片中添加另一个维度，通过为点赋予颜色来实现，每种颜色都有一些附加的意义。</p>
-</blockquote>
-<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters3.png" alt="scatters3"></p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/02/Tech_learning/seaborn-visualization/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -1026,7 +990,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

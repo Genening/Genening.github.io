@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 797 words)
+                    12 minutes read (About 1851 words)
                 </span>
                 
                 
@@ -166,7 +166,10 @@
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><h3 id="可视化统计关系"><a href="#可视化统计关系" class="headerlink" title="可视化统计关系"></a>可视化统计关系</h3></li>
 <li><h3 id="绘制分类数据"><a href="#绘制分类数据" class="headerlink" title="绘制分类数据"></a>绘制分类数据</h3></li>
+<li><h3 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h3></li>
+<li><h3 id="双变量分布"><a href="#双变量分布" class="headerlink" title="双变量分布"></a>双变量分布</h3></li>
 </ul>
+<hr>
 <h2 id="Step0：什么是seaborn"><a href="#Step0：什么是seaborn" class="headerlink" title="Step0：什么是seaborn"></a>Step0：什么是seaborn</h2><blockquote>
 <ul>
 <li>Seaborn是基于matplotlib的图形可视化python包。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。</li>
@@ -174,10 +177,11 @@
 <li>seaborn 有五种风格，分别为”darkgrid”, “whitegrid”, “dark”, “white”, “ticks”</li>
 </ul>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="Step1-数据来源"><a href="#Step1-数据来源" class="headerlink" title="Step1: 数据来源"></a>Step1: 数据来源</h2><blockquote>
 <p><a href="https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/</a><br><a href="https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/</a></p>
 </blockquote>
-<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/data1.jpg" alt="data1"><br><img src="/2019/11/02/Tech_learning/seaborn-visualization/data2.jpg" alt="data2"></p>
 <blockquote>
 <p>这是从相关的数据科学竞赛网站上下载的数据，需要先注册并且参加竞赛才能下载数据。</p>
 </blockquote>
@@ -191,11 +195,13 @@
 <li>Hue plot (Hue图)</li>
 </ul>
 </blockquote>
-<h3 id="1-1-散点图"><a href="#1-1-散点图" class="headerlink" title="1.1. 散点图"></a>1.1. 散点图</h3><figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开始使用seaborn</span></span><br><span class="line">scatters = sns.relplot(x=<span class="hljs-string">'Views'</span>, y=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-keyword">data</span>=<span class="hljs-keyword">data</span>2)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="hljs-string">'scatters with seaborn'</span>)</span><br><span class="line">scatters.savefig(<span class="hljs-string">'scatters.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
+<p>数据：<br><img src="/2019/11/02/Tech_learning/seaborn-visualization/data2.jpg" alt="data2"></p>
 <ol>
-<li>图片输出：</li>
+<li>散点图<figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开始使用seaborn</span></span><br><span class="line">scatters = sns.relplot(x=<span class="hljs-string">'Views'</span>, y=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-keyword">data</span>=<span class="hljs-keyword">data</span>2)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="hljs-string">'scatters with seaborn'</span>)</span><br><span class="line">scatters.savefig(<span class="hljs-string">'scatters.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
+<p>图片输出：</p>
 <p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters.png" alt="scatters"></p>
 <p>relplot的参数：</p>
 <ul>
@@ -213,13 +219,162 @@
 <p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters2.png" alt="scatters2"></p>
 <ol start="3">
 <li>Hue图<blockquote>
-<p>我们可以在色调(Hue)的帮助下在我们的图片中添加另一个维度，通过为点赋予颜色来实现，每种颜色都有一些附加的意义。</p>
+<p>我们可以在色调(Hue)的帮助下在我们的图片中添加另一个维度，即在二维的基础上通过颜色来添加其他信息，通过为点赋予颜色来实现，每种颜色都有一些附加的意义。</p>
 </blockquote>
 <figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
+<p>图片输出：</p>
 <p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters3.png" alt="scatters3"></p>
+<ol start="4">
+<li>size标签<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters4.png" alt="scatters4"></p>
+<h2 id="2-绘制分类数据"><a href="#2-绘制分类数据" class="headerlink" title="2. 绘制分类数据"></a>2. 绘制分类数据</h2><blockquote>
+<p>包括以下内容：</p>
+<ul>
+<li>抖动图</li>
+<li>Hue图</li>
+<li>箱线图</li>
+<li>小提琴图</li>
+<li>Pointplot</li>
+</ul>
+</blockquote>
+<p>数据：<br><img src="/2019/11/02/Tech_learning/seaborn-visualization/data1.jpg" alt="data1"></p>
+<ol>
+<li>抖动图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, jitter = <span class="hljs-literal">True</span>,  <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/shake.png" alt="shake"></p>
+<p>改动jitter参数为False，可见下图：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/shake2.png" alt="shake2"></p>
+<ol start="2">
+<li>hue引入另一个维度<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>,  <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>引入了性别参数，可以看出数据中的性别差异</p>
+</blockquote>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/shake3.png" alt="shake3"></p>
+<p>可以引入kind中的swarm参数，展示效果如下：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/shake5.png" alt="shake5"></p>
+<ol start="3">
+<li>箱线图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'box'</span>, <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/shake4.png" alt="box"></p>
+<blockquote>
+<p>箱线图（Boxplot）也称箱须图（Box-whisker Plot），是利用数据中的五个统计量：<strong>最小值、第一四分位数、中位数、第三四分位数与最大值</strong>来描述数据的一种方法，它也可以粗略地看出数据是否具有有对称性，分布的分散程度等信息，特别可以用于对几个样本的比较。</p>
+</blockquote>
+<ol start="3">
+<li>小提琴图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'violin'</span>, <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/violin.png" alt="violin"></p>
+<blockquote>
+<p>小提琴图结合了<strong>箱线图和核密度估计程序</strong>，以提供更丰富的值分布描述。四分位数值显示在小提琴内部。当色调语义参数是二值时，我们还可以拆分小提琴，这也可能有助于节省绘图空间。</p>
+</blockquote>
+<p>增加划分功能</p>
+<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'violin'</span>,split = <span class="hljs-literal">True</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
+
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/violin2.png" alt="violin2"></p>
+<ol start="4">
+<li>bar 结合 box<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'bar'</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/bar.png" alt="bar"></p>
+<ol start="5">
+<li>point图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'point'</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/point.png" alt="point"></p>
+<h2 id="3-数据分布"><a href="#3-数据分布" class="headerlink" title="3. 数据分布"></a>3. 数据分布</h2><ol>
+<li>数据分布图<figure class="highlight ini hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">tr</span> = sns.distplot(data1.length_of_service)</span><br><span class="line"><span class="hljs-comment"># tr = sns.distplot(data1.age)</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>通过displot()方法可以了解数据集的分布情况，也是一个不错的工具。</p>
+</blockquote>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/length.png" alt="length"><br><img src="/2019/11/02/Tech_learning/seaborn-visualization/age.png" alt="age"></p>
+<ol start="2">
+<li>数据直方图<figure class="highlight ini hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">tr</span> = sns.distplot(data1.length_of_service, kde=<span class="hljs-literal">False</span>, rug = <span class="hljs-literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/length2.png" alt="length2"></p>
+<p>下面展示的转录组数据的分布<br><img src="/2019/11/02/Tech_learning/seaborn-visualization/length3.png" alt="length3"></p>
+<blockquote>
+<p>由此可以看出绝大部分的转录本都分布在1000bp左右，超过10000bp的转录本只有几个。</p>
+</blockquote>
+<h2 id="4-双变量分布"><a href="#4-双变量分布" class="headerlink" title="4. 双变量分布"></a>4. 双变量分布</h2><p>包括以下内容：</p>
+<ul>
+<li>Hex图</li>
+<li>KDE 图</li>
+<li>Boxen 图</li>
+<li>Ridge 图 (Joy图)</li>
+</ul>
+<ol>
+<li>joinplot()默认为scatter<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'r'</span>, alpha = 0.2, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'hex'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/2fac.png" alt="2fac"></p>
+<blockquote>
+<p>如果有时候要展示两个变量之间的关系，同时又想展示单个变量的分布时，可以用这种展示方法</p>
+</blockquote>
+<ol start="2">
+<li>直方图hex<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'hex'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/2fach.png" alt="2fach"></p>
+<ol start="3">
+<li>KDE<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'kde'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/2fack.png" alt="2fack"></p>
+<ol start="4">
+<li>heatmap()<figure class="highlight nix hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">corrmat</span> = data1.corr()</span><br><span class="line">f, <span class="hljs-attr">ax</span> = plt.subplots(<span class="hljs-attr">figsize=(9,</span> <span class="hljs-number">6</span>))  <span class="hljs-comment"># figsize参数可以指定图片大小比例</span></span><br><span class="line"></span><br><span class="line">sns.heatmap(corrmat, <span class="hljs-attr">vmax=.8,</span> <span class="hljs-attr">square=True)</span></span><br><span class="line"></span><br><span class="line">plt.savefig('./img/heatmap.png', <span class="hljs-attr">dpi=1080)</span>  <span class="hljs-comment"># dpi参数能够指定图片质量（像素）</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="dpi参数能够指定图片质量（像素）-figsize参数可以指定图片大小比例"><a href="#dpi参数能够指定图片质量（像素）-figsize参数可以指定图片大小比例" class="headerlink" title="dpi参数能够指定图片质量（像素） figsize参数可以指定图片大小比例"></a>dpi参数能够指定图片质量（像素） figsize参数可以指定图片大小比例</h2><p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/heatmap.png" alt="heatmap"></p>
+<blockquote>
+<p>heatmap中，每一个变量都是一种颜色，方便区分。</p>
+</blockquote>
+<ol start="5">
+<li>boxen图 catplot()<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">kind</span>=<span class="hljs-string">"boxen"</span>,height=4, <span class="hljs-attribute">aspect</span>=2.7, hue = <span class="hljs-string">"is_promoted"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/boxen.png" alt="boxen"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一篇博客介绍了很多seaborn画图的图标，接下来需要做的就是在实际工作生活中应用这些画图的方式，并且可以尝试着更多的其他类型的图片，充分展示数据。继续学习！！！</p>
 
         </div>
         
@@ -1038,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
