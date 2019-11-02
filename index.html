@@ -131,6 +131,113 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 856 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/02/Tech_learning/seaborn-visualization/">seaborn_visualization</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>New package for data visualization. This package is base on the matplotlib, numpy, scipy , and pandas. The shining point is that this package is easier for people to create a beautiful picture for your dataset, this is essential for the data science. So let’s get it. This is the official URL: <a href="http://seaborn.pydata.org/" target="_blank" rel="noopener">http://seaborn.pydata.org/</a> <br>You can turn to there for help. </p>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><h3 id="可视化统计关系"><a href="#可视化统计关系" class="headerlink" title="可视化统计关系"></a>可视化统计关系</h3></li>
+<li><h3 id="绘制分类数据"><a href="#绘制分类数据" class="headerlink" title="绘制分类数据"></a>绘制分类数据</h3></li>
+</ul>
+<h2 id="Step0：什么是seaborn"><a href="#Step0：什么是seaborn" class="headerlink" title="Step0：什么是seaborn"></a>Step0：什么是seaborn</h2><blockquote>
+<ul>
+<li>Seaborn是基于matplotlib的图形可视化python包。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。</li>
+<li>Seaborn是在matplotlib的基础上进行了更高级的API封装，从而使得作图更加容易，在大多数情况下使用seaborn能做出很具有吸引力的图，而使用matplotlib就能制作具有更多特色的图。<strong>应该把Seaborn视为matplotlib的补充</strong>，而不是替代物。同时它能高度兼容numpy与pandas数据结构以及scipy与statsmodels等统计模式。</li>
+<li>seaborn 有五种风格，分别为”darkgrid”, “whitegrid”, “dark”, “white”, “ticks”</li>
+</ul>
+</blockquote>
+<p>作者：留心的话没有小事<br>链接：<a href="https://www.jianshu.com/p/94931255aede" target="_blank" rel="noopener">https://www.jianshu.com/p/94931255aede</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h2 id="Step1-数据来源"><a href="#Step1-数据来源" class="headerlink" title="Step1: 数据来源"></a>Step1: 数据来源</h2><blockquote>
+<p><a href="https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/</a><br><a href="https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/</a></p>
+</blockquote>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/data1.jpg" alt="data1"><br><img src="/2019/11/02/Tech_learning/seaborn-visualization/data2.jpg" alt="data2"></p>
+<blockquote>
+<p>这是从相关的数据科学竞赛网站上下载的数据，需要先注册并且参加竞赛才能下载数据。</p>
+</blockquote>
+<h2 id="Step2-准备工作"><a href="#Step2-准备工作" class="headerlink" title="Step2: 准备工作"></a>Step2: 准备工作</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">### 导入package和依赖包</span></span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 导入数据，探索数据，了解数据</span></span><br><span class="line">data1 = pd.read_csv(<span class="hljs-string">r'./data/hr.csv'</span>)</span><br><span class="line"><span class="hljs-comment"># data1.head()</span></span><br><span class="line"><span class="hljs-comment"># data1.describe()</span></span><br><span class="line"><span class="hljs-comment"># data1.columns</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">da.columns</span></span><br><span class="line"><span class="hljs-string">Out[6]: </span></span><br><span class="line"><span class="hljs-string">Index(['employee_id', 'department', 'region', 'education', 'gender',</span></span><br><span class="line"><span class="hljs-string">       'recruitment_channel', 'no_of_trainings', 'age', 'previous_year_rating',</span></span><br><span class="line"><span class="hljs-string">       'length_of_service', 'KPIs_met &gt;80%', 'awards_won?',</span></span><br><span class="line"><span class="hljs-string">       'avg_training_score', 'is_promoted'],</span></span><br><span class="line"><span class="hljs-string">      dtype='object')</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># seaborn使用测试</span></span><br><span class="line">test = sns.relplot(x=<span class="hljs-string">"Views"</span>, y=<span class="hljs-string">"Upvotes"</span>, data = data2)  <span class="hljs-comment"># sns.relplot()作图</span></span><br><span class="line"></span><br><span class="line">test.savefig(<span class="hljs-string">'test.png'</span>)  <span class="hljs-comment"># 保存图片，通用操作</span></span><br><span class="line">plt.show()  <span class="hljs-comment"># 展示图片</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-可视化统计关系"><a href="#1-可视化统计关系" class="headerlink" title="1. 可视化统计关系"></a>1. 可视化统计关系</h2><blockquote>
+<p>包括以下内容：</p>
+<ul>
+<li>Scatter plot (散点图)</li>
+<li>SNS.relplot</li>
+<li>Hue plot (Hue图)</li>
+</ul>
+</blockquote>
+<h3 id="1-1-散点图"><a href="#1-1-散点图" class="headerlink" title="1.1. 散点图"></a>1.1. 散点图</h3><figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开始使用seaborn</span></span><br><span class="line">scatters = sns.relplot(x=<span class="hljs-string">'Views'</span>, y=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-keyword">data</span>=<span class="hljs-keyword">data</span>2)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="hljs-string">'scatters with seaborn'</span>)</span><br><span class="line">scatters.savefig(<span class="hljs-string">'scatters.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>图片输出：</li>
+</ol>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters.png" alt="scatters"></p>
+<p>relplot的参数：</p>
+<ul>
+<li>relplot(x=None, y=None, hue=None, size=None, style=None, data=None, row=None, col=None, col_wrap=None, row_order=None, col_order=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=None, dashes=None, style_order=None, legend=’brief’, kind=’scatter’, height=5, aspect=1, facet_kws=None, **kwargs)</li>
+</ul>
+<blockquote>
+<p>SNS.relplot是来自SNS类的relplot函数，SNS类是我们在上面与其他依赖项一起导入的一个seaborn类。<br>这里，参数是x、y，数据有在X,Y轴上表示的变量和我们要分别画出来的数据点，通过图片，我们发现了views和upvotes之间的关系。</p>
+</blockquote>
+<ol start="2">
+<li>展示标签<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Tag'</span>, <span class="hljs-attribute">data</span>=data2)</span><br><span class="line"><span class="hljs-comment"># 增加hue（色调），可以展示标签</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>图片输出：</p>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters2.png" alt="scatters2"></p>
+<ol start="3">
+<li>Hue图<blockquote>
+<p>我们可以在色调(Hue)的帮助下在我们的图片中添加另一个维度，通过为点赋予颜色来实现，每种颜色都有一些附加的意义。</p>
+</blockquote>
+<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="/2019/11/02/Tech_learning/seaborn-visualization/scatters3.png" alt="scatters3"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/10/31/Linux/working-with-files/" class="image is-7by1">
             <img class="thumbnail" src="/gallery/thumbnail/awk.jpg" alt="working_with_files">
         </a>
@@ -403,98 +510,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/29/Tech_learning/Python基础/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/python.jpg" alt="Python基础">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-29T15:23:19.000Z">2019-09-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    17 minutes read (About 2578 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/29/Tech_learning/Python基础/">Python基础</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>这是一篇关于python基础知识复习的博客，除了基础之外，还会涉及进阶以及算法设计。</p>
-</blockquote>
-<h1 id="第一部分-Python基础语法"><a href="#第一部分-Python基础语法" class="headerlink" title="第一部分 Python基础语法"></a>第一部分 Python基础语法</h1><h2 id="1-认识Python"><a href="#1-认识Python" class="headerlink" title="1. 认识Python"></a>1. 认识Python</h2><h3 id="1-1-Python简介"><a href="#1-1-Python简介" class="headerlink" title="1.1. Python简介"></a>1.1. Python简介</h3><p>Python的创始人为Guido van Rossum</p>
-<blockquote>
-<p>Python 的设计目标：</p>
-<ul>
-<li>一门简单直观的语言并与主要竞争者一样强大</li>
-<li>开源，以便任何人都可以为它做贡献</li>
-<li>代码像纯英语那样容易理解</li>
-<li>适用于短期开发的日常任务</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Python设计哲学</p>
-<ul>
-<li>优雅、明确、简单</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Python开发者的哲学是：用一种方法，最好只有一种方法来做一件事</p>
-</blockquote>
-<p>Python是完全面向对象的语言，在Python中一切皆对象</p>
-<blockquote>
-<p>可扩展性：如果需要一段关键代码运行的更快或者希望某些算法不公开，可以把这部分程序用<code>C</code>或者<code>C++</code>编写，然后在Python程序中使用它们。</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/29/Tech_learning/Python基础/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -549,17 +573,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        29
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         5
@@ -569,17 +593,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -636,7 +660,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -689,9 +713,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -700,7 +724,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -735,6 +759,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python基础/">
                         <span class="tag">python基础</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/seaborn-visualization/">
+                        <span class="tag">seaborn-visualization</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -793,8 +824,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
+                    <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -872,25 +922,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/Tech_learning/Python基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/python.jpg" alt="Python基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T15:23:19.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/Tech_learning/Python基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -899,9 +930,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -967,8 +1009,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
+                    <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1046,25 +1107,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/Tech_learning/Python基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/python.jpg" alt="Python基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T15:23:19.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/Tech_learning/Python基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1073,9 +1115,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -1293,10 +1346,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
