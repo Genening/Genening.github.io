@@ -115,7 +115,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -131,6 +131,115 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/11/03/Linux/symbolic-hard-link/" class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnail/" alt="symbolic-hard_link">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-03T00:13:58.000Z">2019-11-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes membaca (Sekitar 1180 kata)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/03/Linux/symbolic-hard-link/">symbolic-hard_link</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>在Linux的应用当中，掌握软硬链接的方法很重要，学会软硬链接可以让我们更方便的使用Linux系统中的文件，特别是以项目的方式去管理文件时，可以在单个项目之内创建软硬链接，而在其他的项目当中也可以创建同样的软硬链接指向同样的脚本、软件等，这样子可以实现文件个高效复用，既能便捷实用，又能避免重复造轮子。</p>
+</blockquote>
+<h3 id="1-硬链接-hard-link"><a href="#1-硬链接-hard-link" class="headerlink" title="1. 硬链接 hard link"></a>1. 硬链接 hard link</h3><p>创建方法：</p>
+<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -d dir1<span class="hljs-regexp">/source_file dir2/</span>hard-link_file</span><br></pre></td></tr></table></figure>
+
+<p><strong>理解</strong>：</p>
+<ul>
+<li>在Linux系统之中，文件储存在某一些储存空间上，删除文件的方式其实就是把对应的索引链接都删除就可以了，那么这一片空间就没有索引来访问了，那么这样就相当于是删除了文件，下次写文件的时候就会新建对应的索引链接，然后直接开始写入文件到储存空间，实现覆盖。</li>
+<li>对于硬链接来说，就是创建一个新的索引，和原来文件的索引同级（原文件索引即原文件的名字），相当于是给文件创建了一个新的名字，但是没有创建新的文件，当原文件的索引被删除时，不会影响到硬链接，仍然可以通过硬链接访问文件，并且进行编辑。</li>
+<li>如果需要彻底删除文件，那就意味着必须把所有的硬链接都删除掉，这样才是真正的删除，系统文件才无法找到这片空间中的原文件。</li>
+<li>硬链接有点像是到一座小岛上的另一座桥，和原来通往这座岛的桥一样，都连接着同样的一个小岛，所以并没有创建新的文件，但是却多了一个保障，一旦原来的桥塌了（误删），仍然可以通过这座桥登上小岛。而不管通过哪座桥登上小岛进行建设规划，都会直接改动小岛真实的面目。</li>
+</ul>
+<h3 id="2-软连接-symbolic-link"><a href="#2-软连接-symbolic-link" class="headerlink" title="2. 软连接 symbolic link"></a>2. 软连接 symbolic link</h3><p>创建方法：</p>
+<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s dir1<span class="hljs-regexp">/souce_file dir2/</span>symbolic_link</span><br></pre></td></tr></table></figure>
+
+<p><strong>理解</strong></p>
+<ul>
+<li>软连接是真正的快捷方式既视感。软连接是一个文件，这个文件的内容是原文件的储存路径之类的，但是也只有这些，并没有原文件的具体内容，所以只是一个快捷方式，通过这个快捷方式可以快速的访问到文件，并进行使用。</li>
+<li>因此，当在删除了原文件后，软连接就失效了，无法再访问原文件。</li>
+<li>同样是用小岛来打比方，软连接就像是路标，指明了哪里有桥可以上岛，对于具体的小岛来说，软连接就指向了原来那座桥所在的方位，所以可以很快的找到桥然后上岛。所以拆掉路标不会影响桥的存在，但是一旦把桥拆了，那么路标也就没有用了，小岛已经再也上不去了，相当于在世界上消失了。</li>
+</ul>
+<h3 id="3-软硬链接的区别"><a href="#3-软硬链接的区别" class="headerlink" title="3. 软硬链接的区别"></a>3. 软硬链接的区别</h3><table>
+<thead>
+<tr>
+<th align="left">硬链接 hard link</th>
+<th align="left">软链接 symbolic link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">不能给目录创建硬链接</td>
+<td align="left">可以给目录创建软链接</td>
+</tr>
+<tr>
+<td align="left">不能跨文件系统创建链接</td>
+<td align="left">可以跨文件系统创建软链接</td>
+</tr>
+<tr>
+<td align="left">文件的新索引，和原文件名互为别名</td>
+<td align="left">新文件，保存原文件路径，相当于快捷方式</td>
+</tr>
+<tr>
+<td align="left">不能给不存在的文件创建硬链接，<br>因为硬链接存在即表示原文件存在，<br>而不存在的文件就表示没有文件，<br>也就没有链接可言。</td>
+<td align="left">可以给不存在的文件创建链接，<br>因为路标可以随便建，有没有效<br>无所谓，反正可以建。</td>
+</tr>
+</tbody></table>
+<h3 id="4-ln-命令"><a href="#4-ln-命令" class="headerlink" title="4. ln 命令"></a>4. ln 命令</h3><p>使用方法：” ln [options] 目标 “</p>
+<ul>
+<li>参数如下</li>
+<li><blockquote>
+<p>-b 删除，覆盖以前建立的链接<br></p>
+</blockquote>
+</li>
+</ul>
+<p>-d 允许超级用户制作目录的硬链接<br><br>-f 强制执行<br><br>-i 交互模式，文件存在则提示用户是否覆盖<br><br>-n 把符号链接视为一般目录<br><br>-s 软链接(符号链接)<br><br>-v 显示详细的处理过程<br></p>
+<h3 id="5-实践"><a href="#5-实践" class="headerlink" title="5. 实践"></a>5. 实践</h3><ol>
+<li>硬链接 hard link<br><img src="/2019/11/03/Linux/symbolic-hard-link/hard-link.jpg" alt="hard-link"></li>
+<li>软链接 symbolic link<br><img src="/2019/11/03/Linux/symbolic-hard-link/symbolic.jpg" alt="symbolic-link"></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="image is-7by1">
             <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
         </a>
@@ -142,11 +251,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1851 words)
+                    12 minutes membaca (Sekitar 1851 kata)
                 </span>
                 
                 
@@ -182,7 +295,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/02/Tech_learning/seaborn-visualization/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/11/02/Tech_learning/seaborn-visualization/#more">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -212,11 +325,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 485 words)
+                    3 minutes membaca (Sekitar 485 kata)
                 </span>
                 
                 
@@ -238,7 +355,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/31/Linux/working-with-files/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/10/31/Linux/working-with-files/#more">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -276,7 +393,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2296 words)
+                    15 minutes membaca (Sekitar 2296 kata)
                 </span>
                 
                 
@@ -303,7 +420,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/27/Tech_learning/data-visualization/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/10/27/Tech_learning/data-visualization/#more">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -341,7 +458,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 minutes read (About 2497 words)
+                    17 minutes membaca (Sekitar 2497 kata)
                 </span>
                 
                 
@@ -370,94 +487,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/21/Bioinformatics/无参转录组实测1/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/10/04/Bioinformatics/无参转录组分析/" class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-04T08:16:42.000Z">2019-10-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 minutes read (About 2065 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/04/Bioinformatics/无参转录组分析/">无参转录组分析</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析</p>
-</blockquote>
-<h2 id="一、转录组学"><a href="#一、转录组学" class="headerlink" title="一、转录组学"></a>一、转录组学</h2><h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><ol>
-<li>转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。<br></li>
-<li>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRNA。<br></li>
-<li>转录组具有时间特异性、组织特异性、空间特异性等特点。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">特点</th>
-<th align="left">分析策略</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">有参转录组</td>
-<td align="left">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
-<td align="left">比对—定量—差异分析—功能富集分析（下游分析）</td>
-</tr>
-<tr>
-<td align="left">无参转录组</td>
-<td align="left">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
-<td align="left">组装—定量—差异分析—功能富集分析（下游分析）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/04/Bioinformatics/无参转录组分析/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/10/21/Bioinformatics/无参转录组实测1/#more">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -478,10 +508,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Anterior</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Sebelumnya</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Siguiente</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Berikutnya</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -536,37 +566,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Artikel
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        30
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Kategori
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                IKUTI</a>
         </div>
         
         
@@ -623,13 +653,21 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
         <a class="level is-marginless" href="/categories/Bioinformatics/">
             <span class="level-start">
                 <span class="level-item">Bioinformatics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">2</span>
@@ -648,7 +686,7 @@
                 <span class="level-item">Tech_learning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/log/">
@@ -676,9 +714,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Awan tag
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -687,13 +725,20 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Linux文本操作/">
                         <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux软硬链接/">
+                        <span class="tag">Linux软硬链接</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -787,8 +832,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/03/Linux/symbolic-hard-link/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/" alt="symbolic-hard_link">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-03T00:13:58.000Z">2019-11-03</time></div>
+                    <a href="/2019/11/03/Linux/symbolic-hard-link/" class="title has-link-black-ter is-size-6 has-text-weight-normal">symbolic-hard_link</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -803,7 +867,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
                     <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
                     </p>
                 </div>
             </div>
@@ -822,7 +886,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time></div>
                     <a href="/2019/10/31/Linux/working-with-files/" class="title has-link-black-ter is-size-6 has-text-weight-normal">working_with_files</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -866,25 +930,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/04/Bioinformatics/无参转录组分析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T08:16:42.000Z">2019-10-04</time></div>
-                    <a href="/2019/10/04/Bioinformatics/无参转录组分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -893,7 +938,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -903,7 +948,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -972,8 +1017,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/03/Linux/symbolic-hard-link/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/" alt="symbolic-hard_link">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-03T00:13:58.000Z">2019-11-03</time></div>
+                    <a href="/2019/11/03/Linux/symbolic-hard-link/" class="title has-link-black-ter is-size-6 has-text-weight-normal">symbolic-hard_link</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -988,7 +1052,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
                     <a href="/2019/11/02/Tech_learning/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Tech-learning/">Tech_learning</a>
                     </p>
                 </div>
             </div>
@@ -1007,7 +1071,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T07:13:37.000Z">2019-10-31</time></div>
                     <a href="/2019/10/31/Linux/working-with-files/" class="title has-link-black-ter is-size-6 has-text-weight-normal">working_with_files</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -1051,25 +1115,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/04/Bioinformatics/无参转录组分析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/trinity.jpg" alt="无参转录组分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T08:16:42.000Z">2019-10-04</time></div>
-                    <a href="/2019/10/04/Bioinformatics/无参转录组分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无参转录组分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1078,7 +1123,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1088,7 +1133,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1297,7 +1342,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1309,11 +1354,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };
