@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-11-05T13:30:54.944Z">
+<meta property="og:updated_time" content="2019-11-05T13:47:31.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2919 words)
+                    19 minutes read (About 2921 words)
                 </span>
                 
                 
@@ -175,14 +175,14 @@
 <li>去冗余 cd-hit-est</li>
 <li>表达水平评估 align_and_estimate_abundance.pl</li>
 <li>生成数量矩阵 abundance_estimates_to_matrix.pl</li>
-<li>下游分析 <ul>
+<li><a href="#downstream">下游分析</a><ul>
 <li>差异表达分析 run_DE_analysis.pl</li>
 <li>提取蛋白编码区 transcripts_to_best_scoring_ORFs.pl</li>
 <li>功能注释</li>
 </ul>
 </li>
 <li>生成报告</li>
-<li>数据可视化</li>
+<li><a href="#visualization">数据可视化</a></li>
 </ol>
 <hr>
 <h2 id="1-拼接序列-Trinity"><a href="#1-拼接序列-Trinity" class="headerlink" title="1. 拼接序列  Trinity"></a><strong>1. 拼接序列</strong>  Trinity</h2><blockquote>
@@ -303,7 +303,11 @@ or 如下<br>
 
 <p>Required:<br><br>–est_method <string>           RSEM|eXpress|kallisto|salmon  (needs to know what format to expect)<br><br>–gene_trans_map <string>           the gene-to-transcript mapping file. (if you don’t want gene estimates, indicate ‘none’.</string></string></p>
 <p>Options:<br><br>–cross_sample_norm <string>      TMM|UpperQuartile|none   (default: TMM)<br><br>–name_sample_by_basedir      name sample column by dirname instead of filename<br><br>–basedir_index <int>         default(-2)<br><br>–out_prefix <string>         default: value for –est_method<br><br>–quant_files <string>        file containing a list of all the target files.<br></string></string></int></string></p></method></method></pre></details><p></p>
-<h2 id="6-下游分析"><a href="#6-下游分析" class="headerlink" title="6. 下游分析"></a>6. 下游分析</h2><h3 id="6-1-差异表达分析-run-DE-analysis-pl"><a href="#6-1-差异表达分析-run-DE-analysis-pl" class="headerlink" title="6.1 差异表达分析   run_DE_analysis.pl"></a>6.1 差异表达分析   run_DE_analysis.pl</h3><p>命令如下：</p>
+<span id="downstream">
+
+<h2 id="6-下游分析"><a href="#6-下游分析" class="headerlink" title="6. 下游分析"></a>6. 下游分析</h2></span>
+
+<h3 id="6-1-差异表达分析-run-DE-analysis-pl"><a href="#6-1-差异表达分析-run-DE-analysis-pl" class="headerlink" title="6.1 差异表达分析   run_DE_analysis.pl"></a>6.1 差异表达分析   run_DE_analysis.pl</h3><p>命令如下：</p>
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl –matrix RSEM.isoform.counts.matrix –method edgeR –output edgeR_results</p>
 </blockquote>
@@ -338,7 +342,14 @@ or 如下<br>
 </li>
 </ol>
 <h4 id="Tips：功能富集分析工具"><a href="#Tips：功能富集分析工具" class="headerlink" title="Tips：功能富集分析工具"></a>Tips：功能富集分析工具</h4><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/tools.png" alt="tools"></p>
-<h2 id="7-Load-transcripts-and-coding-regions"><a href="#7-Load-transcripts-and-coding-regions" class="headerlink" title="7. Load transcripts and coding regions"></a>7. Load transcripts and coding regions</h2><h2 id="8-Output-an-Annotation-Report"><a href="#8-Output-an-Annotation-Report" class="headerlink" title="8. Output an Annotation Report"></a>8. Output an Annotation Report</h2><h2 id="9-数据可视化（见下一篇）"><a href="#9-数据可视化（见下一篇）" class="headerlink" title="9. 数据可视化（见下一篇）"></a>9. 数据可视化（见下一篇）</h2>
+<h2 id="7-Load-transcripts-and-coding-regions"><a href="#7-Load-transcripts-and-coding-regions" class="headerlink" title="7. Load transcripts and coding regions"></a>7. Load transcripts and coding regions</h2><h2 id="8-Output-an-Annotation-Report"><a href="#8-Output-an-Annotation-Report" class="headerlink" title="8. Output an Annotation Report"></a>8. Output an Annotation Report</h2><span id="visualization">
+
+<h2 id="9-数据可视化（见下一篇）"><a href="#9-数据可视化（见下一篇）" class="headerlink" title="9. 数据可视化（见下一篇）"></a>9. 数据可视化（见下一篇）</h2></span>
+
+
+
+
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
