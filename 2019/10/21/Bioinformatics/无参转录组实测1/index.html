@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-11-08T00:24:52.378Z">
+<meta property="og:updated_time" content="2019-11-09T02:01:08.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2924 words)
+                    21 minutes membaca (Sekitar 3082 kata)
                 </span>
                 
                 
@@ -171,12 +171,13 @@
 <h2 id="前情提要：分析流程"><a href="#前情提要：分析流程" class="headerlink" title="前情提要：分析流程"></a>前情提要：分析流程</h2><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/process.png" alt="process"></p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
 <li>序列拼接</li>
-<li>拼接结果参数统计 TrinityStats.pl</li>
 <li>去冗余 cd-hit-est</li>
+<li>拼接结果参数统计 TrinityStats.pl</li>
 <li>表达水平评估 align_and_estimate_abundance.pl</li>
 <li>生成数量矩阵 abundance_estimates_to_matrix.pl</li>
 <li><a href="#downstream">下游分析</a><ul>
 <li>差异表达分析 run_DE_analysis.pl</li>
+<li>提取最长链</li>
 <li>提取蛋白编码区 transcripts_to_best_scoring_ORFs.pl</li>
 <li>功能注释</li>
 </ul>
@@ -224,12 +225,28 @@
 <p>Error encountered::  &lt;!—-<br>CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c /B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out/chrysalis/butterfly_commands -shuffle -CPU 1 -failed_cmds failed_butterfly_commands.138858.txt  2&gt;tmp.138858.1571848809.stderr<br></p></blockquote></pre></details><p></p>
 
 <h3 id="拼接结果"><a href="#拼接结果" class="headerlink" title="拼接结果"></a><strong>拼接结果</strong></h3><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/result.jpg" alt="result"></p>
-<h2 id="2-拼接结果参数统计-TrinityStats-pl"><a href="#2-拼接结果参数统计-TrinityStats-pl" class="headerlink" title="2. 拼接结果参数统计 TrinityStats.pl"></a>2. 拼接结果参数统计 TrinityStats.pl</h2><blockquote>
+<h2 id="2-去冗余-cd-hit-est"><a href="#2-去冗余-cd-hit-est" class="headerlink" title="2. 去冗余 cd-hit-est"></a>2. 去冗余 cd-hit-est</h2><p>命令如下</p>
+<blockquote>
+<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12 </p>
+</blockquote>
+<p>输出文件：output.fasta</p>
+<p>反馈如下</p>
+<details><summary>展开查看</summary><pre>
+
+<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-hit-est.jpg" alt="cd-hit"></p>
+<p><strong>参数注释</strong><br>|参数|参数注释|<br>|:—-:|:—-:|<br>| <strong>-i</strong>|input filename in fasta format, required, can be in .gz format|<br>| <strong>-o</strong>|output filename, required|<br>|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit’s “global sequence identity” calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence|<br>|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don’t use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS|<br>|-b|band_width of alignment, default 20|<br>|-M|memory limit (in MB) for the program, default 800; 0 for unlimitted;|<br>|-T|number of threads, default 1; with 0, all CPUs will be used|<br>|-n|word_length, default 5, see user’s guide for choosing it|<br>|-l|length of throw_away_sequences, default 10|<br>|-t|tolerance for redundance, default 2|<br>|-d|length of description in .clstr file, default 20|<br>|if|set to 0, it takes the fasta defline and stops at first space|<br>|-s|length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|<br>|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|<br>|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AL|alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-aS|alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AS|alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover &gt;= this value for both sequences|<br>|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|<br>|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|<br>|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|<br>|-g|1 or 0, default 0, by cd-hit’s default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won’t change the representatives of final clusters|<br>|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|<br>|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|<br>|-bak|write backup cluster file (1 or 0, default 0)|<br>|-h| print this help|</p>
+<p></p></pre></details><p></p>
+<p>再做一次结果统计</p>
+<blockquote>
+<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/utilTrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta</p>
+</blockquote>
+<p>结果如下：<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-result.jpg" alt="cd-result"></p>
+<h2 id="3-拼接结果参数统计-TrinityStats-pl"><a href="#3-拼接结果参数统计-TrinityStats-pl" class="headerlink" title="3. 拼接结果参数统计 TrinityStats.pl"></a>3. 拼接结果参数统计 TrinityStats.pl</h2><blockquote>
 <p>统计结果包括统计在文件里面，各种长度的contig的数量，然后进行筛选。在筛选Contig的时候可以采用225作为一个阈值，这相当于是75个氨基酸的长度，这是针对于整个基因组寻找一些经典基因而采用的经验阈值，当然，也可以根据具体的分析目的进行设计。<br>要熟悉在Linux中例如像Excel中常用的一些数据处理的指令。</p>
 </blockquote>
 <p>命令如下</p>
 <blockquote>
-<p>TrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity.fasta</p>
+<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl Trinity.fasta</p>
 </blockquote>
 <p>结果反馈如下：</p>
 <details><summary>展开查看</summary><pre>
@@ -250,37 +267,21 @@
 <p>awk -F ‘[=]’ ‘{print $NF}’ Trinity90_counts_lens &gt; Trinity90_counts_list   #使用awk处理文件，处理第二行中的字符串，输出所有数据到list里</p>
 </blockquote>
 <blockquote>
-<p>sort -n -r number.txt -o number.txt  #按照数值（-n）进行倒序（-n）排序，输出文件（-o）</p>
+<p>sort -n -r number.txt -o number.txt  #按照数值（-n）进行倒序（-r）排序，输出文件（-o）</p>
 </blockquote>
 <p>参数如下：</p>
 <details><summary>展开查看</summary><pre>
 
 <p>-f：忽略大小写；<br><br>-b：忽略每行前面的空白部分；<br><br>-n：以数值型进行排序，默认使用字符串排序；<br><br>-r：反向排序；<br><br>-u：删除重复行。就是 uniq 命令；<br><br>-t：指定分隔符，默认分隔符是制表符；<br><br>-k [n,m]：按照指定的字段范围排序。从第 n 个字段开始，到第 m 个字（默认到行尾）；<br></p>
 <p></p></pre></details><p></p>
-<h2 id="2-1-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#2-1-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="2.1. 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>2.1. 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h2><blockquote>
+<h2 id="补充：提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#补充：提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="补充：提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>补充：提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h2><blockquote>
 <p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta</p>
 </blockquote>
 <p>输出文件：longest_transcript.fasta</p>
 <blockquote>
 <p>坑：这里输入的文件第一行是统计数据，第二行是序列，两列一组，然后由长到短排序，如果要提取某一行序列数据，则设置提取偶数行即可。</p>
 </blockquote>
-<h2 id="3-去冗余-cd-hit-est"><a href="#3-去冗余-cd-hit-est" class="headerlink" title="3. 去冗余 cd-hit-est"></a>3. 去冗余 cd-hit-est</h2><p>命令如下</p>
-<blockquote>
-<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12 </p>
-</blockquote>
-<p>输出文件：output.fasta</p>
-<p>反馈如下</p>
-<details><summary>展开查看</summary><pre>
-
-<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-hit-est.jpg" alt="cd-hit"></p>
-<p><strong>参数注释</strong><br>|参数|参数注释|<br>|:—-:|:—-:|<br>| <strong>-i</strong>|input filename in fasta format, required, can be in .gz format|<br>| <strong>-o</strong>|output filename, required|<br>|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit’s “global sequence identity” calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence|<br>|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don’t use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS|<br>|-b|band_width of alignment, default 20|<br>|-M|memory limit (in MB) for the program, default 800; 0 for unlimitted;|<br>|-T|number of threads, default 1; with 0, all CPUs will be used|<br>|-n|word_length, default 5, see user’s guide for choosing it|<br>|-l|length of throw_away_sequences, default 10|<br>|-t|tolerance for redundance, default 2|<br>|-d|length of description in .clstr file, default 20|<br>|if|set to 0, it takes the fasta defline and stops at first space|<br>|-s|length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|<br>|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|<br>|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AL|alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-aS|alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AS|alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover &gt;= this value for both sequences|<br>|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|<br>|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|<br>|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|<br>|-g|1 or 0, default 0, by cd-hit’s default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won’t change the representatives of final clusters|<br>|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|<br>|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|<br>|-bak|write backup cluster file (1 or 0, default 0)|<br>|-h| print this help|</p>
-<p></p></pre></details><p></p>
-<p>再做一次结果统计</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/utilTrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta</p>
-</blockquote>
-<p>结果如下：<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-result.jpg" alt="cd-result"></p>
-<h2 id="4-表达水平评估-align-and-estimate-abundance-pl"><a href="#4-表达水平评估-align-and-estimate-abundance-pl" class="headerlink" title="4. 表达水平评估 align_and_estimate_abundance.pl"></a>4. 表达水平评估 align_and_estimate_abundance.pl</h2><p>命令如下：</p>
+<h2 id="4-表达水平评估-align-and-estimate-abundance-pl"><a href="#4-表达水平评估-align-and-estimate-abundance-pl" class="headerlink" title="4. 表达水平评估 align_and_estimate_abundance.pl"></a>4. 表达水平评估 align_and_estimate_abundance.pl</h2><p>命令如下：<br><em>注意：每一对reads要单独mapping</em></p>
 <blockquote>
 <p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir –left<br>LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right<br>LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed &gt;mynohup.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
@@ -303,7 +304,7 @@
 
 <h2 id="6-下游分析"><a href="#6-下游分析" class="headerlink" title="6. 下游分析"></a>6. 下游分析</h2></span>
 
-<h3 id="6-1-差异表达分析-run-DE-analysis-pl"><a href="#6-1-差异表达分析-run-DE-analysis-pl" class="headerlink" title="6.1 差异表达分析   run_DE_analysis.pl"></a>6.1 差异表达分析   run_DE_analysis.pl</h3><p>命令如下：</p>
+<h3 id="6-1-差异表达分析-run-DE-analysis-pl"><a href="#6-1-差异表达分析-run-DE-analysis-pl" class="headerlink" title="6.1 差异表达分析   run_DE_analysis.pl"></a>6.1 差异表达分析   run_DE_analysis.pl</h3><p><em>注意，这一步需要第5步中输出文件*</em>RSEM.isoform.counts.matrix***<br>命令如下：</p>
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl –matrix RSEM.isoform.counts.matrix –method edgeR –output edgeR_results</p>
 </blockquote>
@@ -316,8 +317,13 @@
 命令如下：
 >trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl -t transcripts.fasta -m 100 -->
 
-<h3 id="6-2-提取最好的OFR"><a href="#6-2-提取最好的OFR" class="headerlink" title="6.2 提取最好的OFR"></a>6.2 提取最好的OFR</h3><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/TRINITY_HOME/trinity-plugins/transdecoder/TransDecoder -t  transcripts<span class="hljs-selector-class">.fasta</span> -m  <span class="hljs-number">100</span> —search_pfam /path/to/pfam_db<span class="hljs-selector-class">.hmm</span> to search —CPU <span class="hljs-number">6</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h3><blockquote>
+<p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta  # 这里输出的是一个排序好的文件，最长链排在最前面，需要使用awk提取一下才是真正的最长链</p>
+</blockquote>
+<p>输出文件：longest_transcript.fasta</p>
+<blockquote>
+<p>坑：这里输入的文件第一行是统计数据，第二行是序列，两列一组，然后由长到短排序，如果要提取某一行序列数据，则设置提取偶数行即可。</p>
+</blockquote>
 <h3 id="6-3-功能注释"><a href="#6-3-功能注释" class="headerlink" title="6.3 功能注释"></a>6.3 功能注释</h3><p>下载的软件：Trinotate、Trinity、sqlite、NCBI Blast、HMMER、signalP v4、tmhmm v2、RNAMMER</p>
 <p>比对数据库：SwissProt、Uniref90、Pfam domains </p>
 <ol>
@@ -429,17 +435,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Artikel
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        34
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Kategori
                     </p>
                     <p class="title has-text-weight-normal">
                         8
@@ -449,17 +455,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        17
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                IKUTI</a>
         </div>
         
         
@@ -516,7 +522,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -533,7 +539,7 @@
                 <span class="level-item">Linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Mathematics/">
@@ -593,9 +599,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Awan tag
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -604,13 +610,20 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Linux文本操作/">
                         <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux管道符/">
+                        <span class="tag">Linux管道符</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -732,8 +745,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/Linux/pipe/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="pipe-Linux">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T15:24:18.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/Linux/pipe/" class="title has-link-black-ter is-size-6 has-text-weight-normal">pipe-Linux</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -811,25 +843,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/02/Python/seaborn-visualization/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
-                    <a href="/2019/11/02/Python/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -838,7 +851,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -848,7 +861,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -917,8 +930,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/Linux/pipe/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="pipe-Linux">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T15:24:18.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/Linux/pipe/" class="title has-link-black-ter is-size-6 has-text-weight-normal">pipe-Linux</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -996,25 +1028,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/02/Python/seaborn-visualization/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time></div>
-                    <a href="/2019/11/02/Python/seaborn-visualization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">seaborn_visualization</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1023,7 +1036,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1033,7 +1046,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1223,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1242,7 +1255,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1254,11 +1267,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };

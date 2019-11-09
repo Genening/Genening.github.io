@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>seaborn_visualization - Genening&#39;s blog</title>
+<title>pipe-Linux - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="New package for data visualization. This package is base on the matplotlib, numpy, scipy , and pandas. The shining point is that this package is easier for people to create a beautiful picture for yo">
-<meta name="keywords" content="seaborn-visualization">
+    <meta name="description" content="使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。 如下examples ps -ef|less  ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示   find . -name “*.bam”|xargs rm -rfv  首先查询在当前目录下匹配">
+<meta name="keywords" content="Linux管道符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="seaborn_visualization">
-<meta property="og:url" content="https://genening.github.io/2019/11/02/Python/seaborn-visualization/index.html">
+<meta property="og:title" content="pipe-Linux">
+<meta property="og:url" content="https://genening.github.io/2019/11/09/Linux/pipe/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="New package for data visualization. This package is base on the matplotlib, numpy, scipy , and pandas. The shining point is that this package is easier for people to create a beautiful picture for yo">
+<meta property="og:description" content="使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。 如下examples ps -ef|less  ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示   find . -name “*.bam”|xargs rm -rfv  首先查询在当前目录下匹配">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://genening.github.io/gallery/thumbnail/seaborn.jpg">
-<meta property="og:updated_time" content="2019-11-02T03:07:23.000Z">
+<meta property="og:image" content="https://genening.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-09T15:24:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="seaborn_visualization">
-<meta name="twitter:description" content="New package for data visualization. This package is base on the matplotlib, numpy, scipy , and pandas. The shining point is that this package is easier for people to create a beautiful picture for yo">
-<meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/seaborn.jpg">
+<meta name="twitter:title" content="pipe-Linux">
+<meta name="twitter:description" content="使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。 如下examples ps -ef|less  ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示   find . -name “*.bam”|xargs rm -rfv  首先查询在当前目录下匹配">
+<meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
 
@@ -131,27 +131,21 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnail/seaborn.jpg" alt="seaborn_visualization">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-02T03:07:23.000Z">2019-11-02</time>
+                <time class="level-item has-text-grey" datetime="2019-11-09T15:24:18.000Z">2019-11-09</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes membaca (Sekitar 1851 kata)
+                    4 minutes membaca (Sekitar 540 kata)
                 </span>
                 
                 
@@ -160,225 +154,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                seaborn_visualization
+                pipe-Linux
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>New package for data visualization. This package is base on the matplotlib, numpy, scipy , and pandas. The shining point is that this package is easier for people to create a beautiful picture for your dataset, this is essential for the data science. So let’s get it. This is the official URL: <a href="http://seaborn.pydata.org/" target="_blank" rel="noopener">http://seaborn.pydata.org/</a> <br>You can turn to there for help. </p>
-</blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><h3 id="可视化统计关系"><a href="#可视化统计关系" class="headerlink" title="可视化统计关系"></a>可视化统计关系</h3></li>
-<li><h3 id="绘制分类数据"><a href="#绘制分类数据" class="headerlink" title="绘制分类数据"></a>绘制分类数据</h3></li>
-<li><h3 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h3></li>
-<li><h3 id="双变量分布"><a href="#双变量分布" class="headerlink" title="双变量分布"></a>双变量分布</h3></li>
-</ul>
-<hr>
-<h2 id="Step0：什么是seaborn"><a href="#Step0：什么是seaborn" class="headerlink" title="Step0：什么是seaborn"></a>Step0：什么是seaborn</h2><blockquote>
-<ul>
-<li>Seaborn是基于matplotlib的图形可视化python包。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。</li>
-<li>Seaborn是在matplotlib的基础上进行了更高级的API封装，从而使得作图更加容易，在大多数情况下使用seaborn能做出很具有吸引力的图，而使用matplotlib就能制作具有更多特色的图。<strong>应该把Seaborn视为matplotlib的补充</strong>，而不是替代物。同时它能高度兼容numpy与pandas数据结构以及scipy与statsmodels等统计模式。</li>
-<li>seaborn 有五种风格，分别为”darkgrid”, “whitegrid”, “dark”, “white”, “ticks”</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="Step1-数据来源"><a href="#Step1-数据来源" class="headerlink" title="Step1: 数据来源"></a>Step1: 数据来源</h2><blockquote>
-<p><a href="https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/</a><br><a href="https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning-1/</a></p>
-</blockquote>
+            <p><strong>使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</strong></p>
+<h3 id="如下examples"><a href="#如下examples" class="headerlink" title="如下examples"></a>如下examples</h3><ol>
+<li><p>ps -ef|less</p>
 <blockquote>
-<p>这是从相关的数据科学竞赛网站上下载的数据，需要先注册并且参加竞赛才能下载数据。</p>
+<p>ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示</p>
 </blockquote>
-<h2 id="Step2-准备工作"><a href="#Step2-准备工作" class="headerlink" title="Step2: 准备工作"></a>Step2: 准备工作</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">### 导入package和依赖包</span></span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 导入数据，探索数据，了解数据</span></span><br><span class="line">data1 = pd.read_csv(<span class="hljs-string">r'./data/hr.csv'</span>)</span><br><span class="line"><span class="hljs-comment"># data1.head()</span></span><br><span class="line"><span class="hljs-comment"># data1.describe()</span></span><br><span class="line"><span class="hljs-comment"># data1.columns</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string">da.columns</span></span><br><span class="line"><span class="hljs-string">Out[6]: </span></span><br><span class="line"><span class="hljs-string">Index(['employee_id', 'department', 'region', 'education', 'gender',</span></span><br><span class="line"><span class="hljs-string">       'recruitment_channel', 'no_of_trainings', 'age', 'previous_year_rating',</span></span><br><span class="line"><span class="hljs-string">       'length_of_service', 'KPIs_met &gt;80%', 'awards_won?',</span></span><br><span class="line"><span class="hljs-string">       'avg_training_score', 'is_promoted'],</span></span><br><span class="line"><span class="hljs-string">      dtype='object')</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># seaborn使用测试</span></span><br><span class="line">test = sns.relplot(x=<span class="hljs-string">"Views"</span>, y=<span class="hljs-string">"Upvotes"</span>, data = data2)  <span class="hljs-comment"># sns.relplot()作图</span></span><br><span class="line"></span><br><span class="line">test.savefig(<span class="hljs-string">'test.png'</span>)  <span class="hljs-comment"># 保存图片，通用操作</span></span><br><span class="line">plt.show()  <span class="hljs-comment"># 展示图片</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-可视化统计关系"><a href="#1-可视化统计关系" class="headerlink" title="1. 可视化统计关系"></a>1. 可视化统计关系</h2><blockquote>
-<p>包括以下内容：</p>
-<ul>
-<li>Scatter plot (散点图)</li>
-<li>SNS.relplot</li>
-<li>Hue plot (Hue图)</li>
-</ul>
-</blockquote>
-<p>数据：<br><img src="/2019/11/02/Python/seaborn-visualization/data2.jpg" alt="data2"></p>
-<ol>
-<li>散点图<figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 开始使用seaborn</span></span><br><span class="line">scatters = sns.relplot(x=<span class="hljs-string">'Views'</span>, y=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-keyword">data</span>=<span class="hljs-keyword">data</span>2)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="hljs-string">'scatters with seaborn'</span>)</span><br><span class="line">scatters.savefig(<span class="hljs-string">'scatters.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 </li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/scatters.png" alt="scatters"></p>
-<p>relplot的参数：</p>
-<ul>
-<li>relplot(x=None, y=None, hue=None, size=None, style=None, data=None, row=None, col=None, col_wrap=None, row_order=None, col_order=None, palette=None, hue_order=None, hue_norm=None, sizes=None, size_order=None, size_norm=None, markers=None, dashes=None, style_order=None, legend=’brief’, kind=’scatter’, height=5, aspect=1, facet_kws=None, **kwargs)</li>
-</ul>
+<li><p>find . -name “*.bam”|xargs rm -rfv</p>
 <blockquote>
-<p>SNS.relplot是来自SNS类的relplot函数，SNS类是我们在上面与其他依赖项一起导入的一个seaborn类。<br>这里，参数是x、y，数据有在X,Y轴上表示的变量和我们要分别画出来的数据点，通过图片，我们发现了views和upvotes之间的关系。</p>
+<p>首先查询在当前目录下匹配得上尾缀为.bam的文件，然后通过管道符传递给xargs中的命令rm，这样就可以批量删除，因为rm默认是不支持正则匹配的，所以可以通过这种方式来做到批量删除，同样，采用元字符也能达到一定的目的，如下</p>
 </blockquote>
-<ol start="2">
-<li>展示标签<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Tag'</span>, <span class="hljs-attribute">data</span>=data2)</span><br><span class="line"><span class="hljs-comment"># 增加hue（色调），可以展示标签</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf test-&#123;<span class="hljs-number">1</span>..<span class="hljs-number">100</span>&#125;<span class="hljs-selector-class">.txt</span> #可以删除test-<span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> test-<span class="hljs-number">2</span><span class="hljs-selector-class">.txt</span> .... test-<span class="hljs-number">100</span>.txt等一系列文件，这也是批量删除。</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/scatters2.png" alt="scatters2"></p>
-<ol start="3">
-<li>Hue图<blockquote>
-<p>我们可以在色调(Hue)的帮助下在我们的图片中添加另一个维度，即在二维的基础上通过颜色来添加其他信息，通过为点赋予颜色来实现，每种颜色都有一些附加的意义。</p>
-</blockquote>
-<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>xargs 是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。<br><br>xargs 可以将管道或标准输入（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br><br>xargs 也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。<br><br>xargs 默认的命令是 echo，这意味着通过管道传递给 xargs 的输入将会包含换行和空白，不过通过 xargs 的处理，换行和空白将被空格取代。<br><br>xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。<br>之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：<br></p>
+<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |<span class="hljs-keyword">ls</span> -l       <span class="hljs-comment">#这个命令是错误的</span></span><br><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |xargs <span class="hljs-keyword">ls</span> -l   <span class="hljs-comment">#这样才是正确的</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/scatters3.png" alt="scatters3"></p>
-<ol start="4">
-<li>size标签<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scatters = sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">'Views'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'Upvotes'</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'Answers'</span>, <span class="hljs-attribute">data</span>=data2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/scatters4.png" alt="scatters4"></p>
-<h2 id="2-绘制分类数据"><a href="#2-绘制分类数据" class="headerlink" title="2. 绘制分类数据"></a>2. 绘制分类数据</h2><blockquote>
-<p>包括以下内容：</p>
-<ul>
-<li>抖动图</li>
-<li>Hue图</li>
-<li>箱线图</li>
-<li>小提琴图</li>
-<li>Pointplot</li>
-</ul>
-</blockquote>
-<p>数据：<br><img src="/2019/11/02/Python/seaborn-visualization/data1.jpg" alt="data1"></p>
-<ol>
-<li>抖动图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, jitter = <span class="hljs-literal">True</span>,  <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/shake.png" alt="shake"></p>
-<p>改动jitter参数为False，可见下图：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/shake2.png" alt="shake2"></p>
-<ol start="2">
-<li>hue引入另一个维度<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>,  <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>引入了性别参数，可以看出数据中的性别差异</p>
-</blockquote>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/shake3.png" alt="shake3"></p>
-<p>可以引入kind中的swarm参数，展示效果如下：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/shake5.png" alt="shake5"></p>
-<ol start="3">
-<li>箱线图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'box'</span>, <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/shake4.png" alt="box"></p>
-<blockquote>
-<p>箱线图（Boxplot）也称箱须图（Box-whisker Plot），是利用数据中的五个统计量：<strong>最小值、第一四分位数、中位数、第三四分位数与最大值</strong>来描述数据的一种方法，它也可以粗略地看出数据是否具有有对称性，分布的分散程度等信息，特别可以用于对几个样本的比较。</p>
-</blockquote>
-<ol start="3">
-<li>小提琴图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'violin'</span>, <span class="hljs-attribute">data</span>=df2)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/violin.png" alt="violin"></p>
-<blockquote>
-<p>小提琴图结合了<strong>箱线图和核密度估计程序</strong>，以提供更丰富的值分布描述。四分位数值显示在小提琴内部。当色调语义参数是二值时，我们还可以拆分小提琴，这也可能有助于节省绘图空间。</p>
-</blockquote>
-<p>增加划分功能</p>
-<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'violin'</span>,split = <span class="hljs-literal">True</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
-
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/violin2.png" alt="violin2"></p>
-<ol start="4">
-<li>bar 结合 box<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'bar'</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/bar.png" alt="bar"></p>
-<ol start="5">
-<li>point图<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shake = sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"education"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">'gender'</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'point'</span>, <span class="hljs-attribute">data</span>=data1)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/point.png" alt="point"></p>
-<h2 id="3-数据分布"><a href="#3-数据分布" class="headerlink" title="3. 数据分布"></a>3. 数据分布</h2><ol>
-<li>数据分布图<figure class="highlight ini hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">tr</span> = sns.distplot(data1.length_of_service)</span><br><span class="line"><span class="hljs-comment"># tr = sns.distplot(data1.age)</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>通过displot()方法可以了解数据集的分布情况，也是一个不错的工具。</p>
-</blockquote>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/length.png" alt="length"><br><img src="/2019/11/02/Python/seaborn-visualization/age.png" alt="age"></p>
-<ol start="2">
-<li>数据直方图<figure class="highlight ini hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">tr</span> = sns.distplot(data1.length_of_service, kde=<span class="hljs-literal">False</span>, rug = <span class="hljs-literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/length2.png" alt="length2"></p>
-<p>下面展示的转录组数据的分布<br><img src="/2019/11/02/Python/seaborn-visualization/length3.png" alt="length3"></p>
-<blockquote>
-<p>由此可以看出绝大部分的转录本都分布在1000bp左右，超过10000bp的转录本只有几个。</p>
-</blockquote>
-<h2 id="4-双变量分布"><a href="#4-双变量分布" class="headerlink" title="4. 双变量分布"></a>4. 双变量分布</h2><p>包括以下内容：</p>
-<ul>
-<li>Hex图</li>
-<li>KDE 图</li>
-<li>Boxen 图</li>
-<li>Ridge 图 (Joy图)</li>
-</ul>
-<ol>
-<li>joinplot()默认为scatter<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'r'</span>, alpha = 0.2, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'hex'</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/2fac.png" alt="2fac"></p>
-<blockquote>
-<p>如果有时候要展示两个变量之间的关系，同时又想展示单个变量的分布时，可以用这种展示方法</p>
-</blockquote>
-<ol start="2">
-<li>直方图hex<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'hex'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/2fach.png" alt="2fach"></p>
-<ol start="3">
-<li>KDE<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">kind</span>=<span class="hljs-string">'kde'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">color</span>=<span class="hljs-string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/2fack.png" alt="2fack"></p>
-<ol start="4">
-<li>heatmap()<figure class="highlight nix hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">corrmat</span> = data1.corr()</span><br><span class="line">f, <span class="hljs-attr">ax</span> = plt.subplots(<span class="hljs-attr">figsize=(9,</span> <span class="hljs-number">6</span>))  <span class="hljs-comment"># figsize参数可以指定图片大小比例</span></span><br><span class="line"></span><br><span class="line">sns.heatmap(corrmat, <span class="hljs-attr">vmax=.8,</span> <span class="hljs-attr">square=True)</span></span><br><span class="line"></span><br><span class="line">plt.savefig('./img/heatmap.png', <span class="hljs-attr">dpi=1080)</span>  <span class="hljs-comment"># dpi参数能够指定图片质量（像素）</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="dpi参数能够指定图片质量（像素）-figsize参数可以指定图片大小比例"><a href="#dpi参数能够指定图片质量（像素）-figsize参数可以指定图片大小比例" class="headerlink" title="dpi参数能够指定图片质量（像素） figsize参数可以指定图片大小比例"></a>dpi参数能够指定图片质量（像素） figsize参数可以指定图片大小比例</h2><p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/heatmap.png" alt="heatmap"></p>
-<blockquote>
-<p>heatmap中，每一个变量都是一种颜色，方便区分。</p>
-</blockquote>
-<ol start="5">
-<li>boxen图 catplot()<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">"age"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"avg_training_score"</span>, <span class="hljs-attribute">data</span>=data1, <span class="hljs-attribute">kind</span>=<span class="hljs-string">"boxen"</span>,height=4, <span class="hljs-attribute">aspect</span>=2.7, hue = <span class="hljs-string">"is_promoted"</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>图片输出：</p>
-<p><img src="/2019/11/02/Python/seaborn-visualization/boxen.png" alt="boxen"></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一篇博客介绍了很多seaborn画图的图标，接下来需要做的就是在实际工作生活中应用这些画图的方式，并且可以尝试着更多的其他类型的图片，充分展示数据。继续学习！！！</p>
 
         </div>
         
@@ -386,7 +183,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/seaborn-visualization/">seaborn-visualization</a>
+                    <a class="has-link-grey -link" href="/tags/Linux管道符/">Linux管道符</a>
                 </div>
             </div>
         </div>
@@ -403,17 +200,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/03/Linux/symbolic-hard-link/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">symbolic-hard_link</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/31/Linux/working-with-files/">
-                <span class="level-item">working_with_files</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/08/web/Electron/">
+                <span class="level-item">Electron</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
