@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Pencarian" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute membaca (Sekitar 145 kata)
+                    3 minutes read (About 488 words)
                 </span>
                 
                 
@@ -163,18 +163,25 @@
 <blockquote>
 <p>接下来我将学习一下LaTeX关于数学公式方面的内容。</p>
 </blockquote>
-<p>嵌入方法：</p>
-<ul>
+<h3 id="嵌入方法："><a href="#嵌入方法：" class="headerlink" title="嵌入方法："></a>嵌入方法：</h3><ul>
 <li>行内嵌入：’$..$‘</li>
 </ul>
 <p>例如：$\sum_i^nx_i$</p>
 <ul>
-<li>单独成行：’$$..$$’<br>例如：<br>$$y_i=\sum_i^nx_i$$</li>
+<li>单独成行：’$$..$$‘</li>
 </ul>
-<ol>
-<li></li>
-</ol>
+<p>例如：<br>$$y_i=\sum_i^nx_i$$</p>
+<h3 id="1-The-Greek-alphabet"><a href="#1-The-Greek-alphabet" class="headerlink" title="1. The Greek alphabet"></a>1. The Greek alphabet</h3><blockquote>
+<p>希腊字母是数学表达式中常用的符号，几乎所有数学公式包含着希腊字母，希腊字母的在数学中的地位举足轻重。</p>
+</blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/greek-alphabet.jpg" alt="greek-alphabet"></p>
+<p>示例：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">效果：$\alpha\beta,\delta,\zeta,\eta,\theta,\Pi,\Delta,\rho$</span><br><span class="line"></span><br><span class="line">### 2. 上下标</span><br><span class="line">&gt;在数学表达式中，经常会有上下标，不管是指数还是表示平均数、向量、积分上下限等等，这类都需要上下标的形式展现。在LaTeX中以`_`为下标，`^`为上标，其他效果见下图。</span><br><span class="line"></span><br><span class="line">![up-bottom](Latex-formula/up-bottom.jpg)</span><br><span class="line"></span><br><span class="line">示例：```$x_i^2,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\widehat&#123;x&#125;,\ddot&#123;a&#125;$```&lt;br&gt;</span><br><span class="line">效果：$x_i^2,x_&#123;i=1&#125;^&#123;n+2&#125;,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\ddot&#123;a&#125;$</span><br><span class="line"></span><br><span class="line">### 补充：</span><br><span class="line">在LaTeX中的log函数表示`$\log_2 x$`，效果：$\log_2 x$，$\log_&#123;10&#125; y$</span><br><span class="line"></span><br><span class="line">### 3. 括号</span><br><span class="line">&gt;在数学表达式中，一般会存在嵌套关系，也就是不能用简单的一次线性关系表示完整，所以需要额外的符号进行辅助，也就是需要括号帮忙了，具体见下图：</span><br><span class="line"></span><br><span class="line">![括号](Latex-formula/kuohao.jpg)</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$</p>
+<pre><code>效果：
+$$f(x)=\begin{cases} x = \cos(t) \\y=\sin(t) \\z=\frac xy \end{cases}$$
 
+## 未完待续
+</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -250,7 +257,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         37
@@ -260,7 +267,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         9
@@ -270,7 +277,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -280,7 +287,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                IKUTI</a>
+                Follow</a>
         </div>
         
         
@@ -337,7 +344,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -422,7 +429,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Awan tag
+            Tag Cloud
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -433,7 +440,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tag
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -589,7 +596,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -695,7 +702,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -774,7 +781,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -880,7 +887,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1089,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1108,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1120,11 +1127,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
