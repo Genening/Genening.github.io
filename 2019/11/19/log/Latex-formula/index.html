@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 488 words)
+                    7 minutes read (About 1003 words)
                 </span>
                 
                 
@@ -175,13 +175,34 @@
 <p>希腊字母是数学表达式中常用的符号，几乎所有数学公式包含着希腊字母，希腊字母的在数学中的地位举足轻重。</p>
 </blockquote>
 <p><img src="/2019/11/19/log/Latex-formula/greek-alphabet.jpg" alt="greek-alphabet"></p>
-<p>示例：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">效果：$\alpha\beta,\delta,\zeta,\eta,\theta,\Pi,\Delta,\rho$</span><br><span class="line"></span><br><span class="line">### 2. 上下标</span><br><span class="line">&gt;在数学表达式中，经常会有上下标，不管是指数还是表示平均数、向量、积分上下限等等，这类都需要上下标的形式展现。在LaTeX中以`_`为下标，`^`为上标，其他效果见下图。</span><br><span class="line"></span><br><span class="line">![up-bottom](Latex-formula/up-bottom.jpg)</span><br><span class="line"></span><br><span class="line">示例：```$x_i^2,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\widehat&#123;x&#125;,\ddot&#123;a&#125;$```&lt;br&gt;</span><br><span class="line">效果：$x_i^2,x_&#123;i=1&#125;^&#123;n+2&#125;,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\ddot&#123;a&#125;$</span><br><span class="line"></span><br><span class="line">### 补充：</span><br><span class="line">在LaTeX中的log函数表示`$\log_2 x$`，效果：$\log_2 x$，$\log_&#123;10&#125; y$</span><br><span class="line"></span><br><span class="line">### 3. 括号</span><br><span class="line">&gt;在数学表达式中，一般会存在嵌套关系，也就是不能用简单的一次线性关系表示完整，所以需要额外的符号进行辅助，也就是需要括号帮忙了，具体见下图：</span><br><span class="line"></span><br><span class="line">![括号](Latex-formula/kuohao.jpg)</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
-<p>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$</p>
-<pre><code>效果：
-$$f(x)=\begin{cases} x = \cos(t) \\y=\sin(t) \\z=\frac xy \end{cases}$$
+<p>示例：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">效果：$\alpha\beta,\delta,\zeta,\eta,\theta,\Pi,\Delta,\rho$</span><br><span class="line"></span><br><span class="line">### 2. 上下标</span><br><span class="line">&gt;在数学表达式中，经常会有上下标，不管是指数还是表示平均数、向量、积分上下限等等，这类都需要上下标的形式展现。在LaTeX中以`_`为下标，`^`为上标，其他效果见下图。</span><br><span class="line"></span><br><span class="line">![up-bottom](Latex-formula/up-bottom.jpg)</span><br><span class="line"></span><br><span class="line">示例：```$x_i^2,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\widehat&#123;x&#125;,\ddot&#123;a&#125;$```&lt;br&gt;</span><br><span class="line">效果：$x_i^2,x_&#123;i=1&#125;^&#123;n+2&#125;,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\ddot&#123;a&#125;$</span><br><span class="line"></span><br><span class="line">### 补充：</span><br><span class="line">* 在LaTeX中的log函数表示`$\log_2 x$`，效果：$\log_2 x$，$\log_&#123;10&#125; y$</span><br><span class="line">* 在LaTeX中的空格为`$\quad$`，效果：$ab,\qquad a\quad b$</span><br><span class="line"></span><br><span class="line">### 3. 括号</span><br><span class="line">&gt;在数学表达式中，一般会存在嵌套关系，也就是不能用简单的一次线性关系表示完整，所以需要额外的符号进行辅助，也就是需要括号帮忙了，具体见下图：</span><br><span class="line"></span><br><span class="line">![括号](Latex-formula/kuohao.jpg)</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$<br>```<br>效果：<br>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$</p>
+<h3 id="4-矩阵"><a href="#4-矩阵" class="headerlink" title="4. 矩阵"></a>4. 矩阵</h3><blockquote>
+<p>矩阵，一般很难渲染得好看，让我们来看看LaTeX的本领</p>
+</blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/matrix.jpg" alt="matrix"></p>
+<p>示例：<code>$\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}$</code><br><br>效果：<br>$$A=\begin{bmatrix} 0 &amp; -1 \ 1 &amp; 0 \end{bmatrix}$$<br>$$B=\begin{matrix} 0 &amp; -1 \ 1 &amp; 0 \end{matrix}$$</p>
+<h3 id="5-求和、积分、开方、分数"><a href="#5-求和、积分、开方、分数" class="headerlink" title="5. 求和、积分、开方、分数"></a>5. 求和、积分、开方、分数</h3><blockquote>
+<p>这些也是数学表达式中很常见的符号和表达方式了，需要掌握。</p>
+</blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/sum.jpg" alt="sum"><br>示例：<code>$\sum,\int_\infty^\infty xdx$</code><br><br>效果：$y_i=\sum_{i=1}^nx_i,F(x)=\int_{-\infty}^\infty xdx$</p>
+<p><img src="/2019/11/19/log/Latex-formula/sqrt.jpg" alt="sqrt"><br>示例：<code>$\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}$</code><br><br>效果：$\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}$</p>
+<p><img src="/2019/11/19/log/Latex-formula/frac.jpg" alt="frac"><br>示例：<code>$\frac {a-1}{b-2}={a-1\over b-2}$</code><br><br>效果：$\frac {a-1}{b-2}={a-1\over b-2}$</p>
+<h3 id="6-特殊符号"><a href="#6-特殊符号" class="headerlink" title="6. 特殊符号"></a>6. 特殊符号</h3><blockquote>
+<p>见下图</p>
+</blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/special-func.jpg" alt="special-func"><br>示例：<code>$\sin {x^2} + \cos {x^2}=1$</code><br><br>效果：<br>$$\sin {x^2} + \cos {x^2}=1,\quad\lim_{x\to\infty}{1\over x}=0$$</p>
+<p><img src="/2019/11/19/log/Latex-formula/special.jpg" alt="special"><br>示例：<code>$\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq$</code><br><br>效果：$\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq$</p>
+<h3 id="7-换字体"><a href="#7-换字体" class="headerlink" title="7. 换字体"></a>7. 换字体</h3><blockquote>
+<p>这个不是很care了，随便看看。</p>
+</blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/front-style.jpg" alt="front-style"></p>
+<p>示例：<code>$\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}$</code><br><br>效果：$\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}$</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LaTeX确实是论文排版非常重要的一个工具，在表示数学表达式的时候尤为重要，为了能够更好的排版，让论文更加专业，LaTeX很值得一学。并且，LaTeX的语法也并不复杂，对于数学表达式，有很多都是可以笔下代码脑中图像，非常流畅。LaTeX语法就是每当有特殊标记的时候就会使用<code>\</code>来标记，如<code>\lim</code>等等，每个符号后面一般默认作用为一个字符，当需要作用到字符串上时，采用<code>{}</code>框住表达式即可,</p>
+<blockquote>
+<p>举个栗子：<code>$\sum_x-y$</code>：$\sum_x-y$中<code>-y</code>不会被包括近下标中；<code>$\sum_{x-y}$</code>：$\sum_{x-y}$，当用<code>{}</code>框住后就会包括进下标中。</p>
+</blockquote>
 
-## 未完待续
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
