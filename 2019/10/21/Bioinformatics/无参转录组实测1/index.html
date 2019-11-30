@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-11-24T09:45:06.870Z">
+<meta property="og:updated_time" content="2019-11-30T16:20:28.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    24 minutes read (About 3602 words)
+                    25 minutes read (About 3799 words)
                 </span>
                 
                 
@@ -190,8 +190,11 @@
 <p>Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 25 –min_kmer_cov 2+</p>
 </blockquote>
 <blockquote>
-<p>nohup Trinity –seqType fq –max_memory 50G –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543all_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543all_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 30 –min_kmer_cov 2 &amp;</p>
+<p>nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543all_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543all_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 30 –min_kmer_cov 2 &amp;</p>
 </blockquote>
+<h1 id="补充：Trinity-–show-full-usage-info-可以查看Trinity所有参数"><a href="#补充：Trinity-–show-full-usage-info-可以查看Trinity所有参数" class="headerlink" title="补充：Trinity –show_full_usage_info    可以查看Trinity所有参数"></a>补充：Trinity –show_full_usage_info    可以查看Trinity所有参数</h1><ul>
+<li>–min_glue 5  # a small trick to get a better output</li>
+</ul>
 <p>输出文件：trinity_out_dir/</p>
 <!--more-->
 <p><strong>反馈如下</strong></p>
@@ -241,13 +244,23 @@
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta</p>
 </blockquote>
 <p>结果如下：<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-result.jpg" alt="cd-result"></p>
-<h2 id="2-2-corset-聚类去冗余"><a href="#2-2-corset-聚类去冗余" class="headerlink" title="2.2 corset 聚类去冗余"></a>2.2 corset 聚类去冗余</h2><blockquote>
+<h2 id="2-2-corset-聚类去冗余"><a href="#2-2-corset-聚类去冗余" class="headerlink" title="2.2 corset 聚类去冗余"></a>2.2 corset 聚类去冗余</h2><h3 id="2-2-1-bowtie多序列比对得到-bam文件"><a href="#2-2-1-bowtie多序列比对得到-bam文件" class="headerlink" title="2.2.1 bowtie多序列比对得到.bam文件"></a>2.2.1 bowtie多序列比对得到.bam文件</h3><p>Step1：</p>
+<blockquote>
+<p>nohup bowtie2-build Trinity.fasta Trinity &gt;bow-nohup.out 2&gt;&amp;1 &amp;    #建立索引<br>bowtie2 -p 10 -x Trinity -1 input_1.fq -2 input_2.fq | samtools sort -O bam -@ 10 -o - &gt; 134.bam #开始比对，-p是线程数，-x是索引文件，-1 -2是双端比对的左右端，使用通配符把结果输入给samtools转换为.bam文件格式</p>
+</blockquote>
+<h3 id="2-2-2-corset使用"><a href="#2-2-2-corset使用" class="headerlink" title="2.2.2 corset使用"></a>2.2.2 corset使用</h3><blockquote>
 <p>corset [options] bowtie.bam</p>
 </blockquote>
 <p>需要在表达丰度定量操作中得到的bowtie.bam文件来进行下一步的操作，最终得到counts.txt和clusters.txt两个文件，可以进行下一步的拼接和差异表达分析。</p>
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>通过counts.txt clusters.txt文件反向提取fasta文件</p>
 <blockquote>
-<p>python /home/gaodong/software_private/corset-1.09-linux64/Corset-tools-master/fetchClusterSeqs.py -i Trinity.fasta -t interest_cluster.csv -o Trinity-corset.fasta -c clusters.txt # 说明：Trinity.fasta文件是转录本文件，interest_cluster.csv是一个cluster_id的单列数据，clusters.txt是corset输入的结果文件，最终输出文件为Trinity-corset.fasta文件，再重新进行表达丰度评估，接着做表达差异分析</p>
+<p>nohup python /home/gaodong/software_private/corset-1.09-linux64/Corset-tools-master/fetchClusterSeqs.py -i Trinity.fasta -t interest_cluster.csv -o Trinity-corset.fasta -c clusters.txt &gt;cluster-nohup.out 2&gt;&amp;1 &amp; # 说明：Trinity.fasta文件是转录本文件，interest_cluster.csv是一个cluster_id的单列数据，clusters.txt是corset输入的结果文件，最终输出文件为Trinity-corset.fasta文件，再重新进行表达丰度评估，接着做表达差异分析</p>
+</blockquote>
+<ul>
+<li>注意：进入Python2.7环境运行</li>
+</ul>
+<blockquote>
+<p>nohup corset -l ../rsem_outdir134/bowtie.bam ../rsem_outdir144/bowtie.bam ../rsem_outdir155/bowtie.bam ../rsem_outdir531/bowtie.bam ../rsem_outdir543all/bowtie.bam ../rsem_outdir556/bowtie.bam ../rsem_outdirB1/bowtie.bam ../rsem_outdirXall/bowtie.bam ../rsem_outdirY1/bowtie.bam &gt;corset-nohup.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <h2 id="3-拼接结果参数统计-TrinityStats-pl"><a href="#3-拼接结果参数统计-TrinityStats-pl" class="headerlink" title="3. 拼接结果参数统计 TrinityStats.pl"></a>3. 拼接结果参数统计 TrinityStats.pl</h2><blockquote>
 <p>统计结果包括统计在文件里面，各种长度的contig的数量，然后进行筛选。在筛选Contig的时候可以采用225作为一个阈值，这相当于是75个氨基酸的长度，这是针对于整个基因组寻找一些经典基因而采用的经验阈值，当然，也可以根据具体的分析目的进行设计。<br>要熟悉在Linux中例如像Excel中常用的一些数据处理的指令。</p>
@@ -294,31 +307,31 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 </blockquote>
 <h2 id="4-表达水平评估-align-and-estimate-abundance-pl"><a href="#4-表达水平评估-align-and-estimate-abundance-pl" class="headerlink" title="4. 表达水平评估 align_and_estimate_abundance.pl"></a>4. 表达水平评估 align_and_estimate_abundance.pl</h2><p>命令如下：<br><em>注意：每一对reads要单独mapping</em></p>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirY1 –left LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed &gt;nohupY1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirY1 –left LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed &gt;nohupY1.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirXall –left LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed –right LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed &gt;nohupXnew.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta  –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirXall –left LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed –right LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed &gt;nohupXnew.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirB1 –left LJG-B1_CGATGT_L008_R1_001.fastq_trimmed –right LJG-B1_CGATGT_L008_R2_001.fastq_trimmed &gt;nohupB1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirB1 –left LJG-B1_CGATGT_L008_R1_001.fastq_trimmed –right LJG-B1_CGATGT_L008_R2_001.fastq_trimmed &gt;nohupB1.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir556 –left LJG-556_ACTTGA_L008_R1_001.fastq_trimmed –right LJG-556_ACTTGA_L008_R2_001.fastq_trimmed &gt;nohup556.out 2&gt;&amp;1 &amp; </p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir556 –left LJG-556_ACTTGA_L008_R1_001.fastq_trimmed –right LJG-556_ACTTGA_L008_R2_001.fastq_trimmed &gt;nohup556.out 2&gt;&amp;1 &amp; </p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir543all –left LJG-543all_CAGATC_L008_R1_001.fastq_trimmed –right LJG-543all_CAGATC_L008_R2_001.fastq_trimmed &gt;nohup543all.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir543all –left LJG-543all_CAGATC_L008_R1_001.fastq_trimmed –right LJG-543all_CAGATC_L008_R2_001.fastq_trimmed &gt;nohup543all.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir531 –left LJG-531_GCCAAT_L008_R1_001.fastq_trimmed –right LJG-531_GCCAAT_L008_R2_001.fastq_trimmed &gt;nohup531.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir531 –left LJG-531_GCCAAT_L008_R1_001.fastq_trimmed –right LJG-531_GCCAAT_L008_R2_001.fastq_trimmed &gt;nohup531.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir155 –left LJG-155_ACAGTG_L008_R1_001.fastq_trimmed –right LJG-155_ACAGTG_L008_R2_001.fastq_trimmed &gt;nohup155.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir155 –left LJG-155_ACAGTG_L008_R1_001.fastq_trimmed –right LJG-155_ACAGTG_L008_R2_001.fastq_trimmed &gt;nohup155.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir144 –left LJG-144_TGACCA_L008_R1_001.fastq_trimmed –right LJG-144_TGACCA_L008_R2_001.fastq_trimmed &gt;nohup144.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir144 –left LJG-144_TGACCA_L008_R1_001.fastq_trimmed –right LJG-144_TGACCA_L008_R2_001.fastq_trimmed &gt;nohup144.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./trinity_out_dir/Trinity.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir134 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed &gt;nohup134.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir134 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed &gt;nohup134.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <p>输出文件如下<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/abundance_RSEM.jpg" alt="abundance_RSEM"></p>
 <h2 id="5-生成数量矩阵-abundance-estimates-to-matrix-pl"><a href="#5-生成数量矩阵-abundance-estimates-to-matrix-pl" class="headerlink" title="5. 生成数量矩阵  abundance_estimates_to_matrix.pl"></a>5. 生成数量矩阵  abundance_estimates_to_matrix.pl</h2><p>命令如下：</p>
@@ -473,7 +486,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                         Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        37
+                        38
                     </p>
                 </div>
             </div>
@@ -483,7 +496,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                         Categorias
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        10
                     </p>
                 </div>
             </div>
@@ -493,7 +506,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                         Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -601,6 +614,14 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <span class="level-item tag">17</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Practical-skills/">
+            <span class="level-start">
+                <span class="level-item">Practical skills</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
             <span class="level-start">
                 <span class="level-item">Python</span>
@@ -644,7 +665,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         <h3 class="menu-label">
             Nube de etiquetas
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -716,6 +737,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <div class="control">
                     <a class="tags has-addons" href="/tags/latex-for-mathematics-formula/">
                         <span class="tag">latex for mathematics formula</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-layout/">
+                        <span class="tag">latex-layout</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -814,6 +842,25 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         
         <article class="media">
             
+            <a href="/2019/12/01/Practical skills/latex-layout/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="latex_layout">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:21:17.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Practical skills/latex-layout/" class="title has-link-black-ter is-size-6 has-text-weight-normal">latex_layout</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/19/log/Latex-formula/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Latex-formula">
@@ -888,25 +935,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/08/web/Electron/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/electron.jpg" alt="Electron">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-08T01:03:25.000Z">2019-11-08</time></div>
-                    <a href="/2019/11/08/web/Electron/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Electron</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -918,6 +946,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -999,6 +1038,25 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         
         <article class="media">
             
+            <a href="/2019/12/01/Practical skills/latex-layout/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="latex_layout">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:21:17.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Practical skills/latex-layout/" class="title has-link-black-ter is-size-6 has-text-weight-normal">latex_layout</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/19/log/Latex-formula/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Latex-formula">
@@ -1073,25 +1131,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/08/web/Electron/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnail/electron.jpg" alt="Electron">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-08T01:03:25.000Z">2019-11-08</time></div>
-                    <a href="/2019/11/08/web/Electron/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Electron</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1103,6 +1142,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
