@@ -115,7 +115,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Pencarian" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes membaca (Sekitar 1289 kata)
+                    9 minutes read (About 1289 words)
                 </span>
                 
                 
@@ -165,7 +165,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/09/Linux/linux-shell杂谈/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/12/09/Linux/linux-shell杂谈/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes membaca (Sekitar 559 kata)
+                    4 minutes read (About 560 words)
                 </span>
                 
                 
@@ -221,13 +221,16 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="2-全过程代码"><a href="#2-全过程代码" class="headerlink" title="2. 全过程代码"></a>2. 全过程代码</h2><figure class="highlight clean hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"># 导入依赖包</span><br><span class="line">library(limma)</span><br><span class="line">library(edgeR)</span><br><span class="line">library(ggplot2)</span><br><span class="line"></span><br><span class="line"># 设置工作区</span><br><span class="line">setwd(<span class="hljs-string">'E://Desktop//Transcript'</span>)</span><br><span class="line"></span><br><span class="line">#读取数据，设置分组</span><br><span class="line">targets &lt;- data.frame(read.csv(<span class="hljs-string">'all_counts.csv'</span>,header=<span class="hljs-number">1</span>,row.names=<span class="hljs-number">1</span>))</span><br><span class="line">group &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">2</span></span><br><span class="line">counts &lt;- targets[,<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">#构建DGEList对象</span><br><span class="line">dgelist &lt;- DGEList(counts = counts, group = group)</span><br><span class="line">dgelist</span><br><span class="line"></span><br><span class="line">#CPM 标准化，过滤低表达counts</span><br><span class="line">keep &lt;- rowSums(cpm(dgelist) &gt; <span class="hljs-number">1</span> ) &gt;= <span class="hljs-number">2</span>  #这里的设置很重要，会很大程度影响结果</span><br><span class="line">dgelist &lt;- dgelist[keep, ,keep.lib.sizes = FALSE]</span><br><span class="line"></span><br><span class="line">#TMM 标准化</span><br><span class="line">dgelist_norm &lt;- calcNormFactors(dgelist, method = <span class="hljs-string">'TMM'</span>)</span><br><span class="line">dgelist_norm</span><br><span class="line"></span><br><span class="line">#估算离散值</span><br><span class="line">design &lt;- model.matrix(~group) #构建分组矩阵</span><br><span class="line">#dge &lt;- estimateDisp(dgelist_norm, design, robust = TRUE) #估算离散值</span><br><span class="line">dgelist_norm$common.dispersion &lt;- <span class="hljs-number">0.1</span></span><br><span class="line"></span><br><span class="line">#差异基因分析</span><br><span class="line">#negative binomial generalized log-linear model #拟合</span><br><span class="line">fit &lt;- glmFit(dgelist_norm, design, robust = TRUE)     #拟合模型</span><br><span class="line">lrt &lt;- glmLRT(fit)   #统计检验</span><br><span class="line"></span><br><span class="line">#查看默认方法获得的差异基因</span><br><span class="line">dge_de &lt;- decideTestsDGE(lrt, adjust.method = <span class="hljs-string">'fdr'</span>, p.value = <span class="hljs-number">0.01</span>)  </span><br><span class="line">summary(dge_de)</span><br><span class="line"></span><br><span class="line"># 添加标签，区别up down no三种基因</span><br><span class="line">diff_stat &lt;- lrt$table</span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &gt;= <span class="hljs-number">2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'up'</span></span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &lt;= <span class="hljs-number">-2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'down'</span></span><br><span class="line">diff_stat[!(diff_stat$diff %<span class="hljs-keyword">in</span>% c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>)),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'no'</span></span><br><span class="line"></span><br><span class="line"># 查看并保存添加标签后的数据</span><br><span class="line">head(diff_stat,n=<span class="hljs-number">10</span>)</span><br><span class="line">write.csv(diff_stat,file = <span class="hljs-string">"edgeR.csv"</span>)</span><br><span class="line"></span><br><span class="line"># 做火山图</span><br><span class="line">ggplot(diff_stat, aes(x=logFC, y=-log10(diff_stat$PValue))) +</span><br><span class="line">geom_point(aes(color = diff), size = <span class="hljs-number">0.5</span>) +</span><br><span class="line">scale_colour_manual(limits = c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>, <span class="hljs-string">'no'</span>), values = c(<span class="hljs-string">'blue'</span>, <span class="hljs-string">'red'</span>, <span class="hljs-string">'gray40'</span>), labels = c(<span class="hljs-string">'Up OTUs'</span>, <span class="hljs-string">'Down OTUs'</span>, <span class="hljs-string">'No diff OTUs'</span>)) +</span><br><span class="line">labs(title=<span class="hljs-string">"Groups 13vs15"</span>,x = <span class="hljs-string">'log2 Fold Change'</span>, y = <span class="hljs-string">'-log10 p-value'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>成果示例：</p>
-<p><img src="/2019/12/05/Bioinformatics/edgeR基因差异分析/groups13vs15.png" alt="results-img"></p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/12/05/Bioinformatics/edgeR基因差异分析/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -256,7 +259,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    23 minutes membaca (Sekitar 3380 kata)
+                    23 minutes read (About 3380 words)
                 </span>
                 
                 
@@ -277,7 +280,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/01/Practical skills/latex-layout/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/12/01/Practical skills/latex-layout/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -309,7 +312,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes membaca (Sekitar 1003 kata)
+                    7 minutes read (About 1003 words)
                 </span>
                 
                 
@@ -329,7 +332,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/19/log/Latex-formula/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/19/log/Latex-formula/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -361,7 +364,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes membaca (Sekitar 261 kata)
+                    2 minutes read (About 261 words)
                 </span>
                 
                 
@@ -395,7 +398,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/18/Machinelearning/Machine-learning/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/18/Machinelearning/Machine-learning/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -427,7 +430,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes membaca (Sekitar 638 kata)
+                    4 minutes read (About 638 words)
                 </span>
                 
                 
@@ -450,7 +453,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/15/Mathematics/ANOVA/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/15/Mathematics/ANOVA/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -482,7 +485,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes membaca (Sekitar 541 kata)
+                    4 minutes read (About 541 words)
                 </span>
                 
                 
@@ -502,7 +505,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/09/Linux/pipe/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/09/Linux/pipe/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -540,7 +543,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes membaca (Sekitar 488 kata)
+                    3 minutes read (About 488 words)
                 </span>
                 
                 
@@ -560,7 +563,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/08/web/Electron/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/08/web/Electron/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -592,7 +595,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute membaca (Sekitar 179 kata)
+                    a minute read (About 179 words)
                 </span>
                 
                 
@@ -617,7 +620,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/07/Mathematics/linear-algebra/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/07/Mathematics/linear-algebra/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -649,7 +652,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes membaca (Sekitar 235 kata)
+                    2 minutes read (About 235 words)
                 </span>
                 
                 
@@ -671,7 +674,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/04/Mathematics/概率统计/#more">Selengkapnya</a>
+                <a class="button is-size-7 is-light" href="/2019/11/04/Mathematics/概率统计/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -692,10 +695,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Sebelumnya</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Berikutnya</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -750,7 +753,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         40
@@ -760,7 +763,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -770,7 +773,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         25
@@ -780,7 +783,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                IKUTI</a>
+                Follow</a>
         </div>
         
         
@@ -837,7 +840,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -930,7 +933,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Awan tag
+            Tag Cloud
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -941,7 +944,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tag
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1132,7 +1135,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -1238,7 +1241,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1328,7 +1331,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recent
         </h3>
         
         <article class="media">
@@ -1434,7 +1437,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1654,7 +1657,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1673,7 +1676,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1685,11 +1688,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
