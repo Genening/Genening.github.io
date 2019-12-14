@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-12-04T09:31:25.256Z">
+<meta property="og:updated_time" content="2019-12-12T02:05:41.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    26 minutes read (About 3836 words)
+                    26 minutes read (About 3948 words)
                 </span>
                 
                 
@@ -338,7 +338,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl –est_method RSEM –gene_trans_map none RSEM.isoforms.results</p>
 </blockquote>
-<p>结果如下(自动输出文件到当前目录)<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
+<h3 id="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行"><a href="#翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行" class="headerlink" title="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行"></a>翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行</h3><p>结果如下(自动输出文件到当前目录)<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
 <p>相关参数</p>
 <details><summary>展开查看</summary><pre>
 
@@ -360,8 +360,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <blockquote>
 <p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl –matrix rsem_outdir134/0.5-134RSEM.isoform.counts.matrix rsem_outdir531/0.5-531RSEM.isoform.counts.matrix  –method edgeR –output 13vs53-edgeR_results &amp;</p>
 </blockquote>
-<blockquote>
-</blockquote>
 <p>参数如下：</p>
 <details><summary>展开查看</summary><pre>
 
@@ -371,6 +369,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 命令如下：
 >trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl -t transcripts.fasta -m 100 -->
 
+<h2 id="补充-1"><a href="#补充-1" class="headerlink" title="补充"></a>补充</h2><blockquote>
+<p>根据得到的上下调基因的id提取出对应的序列，应用的脚本是fetchClusterSeqs.py</p>
+</blockquote>
+<p>命令如下：</p>
+<blockquote>
+<p>nohup python fetchClusterSeqs.py -i Trinity90.fasta -t upgenes.csv -o upgenes.fasta &amp;<br>nohup python fetchClusterSeqs.py -i Trinity90.fasta -t downgenes.csv -o downgenes.fasta &gt;nohup2.out 2&gt;&amp;1 &amp;</p>
+</blockquote>
 <h3 id="6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h3><blockquote>
 <p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta  # 这里输出的是一个排序好的文件，最长链排在最前面，需要使用awk提取一下才是真正的最长链</p>
 </blockquote>
@@ -489,17 +494,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        41
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -509,17 +514,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        27
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -576,7 +581,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -585,7 +590,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <span class="level-item">Bioinformatics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
@@ -669,9 +674,9 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -680,7 +685,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -734,6 +739,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/blast/">
+                        <span class="tag">blast</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/edgeR/">
                         <span class="tag">edgeR</span>
                         <span class="tag is-grey">1</span>
@@ -743,6 +755,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <div class="control">
                     <a class="tags has-addons" href="/tags/electron开发/">
                         <span class="tag">electron开发</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gene-anotation/">
+                        <span class="tag">gene anotation</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -871,8 +890,27 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/14/Bioinformatics/blast/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T01:42:14.000Z">2019-12-14</time></div>
+                    <a href="/2019/12/14/Bioinformatics/blast/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -950,25 +988,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/18/Machinelearning/Machine-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Machine-learning mind map">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T05:33:59.000Z">2019-11-18</time></div>
-                    <a href="/2019/11/18/Machinelearning/Machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Machine-learning mind map</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Machinelearning/">Machinelearning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -977,7 +996,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -987,7 +1006,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1067,8 +1086,27 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/14/Bioinformatics/blast/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T01:42:14.000Z">2019-12-14</time></div>
+                    <a href="/2019/12/14/Bioinformatics/blast/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1146,25 +1184,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/18/Machinelearning/Machine-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Machine-learning mind map">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T05:33:59.000Z">2019-11-18</time></div>
-                    <a href="/2019/11/18/Machinelearning/Machine-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Machine-learning mind map</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Machinelearning/">Machinelearning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1173,7 +1192,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1183,7 +1202,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1424,10 +1443,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
