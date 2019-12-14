@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1231 words)
+                    8 minutes read (About 1232 words)
                 </span>
                 
                 
@@ -162,6 +162,7 @@
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
 <h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-:|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
+<a id="more"></a>
 <p>现在在这个项目中，我们需要做的下一步是比对到nr数据库，nr数据库是一个蛋白质序列库，我们的序列是核酸序列，因此我们使用的是blastx program，即核酸比对到蛋白质。还有另外一个数据库——nt，这个数据库是一个核酸数据库，如果需要比对到核酸的话，就可以选择这个数据库进行比对。</p>
 <h2 id="2-blast使用"><a href="#2-blast使用" class="headerlink" title="2. blast使用"></a>2. blast使用</h2><p>如果是第一次使用blast，那么需要做一些前期的准备工作，不过这个准备工作是通用的，完成一次后，下一次可以直接使用，现在我们从准备工作开始做起。</p>
 <h3 id="2-1-下载安装blast"><a href="#2-1-下载安装blast" class="headerlink" title="2.1 下载安装blast"></a>2.1 下载安装blast</h3><p>可以进入官网寻找到下载地址<code>ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/</code>，点击网址进入选择合适的版本，download到自己的服务器或者本地中。</p>
