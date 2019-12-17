@@ -7,22 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>linux_shell杂谈 - Genening&#39;s blog</title>
+<title>Tag: shell_script - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="概述第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。 GNU与Linux在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统">
-<meta name="keywords" content="bash,linux shell">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux_shell杂谈">
-<meta property="og:url" content="https://genening.github.io/2019/12/09/Linux/linux-shell杂谈/index.html">
+    <meta name="description" content="nothing is everything">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Genening&#39;s blog">
+<meta property="og:url" content="https://genening.github.io/tags/shell-script/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="概述第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。 GNU与Linux在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统">
+<meta property="og:description" content="nothing is everything">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-12-09T10:52:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux_shell杂谈">
-<meta name="twitter:description" content="概述第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。 GNU与Linux在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统">
+<meta name="twitter:title" content="Genening&#39;s blog">
+<meta name="twitter:description" content="nothing is everything">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -130,12 +128,23 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">shell_script</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-09T10:52:08.000Z">2019-12-09</time>
+                <time class="level-item has-text-grey" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
@@ -145,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1289 words)
+                    12 minutes read (About 1775 words)
                 </span>
                 
                 
@@ -154,28 +163,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                linux_shell杂谈
+                <a class="has-link-black-ter" href="/2019/12/17/Linux/shell-script/">shell_script</a>
             
         </h1>
         <div class="content">
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。</p>
-<h2 id="GNU与Linux"><a href="#GNU与Linux" class="headerlink" title="GNU与Linux"></a>GNU与Linux</h2><p>在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统。这是为什么呢？这就得从上世纪90年代说起了。</p>
-<a id="more"></a>
-<p>在上世纪90年代，随着计算机技术的发展，计算机软件也日新月异，但是随之而来的是计算机软件的商业化浪潮，Microsoft就是这个浪潮上的领军企业，在这个浪潮中Microsoft的windows系统逐渐奠定了世界PC操作系统之王的地位。在这个时候，有这么一批人，他们不愿意看到商业化软件限制了大家灵活使用计算机的自由，因此，他们提出来一个计划，这就是自由软件计划，其中GNU就是一个集大成者。</p>
-<p>GNU工程的初心就是打造一个完全由自由软件组成的操作系统，GNU的名字全称是——GNU’s Not Unix。在GNU工程的计划里，这个操作系统包括了文件管理系统、内存管理系统、邮箱、游戏等方面，经过几年的工作，GNU工程完成了几乎所有除内核以外的其他软件的收集或编写，一个GNU系统即将诞生，但是在写操作内核的时候，GNU团队遇到了一定的困难，这个内核非常难写，但是与此同时，Linus写出来一个操作内核Linux，这个核心很符合GNU工程的需求，因此GNU工程的工程师们决定把Linux适配到GNU中。这个过程并不容易，但是经过大家的努力，最终还是完成了这个任务，GNU系统正式发布，由于Linux已经广为人知，因此在这个系统出来后，大家还是习惯性的称之为Linux操作系统，这也是个历史原因，导致现在大家也都称之为Linux操作系统，但是实际上，Linux只是GNU系统的内核，我们不会因为一个内核就把整个操作系统称之为LINUX，就像联想电脑不会因为用了Intel的CPU就叫做Intel电脑。不过对于普通大众来说，这已经不重要了，大家只是习惯性的称之为Linux系统，但是对于每一个学习计算机的人来说，把这个系统称为GNU/LINUX是对当初所有工程师的尊重，是对他们的致敬。现在的所有的Linux发行版，实际上是GNU/LINUX发行版，例如Ubuntu、CentOS、Debian等一系类发行版。所有这些发行版就像是不同的手机主题，本质上的核心及框架都是一样的，只是为了某些领域做了适应性的配置。</p>
-<h2 id="Linux与shell"><a href="#Linux与shell" class="headerlink" title="Linux与shell"></a>Linux与shell</h2><p>在一个操作系统中，操作内核是完成工作的基础，所有工作都必须经过核心来完成，所以我们要使用计算机完成特定的任务时，我们必须通过操作内核来完成。但是，内核是复杂而脆弱的，稍有不慎，就可能会导致系统崩溃，为了避免这个问题的出现，工程师们设计了一个和内核交互的窗口，通过这个窗口可以和内核通信，把我们的指令传递给内核，这个窗口就称之为shell。因为在整个操作系统中，这个窗口是在计算机核心外部的，就像是计算机的最外层，所以也就生动形象的称为Shell——外壳。<br><img src="/2019/12/09/Linux/linux-shell杂谈/model.png" alt="User-operating-model"></p>
-<h2 id="shell与bash"><a href="#shell与bash" class="headerlink" title="shell与bash"></a>shell与bash</h2><p>在Linux中，默认的一个通信窗口即shell是bash，但是其实，在Linux中有着很多的可以使用的shell，这也是在上世纪90年代到21世纪之初的时候，在计算机中爆发出来的大量的shell，当时可能盛行很多，其中比如有ksh、sh等。其实bash是sh的增强版，功能非常强大，所以要想真正的灵活使用操作系统，了解一个shell很重要。</p>
-<p>那么在Linux中，学习bash就是顺理成章的。接下来就是就是bash的基础学习。见下一篇！</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>bash是Linux默认的shell，shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。接下来就让我们学习一下bash以及shell script吧。</p>
+<h2 id="1-一个简单的shell-script"><a href="#1-一个简单的shell-script" class="headerlink" title="1. 一个简单的shell script"></a>1. 一个简单的shell script</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># author: Genening</span></span><br><span class="line"><span class="hljs-comment"># date: 2019/12/16</span></span><br><span class="line"><span class="hljs-comment"># version: 1.0</span></span><br><span class="line"><span class="hljs-comment"># describe: This is a shell script that help you to get the full information from the the original RSEM files by your interest_trans_id. This script need three parameter, Just follow the guidance.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">id=<span class="hljs-variable">$1</span></span><br><span class="line">target=<span class="hljs-variable">$2</span></span><br><span class="line">output=<span class="hljs-variable">$3</span></span><br><span class="line"></span><br><span class="line">cat <span class="hljs-variable">$&#123;id&#125;</span>|<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$output</span> == <span class="hljs-string">""</span> ];<span class="hljs-keyword">then</span></span><br><span class="line">        grep <span class="hljs-variable">$&#123;line&#125;</span> <span class="hljs-variable">$&#123;target&#125;</span> &gt;&gt; output.txt</span><br><span class="line"><span class="hljs-keyword">else</span></span><br><span class="line">        grep <span class="hljs-variable">$&#123;line&#125;</span> <span class="hljs-variable">$&#123;target&#125;</span> &gt;&gt; <span class="hljs-variable">$&#123;output&#125;</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"Your file is successfully extract from the target file!"</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/bash/">bash</a>, <a class="has-link-grey -link" href="/tags/linux-shell/">linux shell</a>
-                </div>
-            </div>
+<p>上面是一个简单的shell script，用于通过id从另一个文件中提取出这些id及其完整信息，这在我做转录组分析的过程中是很重要的一个工具，而且效率还行。现在我们来分析一下这个脚本。</p>
+<p>首先，我们可以看到的是，整个脚本大体分为两个部分。第一部分是上面的注释，<code>#!/bin/bash</code>这一行不是注释，而是声明，声明这个shell是采用bash这个shell来运行的，这一行很重要，这是脚本能够运行的基础，其余的几行就是注释了，这是一种个人习惯，记录一下相关信息，这个倒不一定一定要有，只不过有这个会比较规范，在后期如果需要重写或者其他人使用你的脚本的时候能够更明确，这里一般会记录作者、日期、版本、描述，还可以加上使用的环境变量、系统语系，这些都是挺重要的信息，如果能记上会更好。</p>
+<p>接下来我们来看第二部分。第二部分就是脚本的正文了，在这里就有点类似我们普通的编程了，但是这里写的可以直接运行的命令，这个脚本不用经过编译就可以执行，这也是shell script和一般编程的最大区别，这个更像是以前的批处理命令，不过shell script又有更强大的一点，那就是shell script提供了循环、判断、选择、数组等这些结构供我们使用，让我们能够编辑出功能更为复杂的script来实现我们的功能。在上面的这个脚本中，首先是我们通过$1 $2 $3这3个指令获取到了从命令行里输入的3个参数，然后分别赋给了3个变量。接下来我们进入逻辑处理部分，在这部分里我们首先通过cat命令按行读取文件输出到标准输出，再使用管道符把这些行输出变成行输入进入while循环，通过read把输入赋给line这个变量，这样我们就可以按行处理文件了。再紧接着我们采用了一个判断语句，判断有没有“输出文件名”这个输入，如果是空那就执行第一个grep匹配命令，数据流重定向追加写入到output.txt这个文件中，如果不是空，那就执行第二个grep匹配命令，数据重定向到用户指定的文件名中，最后工作完成后就打印输出”Your file is successfully extract from the target file!”，提示用户任务完成。</p>
+<p>通过这个简单的例子我们就可以一窥shell script的全貌了，一个shell script需要具备的有以下几部分：</p>
+<ol>
+<li>#!/bin/bash shell的声明，保证shell的正常运行</li>
+<li>相关必要的注释，保证用户方便使用，注释信息可以包括作者、日期、版本、联系方式、描述、环境变量、系统语系等信息</li>
+<li>用户变量输入或变量定义</li>
+<li>逻辑结构，包括循环、条件判断、选择等逻辑关系</li>
+<li>处理语句，这里是使用Linux中可以直接使用的命令来完成</li>
+</ol>
+<p>上面列举的几部分就是一个shell script应该有的基本框架了，在刚开始学习的时候就要养成良好的编程习惯，虽然这算不上真正的编程语言，但是也要像其他编程一样，规范写代码，追求高效简约。</p>
+<h2 id="2-创建一个shell-script"><a href="#2-创建一个shell-script" class="headerlink" title="2. 创建一个shell script"></a>2. 创建一个shell script</h2><p>在Linux环境中创建一个shell script是很简单的，就是新建一个文件，命名以.sh结尾即可。（<em>其实在Linux中后缀不是很必要的一个东西，因为运行的软件一般都是你使用的指令，但是这个后缀只是为了让你自己更加好分别这个文件的性质，所以一般还是写上，但是不写也不会影响脚本的运行，但是在windows中这个后缀就很重要了，因为Windows中用户一般都不是特别了解自己的电脑，电脑是通过后缀自动选择默认运行的软件的，所以没有后缀在Windows中是不能直接运行的。</em>），创建的指令是<code>touch name.sh</code>，新建完了后，就可以进入文件进行编辑了，在Linux中有自带的文本编辑软件vim、vi，一般使用vim就可以了，这个对于编程会更加友好，因为这个编辑器会根据编程内容采用不同颜色标注，方便我们的编写、阅读。命令是<code>vim name.sh</code>，接下来就是编写部分了。</p>
+<h2 id="3-变量"><a href="#3-变量" class="headerlink" title="3. 变量"></a>3. 变量</h2><h2 id="4-逻辑结构"><a href="#4-逻辑结构" class="headerlink" title="4. 逻辑结构"></a>4. 逻辑结构</h2><h2 id="5-调用bash命令"><a href="#5-调用bash命令" class="headerlink" title="5. 调用bash命令"></a>5. 调用bash命令</h2><h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>在这里介绍一个有趣的shell script</p>
+<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">conda () </span><br><span class="line">&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$#</span>"</span> -lt 1 ]; then</span><br><span class="line">        <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        \local <span class="hljs-attribute">cmd</span>=<span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>;</span><br><span class="line">        shift;</span><br><span class="line">        case <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-keyword">in</span> </span><br><span class="line">            activate | deactivate)</span><br><span class="line">                __conda_activate <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span></span><br><span class="line">            ;;</span><br><span class="line">            install | update |<span class="hljs-built_in"> upgrade </span>| <span class="hljs-builtin-name">remove</span> | uninstall)</span><br><span class="line">                <span class="hljs-attribute">OLDPATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;PATH&#125;</span>"</span>;</span><br><span class="line">                __add_sys_prefix_to_path;</span><br><span class="line">                <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span> <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span>;</span><br><span class="line">                \local <span class="hljs-attribute">t1</span>=$?;</span><br><span class="line">                <span class="hljs-attribute">PATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;OLDPATH&#125;</span>"</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$t1</span> = 0 ]; then</span><br><span class="line">                    __conda_reactivate;</span><br><span class="line">                <span class="hljs-keyword">else</span></span><br><span class="line">                    return <span class="hljs-variable">$t1</span>;</span><br><span class="line">                fi</span><br><span class="line">            ;;</span><br><span class="line">            *)</span><br><span class="line">                <span class="hljs-attribute">OLDPATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;PATH&#125;</span>"</span>;</span><br><span class="line">                __add_sys_prefix_to_path;</span><br><span class="line">                <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span> <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span>;</span><br><span class="line">                \local <span class="hljs-attribute">t1</span>=$?;</span><br><span class="line">                <span class="hljs-attribute">PATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;OLDPATH&#125;</span>"</span>;</span><br><span class="line">                return <span class="hljs-variable">$t1</span></span><br><span class="line">            ;;</span><br><span class="line">        esac;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仔细阅读以下这个shell script的代码，应该不难发现，这个就是我们现在常用的conda的命令运行的脚本了，平常我们使用conda进行install/upgrade/update/uninstall的时候，调用的应该就是这个脚本，现在我们能一窥conda的内部运行脚本，是不是非常cool，另外这些信息是通过<code>set</code>这个命令展示出来的。anyway，好好学习，天天向上！</p>
+
         </div>
         
         
@@ -187,26 +199,7 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/14/Bioinformatics/blast/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">blast</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/05/Bioinformatics/edgeR基因差异分析/">
-                <span class="level-item">edgeR基因差异分析</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
+
 
 
 </div>

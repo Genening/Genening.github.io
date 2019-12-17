@@ -19,7 +19,7 @@
 <meta property="og:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity_tb.jpg">
-<meta property="og:updated_time" content="2019-12-12T02:05:41.618Z">
+<meta property="og:updated_time" content="2019-12-15T10:49:15.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组实战case_1">
 <meta name="twitter:description" content="这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    26 minutes read (About 3948 words)
+                    28 minutes read (About 4163 words)
                 </span>
                 
                 
@@ -334,11 +334,12 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir134 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed &gt;nohup134.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <p>输出文件如下<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/abundance_RSEM.jpg" alt="abundance_RSEM"></p>
+<h2 id="4-1-根据表达量（如FPKM）筛选"><a href="#4-1-根据表达量（如FPKM）筛选" class="headerlink" title="4.1 根据表达量（如FPKM）筛选"></a>4.1 根据表达量（如FPKM）筛选</h2><p>将RSEM的结果中的FPKM提取出来组成新矩阵，根据平均值大于0.5的标准筛选出表达量高的转录本，在筛选完后，要根据这些高表达的转录本的id回到原来的RSEM结果文件中把这些转录本的信息提取出来，这里可以使用如下指令<code>cat trans_id |while read line;do grep $line ../glue5-trinity_out_dir/Trinity-corset.fasta &gt;&gt; transcripts;done</code>，这个指令可以按行读取trans_id中的id，然后在Trinity-corset.fasta文件中搜索这个id，再将结果追加写入transcript文件中，好处是使用Linux自带的命令工具，效率比较高。</p>
 <h2 id="5-生成数量矩阵-abundance-estimates-to-matrix-pl"><a href="#5-生成数量矩阵-abundance-estimates-to-matrix-pl" class="headerlink" title="5. 生成数量矩阵  abundance_estimates_to_matrix.pl"></a>5. 生成数量矩阵  abundance_estimates_to_matrix.pl</h2><p>命令如下：</p>
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl –est_method RSEM –gene_trans_map none RSEM.isoforms.results</p>
 </blockquote>
-<h3 id="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行"><a href="#翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行" class="headerlink" title="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行"></a>翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行</h3><p>结果如下(自动输出文件到当前目录)<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
+<h3 id="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上"><a href="#翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上" class="headerlink" title="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上"></a>翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上</h3><p>结果如下(自动输出文件到当前目录)<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
 <p>相关参数</p>
 <details><summary>展开查看</summary><pre>
 
@@ -494,17 +495,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        41
+                        43
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -514,17 +515,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -581,7 +582,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -598,7 +599,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <span class="level-item">Linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Machinelearning/">
@@ -674,9 +675,9 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 15px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -685,7 +686,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -734,7 +735,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <div class="control">
                     <a class="tags has-addons" href="/tags/bash/">
                         <span class="tag">bash</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -804,6 +805,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <div class="control">
                     <a class="tags has-addons" href="/tags/seaborn-visualization/">
                         <span class="tag">seaborn-visualization</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell-script/">
+                        <span class="tag">shell_script</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -890,8 +898,46 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/bash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -950,44 +996,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/01/Practical skills/latex-layout/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="latex_layout">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:21:17.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/Practical skills/latex-layout/" class="title has-link-black-ter is-size-6 has-text-weight-normal">latex_layout</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/19/log/Latex-formula/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Latex-formula">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:06:24.000Z">2019-11-19</time></div>
-                    <a href="/2019/11/19/log/Latex-formula/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Latex-formula</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/log/">log</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -996,7 +1004,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1006,7 +1014,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1086,8 +1094,46 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/bash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1146,44 +1192,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/01/Practical skills/latex-layout/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="latex_layout">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:21:17.000Z">2019-12-01</time></div>
-                    <a href="/2019/12/01/Practical skills/latex-layout/" class="title has-link-black-ter is-size-6 has-text-weight-normal">latex_layout</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/19/log/Latex-formula/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Latex-formula">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T14:06:24.000Z">2019-11-19</time></div>
-                    <a href="/2019/11/19/log/Latex-formula/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Latex-formula</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/log/">log</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1192,7 +1200,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1202,7 +1210,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1443,10 +1451,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
