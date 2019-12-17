@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1843 words)
+                    18 minutes membaca (Sekitar 2736 kata)
                 </span>
                 
                 
@@ -175,7 +175,41 @@
 </ol>
 <p>上面列举的几部分就是一个shell script应该有的基本框架了，在刚开始学习的时候就要养成良好的编程习惯，虽然这算不上真正的编程语言，但是也要像其他编程一样，规范写代码，追求高效简约。</p>
 <h2 id="2-创建一个shell-script"><a href="#2-创建一个shell-script" class="headerlink" title="2. 创建一个shell script"></a>2. 创建一个shell script</h2><p>在Linux环境中创建一个shell script是很简单的，就是新建一个文件，命名以.sh结尾即可。（<em>其实在Linux中后缀不是很必要的一个东西，因为运行的软件一般都是你使用的指令，但是这个后缀只是为了让你自己更加好分别这个文件的性质，所以一般还是写上，但是不写也不会影响脚本的运行，但是在windows中这个后缀就很重要了，因为Windows中用户一般都不是特别了解自己的电脑，电脑是通过后缀自动选择默认运行的软件的，所以没有后缀在Windows中是不能直接运行的。</em>），创建的指令是<code>touch name.sh</code>，新建完了后，就可以进入文件进行编辑了，在Linux中有自带的文本编辑软件vim、vi，一般使用vim就可以了，这个对于编程会更加友好，因为这个编辑器会根据编程内容采用不同颜色标注，方便我们的编写、阅读。命令是<code>vim name.sh</code>，接下来就是编写部分了。</p>
-<h2 id="3-变量"><a href="#3-变量" class="headerlink" title="3. 变量"></a>3. 变量</h2><h2 id="4-逻辑结构"><a href="#4-逻辑结构" class="headerlink" title="4. 逻辑结构"></a>4. 逻辑结构</h2><h2 id="5-调用bash命令"><a href="#5-调用bash命令" class="headerlink" title="5. 调用bash命令"></a>5. 调用bash命令</h2><h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>在这里介绍一个有趣的shell script</p>
+<h2 id="3-变量"><a href="#3-变量" class="headerlink" title="3. 变量"></a>3. 变量</h2><p>在shell script中有默认的变量，比如$0、$1、$2….等等，这里分别对应的是如下的关系：<br><img src="/2019/12/17/Linux/shell-script/var.jpg" alt="variable"><br>这意味着，我们可以通过这些变量名从命令行里获得参数，分别可以按照位置获得。</p>
+<h2 id="4-逻辑结构"><a href="#4-逻辑结构" class="headerlink" title="4. 逻辑结构"></a>4. 逻辑结构</h2><h3 id="4-1-条件判断"><a href="#4-1-条件判断" class="headerlink" title="4.1 条件判断"></a>4.1 条件判断</h3><p>这里有基础语法和高级语法使用，如下：</p>
+<figure class="highlight livecodeserver hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 基本语法</span></span><br><span class="line"><span class="hljs-keyword">if</span> [条件判断];<span class="hljs-keyword">then</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 两判断</span></span><br><span class="line"><span class="hljs-keyword">if</span> [条件判断];<span class="hljs-keyword">then</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line"><span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 多判断</span></span><br><span class="line"><span class="hljs-keyword">if</span> [条件判断];<span class="hljs-keyword">then</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">elseif [条件判断];<span class="hljs-keyword">then</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line"><span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>其中多判断是可以一直扩展的，但是一直扩展下去，这个就有点太繁杂了，很是麻烦，所以还有下面这种多判断的方式：</p>
+<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">case <span class="hljs-variable">$variable</span> <span class="hljs-keyword">in</span></span><br><span class="line">    var1)</span><br><span class="line">        command</span><br><span class="line">    ;;</span><br><span class="line">    var2)</span><br><span class="line">        command</span><br><span class="line">    ;;</span><br><span class="line">    var3)</span><br><span class="line">        command</span><br><span class="line">    ;;</span><br><span class="line">    var4)</span><br><span class="line">        command</span><br><span class="line">    ;;</span><br><span class="line">    *) <span class="hljs-comment">#这里表示其他所有值</span></span><br><span class="line">        <span class="hljs-keyword">exit</span> <span class="hljs-number">1</span></span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p>此处可以套娃，只要你有需要，这里的case可以一直写。另外，这里有意思的是，shell script里面表示一个判断逻辑结束的方式是把单词倒过来写。</p>
+<h3 id="4-2-function"><a href="#4-2-function" class="headerlink" title="4.2 function"></a>4.2 function</h3><p>这里的function是利用了复用的思想设计的，在我们编写shell script的过程中，因为有可能有些部分要重复写，当写的太多了的时候，一个是非常烦扰，另一个是代码会变得非常的冗长，所以这里可以采用编写成function的方法，编写在script开头，在接下来调用就可以了，格式如下：</p>
+<figure class="highlight livecodeserver hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func_name</span>()&#123;</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来只要调用func_name就可以了，这个格式倒是和c以及JavaScript的function有点像，anyway，应该还是挺好用的。</p>
+<h3 id="4-3-循环"><a href="#4-3-循环" class="headerlink" title="4.3 循环"></a>4.3 循环</h3><p>这里的循环也是分为不定循环和固定循环，有几种写法，如下：</p>
+<figure class="highlight livecodeserver hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 不定循环1</span></span><br><span class="line"><span class="hljs-keyword">while</span> [condition]</span><br><span class="line"><span class="hljs-built_in">do</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 不定循环2</span></span><br><span class="line"><span class="hljs-keyword">until</span> [condition]</span><br><span class="line"><span class="hljs-built_in">do</span> </span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 固定循环1</span></span><br><span class="line"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> con1 con2 con3...</span><br><span class="line"><span class="hljs-built_in">do</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 固定循环2</span></span><br><span class="line"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> $(seq <span class="hljs-number">1</span> n) <span class="hljs-comment">#这里seq是sequence，指1到n的整数序列</span></span><br><span class="line"><span class="hljs-built_in">do</span></span><br><span class="line">    <span class="hljs-keyword">command</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-语法纠错"><a href="#4-4-语法纠错" class="headerlink" title="4.4 语法纠错"></a>4.4 语法纠错</h3><p>一种不运行script就可以检查语法的方法，这个应该可以挺实用的，虽然我没有用过，如下：<br><img src="/2019/12/17/Linux/shell-script/grammar.jpg" alt="grammar"></p>
+<h2 id="5-调用bash命令"><a href="#5-调用bash命令" class="headerlink" title="5. 调用bash命令"></a>5. 调用bash命令</h2><p>这一部分是shell script里面最cool的地方了，那就是常用的bash工具可以直接使用，比如我们的文本三大件——grep、sed、awk，这个用起来相当的酸爽，还有cat、wc、|这些都可以直接使用，这个简直太棒了，这样子就可以强强联手极大提高工作效率了，下面列举一些常用的bash的工具</p>
+<ul>
+<li>grep——查询、搜索匹配</li>
+<li>sed——插入、删除、替换</li>
+<li>awk——提取整列、合并文件</li>
+<li>wc——统计数量</li>
+<li>cat——按行查看文件</li>
+<li>ls——按行列举目录下文件</li>
+<li>sort——排序</li>
+<li>uniq——统计、去重</li>
+<li>join——合并文件中相同部分的行，可选左、右、全连接3种连接方式</li>
+<li>paste——合并文件</li>
+<li>split——拆分文件</li>
+<li>expand——把文件中的tab转换成空格，unexpand把空格转换成tab</li>
+<li>tee——把标准输出写入批量文件</li>
+<li>tr——查询然后全局替换，有点像Word中的替换功能</li>
+<li>col——将说明文本转化为纯文本，方便阅读(eg. man col|col -b&gt; file)</li>
+</ul>
+<h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>在这里介绍一个有趣的shell script</p>
 <figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">conda () </span><br><span class="line">&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$#</span>"</span> -lt 1 ]; then</span><br><span class="line">        <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        \local <span class="hljs-attribute">cmd</span>=<span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>;</span><br><span class="line">        shift;</span><br><span class="line">        case <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-keyword">in</span> </span><br><span class="line">            activate | deactivate)</span><br><span class="line">                __conda_activate <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span></span><br><span class="line">            ;;</span><br><span class="line">            install | update |<span class="hljs-built_in"> upgrade </span>| <span class="hljs-builtin-name">remove</span> | uninstall)</span><br><span class="line">                <span class="hljs-attribute">OLDPATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;PATH&#125;</span>"</span>;</span><br><span class="line">                __add_sys_prefix_to_path;</span><br><span class="line">                <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span> <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span>;</span><br><span class="line">                \local <span class="hljs-attribute">t1</span>=$?;</span><br><span class="line">                <span class="hljs-attribute">PATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;OLDPATH&#125;</span>"</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$t1</span> = 0 ]; then</span><br><span class="line">                    __conda_reactivate;</span><br><span class="line">                <span class="hljs-keyword">else</span></span><br><span class="line">                    return <span class="hljs-variable">$t1</span>;</span><br><span class="line">                fi</span><br><span class="line">            ;;</span><br><span class="line">            *)</span><br><span class="line">                <span class="hljs-attribute">OLDPATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;PATH&#125;</span>"</span>;</span><br><span class="line">                __add_sys_prefix_to_path;</span><br><span class="line">                <span class="hljs-string">"<span class="hljs-variable">$CONDA_EXE</span>"</span> <span class="hljs-variable">$_CE_M</span> <span class="hljs-variable">$_CE_CONDA</span> <span class="hljs-string">"<span class="hljs-variable">$cmd</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$@</span>"</span>;</span><br><span class="line">                \local <span class="hljs-attribute">t1</span>=$?;</span><br><span class="line">                <span class="hljs-attribute">PATH</span>=<span class="hljs-string">"<span class="hljs-variable">$&#123;OLDPATH&#125;</span>"</span>;</span><br><span class="line">                return <span class="hljs-variable">$t1</span></span><br><span class="line">            ;;</span><br><span class="line">        esac;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>仔细阅读以下这个shell script的代码，应该不难发现，这个就是我们现在常用的conda的命令运行的脚本了，平常我们使用conda进行install/upgrade/update/uninstall的时候，调用的应该就是这个脚本，现在我们能一窥conda的内部运行脚本，是不是非常cool，另外这些信息是通过<code>set</code>这个命令展示出来的。anyway，好好学习，天天向上！</p>
@@ -255,7 +289,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <p class="title has-text-weight-normal">
                         43
@@ -265,7 +299,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -275,7 +309,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
                         28
@@ -285,7 +319,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -342,7 +376,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -435,7 +469,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Awan tag
         </h3>
         <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -446,7 +480,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -658,7 +692,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -764,7 +798,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -854,7 +888,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -960,7 +994,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1180,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1199,7 +1233,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1211,11 +1245,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };
