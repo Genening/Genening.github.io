@@ -10,19 +10,19 @@
 <title>shell_script - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言bash是Linux默认的shell，shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。接下来就让我们学习一下">
-<meta name="keywords" content="bash,shell_script">
+    <meta name="description" content="前言shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我">
+<meta name="keywords" content="shell_script">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell_script">
 <meta property="og:url" content="https://genening.github.io/2019/12/17/Linux/shell-script/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言bash是Linux默认的shell，shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。接下来就让我们学习一下">
+<meta property="og:description" content="前言shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-12-17T09:41:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell_script">
-<meta name="twitter:description" content="前言bash是Linux默认的shell，shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。接下来就让我们学习一下">
+<meta name="twitter:description" content="前言shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1775 words)
+                    12 minutes read (About 1843 words)
                 </span>
                 
                 
@@ -158,7 +158,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>bash是Linux默认的shell，shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。接下来就让我们学习一下bash以及shell script吧。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我可以直接在脚本里使用我在命令行里使用的工具，就像是把所有指令写到一起，但是又能够采用编程的方式进行组织，工作效率plus，接下来就让我们学习一下shell script吧。</p>
+<a id="more"></a>
 <h2 id="1-一个简单的shell-script"><a href="#1-一个简单的shell-script" class="headerlink" title="1. 一个简单的shell script"></a>1. 一个简单的shell script</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#!/bin/bash</span></span><br><span class="line"><span class="hljs-comment"># author: Genening</span></span><br><span class="line"><span class="hljs-comment"># date: 2019/12/16</span></span><br><span class="line"><span class="hljs-comment"># version: 1.0</span></span><br><span class="line"><span class="hljs-comment"># describe: This is a shell script that help you to get the full information from the the original RSEM files by your interest_trans_id. This script need three parameter, Just follow the guidance.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">id=<span class="hljs-variable">$1</span></span><br><span class="line">target=<span class="hljs-variable">$2</span></span><br><span class="line">output=<span class="hljs-variable">$3</span></span><br><span class="line"></span><br><span class="line">cat <span class="hljs-variable">$&#123;id&#125;</span>|<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line</span><br><span class="line"><span class="hljs-keyword">do</span></span><br><span class="line"><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$output</span> == <span class="hljs-string">""</span> ];<span class="hljs-keyword">then</span></span><br><span class="line">        grep <span class="hljs-variable">$&#123;line&#125;</span> <span class="hljs-variable">$&#123;target&#125;</span> &gt;&gt; output.txt</span><br><span class="line"><span class="hljs-keyword">else</span></span><br><span class="line">        grep <span class="hljs-variable">$&#123;line&#125;</span> <span class="hljs-variable">$&#123;target&#125;</span> &gt;&gt; <span class="hljs-variable">$&#123;output&#125;</span></span><br><span class="line"><span class="hljs-keyword">fi</span></span><br><span class="line"><span class="hljs-keyword">done</span></span><br><span class="line"><span class="hljs-built_in">echo</span> <span class="hljs-string">"Your file is successfully extract from the target file!"</span></span><br></pre></td></tr></table></figure>
 
 <p>上面是一个简单的shell script，用于通过id从另一个文件中提取出这些id及其完整信息，这在我做转录组分析的过程中是很重要的一个工具，而且效率还行。现在我们来分析一下这个脚本。</p>
@@ -185,7 +186,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/bash/">bash</a>, <a class="has-link-grey -link" href="/tags/shell-script/">shell_script</a>
+                    <a class="has-link-grey -link" href="/tags/shell-script/">shell_script</a>
                 </div>
             </div>
         </div>
@@ -436,7 +437,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 15px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 15px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -494,7 +495,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/bash/">
                         <span class="tag">bash</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
