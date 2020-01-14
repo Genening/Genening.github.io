@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1302 words)
+                    9 minutes read (About 1394 words)
                 </span>
                 
                 
@@ -223,6 +223,18 @@
 </blockquote>
 <blockquote>
 <p>nohup blastx -query ../down1.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out down1-blastx &gt;dlog1.out 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup blastx -query ../gene_data/53vsX-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 53vsXdown-blastx &gt;dlog_53.out 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup blastx -query ../gene_data/53vsX-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 53vsXup-blastx &gt;ulog_53.out 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup blastx -query ../gene_data/54vsY-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 54vsYdown-blastx &gt;dlog_54.out 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup blastx -query ../gene_data/54vsY-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 54vsYup-blastx &gt;ulog_54.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <p>参数解释：<br>|options|explain|<br>|:—-|:—-|<br>|-query|序列，需要比对的序列文件，fasta格式|<br>|-db|database，在上一步中构建时取得名字，常用为nr、nt两个数据库|<br>|-outfmt|选择比对输出的类型，有0-14可以选，5是xml文件输出，方便blast2go的进行|<br>|-out|输出文件|<br>|-num_threads|线程数量，即使用逻辑CPU的数量，可以加快速度|<br>注：还有其他的一些参数，可以进一步查询blast官网文档</p>
 <p><img src="/2019/12/14/Bioinformatics/blast/moptions.png" alt="-moptions"></p>
@@ -1133,7 +1145,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 Genening&nbsp;
+                &copy; 2020 Genening&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
