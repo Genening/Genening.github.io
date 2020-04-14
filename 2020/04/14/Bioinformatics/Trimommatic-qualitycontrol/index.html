@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html  lang="Ch">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Trimommatic_qualitycontrol - Genening&#39;s blog</title>
+
+
+    <meta name="description" content="1. 前言质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为">
+<meta name="keywords" content="Quality Controling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Trimommatic_qualitycontrol">
+<meta property="og:url" content="https://genening.github.io/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/index.html">
+<meta property="og:site_name" content="Genening&#39;s blog">
+<meta property="og:description" content="1. 前言质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://genening.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-14T00:43:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trimommatic_qualitycontrol">
+<meta name="twitter:description" content="1. 前言质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为">
+<meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                NOTHING IS EVERYTHING
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 minutes read (About 1911 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Trimommatic_qualitycontrol
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。</p>
+<blockquote>
+<p>二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
+</blockquote>
+<h2 id="2-二代测序一般质控步骤"><a href="#2-二代测序一般质控步骤" class="headerlink" title="2. 二代测序一般质控步骤"></a>2. 二代测序一般质控步骤</h2><ol>
+<li><p>切除尾端碱基质量小于指定值（一般为20）的碱基。可以简单的单碱基修剪，也即从末端开始进行删除，直到读取碱基质量高于20；也可以进行滑窗修剪，也即从末端开始以指定碱基数目的滑窗开始修剪，直到滑窗内碱基平均质量高于20。</p>
+</li>
+<li><p>去除末端修剪后长度小于指定值的reads。不同项目指定值不同，一般宏基因组去掉小于50bp的reads（50bp已不够产生k-mer），而扩增子测序则根据raw reads长度和PCR插入片段的长度来确定，例如V4区大概260bp，那么可以去掉双末端reads之和小于280bp的（否则不足以拼接）。</p>
+</li>
+<li><p>其他一些要求，例如去除含有N（即无法读取位点）过多的reads、去除完全重复的reads等。</p>
+</li>
+</ol>
+<h2 id="3-trimmomatic介绍"><a href="#3-trimmomatic介绍" class="headerlink" title="3. trimmomatic介绍"></a>3. trimmomatic介绍</h2><p>trimmomatic是一款用来处理illumina测序数据的工具，可以是单条的single reads，也可以是成对的pairend reads。支持压缩格式数据。功能和其他数据处理的程序都差不多，主要包括，</p>
+<ol>
+<li>去除adapter序列以及测序中其他特殊序列；</li>
+<li>采用滑动窗口的方法，切除或者删除低质量碱基</li>
+<li>去除头部低质量以及N碱基过多的reads；</li>
+<li>去除尾部低质量以及N碱基过多的reads；</li>
+<li>截取固定长度的reads；</li>
+<li>丢掉小于一定长度的reads；</li>
+<li>Phred 质量值转换<blockquote>
+<p>Trimmomatic 发表的文章至今已被引用了 2810 次，是一个广受欢迎的 Illumina 平台数据过滤工具。其他平台的数据例如 Iron torrent ，PGM 测序数据可以用 fastx_toolkit 、NGSQC toolkit 来过滤。<br><br>Trimmomatic 支持多线程，处理数据速度快，主要用来去除 Illumina 平台的 Fastq 序列中的接头，并根据碱基质量值对 Fastq 进行修剪。软件有两种过滤模式，分别对应 SE 和 PE 测序数据，同时支持 gzip 和 bzip2 压缩文件。<br><br>另外也支持 phred-33 和 phred-64 格式互相转化，现在之所以会出现 phred-33 和 phred-64 格式的困惑，都是 Illumina 公司的锅（damn you, Illumina!），不过现在绝大部分 Illumina 平台的产出数据也都转为使用 phred-33 格式了。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="4-trimmomatic使用"><a href="#4-trimmomatic使用" class="headerlink" title="4. trimmomatic使用"></a>4. trimmomatic使用</h2><ol>
+<li>简单使用<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">java-jar</span> <span class="hljs-selector-tag">trimmomatic-0</span><span class="hljs-selector-class">.30</span><span class="hljs-selector-class">.jar</span> <span class="hljs-selector-tag">PE</span> <span class="hljs-selector-tag">-threads</span> 20 <span class="hljs-selector-tag">-phred33</span> <span class="hljs-selector-tag">R1</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">R2</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">clean</span><span class="hljs-selector-class">.R1</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">unpaired</span><span class="hljs-selector-class">.R1</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">clean</span><span class="hljs-selector-class">.R2</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">unpaired</span><span class="hljs-selector-class">.R2</span><span class="hljs-selector-class">.fq</span> <span class="hljs-selector-tag">ILLUMINACLIP</span><span class="hljs-selector-pseudo">:TruSeq3-PE.fa</span><span class="hljs-selector-pseudo">:2</span><span class="hljs-selector-pseudo">:30</span><span class="hljs-selector-pseudo">:10</span> <span class="hljs-selector-tag">LEADING</span><span class="hljs-selector-pseudo">:3</span> <span class="hljs-selector-tag">TRAILING</span><span class="hljs-selector-pseudo">:3</span> <span class="hljs-selector-tag">SLIDINGWINDOW</span><span class="hljs-selector-pseudo">:4</span><span class="hljs-selector-pseudo">:15</span> <span class="hljs-selector-tag">MINLEN</span><span class="hljs-selector-pseudo">:36</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>参数解释</strong><br>|参数|解释|<br>|:—-|:—-|<br>|PE|选择测序数据的类型，是单端（SE）还是双端（PE）|<br>|-threads|线程数量，并发计算，提高效率|<br>|-phred33|一种数据格式，illumina测序数据的格式，也有-phred64，可以不选|<br>|ILLUMINACLIP:TruSeq3-PE.fa:2:30:10|切除adapter序列。参数后面分别接adapter序列的fasta文件：允许的最大mismatch数：palindrome模式下匹配碱基数阈值：simple模式下的匹配碱基数阈值。|<br>|LEADING|切除首端质量不足n的碱基（n由自己设定）|<br>|TRAILING|切除尾端质量不足n的碱基（n由自己设定）|<br>|SLIDINGWINDOW:4:15|滑窗修剪，一个Windows的size是4个碱基，其平均碱基质量小于15，则切除。|<br>|MINLEN|最小reads长度，筛去过短序列|<br>|CROP: |保留reads到指定的长度|<br>|HEADCROP: |在reads的首端切除指定的长度|<br>|TOPHRED33 |将碱基质量转换为pred33格式|<br>|TOPHRED64 |将碱基质量转换为pred64格式|</p>
+<ol start="2">
+<li>实操<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> clean_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> unpaired_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> clean_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> unpaired_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>日志输出<br><img src="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/success.png" alt="success"></p>
+</li>
+<li><p>结果输出<br><img src="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/output_files.png" alt="results"></p>
+</li>
+<li><p>结果分析</p>
+<blockquote>
+<p>由上图可以看出，最终输出的是4个文件，两个大文件是质控之后clean的数据，而另外两个小文件是被clean out的data，两者组合起来就是原来的数据。</p>
+</blockquote>
+</li>
+</ul>
+<p><em>剩余数据记录</em></p>
+<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span> clean_b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> unpaired_b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> clean_b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span> unpaired_b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span>  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span>  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> clean_d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> unpaired_d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> clean_d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> unpaired_d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> clean_e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> unpaired_e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> clean_e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> unpaired_e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>Trimmomatic是一个专门的软件，用于进行质量控制，对于illumina的测序数据尤为有效。其实一般情况下我们是通过编程手动进行质控的，但是得益于广大生信开发工作者的努力，我们才有了这么方便的分析工具可以使用，让我们能够更加专注于生物数据的意义的分析，因此我们应该心怀感恩，和所有工作人员一起努力，为生物科学的发展贡献一份力量。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p><a href="https://bio.biocoder.cn/book/15/content/5/" target="_blank" rel="noopener">1. https://bio.biocoder.cn/book/15/content/5/</a></p>
+<p><a href="https://www.jianshu.com/p/21ad76e5577c" target="_blank" rel="noopener">2. https://www.jianshu.com/p/21ad76e5577c</a></p>
+<p><a href="http://www.360doc.com/content/18/0111/12/19913717_721031558.shtml" target="_blank" rel="noopener">3. http://www.360doc.com/content/18/0111/12/19913717_721031558.shtml</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Quality-Controling/">Quality Controling</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/31/Poetry with Life/面朝大海/">
+                <span class="level-item">面朝大海</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Genening">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Genening
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Nothing is everything
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>SYSU</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Articles
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        46
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Catégories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        32
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
+                SUIVRE</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/genening">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Bioinformatics/">
+            <span class="level-start">
+                <span class="level-item">Bioinformatics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Machinelearning/">
+            <span class="level-start">
+                <span class="level-item">Machinelearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Mathematics/">
+            <span class="level-start">
+                <span class="level-item">Mathematics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Poetry-with-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry with Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">18</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Practical-skills/">
+            <span class="level-start">
+                <span class="level-item">Practical skills</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/log/">
+            <span class="level-start">
+                <span class="level-item">log</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web/">
+            <span class="level-start">
+                <span class="level-item">web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机基础/">
+            <span class="level-start">
+                <span class="level-item">计算机基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GO/">
+                        <span class="tag">GO</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/KEGG/">
+                        <span class="tag">KEGG</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux文本操作/">
+                        <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux管道符/">
+                        <span class="tag">Linux管道符</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux软硬链接/">
+                        <span class="tag">Linux软硬链接</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Quality-Controling/">
+                        <span class="tag">Quality Controling</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/analysis-of-variance/">
+                        <span class="tag">analysis of variance</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/bash/">
+                        <span class="tag">bash</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast/">
+                        <span class="tag">blast</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast2go/">
+                        <span class="tag">blast2go</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/edgeR/">
+                        <span class="tag">edgeR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/electron开发/">
+                        <span class="tag">electron开发</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gene-anotation/">
+                        <span class="tag">gene anotation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js学习/">
+                        <span class="tag">js学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-for-mathematics-formula/">
+                        <span class="tag">latex for mathematics formula</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-layout/">
+                        <span class="tag">latex-layout</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux-shell/">
+                        <span class="tag">linux shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python基础/">
+                        <span class="tag">python基础</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/seaborn-visualization/">
+                        <span class="tag">seaborn-visualization</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell-script/">
+                        <span class="tag">shell_script</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/基因差异分析/">
+                        <span class="tag">基因差异分析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据可视化/">
+                        <span class="tag">数据可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构与算法/">
+                        <span class="tag">数据结构与算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/无参转录组实战/">
+                        <span class="tag">无参转录组实战</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习概览/">
+                        <span class="tag">机器学习概览</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率论与数理统计/">
+                        <span class="tag">概率论与数理统计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线性方程组/">
+                        <span class="tag">线性方程组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/转录组/">
+                        <span class="tag">转录组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
+                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/31/Poetry with Life/面朝大海/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="面朝大海">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:55:19.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/Poetry with Life/面朝大海/" class="title has-link-black-ter is-size-6 has-text-weight-normal">面朝大海</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
+                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/bash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
+                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/31/Poetry with Life/面朝大海/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="面朝大海">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:55:19.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/Poetry with Life/面朝大海/" class="title has-link-black-ter is-size-6 has-text-weight-normal">面朝大海</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
+                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/bash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    NOTHING IS EVERYTHING
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Genening&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div>
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    |  本站总访问量<span id="busuanzi_value_site_pv">次</span>
+                </span>
+                <span id="busuanzi_container_site_uv" class="theme-info">
+                    |  本站访客数<span id="busuanzi_value_site_uv">人次</span>
+                </span>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">script>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("Chinese");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
