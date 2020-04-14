@@ -191,7 +191,9 @@
 </ol>
 <p><strong>参数解释</strong><br>|参数|解释|<br>|:—-|:—-|<br>|PE|选择测序数据的类型，是单端（SE）还是双端（PE）|<br>|-threads|线程数量，并发计算，提高效率|<br>|-phred33|一种数据格式，illumina测序数据的格式，也有-phred64，可以不选|<br>|ILLUMINACLIP:TruSeq3-PE.fa:2:30:10|切除adapter序列。参数后面分别接adapter序列的fasta文件：允许的最大mismatch数：palindrome模式下匹配碱基数阈值：simple模式下的匹配碱基数阈值。|<br>|LEADING|切除首端质量不足n的碱基（n由自己设定）|<br>|TRAILING|切除尾端质量不足n的碱基（n由自己设定）|<br>|SLIDINGWINDOW:4:15|滑窗修剪，一个Windows的size是4个碱基，其平均碱基质量小于15，则切除。|<br>|MINLEN|最小reads长度，筛去过短序列|<br>|CROP: |保留reads到指定的长度|<br>|HEADCROP: |在reads的首端切除指定的长度|<br>|TOPHRED33 |将碱基质量转换为pred33格式|<br>|TOPHRED64 |将碱基质量转换为pred64格式|</p>
 <ol start="2">
-<li>实操<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> clean_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> unpaired_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_1<span class="hljs-selector-class">.fq</span> clean_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> unpaired_a-BR-<span class="hljs-number">1</span>_RRAS30349-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br></pre></td></tr></table></figure>
+<li>实操<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 a-BR-1_RRAS30349-V_1.fq a-BR-1_RRAS30349-V_2.fq clean_a-BR-1_RRAS30349-V_1.fq unpaired_a-BR-1_RRAS30349-V_1.fq clean_a-BR-1_RRAS30349-V_2.fq unpaired_a-BR-1_RRAS30349-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+</blockquote>
 </li>
 </ol>
 <ul>
@@ -206,8 +208,21 @@
 </li>
 </ul>
 <p><em>剩余数据记录</em></p>
-<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span> clean_b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> unpaired_b-BR_RRAS27375-V_1<span class="hljs-selector-class">.fq</span> clean_b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span> unpaired_b-BR_RRAS27375-V_2<span class="hljs-selector-class">.fq</span>  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span>  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span> &amp;</span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_1<span class="hljs-selector-class">.fq</span> clean_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> unpaired_c-BR-<span class="hljs-number">1</span>_RRAS30350-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> clean_d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> unpaired_d-BR_RRAS30433-V_1<span class="hljs-selector-class">.fq</span> clean_d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> unpaired_d-BR_RRAS30433-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br><span class="line"></span><br><span class="line">nohup java -jar /B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/trimmomatic-<span class="hljs-number">0.38</span><span class="hljs-selector-class">.jar</span> PE -threads <span class="hljs-number">40</span> e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> clean_e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> unpaired_e-BR_RRAS30435-V_1<span class="hljs-selector-class">.fq</span> clean_e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> unpaired_e-BR_RRAS30435-V_2<span class="hljs-selector-class">.fq</span> ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-<span class="hljs-number">0.38</span>/adapters/TruSeq3-PE<span class="hljs-selector-class">.fa</span>:<span class="hljs-number">2</span>:<span class="hljs-number">30</span>:<span class="hljs-number">10</span> LEADING:<span class="hljs-number">3</span> TRAILING:<span class="hljs-number">3</span> SLIDINGWINDOW:<span class="hljs-number">4</span>:<span class="hljs-number">15</span> MINLEN:<span class="hljs-number">50</span></span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 b-BR_RRAS27375-V_1.fq b-BR_RRAS27375-V_2.fq clean_b-BR_RRAS27375-V_1.fq unpaired_b-BR_RRAS27375-V_1.fq clean_b-BR_RRAS27375-V_2.fq unpaired_b-BR_RRAS27375-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+</blockquote>
+<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+</blockquote>
+<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 d-BR_RRAS30433-V_1.fq d-BR_RRAS30433-V_2.fq clean_d-BR_RRAS30433-V_1.fq unpaired_d-BR_RRAS30433-V_1.fq clean_d-BR_RRAS30433-V_2.fq unpaired_d-BR_RRAS30433-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+</blockquote>
+<blockquote>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 e-BR_RRAS30435-V_1.fq e-BR_RRAS30435-V_2.fq clean_e-BR_RRAS30435-V_1.fq unpaired_e-BR_RRAS30435-V_1.fq clean_e-BR_RRAS30435-V_2.fq unpaired_e-BR_RRAS30435-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+</blockquote>
 <h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>Trimmomatic是一个专门的软件，用于进行质量控制，对于illumina的测序数据尤为有效。其实一般情况下我们是通过编程手动进行质控的，但是得益于广大生信开发工作者的努力，我们才有了这么方便的分析工具可以使用，让我们能够更加专注于生物数据的意义的分析，因此我们应该心怀感恩，和所有工作人员一起努力，为生物科学的发展贡献一份力量。</p>
 <h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p><a href="https://bio.biocoder.cn/book/15/content/5/" target="_blank" rel="noopener">1. https://bio.biocoder.cn/book/15/content/5/</a></p>
 <p><a href="https://www.jianshu.com/p/21ad76e5577c" target="_blank" rel="noopener">2. https://www.jianshu.com/p/21ad76e5577c</a></p>
@@ -288,7 +303,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         46
@@ -298,7 +313,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -308,7 +323,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         32
@@ -318,7 +333,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -375,7 +390,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -468,7 +483,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -479,7 +494,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -719,7 +734,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -825,7 +840,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -937,7 +952,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -1043,7 +1058,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1316,10 +1331,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
