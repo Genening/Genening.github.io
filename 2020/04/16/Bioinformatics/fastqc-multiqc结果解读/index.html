@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2291 words)
+                    15 minutes read (About 2316 words)
                 </span>
                 
                 
@@ -166,13 +166,16 @@
 
 <h2 id="2-fastqc使用"><a href="#2-fastqc使用" class="headerlink" title="2. fastqc使用"></a>2. fastqc使用</h2><p>fastqc是用于统计评估测序数据质量的常用软件，使用命令如下：</p>
 <p><code>fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] [-c contaminant file] seqfile1 .. seqfileN</code></p>
+<blockquote>
+<p>nohup fastqc -o ./fastqc_70/ -f fastq clean_* &amp;</p>
+</blockquote>
 <p>参数解释：<br>|parameters|explanation|<br>|:—-|:—-|<br>|-o|output dir，选择输入结果的文件夹|<br>|-f|输入文件的格式，支持bam/sam/bam_mapped/sam_mapped/fastq|<br>|-h|帮助文档，查看参数和使用方式|</p>
 <blockquote>
 <p>还有很多参数未一一列出</p>
 </blockquote>
 <p>结果输出：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/fastqc_results.png" alt="fastqc_results"></p>
 <p>输出结果每组都有两个文件，一个是html，一个是zip文件。</p>
-<h2 id="3-multiqc使用"><a href="#3-multiqc使用" class="headerlink" title="3. multiqc使用"></a>3. multiqc使用</h2><p>命令如下：<br><code>multiqc /B313/Zjunlin/raw_data/fastqc_1/ -o /B313/Zjunlin/raw_data/multi_qcraw/</code></p>
+<h2 id="3-multiqc使用"><a href="#3-multiqc使用" class="headerlink" title="3. multiqc使用"></a>3. multiqc使用</h2><p>命令如下：<br><code>multiqc /B313/Zjunlin/raw_data/fastqc_70/ -o /B313/Zjunlin/raw_data/multi_qcraw/</code></p>
 <p>参数如下：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/options.png" alt="options"></p>
 <p>结果输出：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/multiqc_re.png" alt="multiqc_re"></p>
 <h2 id="4-multiqc结果解读"><a href="#4-multiqc结果解读" class="headerlink" title="4. multiqc结果解读"></a>4. multiqc结果解读</h2><blockquote>
@@ -243,6 +246,8 @@
 <p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-7.png" alt="4-7"></p>
 <h3 id="4-8-Sequence-Length-Distribution：序列样本长度的分布情况"><a href="#4-8-Sequence-Length-Distribution：序列样本长度的分布情况" class="headerlink" title="4.8. Sequence Length Distribution：序列样本长度的分布情况"></a>4.8. Sequence Length Distribution：序列样本长度的分布情况</h3><p><em>横坐标</em>——序列长度</p>
 <p><em>纵坐标</em>——数量</p>
+<p><em>reads长度不一致时</em>——warning</p>
+<p><em>reads有0长度时</em>——fail</p>
 <blockquote>
 <p>在这里可以看出测序的读长，也能够分析得出所有的小片段的长度分布情况，依据此我们可以判断测序效果的高低。在这里的结果呈现中，所有的结果都是在150bp，这也是二代测序的特点，测序的读长段，但是片段非常多，也就是通过将基因序列高度片段化分别同时测序，由此提高测序速度。</p>
 </blockquote>
@@ -344,7 +349,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         47
@@ -354,7 +359,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -364,7 +369,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         33
@@ -374,7 +379,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -431,7 +436,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -524,7 +529,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
@@ -535,7 +540,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -782,7 +787,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -888,7 +893,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1000,7 +1005,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1106,7 +1111,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1348,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1379,10 +1384,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
