@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html  lang="Ch">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>fastqc_multiqc结果解读 - Genening&#39;s blog</title>
+
+
+    <meta name="description" content="1. 前言在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。  为什">
+<meta name="keywords" content="质控可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fastqc_multiqc结果解读">
+<meta property="og:url" content="https://genening.github.io/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/index.html">
+<meta property="og:site_name" content="Genening&#39;s blog">
+<meta property="og:description" content="1. 前言在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。  为什">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://genening.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-16T06:51:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fastqc_multiqc结果解读">
+<meta name="twitter:description" content="1. 前言在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。  为什">
+<meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                NOTHING IS EVERYTHING
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 minutes read (About 2291 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                fastqc_multiqc结果解读
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。</p>
+<blockquote>
+<p>为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="2-fastqc使用"><a href="#2-fastqc使用" class="headerlink" title="2. fastqc使用"></a>2. fastqc使用</h2><p>fastqc是用于统计评估测序数据质量的常用软件，使用命令如下：</p>
+<p><code>fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] [-c contaminant file] seqfile1 .. seqfileN</code></p>
+<p>参数解释：<br>|parameters|explanation|<br>|:—-|:—-|<br>|-o|output dir，选择输入结果的文件夹|<br>|-f|输入文件的格式，支持bam/sam/bam_mapped/sam_mapped/fastq|<br>|-h|帮助文档，查看参数和使用方式|</p>
+<blockquote>
+<p>还有很多参数未一一列出</p>
+</blockquote>
+<p>结果输出：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/fastqc_results.png" alt="fastqc_results"></p>
+<p>输出结果每组都有两个文件，一个是html，一个是zip文件。</p>
+<h2 id="3-multiqc使用"><a href="#3-multiqc使用" class="headerlink" title="3. multiqc使用"></a>3. multiqc使用</h2><p>命令如下：<br><code>multiqc /B313/Zjunlin/raw_data/fastqc_1/ -o /B313/Zjunlin/raw_data/multi_qcraw/</code></p>
+<p>参数如下：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/options.png" alt="options"></p>
+<p>结果输出：<br><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/multiqc_re.png" alt="multiqc_re"></p>
+<h2 id="4-multiqc结果解读"><a href="#4-multiqc结果解读" class="headerlink" title="4. multiqc结果解读"></a>4. multiqc结果解读</h2><blockquote>
+<p>fastqc的结果解读参数与multiqc一致，所以解读一份就好了。</p>
+</blockquote>
+<h3 id="4-1-General-Statistics：所有样本数据基本情况统计"><a href="#4-1-General-Statistics：所有样本数据基本情况统计" class="headerlink" title="4.1. General Statistics：所有样本数据基本情况统计"></a>4.1. General Statistics：所有样本数据基本情况统计</h3><p><em>%Dups</em>——重复reads的比例</p>
+<p><em>%GC</em>——GC含量占总碱基的比例，比例越小越好</p>
+<p><em>Length</em>——测序长度</p>
+<p><em>M Seqs</em>——总测序量（单位：millions）</p>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-1.png" alt="4-1"></p>
+<h3 id="4-2-Sequence-Counts：序列数量统计"><a href="#4-2-Sequence-Counts：序列数量统计" class="headerlink" title="4.2. Sequence Counts：序列数量统计"></a>4.2. Sequence Counts：序列数量统计</h3><p><em>横坐标</em>——序列的数量</p>
+<p><em>纵坐标</em>——样本</p>
+<p><em>unique reads</em>——蓝色</p>
+<p><em>Duplicate reads</em>——黑色</p>
+<p><strong>由图可以看出测序中的一些重复水平，这个重复水平和测序深度以及序列本身的表达情况有关。</strong></p>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-2.png" alt="4-2"></p>
+<h3 id="4-3-Sequence-Quality-Histograms：每个read各位置碱基的平均测序质量"><a href="#4-3-Sequence-Quality-Histograms：每个read各位置碱基的平均测序质量" class="headerlink" title="4.3. Sequence Quality Histograms：每个read各位置碱基的平均测序质量"></a>4.3. Sequence Quality Histograms：每个read各位置碱基的平均测序质量</h3><p><em>横坐标</em>——碱基的位置</p>
+<p><em>纵坐标</em>——质量分数</p>
+<p><em>质量分数</em>=-10log10p（p代表错误率），所以当质量分数为40的时候，p就是0.0001。此时说明测序质量非常好。</p>
+<p><em>绿色区间</em>——质量很好；</p>
+<p><em>橙色区间</em>——质量合理；</p>
+<p><em>红色区间</em>——质量不好。</p>
+<blockquote>
+<p>可以看到在下面的图中，所有的样本的quality scores都在绿色区间，所以质量很好。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-3.png" alt="4-3"></p>
+<h3 id="4-4-Per-Sequence-Quality-Scores：具有平均质量分数的reads的数量"><a href="#4-4-Per-Sequence-Quality-Scores：具有平均质量分数的reads的数量" class="headerlink" title="4.4. Per Sequence Quality Scores：具有平均质量分数的reads的数量"></a>4.4. Per Sequence Quality Scores：具有平均质量分数的reads的数量</h3><p><em>横坐标</em>——平均序列质量分数</p>
+<p><em>纵坐标</em>——reads数</p>
+<p><em>绿色区间</em>——质量很好</p>
+<p><em>橙色区间</em>——质量合理</p>
+<p><em>红色区间</em>——质量不好</p>
+<p><em>当峰值小于27时</em>——warning</p>
+<p><em>当峰值小于20时</em>——fail</p>
+<blockquote>
+<p>由此图中可以看出低质量reads占整体reads的比例（估算各颜色区域曲线下面积）。如下图中，几乎所有数值都在绿色区间，所以质量非常好，但是如果存在50%的counts在红色区间，则表示测序结果很差，不可用。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-4.png" alt="4-4"></p>
+<h3 id="4-5-Per-Base-Sequence-Content：每个read各位置碱基ATCG的比列"><a href="#4-5-Per-Base-Sequence-Content：每个read各位置碱基ATCG的比列" class="headerlink" title="4.5. Per Base Sequence Content：每个read各位置碱基ATCG的比列"></a>4.5. Per Base Sequence Content：每个read各位置碱基ATCG的比列</h3><p>对所有reads的每一个位置，统计ATCG四种碱基的分布，</p>
+<p><em>横坐标</em>——碱基位置，</p>
+<p><em>纵坐标</em>——样本。</p>
+<p><em>%A</em>——绿色</p>
+<p><em>%G</em>——紫色</p>
+<p><em>%C</em>——蓝色</p>
+<p><em>%T</em>——红色</p>
+<p><em>如果ATGC在任何位置的差值大于10%</em>——warning</p>
+<p><em>如果ATGC在任何位置的差值大于20%</em>——fail</p>
+<blockquote>
+<p>reads每个位置的颜色显示由4种颜色的比例混合而成，哪一个碱基的比例大，则趋近于这个碱基所代表的颜色。正常情况下每个位置每种碱基出现的概率是相近的。如果ATGC在任何位置的差值大于10%—则warning（橙色），如果ATGC在任何位置的差值大于20%则fail（红色）。在图中可以看出，大概在前9bp的部分，颜色非常不均匀，也就是表示存在AGCT四种碱基的比例差异巨大的地方，这可能有过表达的序列的污染，所以12个样本都是fail。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-5.png" alt="4-5"></p>
+<h3 id="4-6-Per-Sequence-GC-Content：reads的平均GC含量"><a href="#4-6-Per-Sequence-GC-Content：reads的平均GC含量" class="headerlink" title="4.6. Per Sequence GC Content：reads的平均GC含量"></a>4.6. Per Sequence GC Content：reads的平均GC含量</h3><p><em>横坐标</em>——GC含量百分比</p>
+<p><em>纵坐标</em>——数量</p>
+<p><strong>正常的样本的GC含量曲线会趋近于正态分布曲线，曲线形状的偏差往往是由于文库的污染或是部分reads构成的子集有偏差（overrepresented reads）。形状接近正态但偏离理论分布的情况提示我们可能有系统偏差。</strong></p>
+<p><em>偏离理论分布的reads超过15%时</em>——warning</p>
+<p><em>偏离理论分布的reads超过30%时</em>——fail</p>
+<blockquote>
+<p>由下图可以看出，有6个样本与理论分布偏离超过了15%，有2个偏离超过了30%，有4个在合理的偏离度内。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-6.png" alt="4-6"></p>
+<h3 id="4-7-Per-Base-N-Content：每条reads各位置N碱基含量比例"><a href="#4-7-Per-Base-N-Content：每条reads各位置N碱基含量比例" class="headerlink" title="4.7. Per Base N Content：每条reads各位置N碱基含量比例"></a>4.7. Per Base N Content：每条reads各位置N碱基含量比例</h3><p><strong>当测序仪器不能辨别某条reads的某个位置到底是什么碱基时，就会产生“N”，统计N的比率。正常情况下，N值非常小。</strong></p>
+<p><em>横坐标</em>——read中的位置</p>
+<p><em>纵坐标</em>——N的数量比</p>
+<p><em>当任意位置的N的比例超过5%</em>——warning</p>
+<p><em>当任意位置的N的比例超过20%</em>——fail</p>
+<blockquote>
+<p>由图可以看出，所有的样本在所有的位置都是属于绿色区间且数值比例非常小，可以看出测序的质量很高。这应该和现在测序仪工艺的进步，电脑处理能力的提升有着很大的关系，现在的测序仪能够高质量的完成测序。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-7.png" alt="4-7"></p>
+<h3 id="4-8-Sequence-Length-Distribution：序列样本长度的分布情况"><a href="#4-8-Sequence-Length-Distribution：序列样本长度的分布情况" class="headerlink" title="4.8. Sequence Length Distribution：序列样本长度的分布情况"></a>4.8. Sequence Length Distribution：序列样本长度的分布情况</h3><p><em>横坐标</em>——序列长度</p>
+<p><em>纵坐标</em>——数量</p>
+<blockquote>
+<p>在这里可以看出测序的读长，也能够分析得出所有的小片段的长度分布情况，依据此我们可以判断测序效果的高低。在这里的结果呈现中，所有的结果都是在150bp，这也是二代测序的特点，测序的读长段，但是片段非常多，也就是通过将基因序列高度片段化分别同时测序，由此提高测序速度。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-8.png" alt="4-8"></p>
+<h3 id="4-9-Sequence-Duplication-Levels：每个序列的相对重复水平"><a href="#4-9-Sequence-Duplication-Levels：每个序列的相对重复水平" class="headerlink" title="4.9. Sequence Duplication Levels：每个序列的相对重复水平"></a>4.9. Sequence Duplication Levels：每个序列的相对重复水平</h3><p><em>横坐标</em>——每个序列的相对重复水平</p>
+<p><em>纵坐标</em>——在文库中的比例</p>
+<p><em>当非unique的reads占总数的比例大于20%时</em>——warning</p>
+<p><em>当非unique的reads占总数的比例大于50%时</em>——fail</p>
+<p><strong>测序深度越高，越容易产生一定程度的duplication，这是正常的现象，但如果duplication的程度很高，就提示我们可能有bias的存在。</strong></p>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-9.png" alt="4-9"></p>
+<h3 id="4-10-Overrepresented-sequences：文库中过表达序列的比例"><a href="#4-10-Overrepresented-sequences：文库中过表达序列的比例" class="headerlink" title="4.10. Overrepresented sequences：文库中过表达序列的比例"></a>4.10. Overrepresented sequences：文库中过表达序列的比例</h3><p><em>横坐标</em>——过表达序列的比例</p>
+<p><em>纵坐标</em>——样本</p>
+<p><em>过表达序列的比例&gt;0.1%</em>——warning</p>
+<p><em>过表达序列的比例&gt;1%</em>——warning</p>
+<p> <strong>一条序列的重复数，因为一个转录组中有非常多的转录本，一条序列再怎么多也不太会占整个转录组的一小部分（比如1%），如果出现这种情况，不是这种转录本巨量表达，就是样品被污染。这个模块列出来大于全部转录组1%的reads序列，但是因为用的是前100,000条reads，所以其实参考意义不大。</strong></p>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-10.png" alt="4-9"></p>
+<h3 id="4-11-Adapter-Content：接头含量"><a href="#4-11-Adapter-Content：接头含量" class="headerlink" title="4.11.Adapter Content：接头含量"></a>4.11.Adapter Content：接头含量</h3><p><em>横坐标</em>——碱基位置</p>
+<p><em>纵坐标</em>——占序列的百分比</p>
+<p><em>百分比&gt;5%</em>——warning</p>
+<p><em>百分比&gt;10%</em>——fail</p>
+<blockquote>
+<p>由图可以看出，所有的样本的接头含量均低于5%，因此结果还算比较良好。</p>
+</blockquote>
+<p><img src="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/4-11.png" alt="4-9"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.jianshu.com/p/85da4dcc6020" target="_blank" rel="noopener">https://www.jianshu.com/p/85da4dcc6020</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/质控可视化/">质控可视化</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/">
+                <span class="level-item">Trimommatic_qualitycontrol</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Genening">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Genening
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Nothing is everything
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>SYSU</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        47
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        33
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/genening">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Bioinformatics/">
+            <span class="level-start">
+                <span class="level-item">Bioinformatics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Machinelearning/">
+            <span class="level-start">
+                <span class="level-item">Machinelearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Mathematics/">
+            <span class="level-start">
+                <span class="level-item">Mathematics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Poetry-with-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry with Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">18</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Practical-skills/">
+            <span class="level-start">
+                <span class="level-item">Practical skills</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/log/">
+            <span class="level-start">
+                <span class="level-item">log</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web/">
+            <span class="level-start">
+                <span class="level-item">web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机基础/">
+            <span class="level-start">
+                <span class="level-item">计算机基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GO/">
+                        <span class="tag">GO</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/KEGG/">
+                        <span class="tag">KEGG</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux文本操作/">
+                        <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux管道符/">
+                        <span class="tag">Linux管道符</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux软硬链接/">
+                        <span class="tag">Linux软硬链接</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Quality-Controling/">
+                        <span class="tag">Quality Controling</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/analysis-of-variance/">
+                        <span class="tag">analysis of variance</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/bash/">
+                        <span class="tag">bash</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast/">
+                        <span class="tag">blast</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast2go/">
+                        <span class="tag">blast2go</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/edgeR/">
+                        <span class="tag">edgeR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/electron开发/">
+                        <span class="tag">electron开发</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gene-anotation/">
+                        <span class="tag">gene anotation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js学习/">
+                        <span class="tag">js学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-for-mathematics-formula/">
+                        <span class="tag">latex for mathematics formula</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-layout/">
+                        <span class="tag">latex-layout</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux-shell/">
+                        <span class="tag">linux shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python基础/">
+                        <span class="tag">python基础</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/seaborn-visualization/">
+                        <span class="tag">seaborn-visualization</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell-script/">
+                        <span class="tag">shell_script</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/基因差异分析/">
+                        <span class="tag">基因差异分析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据可视化/">
+                        <span class="tag">数据可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构与算法/">
+                        <span class="tag">数据结构与算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/无参转录组实战/">
+                        <span class="tag">无参转录组实战</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习概览/">
+                        <span class="tag">机器学习概览</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率论与数理统计/">
+                        <span class="tag">概率论与数理统计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线性方程组/">
+                        <span class="tag">线性方程组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/质控可视化/">
+                        <span class="tag">质控可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/转录组/">
+                        <span class="tag">转录组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="fastqc_multiqc结果解读">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="title has-link-black-ter is-size-6 has-text-weight-normal">fastqc_multiqc结果解读</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
+                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/31/Poetry with Life/面朝大海/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="面朝大海">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:55:19.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/Poetry with Life/面朝大海/" class="title has-link-black-ter is-size-6 has-text-weight-normal">面朝大海</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
+                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="fastqc_multiqc结果解读">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="title has-link-black-ter is-size-6 has-text-weight-normal">fastqc_multiqc结果解读</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
+                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/31/Poetry with Life/面朝大海/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnail/flower.jpg" alt="面朝大海">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:55:19.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/Poetry with Life/面朝大海/" class="title has-link-black-ter is-size-6 has-text-weight-normal">面朝大海</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Poetry-with-Life/">Poetry with Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
+                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/17/Linux/shell-script/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="shell_script">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T09:41:48.000Z">2019-12-17</time></div>
+                    <a href="/2019/12/17/Linux/shell-script/" class="title has-link-black-ter is-size-6 has-text-weight-normal">shell_script</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    NOTHING IS EVERYTHING
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Genening&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div>
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    |  本站总访问量<span id="busuanzi_value_site_pv">次</span>
+                </span>
+                <span id="busuanzi_container_site_uv" class="theme-info">
+                    |  本站访客数<span id="busuanzi_value_site_uv">人次</span>
+                </span>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">script>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("Chinese");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 1912 words)
+                    13 minutes read (About 1979 words)
                 </span>
                 
                 
@@ -192,7 +192,7 @@
 <p><strong>参数解释</strong><br>|参数|解释|<br>|:—-|:—-|<br>|PE|选择测序数据的类型，是单端（SE）还是双端（PE）|<br>|-threads|线程数量，并发计算，提高效率|<br>|-phred33|一种数据格式，illumina测序数据的格式，也有-phred64，可以不选|<br>|ILLUMINACLIP:TruSeq3-PE.fa:2:30:10|切除adapter序列。参数后面分别接adapter序列的fasta文件：允许的最大mismatch数：palindrome模式下匹配碱基数阈值：simple模式下的匹配碱基数阈值。|<br>|LEADING|切除首端质量不足n的碱基（n由自己设定）|<br>|TRAILING|切除尾端质量不足n的碱基（n由自己设定）|<br>|SLIDINGWINDOW:4:15|滑窗修剪，一个Windows的size是4个碱基，其平均碱基质量小于15，则切除。|<br>|MINLEN|最小reads长度，筛去过短序列|<br>|CROP: |保留reads到指定的长度|<br>|HEADCROP: |在reads的首端切除指定的长度|<br>|TOPHRED33 |将碱基质量转换为pred33格式|<br>|TOPHRED64 |将碱基质量转换为pred64格式|</p>
 <ol start="2">
 <li>实操<blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 a-BR-1_RRAS30349-V_1.fq a-BR-1_RRAS30349-V_2.fq clean_a-BR-1_RRAS30349-V_1.fq unpaired_a-BR-1_RRAS30349-V_1.fq clean_a-BR-1_RRAS30349-V_2.fq unpaired_a-BR-1_RRAS30349-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 a-BR-1_RRAS30349-V_1.fq a-BR-1_RRAS30349-V_2.fq clean_a-BR-1_RRAS30349-V_1.fq unpaired_a-BR-1_RRAS30349-V_1.fq clean_a-BR-1_RRAS30349-V_2.fq unpaired_a-BR-1_RRAS30349-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
 </blockquote>
 </li>
 </ol>
@@ -209,19 +209,25 @@
 </ul>
 <p><em>剩余数据记录</em></p>
 <blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 b-BR_RRAS27375-V_1.fq b-BR_RRAS27375-V_2.fq clean_b-BR_RRAS27375-V_1.fq unpaired_b-BR_RRAS27375-V_1.fq clean_b-BR_RRAS27375-V_2.fq unpaired_b-BR_RRAS27375-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 b-BR_RRAS27375-V_1.fq b-BR_RRAS27375-V_2.fq clean_b-BR_RRAS27375-V_1.fq unpaired_b-BR_RRAS27375-V_1.fq clean_b-BR_RRAS27375-V_2.fq unpaired_b-BR_RRAS27375-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq  ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 c-BR-1_RRAS30350-V_1.fq c-BR-1_RRAS30350-V_2.fq clean_c-BR-1_RRAS30350-V_1.fq unpaired_c-BR-1_RRAS30350-V_1.fq clean_c-BR-1_RRAS30350-V_2.fq unpaired_c-BR-1_RRAS30350-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 d-BR_RRAS30433-V_1.fq d-BR_RRAS30433-V_2.fq clean_d-BR_RRAS30433-V_1.fq unpaired_d-BR_RRAS30433-V_1.fq clean_d-BR_RRAS30433-V_2.fq unpaired_d-BR_RRAS30433-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 d-BR_RRAS30433-V_1.fq d-BR_RRAS30433-V_2.fq clean_d-BR_RRAS30433-V_1.fq unpaired_d-BR_RRAS30433-V_1.fq clean_d-BR_RRAS30433-V_2.fq unpaired_d-BR_RRAS30433-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 e-BR_RRAS30435-V_1.fq e-BR_RRAS30435-V_2.fq clean_e-BR_RRAS30435-V_1.fq unpaired_e-BR_RRAS30435-V_1.fq clean_e-BR_RRAS30435-V_2.fq unpaired_e-BR_RRAS30435-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50</p>
+<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 e-BR_RRAS30435-V_1.fq e-BR_RRAS30435-V_2.fq clean_e-BR_RRAS30435-V_1.fq unpaired_e-BR_RRAS30435-V_1.fq clean_e-BR_RRAS30435-V_2.fq unpaired_e-BR_RRAS30435-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:75 &amp;</p>
+</blockquote>
+<h2 id="备注：在做完了质控之后要进行质量评价，先使用fastqc，然后使用multiqc进行整合，命令如下："><a href="#备注：在做完了质控之后要进行质量评价，先使用fastqc，然后使用multiqc进行整合，命令如下：" class="headerlink" title="备注：在做完了质控之后要进行质量评价，先使用fastqc，然后使用multiqc进行整合，命令如下："></a>备注：在做完了质控之后要进行质量评价，先使用fastqc，然后使用multiqc进行整合，命令如下：</h2><blockquote>
+<p>fastqc [-o output dir] [–(no)extract] [-f fastq|bam|sam]<br>           [-c contaminant file] seqfile1 .. seqfileN</p>
+</blockquote>
+<blockquote>
+<p>multiqc /B313/Zjunlin/raw_data/fastqc_1/ -o /B313/Zjunlin/raw_data/multi_qcraw/</p>
 </blockquote>
 <h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>Trimmomatic是一个专门的软件，用于进行质量控制，对于illumina的测序数据尤为有效。其实一般情况下我们是通过编程手动进行质控的，但是得益于广大生信开发工作者的努力，我们才有了这么方便的分析工具可以使用，让我们能够更加专注于生物数据的意义的分析，因此我们应该心怀感恩，和所有工作人员一起努力，为生物科学的发展贡献一份力量。</p>
 <h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p><a href="https://bio.biocoder.cn/book/15/content/5/" target="_blank" rel="noopener">1. https://bio.biocoder.cn/book/15/content/5/</a></p>
@@ -250,6 +256,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">fastqc_multiqc结果解读</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -306,7 +319,7 @@
                         Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        46
+                        47
                     </p>
                 </div>
             </div>
@@ -326,7 +339,7 @@
                         Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        33
                     </p>
                 </div>
             </div>
@@ -399,7 +412,7 @@
                 <span class="level-item">Bioinformatics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
@@ -485,7 +498,7 @@
         <h3 class="menu-label">
             Nube de etiquetas
         </h3>
-        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a>
     </div>
 </div>
 
@@ -716,6 +729,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/质控可视化/">
+                        <span class="tag">质控可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/转录组/">
                         <span class="tag">转录组</span>
                         <span class="tag is-grey">1</span>
@@ -736,6 +756,25 @@
         <h3 class="menu-label">
             Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="fastqc_multiqc结果解读">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="title has-link-black-ter is-size-6 has-text-weight-normal">fastqc_multiqc结果解读</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -813,25 +852,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/17/Linux/bash/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
-                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -850,7 +870,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -957,6 +977,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="fastqc_multiqc结果解读">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/" class="title has-link-black-ter is-size-6 has-text-weight-normal">fastqc_multiqc结果解读</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
@@ -1031,25 +1070,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/17/Linux/bash/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="bash">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-17T08:39:56.000Z">2019-12-17</time></div>
-                    <a href="/2019/12/17/Linux/bash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">bash</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1068,7 +1088,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1300,7 +1320,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
