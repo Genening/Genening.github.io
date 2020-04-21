@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1135 words)
+                    9 minutes read (About 1367 words)
                 </span>
                 
                 
@@ -183,23 +183,48 @@
 <p>multiqc /B313/Zjunlin/raw_data/fastqc_70/ -o /B313/Zjunlin/raw_data/multi_qcraw/</p>
 </blockquote>
 <p>output file:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/multiqc_results.png" alt="multiqc_results"></p>
-<p><strong>这里输出结果是一个html文件和一个data的文件夹，文件夹里面有相关的数据，如果需要自己重新作图的话可以利用这些数据作图。要查看整合的结果只需要把html下载到本地电脑中用浏览器打开查看即可，图片结果的解读在另一篇博客<a href="https://genening.github.io/2020/04/16/Bioinformatics/fastqc-multiqc%E7%BB%93%E6%9E%9C%E8%A7%A3%E8%AF%BB/">Trimommatic_qualitycontrol</a>，可以自行查看</strong></p>
-<h2 id="2-Trinity拼接"><a href="#2-Trinity拼接" class="headerlink" title="2. Trinity拼接"></a>2. Trinity拼接</h2><p>Trinity是一款非常成熟的拼接软件，非常受大家欢迎，Trinity的使用方法查看<a href="https://genening.github.io/2019/10/04/Bioinformatics/%E6%97%A0%E5%8F%82%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90/#more">无参转录组分析</a>。</p>
+<p><strong>这里输出结果是一个html文件和一个data的文件夹，文件夹里面有相关的数据，如果需要自己重新作图的话可以利用这些数据作图。要查看整合的结果只需要把html下载到本地电脑中用浏览器打开查看即可，图片结果的解读在另一篇博客<a href="https://genening.github.io/2020/04/16/Bioinformatics/fastqc-multiqc%E7%BB%93%E6%9E%9C%E8%A7%A3%E8%AF%BB/">fastqc_multiqc结果解读</a>，可以自行查看</strong></p>
+<h2 id="2-Trinity拼接（Trinity-v2-8-4）"><a href="#2-Trinity拼接（Trinity-v2-8-4）" class="headerlink" title="2. Trinity拼接（Trinity-v2.8.4）"></a>2. Trinity拼接（Trinity-v2.8.4）</h2><p>Trinity是一款非常成熟的拼接软件，非常受大家欢迎，Trinity的使用方法查看<a href="https://genening.github.io/2019/10/04/Bioinformatics/%E6%97%A0%E5%8F%82%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90/#more">无参转录组分析</a>。</p>
 <p><code>Trinity --seqType fq --left reads_1.fq --right reads_2.fq --CPU 6 --max_memory 20G</code></p>
 <p>commands:</p>
 <blockquote>
-<p>nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left clean_a-BR-1_RRAS30349-V_1 clean_b-BR_RRAS27375-V_1.fq clean_c-BR-1_RRAS30350-V_1.fq clean_d-BR_RRAS30433-V_1.fq clean_e-BR_RRAS30435-V_1.fq clean_o-3-HD_RRAS47919-V_1.fq  –right clean_a-BR-1_RRAS30349-V_2.fq clean_b-BR_RRAS27375-V_2.fq clean_c-BR-1_RRAS30350-V_2.fq clean_d-BR_RRAS30433-V_2.fq clean_e-BR_RRAS30435-V_2.fq clean_o-3-HD_RRAS47919-V_2.fq  –CPU 30 –min_kmer_cov 2 &amp;</p>
+<p>nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left clean_a-BR-1_RRAS30349-V_1.fq clean_b-BR_RRAS27375-V_1.fq clean_c-BR-1_RRAS30350-V_1.fq clean_d-BR_RRAS30433-V_1.fq clean_e-BR_RRAS30435-V_1.fq clean_o-3-HD_RRAS47919-V_1.fq  –right clean_a-BR-1_RRAS30349-V_2.fq clean_b-BR_RRAS27375-V_2.fq clean_c-BR-1_RRAS30350-V_2.fq clean_d-BR_RRAS30433-V_2.fq clean_e-BR_RRAS30435-V_2.fq clean_o-3-HD_RRAS47919-V_2.fq  –CPU 30 –min_kmer_cov 2 &amp;</p>
 </blockquote>
 <p><strong>这里需要等待比较长的计算时间，并且在结果出来之后要进行统计，要是统计结果不太好则要重新调整参数重跑。所以还是把质量写进脚本run_trinity.sh比较方便。</strong></p>
+<p>output files:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/trinity_results.png" alt="trinity_results"></p>
+<blockquote>
+<p>输出的结果包括了三部分，分别是Trinity当中三部分程序的独立结果。在所有结果中最为重要的是Trinity.fasta文件，这就是我们要的最终的拼接结果的文件，后续分析以此为基础，我们需要先评估拼接的质量高低，满足要求就开始下一步定量分析。</p>
+</blockquote>
 <h3 id="2-1-TrinityStats-pl结果统计"><a href="#2-1-TrinityStats-pl结果统计" class="headerlink" title="2.1 TrinityStats.pl结果统计"></a>2.1 TrinityStats.pl结果统计</h3><p><code>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl &lt;result_fasta_file&gt;</code></p>
 <p>commands:</p>
 <blockquote>
 <p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl ./Trinity.fasta</p>
 </blockquote>
+<p>output:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/statistics.png" alt="statistics"></p>
+<table>
+<thead>
+<tr>
+<th align="center">total genes</th>
+<th align="center">total transcripts</th>
+<th align="center">Contig N50</th>
+<th align="center">Percent GC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">265295</td>
+<td align="center">319932</td>
+<td align="center">2913</td>
+<td align="center">46.50</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>由上结果来看，拼接出来的转录本数量有点多，这样对于在时候做差异分析时不利，下一回可以考虑在指控的时候把minlen参数设高一些，这样子对于后期的分析比较有利。这里拼接的N50是2913，还不错。</p>
+</blockquote>
 <h3 id="2-2-cd-hit去冗余"><a href="#2-2-cd-hit去冗余" class="headerlink" title="2.2 cd-hit去冗余"></a>2.2 cd-hit去冗余</h3><p>commands:</p>
 <blockquote>
 <p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12</p>
 </blockquote>
+<p>output:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/cd-hit_result.png" alt="cd-hit_result"></p>
 <h3 id="2-3-corset聚类去冗余"><a href="#2-3-corset聚类去冗余" class="headerlink" title="2.3 corset聚类去冗余"></a>2.3 corset聚类去冗余</h3><p>commands:</p>
 <blockquote>
 <p>corset [options] bowtie.bam</p>
@@ -230,6 +255,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/20/Python/numpy-pandas/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">numpy_pandas</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -286,7 +318,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        49
                     </p>
                 </div>
             </div>
@@ -306,7 +338,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        34
+                        35
                     </p>
                 </div>
             </div>
@@ -427,7 +459,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/log/">
@@ -465,7 +497,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/numpy-pandas/" style="font-size: 10px;">numpy&pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -612,6 +644,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/numpy-pandas/">
+                        <span class="tag">numpy&amp;pandas</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/python基础/">
                         <span class="tag">python基础</span>
                         <span class="tag is-grey">1</span>
@@ -733,6 +772,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/20/Python/numpy-pandas/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="numpy_pandas">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T07:33:28.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Python/numpy-pandas/" class="title has-link-black-ter is-size-6 has-text-weight-normal">numpy_pandas</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/17/Bioinformatics/Yellowseabream-record/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Yellowseabream-record">
@@ -807,25 +865,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
-                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -844,7 +883,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -951,6 +990,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/20/Python/numpy-pandas/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="numpy_pandas">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T07:33:28.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Python/numpy-pandas/" class="title has-link-black-ter is-size-6 has-text-weight-normal">numpy_pandas</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/17/Bioinformatics/Yellowseabream-record/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Yellowseabream-record">
@@ -1025,25 +1083,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/18/Bioinformatics/blast2go/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="blast2go">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-18T11:49:53.000Z">2019-12-18</time></div>
-                    <a href="/2019/12/18/Bioinformatics/blast2go/" class="title has-link-black-ter is-size-6 has-text-weight-normal">blast2go</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1062,7 +1101,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
