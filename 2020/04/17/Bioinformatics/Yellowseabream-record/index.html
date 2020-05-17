@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1367 words)
+                    13 minutes read (About 1913 words)
                 </span>
                 
                 
@@ -222,7 +222,7 @@
 </blockquote>
 <h3 id="2-2-cd-hit去冗余"><a href="#2-2-cd-hit去冗余" class="headerlink" title="2.2 cd-hit去冗余"></a>2.2 cd-hit去冗余</h3><p>commands:</p>
 <blockquote>
-<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12</p>
+<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 40</p>
 </blockquote>
 <p>output:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/cd-hit_result.png" alt="cd-hit_result"></p>
 <h3 id="2-3-corset聚类去冗余"><a href="#2-3-corset聚类去冗余" class="headerlink" title="2.3 corset聚类去冗余"></a>2.3 corset聚类去冗余</h3><p>commands:</p>
@@ -232,7 +232,20 @@
 <ul>
 <li>注意使用python2.7环境</li>
 </ul>
-<h2 id="3-RSEM-bowtie2定量分析与mapping"><a href="#3-RSEM-bowtie2定量分析与mapping" class="headerlink" title="3. RSEM_bowtie2定量分析与mapping"></a>3. RSEM_bowtie2定量分析与mapping</h2><h2 id="4-edgeR差异分析"><a href="#4-edgeR差异分析" class="headerlink" title="4. edgeR差异分析"></a>4. edgeR差异分析</h2><h2 id="5-blastx比对"><a href="#5-blastx比对" class="headerlink" title="5. blastx比对"></a>5. blastx比对</h2><h2 id="6-GO-KEGG注释"><a href="#6-GO-KEGG注释" class="headerlink" title="6. GO_KEGG注释"></a>6. GO_KEGG注释</h2><h2 id="7-stem趋势分析"><a href="#7-stem趋势分析" class="headerlink" title="7. stem趋势分析"></a>7. stem趋势分析</h2><h2 id="8-结果整理与解读"><a href="#8-结果整理与解读" class="headerlink" title="8. 结果整理与解读"></a>8. 结果整理与解读</h2><h2 id="9-后记"><a href="#9-后记" class="headerlink" title="9. 后记"></a>9. 后记</h2>
+<h2 id="3-RSEM-bowtie2定量分析与mapping"><a href="#3-RSEM-bowtie2定量分析与mapping" class="headerlink" title="3. RSEM_bowtie2定量分析与mapping"></a>3. RSEM_bowtie2定量分析与mapping</h2><p>commands:</p>
+<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_a <span class="hljs-params">--left</span> clean_a-BR-1_RRAS30349-V_1.fq <span class="hljs-params">--right</span> clean_a-BR-1_RRAS30349-V_2.fq &gt;nohup_a.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_b <span class="hljs-params">--left</span> clean_b-BR_RRAS27375-V_1.fq <span class="hljs-params">--right</span> clean_b-BR_RRAS27375-V_2.fq &gt;nohup_b.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_c <span class="hljs-params">--left</span> clean_c-BR-1_RRAS30350-V_1.fq <span class="hljs-params">--right</span> clean_c-BR-1_RRAS30350-V_2.fq &gt;nohup_c.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_d <span class="hljs-params">--left</span> clean_d-BR_RRAS30433-V_1.fq <span class="hljs-params">--right</span> clean_d-BR_RRAS30433-V_2.fq &gt;nohup_d.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_e <span class="hljs-params">--left</span> clean_e-BR_RRAS30435-V_1.fq <span class="hljs-params">--right</span> clean_e-BR_RRAS30435-V_2.fq &gt;nohup_e.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_o <span class="hljs-params">--left</span> clean_o-3-HD_RRAS47919-V_1.fq <span class="hljs-params">--right</span> clean_o-3-HD_RRAS47919-V_2.fq &gt;nohup_o.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p><em>tips: Each group needs to align independently.</em></p>
+<p>results:</p>
+<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result1.png" alt="RSEM_result1"><br><strong>黄色框中是RSEM定量的一些中间文件，红色框中是结果输出文件夹</strong></p>
+<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result2.png" alt="RSEM_result2"></p>
+<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_genes.png" alt="RSEM_genes"></p>
+<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_isoforms.png" alt="RSEM_isoforms"></p>
+<p><strong>genes.results和isoforms.results分别是基于基因和转录本水平的定量结果，这两者的区别可以在下面两幅图中看出来。isoforms.results中包含了转录本ID，基因ID，转录本长度，有效长度，expected_count，TPM，FPKM和IsoPct（该转录本表达量占基因总表达量的百分比）。genes.results中的内容与之类似，只是少了IsoPct。</strong></p>
+<blockquote>
+<p>接下来我们可以将FPKM提取出来，然后进行聚类分析，查看一下现有的各组样品之间的一个相关性，这类可以采用clustermap来展示。</p>
+</blockquote>
+<h2 id="4-edgeR差异分析"><a href="#4-edgeR差异分析" class="headerlink" title="4. edgeR差异分析"></a>4. edgeR差异分析</h2><h2 id="5-blastx比对"><a href="#5-blastx比对" class="headerlink" title="5. blastx比对"></a>5. blastx比对</h2><h2 id="6-GO-KEGG注释"><a href="#6-GO-KEGG注释" class="headerlink" title="6. GO_KEGG注释"></a>6. GO_KEGG注释</h2><h2 id="7-stem趋势分析"><a href="#7-stem趋势分析" class="headerlink" title="7. stem趋势分析"></a>7. stem趋势分析</h2><h2 id="8-结果整理与解读"><a href="#8-结果整理与解读" class="headerlink" title="8. 结果整理与解读"></a>8. 结果整理与解读</h2><h2 id="9-后记"><a href="#9-后记" class="headerlink" title="9. 后记"></a>9. 后记</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -315,17 +328,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        51
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -338,14 +351,14 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        37
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -402,7 +415,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -459,7 +472,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/log/">
@@ -495,9 +508,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
-        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -555,6 +568,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Quality-Controling/">
                         <span class="tag">Quality Controling</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regular-expression/">
+                        <span class="tag">Regular expression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -774,8 +794,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/17/Python/RE-studynotes/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="正则学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-17T01:28:26.000Z">2020-05-17</time></div>
+                    <a href="/2020/05/17/Python/RE-studynotes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">正则学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -853,25 +892,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
-                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -883,6 +903,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -992,8 +1023,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/17/Python/RE-studynotes/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="正则学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-17T01:28:26.000Z">2020-05-17</time></div>
+                    <a href="/2020/05/17/Python/RE-studynotes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">正则学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1071,25 +1121,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
-                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1101,6 +1132,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1371,9 +1413,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

@@ -134,6 +134,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-14T01:42:14.000Z">2019-12-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1394 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/14/Bioinformatics/blast/">blast</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
+</blockquote>
+<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/12/14/Bioinformatics/blast/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-09T10:52:08.000Z">2019-12-09</time>
                 
                 <div class="level-item">
@@ -636,69 +691,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-04T09:22:41.000Z">2019-11-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 235 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/04/Mathematics/概率统计/">概率统计</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>概率论与数理统计是一门很重要的基础数学课，现在的机器学习的基础之一。现在这里添加的是这门学科的总览图，后期可能会做进一步的详细笔记。</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/04/Mathematics/概率统计/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/">Préc</a>
+            <a class="is-flex-grow has-text-black-ter" href="/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/3/">Suiv</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/3/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -708,9 +709,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/archives/3/">3</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/archives/4/">4</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/archives/5/">5</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/archives/6/">6</a></li>
             
         </ul>
     </nav>
@@ -755,17 +756,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        51
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         10
@@ -778,14 +779,14 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        37
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -842,7 +843,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -899,7 +900,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/log/">
@@ -935,9 +936,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
-        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -995,6 +996,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Quality-Controling/">
                         <span class="tag">Quality Controling</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regular-expression/">
+                        <span class="tag">Regular expression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1214,8 +1222,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/17/Python/RE-studynotes/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="正则学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-17T01:28:26.000Z">2020-05-17</time></div>
+                    <a href="/2020/05/17/Python/RE-studynotes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">正则学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1293,25 +1320,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
-                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1323,6 +1331,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1432,8 +1451,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/17/Python/RE-studynotes/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="正则学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-17T01:28:26.000Z">2020-05-17</time></div>
+                    <a href="/2020/05/17/Python/RE-studynotes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">正则学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1511,25 +1549,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Trimommatic_qualitycontrol">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time></div>
-                    <a href="/2020/04/14/Bioinformatics/Trimommatic-qualitycontrol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Trimommatic_qualitycontrol</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1541,6 +1560,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1811,9 +1841,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
