@@ -145,6 +145,84 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1031 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/">nlp-6-基于深度学习的文本分类3</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在昨天我们实践了word2vec模型，今天还是来学习一个深度学习文本分类模型——bert，这是一个在文本分类中非常著名的模型。接下来让我们来学习一下这个模型。</p>
+<p><img src="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/history.png" alt="history"></p>
+<h2 id="什么是BERT"><a href="#什么是BERT" class="headerlink" title="什么是BERT"></a>什么是BERT</h2><blockquote>
+<p>2018年的10月11日，Google发布的论文《Pre-training of Deep Bidirectional Transformers for Language Understanding》，成功在 11 项 NLP 任务中取得 state of the art 的结果，赢得自然语言处理学界的一片赞誉之声。自此，BERT诞生。</p>
+</blockquote>
+<p>BERT全称是Bidirectional Encoder Representation from Transformers，即对Transformer的双向编码进行调整后的算法。这种预训练模型所针对的核心问题，就是NLP的效率难题。</p>
+<p>众所周知，智能语音交互要理解上下文、实现通顺的交流、准确识别对象的语气等等，往往需要一个准确的NLP模型来进行预测。</p>
+<p>但越是精准的模型，越是依赖于海量的训练语料，往往需要人工来进行标注和制作，因此，通过某种模型来预训练一个语言模型，帮助进行超大规模的表征学习，就成了一种靠谱且被广泛采用的方法。</p>
+<h2 id="BERT优势"><a href="#BERT优势" class="headerlink" title="BERT优势"></a>BERT优势</h2><ol>
+<li><p>BERT拥有一个深而窄的神经网络。transformer的中间层有2018，BERT只有1024，但却有12层。因此，它可以在无需大幅架构修改的前提下进行双向训练。由于是无监督学习，因此不需要人工干预和标注，让低成本地训练超大规模语料成为可能。</p>
+</li>
+<li><p>BERT模型能够联合神经网络所有层中的上下文来进行训练。这样训练出来的模型在处理问答或语言推理任务时，能够结合上下文理解语义，并且实现更精准的文本预测生成。</p>
+</li>
+<li><p>BERT只需要微调就可以适应很多类型的NLP任务，这使其应用场景扩大，并且降低了企业的训练成本。BERT支持包括中文在内的60种语言，研究人员也不需要从头开始训练自己的模型，只需要利用BERT针对特定任务进行修改，在单个云TPU上运行几小时甚至几十分钟，就能获得不错的分数。</p>
+</li>
+</ol>
+<h2 id="BERT训练过程"><a href="#BERT训练过程" class="headerlink" title="BERT训练过程"></a>BERT训练过程</h2><ol>
+<li><p>首先，将语料中的某一部分词汇遮盖住，让模型根据上下文双向预测被遮盖的词，来初步训练出通用模型。</p>
+</li>
+<li><p>然后，从语料中挑选出连续的上下文语句，让transformer模型来识别这些语句是否连续。</p>
+</li>
+<li><p>这两步合在一起完成预训练，就成为一个能够实现上下文全向预测出的语言表征模型。</p>
+</li>
+<li><p>最后，再结合精加工（fine tuning）模型，使之适用于具体应用。</p>
+</li>
+</ol>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>BERT对于运算的资源要求比较高，因此比较难在本地进行测试，因此先学习一下大佬们的实践过程。此处资料来自Datawhale和阿里云在天池比赛中的新闻文本分类的教程。实践过程为：<a href="https://tianchi.aliyun.com/notebook-ai/detail?spm=5176.12586969.1002.27.6406111aIKCSLV&postId=118260" target="_blank" rel="noopener">BERT代码</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>BERT是一个非常cool的模型，这个模型极大的提高了现有NLP的训练效率，而且效果显著，推动了NLP的应用落地，是一个值得相关从业人员研究学习的模型。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://baijiahao.baidu.com/s?id=1619655847245834858&wfr=spider&for=pc" target="_blank" rel="noopener">开启NLP新时代的BERT模型，是怎么一步步封神的？</a></li>
+<li><a href="https://blog.csdn.net/jiaowoshouzi/article/details/89073944" target="_blank" rel="noopener">一文读懂BERT(原理篇)</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/50913043" target="_blank" rel="noopener">BERT原理解析</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/50443871" target="_blank" rel="noopener">NLP的巨人肩膀</a></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-07-25T12:05:41.000Z">2020-07-25</time>
                 
                 <div class="level-item">
@@ -445,7 +523,7 @@
                         Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -465,7 +543,7 @@
                         Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        42
+                        43
                     </p>
                 </div>
             </div>
@@ -570,7 +648,7 @@
                 <span class="level-item">NLP</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Poetry-with-Life/">
@@ -632,7 +710,7 @@
         <h3 class="menu-label">
             Nube de etiquetas
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -726,6 +804,13 @@
                     <a class="tags has-addons" href="/tags/bash/">
                         <span class="tag">bash</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/bert/">
+                        <span class="tag">bert</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -956,6 +1041,25 @@
         
         <article class="media">
             
+            <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-6-基于深度学习的文本分类3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time></div>
+                    <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-6-基于深度学习的文本分类3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-5-基于深度学习的文本分类2">
@@ -1030,25 +1134,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/07/22/NLP/nlp-2-数据读取与数据分析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-2-数据读取与数据分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-22T03:09:50.000Z">2020-07-22</time></div>
-                    <a href="/2020/07/22/NLP/nlp-2-数据读取与数据分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-2-数据读取与数据分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1067,7 +1152,7 @@
                     <span class="level-item">July 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1196,6 +1281,25 @@
         
         <article class="media">
             
+            <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-6-基于深度学习的文本分类3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time></div>
+                    <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-6-基于深度学习的文本分类3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-5-基于深度学习的文本分类2">
@@ -1270,25 +1374,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/07/22/NLP/nlp-2-数据读取与数据分析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-2-数据读取与数据分析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-22T03:09:50.000Z">2020-07-22</time></div>
-                    <a href="/2020/07/22/NLP/nlp-2-数据读取与数据分析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-2-数据读取与数据分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1307,7 +1392,7 @@
                     <span class="level-item">July 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
