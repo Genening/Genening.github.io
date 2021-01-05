@@ -10,19 +10,19 @@
 <title>Yellowseabream-record - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
+    <meta name="description" content="前言 这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
 <meta name="keywords" content="转录组分析实践">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yellowseabream-record">
 <meta property="og:url" content="https://genening.github.io/2020/04/17/Bioinformatics/Yellowseabream-record/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
+<meta property="og:description" content="前言 这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-04-17T03:14:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yellowseabream-record">
-<meta name="twitter:description" content="前言这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
+<meta name="twitter:description" content="前言 这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 1913 words)
+                    13 minutes membaca (Sekitar 1913 kata)
                 </span>
                 
                 
@@ -158,94 +158,89 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。</p>
-<a id="more"></a>
-<h2 id="1-trimmomatic质控"><a href="#1-trimmomatic质控" class="headerlink" title="1. trimmomatic质控"></a>1. trimmomatic质控</h2><p>在拿到测序数据之后，公司的给的data中有raw data也有clean data，但是为了更好的掌控分析，质控还是自己做比较好。这里选择的质控软件是trimmomatic。</p>
-<p>commands:</p>
-<blockquote>
-<p>nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 a-BR-1_RRAS30349-V_1.fq a-BR-1_RRAS30349-V_2.fq clean_a-BR-1_RRAS30349-V_1.fq unpaired_a-BR-1_RRAS30349-V_1.fq clean_a-BR-1_RRAS30349-V_2.fq unpaired_a-BR-1_RRAS30349-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
-</blockquote>
+            <h2 id="前言">前言</h2>
+<p>这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。 <a id="more"></a> ## 1. trimmomatic质控 在拿到测序数据之后，公司的给的data中有raw data也有clean data，但是为了更好的掌控分析，质控还是自己做比较好。这里选择的质控软件是trimmomatic。</p>
+<p>commands: &gt;nohup java -jar /B313/public_software/Quality_control/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 40 a-BR-1_RRAS30349-V_1.fq a-BR-1_RRAS30349-V_2.fq clean_a-BR-1_RRAS30349-V_1.fq unpaired_a-BR-1_RRAS30349-V_1.fq clean_a-BR-1_RRAS30349-V_2.fq unpaired_a-BR-1_RRAS30349-V_2.fq ILLUMINACLIP:/B313/public_software/Quality_control/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 &amp;</p>
 <p><em>tips:这里指令较长，且需要对每一组进行质控，每次重复输入非常麻烦，因此在第一次输完命令之后可以把命令整理到一个bash脚本中，下次需要重跑时只需要运行bash脚本即可，修改参数可以用Linux文件处理软件sub进行替换修改。</em></p>
 <p>结果文件列表:</p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/qc_result.png" alt="qc_result"></p>
+<figure>
+<img src="/2020/04/17/Bioinformatics/Yellowseabream-record/qc_result.png" alt="qc_result"><figcaption aria-hidden="true">qc_result</figcaption>
+</figure>
 <p><strong>输出结果有两种类型文件，一种是clean文件，另一种是unpaired文件。其中clean文件就是质控之后的data，用于下一步分析，unpaired文件是被清理出来的data，只是起一个记录作用。</strong></p>
-<h3 id="1-2-fastqc质控可视化"><a href="#1-2-fastqc质控可视化" class="headerlink" title="1.2 fastqc质控可视化"></a>1.2 fastqc质控可视化</h3><p>在做质控之前和做完质控之后，要进行数据质量的可视化，用于直观判断质控的效果好坏以及测序数据本身质量的高低。这里采用的是fastqc进行这步工作。</p>
+<h3 id="fastqc质控可视化">1.2 fastqc质控可视化</h3>
+<p>在做质控之前和做完质控之后，要进行数据质量的可视化，用于直观判断质控的效果好坏以及测序数据本身质量的高低。这里采用的是fastqc进行这步工作。</p>
 <p><code>fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] [-c contaminant file] seqfile1 .. seqfileN</code></p>
-<p>commands:</p>
-<blockquote>
-<p>nohup fastqc -o ./fastqc_70/ -f fastq clean_* &amp;</p>
-</blockquote>
+<p>commands: &gt;nohup fastqc -o ./fastqc_70/ -f fastq clean_* &amp;</p>
 <p>output file:</p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/fastqc_results.png" alt="fastqc_results"></p>
+<figure>
+<img src="/2020/04/17/Bioinformatics/Yellowseabream-record/fastqc_results.png" alt="fastqc_results"><figcaption aria-hidden="true">fastqc_results</figcaption>
+</figure>
 <p><strong>这里输出结果有html和zip文件，只需要查看html文件就可以知道data的质量的统计结果了，但是这里文件众多，一个个查看很麻烦，且不方便进行横向比较，因此可以采用multiqc进行fastqc的结果整合，方便查看。</strong></p>
-<h3 id="1-3-multiqc可视化结果整合"><a href="#1-3-multiqc可视化结果整合" class="headerlink" title="1.3 multiqc可视化结果整合"></a>1.3 multiqc可视化结果整合</h3><p>commands:</p>
-<blockquote>
-<p>multiqc /B313/Zjunlin/raw_data/fastqc_70/ -o /B313/Zjunlin/raw_data/multi_qcraw/</p>
-</blockquote>
-<p>output file:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/multiqc_results.png" alt="multiqc_results"></p>
+<h3 id="multiqc可视化结果整合">1.3 multiqc可视化结果整合</h3>
+<p>commands: &gt;multiqc /B313/Zjunlin/raw_data/fastqc_70/ -o /B313/Zjunlin/raw_data/multi_qcraw/</p>
+<p>output file: <img src="/2020/04/17/Bioinformatics/Yellowseabream-record/multiqc_results.png" alt="multiqc_results"></p>
 <p><strong>这里输出结果是一个html文件和一个data的文件夹，文件夹里面有相关的数据，如果需要自己重新作图的话可以利用这些数据作图。要查看整合的结果只需要把html下载到本地电脑中用浏览器打开查看即可，图片结果的解读在另一篇博客<a href="https://genening.github.io/2020/04/16/Bioinformatics/fastqc-multiqc%E7%BB%93%E6%9E%9C%E8%A7%A3%E8%AF%BB/">fastqc_multiqc结果解读</a>，可以自行查看</strong></p>
-<h2 id="2-Trinity拼接（Trinity-v2-8-4）"><a href="#2-Trinity拼接（Trinity-v2-8-4）" class="headerlink" title="2. Trinity拼接（Trinity-v2.8.4）"></a>2. Trinity拼接（Trinity-v2.8.4）</h2><p>Trinity是一款非常成熟的拼接软件，非常受大家欢迎，Trinity的使用方法查看<a href="https://genening.github.io/2019/10/04/Bioinformatics/%E6%97%A0%E5%8F%82%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90/#more">无参转录组分析</a>。</p>
+<h2 id="trinity拼接trinity-v2.8.4">2. Trinity拼接（Trinity-v2.8.4）</h2>
+<p>Trinity是一款非常成熟的拼接软件，非常受大家欢迎，Trinity的使用方法查看<a href="https://genening.github.io/2019/10/04/Bioinformatics/%E6%97%A0%E5%8F%82%E8%BD%AC%E5%BD%95%E7%BB%84%E5%88%86%E6%9E%90/#more">无参转录组分析</a>。</p>
 <p><code>Trinity --seqType fq --left reads_1.fq --right reads_2.fq --CPU 6 --max_memory 20G</code></p>
-<p>commands:</p>
-<blockquote>
-<p>nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left clean_a-BR-1_RRAS30349-V_1.fq clean_b-BR_RRAS27375-V_1.fq clean_c-BR-1_RRAS30350-V_1.fq clean_d-BR_RRAS30433-V_1.fq clean_e-BR_RRAS30435-V_1.fq clean_o-3-HD_RRAS47919-V_1.fq  –right clean_a-BR-1_RRAS30349-V_2.fq clean_b-BR_RRAS27375-V_2.fq clean_c-BR-1_RRAS30350-V_2.fq clean_d-BR_RRAS30433-V_2.fq clean_e-BR_RRAS30435-V_2.fq clean_o-3-HD_RRAS47919-V_2.fq  –CPU 30 –min_kmer_cov 2 &amp;</p>
-</blockquote>
+<p>commands: &gt;nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left clean_a-BR-1_RRAS30349-V_1.fq clean_b-BR_RRAS27375-V_1.fq clean_c-BR-1_RRAS30350-V_1.fq clean_d-BR_RRAS30433-V_1.fq clean_e-BR_RRAS30435-V_1.fq clean_o-3-HD_RRAS47919-V_1.fq –right clean_a-BR-1_RRAS30349-V_2.fq clean_b-BR_RRAS27375-V_2.fq clean_c-BR-1_RRAS30350-V_2.fq clean_d-BR_RRAS30433-V_2.fq clean_e-BR_RRAS30435-V_2.fq clean_o-3-HD_RRAS47919-V_2.fq –CPU 30 –min_kmer_cov 2 &amp;</p>
 <p><strong>这里需要等待比较长的计算时间，并且在结果出来之后要进行统计，要是统计结果不太好则要重新调整参数重跑。所以还是把质量写进脚本run_trinity.sh比较方便。</strong></p>
-<p>output files:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/trinity_results.png" alt="trinity_results"></p>
-<blockquote>
-<p>输出的结果包括了三部分，分别是Trinity当中三部分程序的独立结果。在所有结果中最为重要的是Trinity.fasta文件，这就是我们要的最终的拼接结果的文件，后续分析以此为基础，我们需要先评估拼接的质量高低，满足要求就开始下一步定量分析。</p>
-</blockquote>
-<h3 id="2-1-TrinityStats-pl结果统计"><a href="#2-1-TrinityStats-pl结果统计" class="headerlink" title="2.1 TrinityStats.pl结果统计"></a>2.1 TrinityStats.pl结果统计</h3><p><code>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl &lt;result_fasta_file&gt;</code></p>
-<p>commands:</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl ./Trinity.fasta</p>
-</blockquote>
-<p>output:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/statistics.png" alt="statistics"></p>
+<p>output files: <img src="/2020/04/17/Bioinformatics/Yellowseabream-record/trinity_results.png" alt="trinity_results"> &gt;输出的结果包括了三部分，分别是Trinity当中三部分程序的独立结果。在所有结果中最为重要的是Trinity.fasta文件，这就是我们要的最终的拼接结果的文件，后续分析以此为基础，我们需要先评估拼接的质量高低，满足要求就开始下一步定量分析。</p>
+<h3 id="trinitystats.pl结果统计">2.1 TrinityStats.pl结果统计</h3>
+<p><code>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl &lt;result_fasta_file&gt;</code></p>
+<p>commands: &gt;/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl ./Trinity.fasta</p>
+<p>output: <img src="/2020/04/17/Bioinformatics/Yellowseabream-record/statistics.png" alt="statistics"></p>
 <table>
 <thead>
-<tr>
-<th align="center">total genes</th>
-<th align="center">total transcripts</th>
-<th align="center">Contig N50</th>
-<th align="center">Percent GC</th>
+<tr class="header">
+<th style="text-align: center;">total genes</th>
+<th style="text-align: center;">total transcripts</th>
+<th style="text-align: center;">Contig N50</th>
+<th style="text-align: center;">Percent GC</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">265295</td>
-<td align="center">319932</td>
-<td align="center">2913</td>
-<td align="center">46.50</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">265295</td>
+<td style="text-align: center;">319932</td>
+<td style="text-align: center;">2913</td>
+<td style="text-align: center;">46.50</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p>由上结果来看，拼接出来的转录本数量有点多，这样对于在时候做差异分析时不利，下一回可以考虑在指控的时候把minlen参数设高一些，这样子对于后期的分析比较有利。这里拼接的N50是2913，还不错。</p>
 </blockquote>
-<h3 id="2-2-cd-hit去冗余"><a href="#2-2-cd-hit去冗余" class="headerlink" title="2.2 cd-hit去冗余"></a>2.2 cd-hit去冗余</h3><p>commands:</p>
-<blockquote>
-<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 40</p>
-</blockquote>
-<p>output:<br><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/cd-hit_result.png" alt="cd-hit_result"></p>
-<h3 id="2-3-corset聚类去冗余"><a href="#2-3-corset聚类去冗余" class="headerlink" title="2.3 corset聚类去冗余"></a>2.3 corset聚类去冗余</h3><p>commands:</p>
-<blockquote>
-<p>corset [options] bowtie.bam</p>
-</blockquote>
+<h3 id="cd-hit去冗余">2.2 cd-hit去冗余</h3>
+<p>commands: &gt;cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 40</p>
+<p>output: <img src="/2020/04/17/Bioinformatics/Yellowseabream-record/cd-hit_result.png" alt="cd-hit_result"></p>
+<h3 id="corset聚类去冗余">2.3 corset聚类去冗余</h3>
+<p>commands: &gt;corset [options] bowtie.bam</p>
 <ul>
 <li>注意使用python2.7环境</li>
 </ul>
-<h2 id="3-RSEM-bowtie2定量分析与mapping"><a href="#3-RSEM-bowtie2定量分析与mapping" class="headerlink" title="3. RSEM_bowtie2定量分析与mapping"></a>3. RSEM_bowtie2定量分析与mapping</h2><p>commands:</p>
-<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_a <span class="hljs-params">--left</span> clean_a-BR-1_RRAS30349-V_1.fq <span class="hljs-params">--right</span> clean_a-BR-1_RRAS30349-V_2.fq &gt;nohup_a.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_b <span class="hljs-params">--left</span> clean_b-BR_RRAS27375-V_1.fq <span class="hljs-params">--right</span> clean_b-BR_RRAS27375-V_2.fq &gt;nohup_b.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_c <span class="hljs-params">--left</span> clean_c-BR-1_RRAS30350-V_1.fq <span class="hljs-params">--right</span> clean_c-BR-1_RRAS30350-V_2.fq &gt;nohup_c.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_d <span class="hljs-params">--left</span> clean_d-BR_RRAS30433-V_1.fq <span class="hljs-params">--right</span> clean_d-BR_RRAS30433-V_2.fq &gt;nohup_d.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_e <span class="hljs-params">--left</span> clean_e-BR_RRAS30435-V_1.fq <span class="hljs-params">--right</span> clean_e-BR_RRAS30435-V_2.fq &gt;nohup_e.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_o <span class="hljs-params">--left</span> clean_o-3-HD_RRAS47919-V_1.fq <span class="hljs-params">--right</span> clean_o-3-HD_RRAS47919-V_2.fq &gt;nohup_o.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
-
+<h2 id="rsem_bowtie2定量分析与mapping">3. RSEM_bowtie2定量分析与mapping</h2>
+<p>commands: <figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_a <span class="hljs-params">--left</span> clean_a-BR-1_RRAS30349-V_1.fq <span class="hljs-params">--right</span> clean_a-BR-1_RRAS30349-V_2.fq &gt;nohup_a.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_b <span class="hljs-params">--left</span> clean_b-BR_RRAS27375-V_1.fq <span class="hljs-params">--right</span> clean_b-BR_RRAS27375-V_2.fq &gt;nohup_b.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_c <span class="hljs-params">--left</span> clean_c-BR-1_RRAS30350-V_1.fq <span class="hljs-params">--right</span> clean_c-BR-1_RRAS30350-V_2.fq &gt;nohup_c.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_d <span class="hljs-params">--left</span> clean_d-BR_RRAS30433-V_1.fq <span class="hljs-params">--right</span> clean_d-BR_RRAS30433-V_2.fq &gt;nohup_d.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_e <span class="hljs-params">--left</span> clean_e-BR_RRAS30435-V_1.fq <span class="hljs-params">--right</span> clean_e-BR_RRAS30435-V_2.fq &gt;nohup_e.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">nohup <span class="hljs-string">/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl</span> <span class="hljs-params">--transcripts</span> cdhit_new_Trinity.fasta <span class="hljs-params">--seqType</span> fq <span class="hljs-params">--est_method</span> RSEM <span class="hljs-params">--aln_method</span> bowtie <span class="hljs-params">--trinity_mode</span> <span class="hljs-params">--prep_reference</span> <span class="hljs-params">--output_dir</span> rsem_outdir_o <span class="hljs-params">--left</span> clean_o-3-HD_RRAS47919-V_1.fq <span class="hljs-params">--right</span> clean_o-3-HD_RRAS47919-V_2.fq &gt;nohup_o.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></p>
 <p><em>tips: Each group needs to align independently.</em></p>
 <p>results:</p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result1.png" alt="RSEM_result1"><br><strong>黄色框中是RSEM定量的一些中间文件，红色框中是结果输出文件夹</strong></p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result2.png" alt="RSEM_result2"></p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_genes.png" alt="RSEM_genes"></p>
-<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_isoforms.png" alt="RSEM_isoforms"></p>
-<p><strong>genes.results和isoforms.results分别是基于基因和转录本水平的定量结果，这两者的区别可以在下面两幅图中看出来。isoforms.results中包含了转录本ID，基因ID，转录本长度，有效长度，expected_count，TPM，FPKM和IsoPct（该转录本表达量占基因总表达量的百分比）。genes.results中的内容与之类似，只是少了IsoPct。</strong></p>
-<blockquote>
-<p>接下来我们可以将FPKM提取出来，然后进行聚类分析，查看一下现有的各组样品之间的一个相关性，这类可以采用clustermap来展示。</p>
-</blockquote>
-<h2 id="4-edgeR差异分析"><a href="#4-edgeR差异分析" class="headerlink" title="4. edgeR差异分析"></a>4. edgeR差异分析</h2><h2 id="5-blastx比对"><a href="#5-blastx比对" class="headerlink" title="5. blastx比对"></a>5. blastx比对</h2><h2 id="6-GO-KEGG注释"><a href="#6-GO-KEGG注释" class="headerlink" title="6. GO_KEGG注释"></a>6. GO_KEGG注释</h2><h2 id="7-stem趋势分析"><a href="#7-stem趋势分析" class="headerlink" title="7. stem趋势分析"></a>7. stem趋势分析</h2><h2 id="8-结果整理与解读"><a href="#8-结果整理与解读" class="headerlink" title="8. 结果整理与解读"></a>8. 结果整理与解读</h2><h2 id="9-后记"><a href="#9-后记" class="headerlink" title="9. 后记"></a>9. 后记</h2>
+<p><img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result1.png" alt="RSEM_result1"> <strong>黄色框中是RSEM定量的一些中间文件，红色框中是结果输出文件夹</strong></p>
+<figure>
+<img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_result2.png" alt="RSEM_result2"><figcaption aria-hidden="true">RSEM_result2</figcaption>
+</figure>
+<figure>
+<img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_genes.png" alt="RSEM_genes"><figcaption aria-hidden="true">RSEM_genes</figcaption>
+</figure>
+<figure>
+<img src="/2020/04/17/Bioinformatics/Yellowseabream-record/RSEM_isoforms.png" alt="RSEM_isoforms"><figcaption aria-hidden="true">RSEM_isoforms</figcaption>
+</figure>
+<p><strong>genes.results和isoforms.results分别是基于基因和转录本水平的定量结果，这两者的区别可以在下面两幅图中看出来。isoforms.results中包含了转录本ID，基因ID，转录本长度，有效长度，expected_count，TPM，FPKM和IsoPct（该转录本表达量占基因总表达量的百分比）。genes.results中的内容与之类似，只是少了IsoPct。</strong> &gt;接下来我们可以将FPKM提取出来，然后进行聚类分析，查看一下现有的各组样品之间的一个相关性，这类可以采用clustermap来展示。</p>
+<h2 id="edger差异分析">4. edgeR差异分析</h2>
+<h2 id="blastx比对">5. blastx比对</h2>
+<h2 id="go_kegg注释">6. GO_KEGG注释</h2>
+<h2 id="stem趋势分析">7. stem趋势分析</h2>
+<h2 id="结果整理与解读">8. 结果整理与解读</h2>
+<h2 id="后记">9. 后记</h2>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -328,7 +323,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <p class="title has-text-weight-normal">
                         59
@@ -338,7 +333,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -348,7 +343,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
                         44
@@ -358,7 +353,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -415,7 +410,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -516,7 +511,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Awan tag
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -527,7 +522,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -851,7 +846,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -957,7 +952,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1091,7 +1086,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -1197,7 +1192,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1332,7 +1327,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 Genening&nbsp;
+                &copy; 2021 Genening&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
@@ -1461,7 +1456,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1480,7 +1475,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1492,11 +1487,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };

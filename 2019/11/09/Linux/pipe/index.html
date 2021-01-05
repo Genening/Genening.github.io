@@ -117,7 +117,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 541 words)
+                    4 minutes membaca (Sekitar 541 kata)
                 </span>
                 
                 
@@ -158,25 +158,13 @@
             
         </h1>
         <div class="content">
-            <p><strong>使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</strong></p>
-<a id="more"></a>
-<h3 id="如下examples"><a href="#如下examples" class="headerlink" title="如下examples"></a>如下examples</h3><ol>
-<li><p>ps -ef|less</p>
-<blockquote>
-<p>ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示</p>
-</blockquote>
-</li>
-<li><p>find . -name “*.bam”|xargs rm -rfv</p>
-<blockquote>
-<p>首先查询在当前目录下匹配得上尾缀为.bam的文件，然后通过管道符传递给xargs中的命令rm，这样就可以批量删除，因为rm默认是不支持正则匹配的，所以可以通过这种方式来做到批量删除，同样，采用元字符也能达到一定的目的，如下</p>
-</blockquote>
-<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf test-&#123;<span class="hljs-number">1</span>..<span class="hljs-number">100</span>&#125;<span class="hljs-selector-class">.txt</span> #可以删除test-<span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> test-<span class="hljs-number">2</span><span class="hljs-selector-class">.txt</span> .... test-<span class="hljs-number">100</span>.txt等一系列文件，这也是批量删除。</span><br></pre></td></tr></table></figure>
-
-</li>
+            <p><strong>使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</strong> <a id="more"></a> ### 如下examples</p>
+<ol type="1">
+<li><p>ps -ef|less &gt;ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示</p></li>
+<li><p>find . -name "*.bam"|xargs rm -rfv &gt;首先查询在当前目录下匹配得上尾缀为.bam的文件，然后通过管道符传递给xargs中的命令rm，这样就可以批量删除，因为rm默认是不支持正则匹配的，所以可以通过这种方式来做到批量删除，同样，采用元字符也能达到一定的目的，如下 <figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf test-&#123;<span class="hljs-number">1</span>..<span class="hljs-number">100</span>&#125;<span class="hljs-selector-class">.txt</span> #可以删除test-<span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> test-<span class="hljs-number">2</span><span class="hljs-selector-class">.txt</span> .... test-<span class="hljs-number">100</span>.txt等一系列文件，这也是批量删除。</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>xargs 是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。<br><br>xargs 可以将管道或标准输入（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br><br>xargs 也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。<br><br>xargs 默认的命令是 echo，这意味着通过管道传递给 xargs 的输入将会包含换行和空白，不过通过 xargs 的处理，换行和空白将被空格取代。<br><br>xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。<br>之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：<br></p>
-<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |<span class="hljs-keyword">ls</span> -l       <span class="hljs-comment">#这个命令是错误的</span></span><br><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |xargs <span class="hljs-keyword">ls</span> -l   <span class="hljs-comment">#这样才是正确的</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="补充">补充</h3>
+<p>xargs 是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。<br> xargs 可以将管道或标准输入（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br> xargs 也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。<br> xargs 默认的命令是 echo，这意味着通过管道传递给 xargs 的输入将会包含换行和空白，不过通过 xargs 的处理，换行和空白将被空格取代。<br> xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。 之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：<br> <figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |<span class="hljs-keyword">ls</span> -l       <span class="hljs-comment">#这个命令是错误的</span></span><br><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |xargs <span class="hljs-keyword">ls</span> -l   <span class="hljs-comment">#这样才是正确的</span></span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -260,7 +248,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <p class="title has-text-weight-normal">
                         59
@@ -270,7 +258,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -280,7 +268,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
                         44
@@ -290,7 +278,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -347,7 +335,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -448,7 +436,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Awan tag
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -459,7 +447,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -783,7 +771,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -889,7 +877,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1023,7 +1011,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -1129,7 +1117,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -1264,7 +1252,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 Genening&nbsp;
+                &copy; 2021 Genening&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
@@ -1393,7 +1381,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1412,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1424,11 +1412,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };
