@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html  lang="Ch">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>network-fixing - Genening&#39;s blog</title>
+
+
+    <meta name="description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+<meta name="keywords" content="网络检修思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="network-fixing">
+<meta property="og:url" content="https://genening.github.io/2021/01/15/计算机基础/network-fixing/index.html">
+<meta property="og:site_name" content="Genening&#39;s blog">
+<meta property="og:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://genening.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2021-01-15T09:15:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="network-fixing">
+<meta name="twitter:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+<meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                NOTHING IS EVERYTHING
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-01-15T09:15:52.000Z">2021-01-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机基础/">计算机基础</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    26 minutes read (About 3968 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                network-fixing
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言">前言</h2>
+<blockquote>
+<p>这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。</p>
+</blockquote>
+<h2 id="必备知识储备">1. 必备知识储备</h2>
+<blockquote>
+<p>在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网络的基本架构） ### 1.1 计算机网络框架（OSI框架和TCP/IP协议栈） OSI框架把计算机网络划分为七层，自底向上依次是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层，TCP/IP协议栈把网络分为四层，自底向上依次是数据接口层、网络层、传输层、应用层，这两种框架都是为了把网络架构分层表示，把网络的架构清晰的表示出来，便于网络的构建与维护，这两种框架有一定的历史渊源，但是都可以用于指导实践，在我们的一般学习或应用中，会常常用两个框架相结合形成的五层理论。五层理论把网络自底向上依次分为物理层、数据链路层、网络层、传输层和应用层，比OSI简单，比TCP/IP清晰，所以是一个比较适合用于学习的分层方式。其中物、链、网三层称为通信子层，因为这都是计算机网络通信的基础，而上面的几层称为资源子层，是建立在通信子层基础上的虚拟空间层。物理层设备有中继器和集线器，数据链数层有网桥和交换机，网络层有路由器，除了这三层的设备外，常见的网络设备还有光猫、节点交换机等，也是常见的物理基础。</p>
+</blockquote>
+<p>这些知识基本知识，实际的需求应该要掌握的更加详细一些，特别是TCP/IP协议栈和OSI框架，每一层的具体知识都是需要去了解和掌握的。</p>
+<h3 id="了解网络通信的基础设备">1.2 了解网络通信的基础设备</h3>
+<p>像交换机、三层交换机、路由器、防火墙这些最基本的网络设备应该要有些了解，尤其是它们对应的OSI层次以及作用，比如普通的二层交换机对应OSI七层模型中的数据链路层，它可以隔绝冲突域，同时可以通过虚拟局域网技术（VLAN）来隔绝广播域，二层交换机通过二层地址即MAC地址来实现数据帧的转发；再比如路由器，它对应网络层，可以提供路由寻址的功能等等。这些就是各个设备的基本功能，另外这些设备的实现原理也是很有意思并且值得了解的知识。</p>
+<h3 id="一般的中小型企业网络基本架构">1.3 一般的中小型企业网络基本架构</h3>
+<p><img src="/2021/01/15/计算机基础/network-fixing/enterprise_struc.jpg" alt="Usual-Enterprise-structure"> 如上图的展示，这就是常见的一般架构了，总的来说都是从用户PC接入开始，经过层层的交换机和路由器的转接，最终从公司的与外部网络连接的路由器出去这样整个过程构建的框架，所以抓住这条数据流动的主线，这些架构就很容易理解了。在这幅图里面展示的就是基本的4层网络，分别是用户层、接入交换机层、核心交换机层、路由层，在实际的网络架构中还包含着无线网络的接入，以及不同的规模需求，网络的架构会更加复杂一些，但都是建立在这些基本的框架的基础上的，所以都可以从这个模型出发开始去分析。</p>
+<h3 id="常用网络排错命令">1.4 常用网络排错命令</h3>
+<p>我们一般使用的是Windows操作系统，所以这里只列举了在Windows操作系统中的排错命令，实际上在linux或者Macos中都有相应的命令，这个需要自己去了解。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">命令</th>
+<th style="text-align: center;">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ipconfig</td>
+<td style="text-align: center;">查看计算机的IP地址、子网掩码和网关</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ipconfig/all</td>
+<td style="text-align: center;">查看计算机的IP地址、子网掩码、网关和DNS地址</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ping</td>
+<td style="text-align: center;">测试网络之间的网络连通性</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">tracert -d</td>
+<td style="text-align: center;">路由追踪，可以用-h参数查看使用方法，-d表示不做反向解析</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">arp -a</td>
+<td style="text-align: center;">查看计算机是否取得了网关的MAC地址，-h可以查看使用方法</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">nslookup</td>
+<td style="text-align: center;">请求域名对应的IP地址，并以此来测试DNS地址是否可用</td>
+</tr>
+</tbody>
+</table>
+<p>这几个就是Windows上常用的网络排错指令，接下来就要实际应用一下。</p>
+<h2 id="排错思路">2. 排错思路</h2>
+<p>基本思路如下，这跟网上的大多数人写的应该是差不多的。 * 1. 检查物理链路是否有问题 * 2. 查看本机IP地址、路由、DNS的设置是否有问题 * 3. 测试网关或路由器的通畅情况。先测网关然后再测路由器，一级一级地测试 * 4. 测试ping公网ip的通畅情况（平时要记几个外部IP） * 5. 测试DNS的通畅情况，可以直接ping网站地址</p>
+<h2 id="具体操作步骤">3. 具体操作步骤</h2>
+<p>因为现在呆在学校，所以我就用校园网来进行一次操作实践。首先要明白校园网的基本网络架构，如下图示意图。（这是一个粗略的示意图，实际情况可能有些偏差）</p>
+<figure>
+<img src="/2021/01/15/计算机基础/network-fixing/campus-net-struc.jpg" alt="campus-net-struc"><figcaption aria-hidden="true">campus-net-struc</figcaption>
+</figure>
+<p>下面，我们就以这个网络来进行实践。</p>
+<h3 id="检查物理链路是否有问题">3.1 检查物理链路是否有问题</h3>
+<p>这是基本思路，首先确保物理链路正常。我们可以检查的一般是本电脑的网卡是否正常，网线连接是否正常，网线有无缺损，路由器是否正常通电等。我们不一定有机会检查交换机，但是首先要确保我们能够接触到的设备的物理连接正常。</p>
+<figure>
+<img src="/2021/01/15/计算机基础/network-fixing/check1.png" alt="check1"><figcaption aria-hidden="true">check1</figcaption>
+</figure>
+<p>在这一步，下面几点是需要注意排查的：</p>
+<ol type="1">
+<li><p>确认电脑本身的网卡有没有问题</p></li>
+<li><p>确认接的网线有没有问题</p></li>
+<li><p>本机所连接的交换机（如果可以去机房查看的话）</p></li>
+</ol>
+<p>如果上面这几点排查都没有问题了，那么就是该网络环境中的其他设备问题了。这一范围的排查相对比较简单，因为只涉及到物理链路的连接问题。</p>
+<p>对于这种测试，可以考虑使用测线器，但个人的建议是，拿一台配置正确的笔记本来做测试也未尝不可。</p>
+<h3 id="查看本机ip地址路由dns的设置是否有问题">3.2 查看本机IP地址、路由、DNS的设置是否有问题</h3>
+<p>通过上面一步的排查后，我们可以确认的是物理链路应该是正常的，也就是说网络接入后，电脑有反应，但是网络不通，到这一步后，我们就可以把注意力放到电脑的设置了。</p>
+<ol type="1">
+<li><p>ip地址的设置 ip地址的设置有静态ip和动态ip之分，一般采用动态ip的协议DHCP获取动态ip接入，如果是静态ip，一般由网络管理员提供ip，如果设置了静态ip就要确认ip填写是否正确，ip是否改变更新了，但是我们通常使用动态ip，所以不用设置这些内容，动态ip只要确认DHCP服务正常开启了即可。 <img src="/2021/01/15/计算机基础/network-fixing/ipconfig.jpg" alt="ipconfig"></p></li>
+<li><p>路由设置 对于服务器、PC，一般是指默认网关的设置了；对于路由器本身或三层交换机，那就是静态路由或动态路由的设置问题了。</p></li>
+<li><p>DNS设置 这里主要确认我们设置的DNS服务器是否正常，如果DNS服务器故障的话，我们一般获取不到与我们要访问的域名对应的IP地址，所以我们无法访问对应的域名，但是在这一步，我们可以直接使用IP地址来访问，这里需要记一些简单的IP地址，如果直接访问IP地址正常，但是访问域名不正常，那么即可以推断出事DNS服务器服务故障，这个时候可以考试更换DNS服务器，常用的DNS服务器有8.8.8.8和114.114.114.114，可以选择设置这些DNS服务器。</p></li>
+</ol>
+<figure>
+<img src="/2021/01/15/计算机基础/network-fixing/ipconfig-all.jpg" alt="ipconfig/all"><figcaption aria-hidden="true">ipconfig/all</figcaption>
+</figure>
+<h3 id="测试网关或路由器的通畅情况先测网关然后再测路由器一级一级地测试">3.3 测试网关或路由器的通畅情况。先测网关然后再测路由器，一级一级地测试</h3>
+<p>在上面的网络环境中，在网络通的情况下，我们可以在Windows电脑中cmd程序中使用命令tracert -d命令，查看路由踪迹，如下 <img src="/2021/01/15/计算机基础/network-fixing/tracert-ping.jpg" alt="tracert"></p>
+<p>内部网关除外，我们可以使用ping命令一级一级的进行网络定点通路测试，也就看看到底是哪一级有问题。 <img src="/2021/01/15/计算机基础/network-fixing/ping.jpg" alt="ping"></p>
+<p>通过tracert的路由追踪，我们可以清晰的得知访问互联网时的数据走向。 <img src="/2021/01/15/计算机基础/network-fixing/data-path.jpg" alt="data-path"></p>
+<p>结合这个数据走向图，我们可以得到一个重要的思路，就是根据这个走向来进行确定，分别定点测试这些网络网关，就可以得知这些段是否正常。</p>
+<p>一般这样的判断方法是比较快的，但有时候，无论怎样ping都不能，那么则可能有以下的几种情况：</p>
+<ol type="a">
+<li><p>网关设备做了禁止ping的设置</p></li>
+<li><p>网关接口或网关设备出现故障</p></li>
+</ol>
+<p>对于a，一般很少会在这些设备在做ping的限制操作，实在是没有太大的必要这样做，当然，网络安全等要求十分严格的除外。ping通192.168.2.254网关后，再ping一下172.16.13.1以确认电脑到整个网关设备都没有问题。</p>
+<p>对于ping不通的时候，我个人还建议在电脑上执行如下操作： <img src="/2021/01/15/计算机基础/network-fixing/arp.jpg" alt="arp"> 通过这个指令可以检查，从ip到Mac地址的映射是否正常，也就是网关当中是否获取了对应Mac地址，因为在局域网中，实际上是采用Mac进行通信的。只有在网络层当中，也就是需要跨局域网的情况下才采用ip通信。</p>
+<p>显然，如果没有网关的MAC地址，那也是不可能ping通网关的，在排除了前面电脑设置的问题后，你可以猜测是网关设备出了问题，这时就可以联系网络工程师对网关设备进行测试了。</p>
+<p>上面的步骤完成了，假设你的出口路由器设置是没有问题的，比如NAT与默认路由等的设置，那么我们大致可以知道，内网的一个基本通信是正常的（至少你的电脑和出口路由器的通信没问题），我们就要看看电脑到底能不能访问互联网了</p>
+<h3 id="测试ping公网ip的通畅情况平时要记几个外部ip">3.4 测试ping公网ip的通畅情况（平时要记几个外部IP）</h3>
+<p>来到这一步的时候，就说明前面三步是没有问题的，也就是说，本地局域网络的通信是正常的，这时要做的就是判断本地局域网络与外网（公网）之间的通信有没有问题了：</p>
+<p>这里采取的是直接ping公网地址的方法，是为了排除DNS的影响（万一你的DNS设置又有问题），至于要ping什么样的公网地址，个人建议是，可以ping一些没有禁止ping的公共DNS服务器地址，比如114.114.114.114和8.8.8.8的： <img src="/2021/01/15/计算机基础/network-fixing/ping114.jpg" alt="ping8"></p>
+<p>这样之后，基本上就可以确定网络是没有问题的了。当然，这里并没有提到出口放置防火墙的情况，实际上，思路是一致的，但是，你需要考虑的是，你的访问数据有没有被防火墙给过滤掉，是数据出去的时候过滤了，还是数据回来的时候过滤了？由于还要涉及到防火墙的设置，这里就不再提及了，只是仍要注意这一点就是了。</p>
+<h3 id="测试dns的通畅情况可以直接ping网站地址">3.5 测试DNS的通畅情况，可以直接ping网站地址</h3>
+<p>如题，可以直接ping网站地址，看有没有回显IP地址，至于通不通是另外一回事，只要可以回显IP地址，那么DNS就没有问题了，不过这里仍然要说一下nslookup这个命令，这是一个非常好用的命令，我平常自己在网络排错时，基本上都会用到： <img src="/2021/01/15/计算机基础/network-fixing/nslookup.jpg" alt="nslookup"></p>
+<p>使用nslookup命令，作用有二：</p>
+<p>1.帮你测试你设置的DNS服务器有没有问题</p>
+<p>2.在不考虑DNS服务器是否智能的前提下，你可以根据回显IP地址速度的快慢来大致判断DNS服务器的优劣情况</p>
+<p>所以可以充分利用nslookup命令了。</p>
+<h2 id="重要说明">4. 重要说明</h2>
+<p>其实基本上，一个相对完整的网络排错过程就应该如上面所说的了，不过，是基本上的，因为上面的讲解，都几乎是假定你是没有权限进入机房查看网络设备的情况的。</p>
+<p>事实上，你是根本不需要照搬来进行上面的全部步骤的，在实际排错的过程中，可能你用到的只是其中的一小部分而已，毕竟，如果每次都这样下来，没有谁是不会疯掉的，因为一些很简单的问题也要这样折腾，那就是太浪费时间了！但是，上面的方法，只是提出一种网络排错的思路，希望按照这个思路可以判断出网络的问题出现在哪里，至于如何去解决，这中间真的又涉及到太多太多的经验问题。其实整个下来，个人觉得，最重要的仍然不是技术本身，而是在网络排错过程当中的一个思路，思路决定出路，这可以让自己在网络排错的过程中时刻保持清醒的头脑，这一点很重要。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/网络检修思路/">网络检修思路</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/29/Mathematics/极限意义/">
+                <span class="level-item">极限在微积分中的意义</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Genening">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Genening
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Nothing is everything
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>SYSU</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        60
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        45
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/genening">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Bioinformatics/">
+            <span class="level-start">
+                <span class="level-item">Bioinformatics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Machinelearning/">
+            <span class="level-start">
+                <span class="level-item">Machinelearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Mathematics/">
+            <span class="level-start">
+                <span class="level-item">Mathematics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/NLP/">
+            <span class="level-start">
+                <span class="level-item">NLP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Poetry-with-Life/">
+            <span class="level-start">
+                <span class="level-item">Poetry with Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">18</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Practical-skills/">
+            <span class="level-start">
+                <span class="level-item">Practical skills</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/log/">
+            <span class="level-start">
+                <span class="level-item">log</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web/">
+            <span class="level-start">
+                <span class="level-item">web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机基础/">
+            <span class="level-start">
+                <span class="level-item">计算机基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nlp-天池/">
+                        <span class="tag">-nlp -天池</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GO/">
+                        <span class="tag">GO</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/KEGG/">
+                        <span class="tag">KEGG</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux文本操作/">
+                        <span class="tag">Linux文本操作</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux管道符/">
+                        <span class="tag">Linux管道符</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux软硬链接/">
+                        <span class="tag">Linux软硬链接</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Quality-Controling/">
+                        <span class="tag">Quality Controling</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regular-expression/">
+                        <span class="tag">Regular expression</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Try-new-thing/">
+                        <span class="tag">Try new thing</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/analysis-of-variance/">
+                        <span class="tag">analysis of variance</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/bash/">
+                        <span class="tag">bash</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/bert/">
+                        <span class="tag">bert</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast/">
+                        <span class="tag">blast</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/blast2go/">
+                        <span class="tag">blast2go</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/data-analysis/">
+                        <span class="tag">data analysis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/edgeR/">
+                        <span class="tag">edgeR</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/electron开发/">
+                        <span class="tag">electron开发</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gene-anotation/">
+                        <span class="tag">gene anotation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js学习/">
+                        <span class="tag">js学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-for-mathematics-formula/">
+                        <span class="tag">latex for mathematics formula</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/latex-layout/">
+                        <span class="tag">latex-layout</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux-shell/">
+                        <span class="tag">linux shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nlp/">
+                        <span class="tag">nlp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nlp数据处理/">
+                        <span class="tag">nlp数据处理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/numpy/">
+                        <span class="tag">numpy</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/pandas/">
+                        <span class="tag">pandas</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python基础/">
+                        <span class="tag">python基础</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/seaborn-visualization/">
+                        <span class="tag">seaborn-visualization</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell-script/">
+                        <span class="tag">shell_script</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/博客建设/">
+                        <span class="tag">博客建设</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/基因差异分析/">
+                        <span class="tag">基因差异分析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数学极限/">
+                        <span class="tag">数学极限</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据可视化/">
+                        <span class="tag">数据可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构与算法/">
+                        <span class="tag">数据结构与算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/文本分类/">
+                        <span class="tag">文本分类</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/无参转录组实战/">
+                        <span class="tag">无参转录组实战</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习概览/">
+                        <span class="tag">机器学习概览</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率论与数理统计/">
+                        <span class="tag">概率论与数理统计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生活的诗/">
+                        <span class="tag">生活的诗</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线性方程组/">
+                        <span class="tag">线性方程组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络检修思路/">
+                        <span class="tag">网络检修思路</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/质控可视化/">
+                        <span class="tag">质控可视化</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/转录组/">
+                        <span class="tag">转录组</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/转录组分析实践/">
+                        <span class="tag">转录组分析实践</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/01/15/计算机基础/network-fixing/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="network-fixing">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T09:15:52.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/计算机基础/network-fixing/" class="title has-link-black-ter is-size-6 has-text-weight-normal">network-fixing</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机基础/">计算机基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/29/Mathematics/极限意义/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="极限在微积分中的意义">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-29T11:36:29.000Z">2020-07-29</time></div>
+                    <a href="/2020/07/29/Mathematics/极限意义/" class="title has-link-black-ter is-size-6 has-text-weight-normal">极限在微积分中的意义</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-6-基于深度学习的文本分类3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time></div>
+                    <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-6-基于深度学习的文本分类3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-5-基于深度学习的文本分类2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-25T12:05:41.000Z">2020-07-25</time></div>
+                    <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-5-基于深度学习的文本分类2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-4-基于深度学习的文本分类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T02:17:47.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-4-基于深度学习的文本分类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/01/15/计算机基础/network-fixing/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="network-fixing">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T09:15:52.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/计算机基础/network-fixing/" class="title has-link-black-ter is-size-6 has-text-weight-normal">network-fixing</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机基础/">计算机基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/29/Mathematics/极限意义/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="极限在微积分中的意义">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-29T11:36:29.000Z">2020-07-29</time></div>
+                    <a href="/2020/07/29/Mathematics/极限意义/" class="title has-link-black-ter is-size-6 has-text-weight-normal">极限在微积分中的意义</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-6-基于深度学习的文本分类3">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time></div>
+                    <a href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-6-基于深度学习的文本分类3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-5-基于深度学习的文本分类2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-25T12:05:41.000Z">2020-07-25</time></div>
+                    <a href="/2020/07/25/NLP/nlp-5-基于深度学习的文本分类2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-5-基于深度学习的文本分类2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nlp-4-基于深度学习的文本分类">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T02:17:47.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nlp-4-基于深度学习的文本分类</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    NOTHING IS EVERYTHING
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 Genening&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div>
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    |  本站总访问量<span id="busuanzi_value_site_pv">次</span>
+                </span>
+                <span id="busuanzi_container_site_uv" class="theme-info">
+                    |  本站访客数<span id="busuanzi_value_site_uv">人次</span>
+                </span>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">script>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("Chinese");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
