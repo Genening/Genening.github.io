@@ -10,19 +10,19 @@
 <title>network-fixing - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+    <meta name="description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。">
 <meta name="keywords" content="网络检修思路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="network-fixing">
 <meta property="og:url" content="https://genening.github.io/2021/01/15/计算机基础/network-fixing/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+<meta property="og:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2021-01-15T09:15:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="network-fixing">
-<meta name="twitter:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。  1. 必备知识储备  在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网">
+<meta name="twitter:description" content="前言  这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    26 minutes read (About 3968 words)
+                    26 minutes read (About 3969 words)
                 </span>
                 
                 
@@ -160,11 +160,7 @@
         <div class="content">
             <h2 id="前言">前言</h2>
 <blockquote>
-<p>这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。</p>
-</blockquote>
-<h2 id="必备知识储备">1. 必备知识储备</h2>
-<blockquote>
-<p>在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网络的基本架构） ### 1.1 计算机网络框架（OSI框架和TCP/IP协议栈） OSI框架把计算机网络划分为七层，自底向上依次是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层，TCP/IP协议栈把网络分为四层，自底向上依次是数据接口层、网络层、传输层、应用层，这两种框架都是为了把网络架构分层表示，把网络的架构清晰的表示出来，便于网络的构建与维护，这两种框架有一定的历史渊源，但是都可以用于指导实践，在我们的一般学习或应用中，会常常用两个框架相结合形成的五层理论。五层理论把网络自底向上依次分为物理层、数据链路层、网络层、传输层和应用层，比OSI简单，比TCP/IP清晰，所以是一个比较适合用于学习的分层方式。其中物、链、网三层称为通信子层，因为这都是计算机网络通信的基础，而上面的几层称为资源子层，是建立在通信子层基础上的虚拟空间层。物理层设备有中继器和集线器，数据链数层有网桥和交换机，网络层有路由器，除了这三层的设备外，常见的网络设备还有光猫、节点交换机等，也是常见的物理基础。</p>
+<p>这几天看到了一个有意思的文章，介绍了网络故障排查的思路，这和计算机网络的知识有比较大的关联，是一个很好的网络知识应用的实践，值得一学。所以接下来我就来进行一下操作实践。 <a id="more"></a> ## 1. 必备知识储备 在进行系统性故障排查之前，需要有一定的相关知识储备，不然检修排查无从谈起，所以需要以下的三方面基本知识。（熟悉计算机网络框架OSI和TCP/IP、了解基本的通信基础设备、了解中小型企业网络的基本架构） ### 1.1 计算机网络框架（OSI框架和TCP/IP协议栈） OSI框架把计算机网络划分为七层，自底向上依次是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层，TCP/IP协议栈把网络分为四层，自底向上依次是数据接口层、网络层、传输层、应用层，这两种框架都是为了把网络架构分层表示，把网络的架构清晰的表示出来，便于网络的构建与维护，这两种框架有一定的历史渊源，但是都可以用于指导实践，在我们的一般学习或应用中，会常常用两个框架相结合形成的五层理论。五层理论把网络自底向上依次分为物理层、数据链路层、网络层、传输层和应用层，比OSI简单，比TCP/IP清晰，所以是一个比较适合用于学习的分层方式。其中物、链、网三层称为通信子层，因为这都是计算机网络通信的基础，而上面的几层称为资源子层，是建立在通信子层基础上的虚拟空间层。物理层设备有中继器和集线器，数据链数层有网桥和交换机，网络层有路由器，除了这三层的设备外，常见的网络设备还有光猫、节点交换机等，也是常见的物理基础。</p>
 </blockquote>
 <p>这些知识基本知识，实际的需求应该要掌握的更加详细一些，特别是TCP/IP协议栈和OSI框架，每一层的具体知识都是需要去了解和掌握的。</p>
 <h3 id="了解网络通信的基础设备">1.2 了解网络通信的基础设备</h3>
@@ -342,7 +338,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         60
@@ -352,7 +348,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -362,7 +358,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         45
@@ -372,7 +368,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -429,7 +425,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -530,7 +526,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -541,7 +537,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -872,7 +868,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -978,7 +974,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1123,7 +1119,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1229,7 +1225,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1535,10 +1531,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
