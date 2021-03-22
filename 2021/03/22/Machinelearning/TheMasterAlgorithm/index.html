@@ -7,20 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Etiqueta: pandas - Genening&#39;s blog</title>
+<title>TheMasterAlgorithm - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="nothing is everything">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Genening&#39;s blog">
-<meta property="og:url" content="https://genening.github.io/tags/pandas/index.html">
+    <meta name="description" content="前言 最近在阅读美国华盛顿大学计算机科学教授佩德罗·多明戈斯（Pedro Domingos）的书籍《终极算法》（The Master Algorithm）。多明戈斯教授深入浅出的介绍了现在在人工智能和机器学习领域的学派和常见算法，并且以生动形象的例子阐述了各种学派与算法的优缺点与应用领域，是一本非常好的人工智能科普读物，阅读之后颇有收获，可以让人有种一览机器学习全貌之感，可以非常好的把握现在的人">
+<meta name="keywords" content="《终极算法》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TheMasterAlgorithm">
+<meta property="og:url" content="https://genening.github.io/2021/03/22/Machinelearning/TheMasterAlgorithm/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="nothing is everything">
+<meta property="og:description" content="前言 最近在阅读美国华盛顿大学计算机科学教授佩德罗·多明戈斯（Pedro Domingos）的书籍《终极算法》（The Master Algorithm）。多明戈斯教授深入浅出的介绍了现在在人工智能和机器学习领域的学派和常见算法，并且以生动形象的例子阐述了各种学派与算法的优缺点与应用领域，是一本非常好的人工智能科普读物，阅读之后颇有收获，可以让人有种一览机器学习全貌之感，可以非常好的把握现在的人">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2021-03-22T09:10:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Genening&#39;s blog">
-<meta name="twitter:description" content="nothing is everything">
+<meta name="twitter:title" content="TheMasterAlgorithm">
+<meta name="twitter:description" content="前言 最近在阅读美国华盛顿大学计算机科学教授佩德罗·多明戈斯（Pedro Domingos）的书籍《终极算法》（The Master Algorithm）。多明戈斯教授深入浅出的介绍了现在在人工智能和机器学习领域的学派和常见算法，并且以生动形象的例子阐述了各种学派与算法的优缺点与应用领域，是一本非常好的人工智能科普读物，阅读之后颇有收获，可以让人有种一览机器学习全貌之感，可以非常好的把握现在的人">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -128,33 +130,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Etiquetas</a></li>
-            <li class="is-active"><a href="#" aria-current="page">pandas</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-23T02:39:28.000Z">2020-04-23</time>
+                <time class="level-item has-text-grey" datetime="2021-03-22T09:10:37.000Z">2021-03-22</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                <a class="has-link-grey -link" href="/categories/Machinelearning/">Machinelearning</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    17 minutes read (About 2539 words)
+                    6 minutes read (About 919 words)
                 </span>
                 
                 
@@ -163,24 +154,68 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/04/23/Python/pandas/">pandas</a>
+                TheMasterAlgorithm
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模具，而整理好相应格式的数据就是原料，numpy和pandas就是整理数据的工具。接下来让我们开始学习这两个package吧。在这上一篇博客中我们学习了numpy，这一篇博客中我们来学习pandas。</p>
-<blockquote>
-<p><img src="/2020/04/23/Python/pandas/python_packages.png" alt="python-packages"> <em>这是一幅python_package的总览图，由此我们可以大概了解，有哪些很值得我们学习的package。</em></p></blockquote>
+            <h2 id="前言">前言</h2>
+<p>最近在阅读美国华盛顿大学计算机科学教授佩德罗·多明戈斯（Pedro Domingos）的书籍《终极算法》（The Master Algorithm）。多明戈斯教授深入浅出的介绍了现在在人工智能和机器学习领域的学派和常见算法，并且以生动形象的例子阐述了各种学派与算法的优缺点与应用领域，是一本非常好的人工智能科普读物，阅读之后颇有收获，可以让人有种一览机器学习全貌之感，可以非常好的把握现在的人工智能及机器学习的发展概况。如果以后想从事相关领域的学习与工作，非常推荐一读。</p>
+<p>说到智能算法，从算法的角度去观察自然世界和人类社会是一个非常有意思的事情。有没有想过人类的身体本身就是依靠着各种生物学的算法而生存的，世界上有非常多的顶尖科学家穷尽一生在追逐智能算法，但是即使是现在最好的智能算法、最精密的设备也比不过生命体本身的神奇瑰丽。在人类身体的分子层面，从DNA到蛋白质，各个分子紧密合作，控制着一整个人类身体正常运转，数以亿计、兆亿的分子和细胞，如此庞大的一个体系能够运转的有条不紊，难道这不是一个奇迹吗？而能够指导这些正常运转的算法才是物理世界最神奇的算法。</p>
+<a id="more"></a>
+<h2 id="终极算法">1. 终极算法</h2>
+<h2 id="机器学习的五个学派">2. 机器学习的五个学派</h2>
+<p>根据多明戈斯教授的介绍，当今的机器学习领域可以分为5个不同的学派，各个学派以自己独有的角度出发去探索人工智能的实现方式，这些不同的角度派生出不同的算法，这些算法各显神通，在不同的领域有着各自的一片天地。</p>
+<p>这5个学派分别是：符号学派、联结学派、进化学派、贝叶斯学派、类推学派，这些学派的学科支撑有所不同，因而学派之间也各有特色。</p>
+<p><strong>符号学派将学习看做逆向演绎，并从哲学、心理学、逻辑学中寻求洞见；联结学派对大脑进行逆向分析，灵感源于神经科学和物理学；进化学派在计算机上模拟进化，并利用遗传学和进化生物学知识；贝叶斯学派认为学习是一种概率推理形式，理论根基在于统计学；类推学派通过对相对性判断的外推来进行学习，并受心理学和数学最优化的影响。</strong></p>
+<p>在构建机器学习的目标推动下，多明戈斯教授带领我们将回顾过去的100年的思想史，并以新的观点来看待这段历史。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">学派</th>
+<th style="text-align: left;">学科支撑</th>
+<th style="text-align: left;">主要算法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">符号学派</td>
+<td style="text-align: left;">哲学、心理学、逻辑学</td>
+<td style="text-align: left;">逆向演绎</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">联结学派</td>
+<td style="text-align: left;">神经科学、物理学</td>
+<td style="text-align: left;">反向传播</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">进化学派</td>
+<td style="text-align: left;">遗传学、进化生物学</td>
+<td style="text-align: left;">遗传编程</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">贝叶斯学派</td>
+<td style="text-align: left;">统计学</td>
+<td style="text-align: left;">贝叶斯推理</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">类推学派</td>
+<td style="text-align: left;">心理学、数学最优化理论</td>
+<td style="text-align: left;">支持向量机</td>
+</tr>
+</tbody>
+</table>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/23/Python/pandas/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/《终极算法》/">《终极算法》</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -190,7 +225,19 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/03/19/Practical skills/English-learning/">
+                <span class="level-item">English_learning</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
