@@ -158,25 +158,13 @@
             
         </h1>
         <div class="content">
-            <p><strong>使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</strong></p>
-<a id="more"></a>
-<h3 id="如下examples"><a href="#如下examples" class="headerlink" title="如下examples"></a>如下examples</h3><ol>
-<li><p>ps -ef|less</p>
-<blockquote>
-<p>ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示</p>
-</blockquote>
-</li>
-<li><p>find . -name “*.bam”|xargs rm -rfv</p>
-<blockquote>
-<p>首先查询在当前目录下匹配得上尾缀为.bam的文件，然后通过管道符传递给xargs中的命令rm，这样就可以批量删除，因为rm默认是不支持正则匹配的，所以可以通过这种方式来做到批量删除，同样，采用元字符也能达到一定的目的，如下</p>
-</blockquote>
-<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf test-&#123;<span class="hljs-number">1</span>..<span class="hljs-number">100</span>&#125;<span class="hljs-selector-class">.txt</span> #可以删除test-<span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> test-<span class="hljs-number">2</span><span class="hljs-selector-class">.txt</span> .... test-<span class="hljs-number">100</span>.txt等一系列文件，这也是批量删除。</span><br></pre></td></tr></table></figure>
-
-</li>
+            <p><strong>使用管道操作符“|”可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</strong> <a id="more"></a> ### 如下examples</p>
+<ol type="1">
+<li><p>ps -ef|less &gt;ps 用于查看进程，less用于分页显示，这个命令是表示把ps的进程按分页展示</p></li>
+<li><p>find . -name "*.bam"|xargs rm -rfv &gt;首先查询在当前目录下匹配得上尾缀为.bam的文件，然后通过管道符传递给xargs中的命令rm，这样就可以批量删除，因为rm默认是不支持正则匹配的，所以可以通过这种方式来做到批量删除，同样，采用元字符也能达到一定的目的，如下 <figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf test-&#123;<span class="hljs-number">1</span>..<span class="hljs-number">100</span>&#125;<span class="hljs-selector-class">.txt</span> #可以删除test-<span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> test-<span class="hljs-number">2</span><span class="hljs-selector-class">.txt</span> .... test-<span class="hljs-number">100</span>.txt等一系列文件，这也是批量删除。</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>xargs 是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。<br><br>xargs 可以将管道或标准输入（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br><br>xargs 也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。<br><br>xargs 默认的命令是 echo，这意味着通过管道传递给 xargs 的输入将会包含换行和空白，不过通过 xargs 的处理，换行和空白将被空格取代。<br><br>xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。<br>之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：<br></p>
-<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |<span class="hljs-keyword">ls</span> -l       <span class="hljs-comment">#这个命令是错误的</span></span><br><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |xargs <span class="hljs-keyword">ls</span> -l   <span class="hljs-comment">#这样才是正确的</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="补充">补充</h3>
+<p>xargs 是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。<br> xargs 可以将管道或标准输入（stdin）数据转换成命令行参数，也能够从文件的输出中读取数据。<br> xargs 也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。<br> xargs 默认的命令是 echo，这意味着通过管道传递给 xargs 的输入将会包含换行和空白，不过通过 xargs 的处理，换行和空白将被空格取代。<br> xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。 之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：<br> <figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |<span class="hljs-keyword">ls</span> -l       <span class="hljs-comment">#这个命令是错误的</span></span><br><span class="line">find <span class="hljs-string">/sbin</span> -perm +700 |xargs <span class="hljs-keyword">ls</span> -l   <span class="hljs-comment">#这样才是正确的</span></span><br></pre></td></tr></table></figure></p>
 
         </div>
         

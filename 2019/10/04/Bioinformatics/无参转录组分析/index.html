@@ -10,19 +10,19 @@
 <title>无参转录组分析 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学概述： 转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRN">
+    <meta name="description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学 概述：  转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括">
 <meta name="keywords" content="转录组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无参转录组分析">
 <meta property="og:url" content="https://genening.github.io/2019/10/04/Bioinformatics/无参转录组分析/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学概述： 转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRN">
+<meta property="og:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学 概述：  转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/gallery/thumbnail/trinity.jpg">
 <meta property="og:updated_time" content="2019-10-27T12:18:52.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无参转录组分析">
-<meta name="twitter:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学概述： 转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRN">
+<meta name="twitter:description" content="这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析  一、转录组学 概述：  转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。 转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括">
 <meta name="twitter:image" content="https://genening.github.io/gallery/thumbnail/trinity.jpg">
 
 
@@ -167,89 +167,102 @@
             <blockquote>
 <p>这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析</p>
 </blockquote>
-<h2 id="一、转录组学"><a href="#一、转录组学" class="headerlink" title="一、转录组学"></a>一、转录组学</h2><h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><ol>
+<h2 id="一转录组学">一、转录组学</h2>
+<h3 id="概述">概述：</h3>
+<ol type="1">
 <li>转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。<br></li>
 <li>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRNA。<br></li>
 <li>转录组具有时间特异性、组织特异性、空间特异性等特点。</li>
 </ol>
 <table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">特点</th>
-<th align="left">分析策略</th>
+<tr class="header">
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">特点</th>
+<th style="text-align: left;">分析策略</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">有参转录组</td>
-<td align="left">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
-<td align="left">比对—定量—差异分析—功能富集分析（下游分析）</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">有参转录组</td>
+<td style="text-align: left;">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
+<td style="text-align: left;">比对—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-<tr>
-<td align="left">无参转录组</td>
-<td align="left">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
-<td align="left">组装—定量—差异分析—功能富集分析（下游分析）</td>
+<tr class="even">
+<td style="text-align: left;">无参转录组</td>
+<td style="text-align: left;">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
+<td style="text-align: left;">组装—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="二、Trinity介绍与使用"><a href="#二、Trinity介绍与使用" class="headerlink" title="二、Trinity介绍与使用"></a>二、Trinity介绍与使用</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><blockquote>
-<p>是由Broad Institute 开发的转录组de novo组装软件，由三个独立的软件模块组成：<em>Inchworm （虫）（C++）</em> 、<em>Chrysalis （蛹）（C++）</em>、<em>Butterfly （蝶）（Java）</em>。三个软件依次来处理大规模的RNA-seq的reads数据。</p>
+<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等 <a id="more"></a> ## 二、Trinity介绍与使用 ### 基本介绍 是由Broad Institute 开发的转录组de novo组装软件，由三个独立的软件模块组成：<em>Inchworm （虫）（C++）</em> 、<em>Chrysalis （蛹）（C++）</em>、<em>Butterfly （蝶）（Java）</em>。三个软件依次来处理大规模的RNA-seq的reads数据。</p>
 </blockquote>
 <table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
-<tr>
-<th align="left">组成部分</th>
-<th align="left">作用</th>
-<th align="left">工作过程</th>
+<tr class="header">
+<th style="text-align: left;">组成部分</th>
+<th style="text-align: left;">作用</th>
+<th style="text-align: left;">工作过程</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Inchworm （虫）（C++）</td>
-<td align="left">序列延伸</td>
-<td align="left">a. 将 reads切为 k-mers (k bp长度的短片段)<br>b. 利用Overlap关系对k-mers进行延伸 (贪婪算法)<br>c. 输出所有的序列 (“contigs”)</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inchworm （虫）（C++）</td>
+<td style="text-align: left;">序列延伸</td>
+<td style="text-align: left;">a. 将 reads切为 k-mers (k bp长度的短片段)<br>b. 利用Overlap关系对k-mers进行延伸 (贪婪算法)<br>c. 输出所有的序列 (“contigs”)</td>
 </tr>
-<tr>
-<td align="left">Chrysalis （蛹）（C++）</td>
-<td align="left">构建de Brujin graph</td>
-<td align="left">a. 聚类所有相似区域大于k-1bp的 contigs<br>b. 构图 (区分不同的 “components”)<br>c. 将reads比对回 components，进行验证</td>
+<tr class="even">
+<td style="text-align: left;">Chrysalis （蛹）（C++）</td>
+<td style="text-align: left;">构建de Brujin graph</td>
+<td style="text-align: left;">a. 聚类所有相似区域大于k-1bp的 contigs<br>b. 构图 (区分不同的 “components”)<br>c. 将reads比对回 components，进行验证</td>
 </tr>
-<tr>
-<td align="left">Butterfly （蝶）（Java）</td>
-<td align="left">解图，列举转录本</td>
-<td align="left">a. 拆分graph 为线性序列<br>b. 使用reads以及 pairs关系消除错误序列</td>
+<tr class="odd">
+<td style="text-align: left;">Butterfly （蝶）（Java）</td>
+<td style="text-align: left;">解图，列举转录本</td>
+<td style="text-align: left;">a. 拆分graph 为线性序列<br>b. 使用reads以及 pairs关系消除错误序列</td>
 </tr>
-</tbody></table>
-<p><img src="/2019/10/04/Bioinformatics/无参转录组分析/trinity_process.png" alt="工作原理"></p>
-<h3 id="Trinity使用"><a href="#Trinity使用" class="headerlink" title="Trinity使用"></a>Trinity使用</h3><h4 id="1-下载与安装"><a href="#1-下载与安装" class="headerlink" title="1. 下载与安装"></a>1. 下载与安装<br></h4><p>trinity最新版本是v2.4.0 下载官网在：<a href="https://github.com/trinityrnaseq/trinityrnaseq/wiki" target="_blank" rel="noopener">https://github.com/trinityrnaseq/trinityrnaseq/wiki</a></p>
-<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nohup wget -c https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/trinityrnaseq/</span>trinityrnaseq<span class="hljs-regexp">/archive/</span>Trinity-v2.<span class="hljs-number">4.0</span>.tar.gz <span class="hljs-number">1</span>&gt;trinity.o <span class="hljs-number">2</span>&gt;trinity.e &amp;   <span class="hljs-comment"># 下载</span></span><br><span class="line"></span><br><span class="line">tar -zxvf Trinity-v2.<span class="hljs-number">4.0</span>.tar.gz   <span class="hljs-comment"># 解压</span></span><br><span class="line"></span><br><span class="line">make    <span class="hljs-comment"># 编译</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-使用"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用<br></h4><h5 id="命令："><a href="#命令：" class="headerlink" title="命令："></a>命令：</h5><p><code>Trinity --seqType fq --left reads_1.fq --right reads_2.fq --CPU 6 --max_memory 20G</code><br></p>
-<h5 id="几个重要参数介绍："><a href="#几个重要参数介绍：" class="headerlink" title="几个重要参数介绍："></a>几个重要参数介绍：<br></h5><blockquote>
-<p><code>--seqType</code> 支持输入数据格式为 fq 或者 fa<br><br><strong>双端测序：</strong><code>--left</code>为read1 <code>--right</code>为read2 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br><br><strong>单端测序：</strong><code>--single</code> 加上文件 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br><br><code>--CPU</code> 软件所用CPU数量<br><br><code>--max_memory</code> 内存控制（组装过程中，jellyfish这一步是最耗费资源的一步 所以这个内存主要由jellyfish控制）<br><br><code>--SS_lib_type RF</code>   链特异性文库需要加上这个参数，其中RF表示文库的构建方法，<a href="http://www.genek.tv/article/27" target="_blank" rel="noopener">点这了解，最好看看</a><br><br><code>--no_run_butterfly</code> 不进行butterfly步骤，在Chrysalis这一步完成后中断<br><br><code>--no_run_quantifygraph</code> 不进行quantifygraph这一步<br><br><code>--output</code> trinity的输出文件夹，默认在<em>trinity_out_dir/Trinity.fasta</em><br><br><code>--no_version_check</code> 不汇报版本信息<br></p>
-</blockquote>
-<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><h2 id="Misc："><a href="#Misc：" class="headerlink" title="Misc："></a>Misc：</h2><p><code>--SS_lib_type</code>       reads的方向。成对的reads: RF or FR; 不成对的reads: F or R。在数据具有链特异性的时候，设置此参数，则正义和反义转录子能得到区分。默认情况下，不设置此参数，reads被当作非链特异性处理。FR: 匹配时，read1在5’端上游, 和前导链一致, read2在3’下游, 和前导链反向互补. 或者read2在上游, read1在下游反向互补; RF: read1在5’端上游, 和前导链反向互补, read2在3’端下游, 和前导链一致;<br><br><code>--output</code>             输出结果文件夹。默认情况下生成trinity_out_dir文件夹并将输出结果保存到此文件夹中。<br><br><code>--min_contig_length</code>  报告出的最短的contig长度。默认为200<br><br><code>--jaccard_clip</code>       如果两个转录子之间有UTR区重叠，则这两个转录子很有可能在de novo组装的时候被拼接成一条序列，称为融合转录子(Fusion Transcript)。如果有fastq格式的paired reads，并尽可能减少此类组装错误，则选用此参数。值得说明的是：1. 适合于基因在基因组比较稠密，转录子经常在UTR区域重叠的物种，比如真菌基因组。而对于脊椎动物和植物，则不推荐使用此参数; 2. 要求fastq格式的paired reads文件(文件中reads名分别以/1和/2结尾，以利于软件识别)，同时还需要安装bowtie软件用于reads的比对; 3. 单独使用具有链特异性的RNA-seq数据的时候，能极大地减少UTR重叠区很小的融合转录子; 4. 此选项耗费运算，若没必要，则不用此参数。<br><br><code>--prep</code>               仅仅准备一些文件(利于I/O）并在kmer计算前停止程序运行<br><br><code>--no_cleanup</code>         保留所有的中间输入文件<br><br><code>--full_cleanup</code>  仅保留Trinity fasta文件，并重命名成${output_dir}.Trinity.fasta<br><br><code>--cite</code>               显示Trinity文献引证和一些参与的软件工具<br><br><code>--version</code>            报告Trinity版本并推出</p>
-<h2 id="Inchworm-和-K-mer-计算相关选项："><a href="#Inchworm-和-K-mer-计算相关选项：" class="headerlink" title="Inchworm 和 K-mer 计算相关选项："></a>Inchworm 和 K-mer 计算相关选项：</h2><p><code>--min_kmer_cov</code>     使用Inchworm来计算K-mer数量时候，设置的Kmer的最小值。默认为1<br><br><code>--inchworm_cpu</code>     Inchworm使用的CPU线程数，默认为6和–CPU设置的值中的小值。</p>
-<h2 id="Chrysalis相关选项："><a href="#Chrysalis相关选项：" class="headerlink" title="Chrysalis相关选项："></a>Chrysalis相关选项：</h2><p><code>--max_reads_per_graph</code>   在一个Bruijn图中锚定的最大的reads数目，默认为200000<br><code>--no_run_chrysalis</code>      运行Inchworm完毕，在运行chrysalis之前停止运行Trinity<br><code>--no_run_quantifygraph</code>  在平行化运算quantifygrahp前停止运行Trinity</p>
-<h2 id="Butterfly相关选项："><a href="#Butterfly相关选项：" class="headerlink" title="Butterfly相关选项："></a>Butterfly相关选项：</h2><p><code>--bfly_opts</code>                    Butterfly额外的参数<br><br><code>--max_number_of_paths_per_node</code> 从node A -&gt; B,最多允许多少条路径。默认为10<br><br><code>--group_pairs_distance</code>        最大插入片读长度，默认为500<br><br><code>--path_reinforcement_distance</code>  延长转录子路径时候，reads间最小的重叠碱基数。默认PE:75; SE：25<br><br><code>--no_triplet_lock</code>             不锁定triplet-supported nodes<br><br><code>--bflyHeapSpaceMax</code>             运行Butterfly时java最大的堆积空间，默认为20G<br><br><code>--bflyHeapSpaceInit</code>          java初始的堆积空间，默认为1G<br><br><code>--bflyGCThreads</code>              java进行无用信息的整理时使用的线程数，默认由java来决定<br><br><code>--bflyCPU</code>                     运行Butterfly时使用的CPU线程数，默认为2<br><br><code>--bflyCalculateCPU</code>          计算Butterfly所运行的CPU线程数，由公式80% * max_memory / maxbflyHeapSpaceMax 得到<br><br><code>--no_run_butterfly</code>             在Chrysalis运行完毕后，停止运行Butterfly<br></p>
-<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><blockquote>
+</tbody>
+</table>
+<p><img src="/2019/10/04/Bioinformatics/无参转录组分析/trinity_process.png" alt="工作原理"> ### Trinity使用 #### 1. 下载与安装<br> trinity最新版本是v2.4.0 下载官网在：https://github.com/trinityrnaseq/trinityrnaseq/wiki <figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nohup wget -c https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/trinityrnaseq/</span>trinityrnaseq<span class="hljs-regexp">/archive/</span>Trinity-v2.<span class="hljs-number">4.0</span>.tar.gz <span class="hljs-number">1</span>&gt;trinity.o <span class="hljs-number">2</span>&gt;trinity.e &amp;   <span class="hljs-comment"># 下载</span></span><br><span class="line"></span><br><span class="line">tar -zxvf Trinity-v2.<span class="hljs-number">4.0</span>.tar.gz   <span class="hljs-comment"># 解压</span></span><br><span class="line"></span><br><span class="line">make    <span class="hljs-comment"># 编译</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="使用">2. 使用<br></h4>
+<h5 id="命令">命令：</h5>
+<p><code>Trinity --seqType fq --left reads_1.fq --right reads_2.fq --CPU 6 --max_memory 20G</code><br> ##### 几个重要参数介绍：<br> &gt;<code>--seqType</code> 支持输入数据格式为 fq 或者 fa<br> <strong>双端测序：</strong><code>--left</code>为read1 <code>--right</code>为read2 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br> <strong>单端测序：</strong><code>--single</code> 加上文件 多个样品的reads由逗号隔开，不允许出现空格（依版本而定）<br> <code>--CPU</code> 软件所用CPU数量<br> <code>--max_memory</code> 内存控制（组装过程中，jellyfish这一步是最耗费资源的一步 所以这个内存主要由jellyfish控制）<br> <code>--SS_lib_type RF</code> 链特异性文库需要加上这个参数，其中RF表示文库的构建方法，<a href="http://www.genek.tv/article/27" target="_blank" rel="noopener">点这了解，最好看看</a><br> <code>--no_run_butterfly</code> 不进行butterfly步骤，在Chrysalis这一步完成后中断<br> <code>--no_run_quantifygraph</code> 不进行quantifygraph这一步<br> <code>--output</code> trinity的输出文件夹，默认在<em>trinity_out_dir/Trinity.fasta</em><br> <code>--no_version_check</code> 不汇报版本信息<br></p>
+<h2 id="可选参数">可选参数</h2>
+<h2 id="misc">Misc：</h2>
+<p><code>--SS_lib_type</code> reads的方向。成对的reads: RF or FR; 不成对的reads: F or R。在数据具有链特异性的时候，设置此参数，则正义和反义转录子能得到区分。默认情况下，不设置此参数，reads被当作非链特异性处理。FR: 匹配时，read1在5'端上游, 和前导链一致, read2在3'下游, 和前导链反向互补. 或者read2在上游, read1在下游反向互补; RF: read1在5'端上游, 和前导链反向互补, read2在3'端下游, 和前导链一致; <br><code>--output</code> 输出结果文件夹。默认情况下生成trinity_out_dir文件夹并将输出结果保存到此文件夹中。 <br><code>--min_contig_length</code> 报告出的最短的contig长度。默认为200 <br><code>--jaccard_clip</code> 如果两个转录子之间有UTR区重叠，则这两个转录子很有可能在de novo组装的时候被拼接成一条序列，称为融合转录子(Fusion Transcript)。如果有fastq格式的paired reads，并尽可能减少此类组装错误，则选用此参数。值得说明的是：1. 适合于基因在基因组比较稠密，转录子经常在UTR区域重叠的物种，比如真菌基因组。而对于脊椎动物和植物，则不推荐使用此参数; 2. 要求fastq格式的paired reads文件(文件中reads名分别以/1和/2结尾，以利于软件识别)，同时还需要安装bowtie软件用于reads的比对; 3. 单独使用具有链特异性的RNA-seq数据的时候，能极大地减少UTR重叠区很小的融合转录子; 4. 此选项耗费运算，若没必要，则不用此参数。 <br><code>--prep</code> 仅仅准备一些文件(利于I/O）并在kmer计算前停止程序运行 <br><code>--no_cleanup</code> 保留所有的中间输入文件 <br><code>--full_cleanup</code> 仅保留Trinity fasta文件，并重命名成${output_dir}.Trinity.fasta <br><code>--cite</code> 显示Trinity文献引证和一些参与的软件工具 <br><code>--version</code> 报告Trinity版本并推出</p>
+<h2 id="inchworm-和-k-mer-计算相关选项">Inchworm 和 K-mer 计算相关选项：</h2>
+<p><code>--min_kmer_cov</code> 使用Inchworm来计算K-mer数量时候，设置的Kmer的最小值。默认为1<br> <code>--inchworm_cpu</code> Inchworm使用的CPU线程数，默认为6和--CPU设置的值中的小值。</p>
+<h2 id="chrysalis相关选项">Chrysalis相关选项：</h2>
+<p><code>--max_reads_per_graph</code> 在一个Bruijn图中锚定的最大的reads数目，默认为200000 <code>--no_run_chrysalis</code> 运行Inchworm完毕，在运行chrysalis之前停止运行Trinity <code>--no_run_quantifygraph</code> 在平行化运算quantifygrahp前停止运行Trinity</p>
+<h2 id="butterfly相关选项">Butterfly相关选项：</h2>
+<p><code>--bfly_opts</code> Butterfly额外的参数<br> <code>--max_number_of_paths_per_node</code> 从node A -&gt; B,最多允许多少条路径。默认为10<br> <code>--group_pairs_distance</code> 最大插入片读长度，默认为500<br> <code>--path_reinforcement_distance</code> 延长转录子路径时候，reads间最小的重叠碱基数。默认PE:75; SE：25<br> <code>--no_triplet_lock</code> 不锁定triplet-supported nodes<br> <code>--bflyHeapSpaceMax</code> 运行Butterfly时java最大的堆积空间，默认为20G<br> <code>--bflyHeapSpaceInit</code> java初始的堆积空间，默认为1G<br> <code>--bflyGCThreads</code> java进行无用信息的整理时使用的线程数，默认由java来决定<br> <code>--bflyCPU</code> 运行Butterfly时使用的CPU线程数，默认为2<br> <code>--bflyCalculateCPU</code> 计算Butterfly所运行的CPU线程数，由公式80% * max_memory / maxbflyHeapSpaceMax 得到<br> <code>--no_run_butterfly</code> 在Chrysalis运行完毕后，停止运行Butterfly<br></p>
+<h5 id="结果">结果</h5>
+<blockquote>
 <p>最终会得到一个Trinity.fasta的文件，在同文件夹下还会有其他的中间过程产生的文件，其中这个文件最为重要，是最终的组装结果</p>
 </blockquote>
-<h4 id="Trinity中自带脚本"><a href="#Trinity中自带脚本" class="headerlink" title="Trinity中自带脚本"></a>Trinity中自带脚本</h4><ol>
-<li>for DifferentialExpression<br><img src="/2019/10/04/Bioinformatics/无参转录组分析/script_1.jpg" alt="script_1"></li>
-<li>utils<br><img src="/2019/10/04/Bioinformatics/无参转录组分析/script_2.jpg" alt="script_2"></li>
+<h4 id="trinity中自带脚本">Trinity中自带脚本</h4>
+<ol type="1">
+<li>for DifferentialExpression <img src="/2019/10/04/Bioinformatics/无参转录组分析/script_1.jpg" alt="script_1"></li>
+<li>utils <img src="/2019/10/04/Bioinformatics/无参转录组分析/script_2.jpg" alt="script_2"></li>
 </ol>
-<h2 id="三、下游分析（有待完善）"><a href="#三、下游分析（有待完善）" class="headerlink" title="三、下游分析（有待完善）"></a>三、下游分析（有待完善）</h2><h3 id="1-GO功能注释"><a href="#1-GO功能注释" class="headerlink" title="1. GO功能注释"></a>1. GO功能注释</h3><h3 id="2-KEGG通路分析"><a href="#2-KEGG通路分析" class="headerlink" title="2. KEGG通路分析"></a>2. KEGG通路分析</h3><h3 id="3-差异基因分析与筛选"><a href="#3-差异基因分析与筛选" class="headerlink" title="3. 差异基因分析与筛选"></a>3. 差异基因分析与筛选</h3><h3 id="4-功能和通路富集分析"><a href="#4-功能和通路富集分析" class="headerlink" title="4. 功能和通路富集分析"></a>4. 功能和通路富集分析</h3><h3 id="5-结果可视化（火山图、箱线图、MAplot、pheatmap等）"><a href="#5-结果可视化（火山图、箱线图、MAplot、pheatmap等）" class="headerlink" title="5. 结果可视化（火山图、箱线图、MAplot、pheatmap等）"></a>5. 结果可视化（火山图、箱线图、MAplot、pheatmap等）</h3><p><strong>参考资料</strong></p>
-<ol>
-<li><a href="https://github.com/trinityrnaseq/trinityrnaseq/wiki" target="_blank" rel="noopener">https://github.com/trinityrnaseq/trinityrnaseq/wiki</a> # 官方文档<br></li>
-<li><a href="https://www.meiwen.com.cn/subject/bnsokctx.html" target="_blank" rel="noopener">https://www.meiwen.com.cn/subject/bnsokctx.html</a> # 介绍博客<br></li>
-<li><a href="http://www.360doc.com/content/16/0910/15/35684706_589802384.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/16/0910/15/35684706_589802384.shtml</a> # 无参转录组分析 <br></li>
-<li><a href="https://www.omicsclass.com/article/295" target="_blank" rel="noopener">https://www.omicsclass.com/article/295</a> # 转录组学知识点<br></li>
-<li><a href="https://www.meiwen.com.cn/subject/tsutnqtx.html" target="_blank" rel="noopener">https://www.meiwen.com.cn/subject/tsutnqtx.html</a> # 可视化分析（重点火山图）<br></li>
-<li><a href="https://blog.csdn.net/niuhuihui_fei/article/details/72723781" target="_blank" rel="noopener">https://blog.csdn.net/niuhuihui_fei/article/details/72723781</a> # 介绍博客（Trinity参数）</li>
-</ol>
+<h2 id="三下游分析有待完善">三、下游分析（有待完善）</h2>
+<h3 id="go功能注释">1. GO功能注释</h3>
+<h3 id="kegg通路分析">2. KEGG通路分析</h3>
+<h3 id="差异基因分析与筛选">3. 差异基因分析与筛选</h3>
+<h3 id="功能和通路富集分析">4. 功能和通路富集分析</h3>
+<h3 id="结果可视化火山图箱线图maplotpheatmap等">5. 结果可视化（火山图、箱线图、MAplot、pheatmap等）</h3>
+<p><strong>参考资料</strong> 1. https://github.com/trinityrnaseq/trinityrnaseq/wiki # 官方文档<br> 2. https://www.meiwen.com.cn/subject/bnsokctx.html # 介绍博客<br> 3. http://www.360doc.com/content/16/0910/15/35684706_589802384.shtml # 无参转录组分析 <br> 4. https://www.omicsclass.com/article/295 # 转录组学知识点<br> 5. https://www.meiwen.com.cn/subject/tsutnqtx.html # 可视化分析（重点火山图）<br> 6. https://blog.csdn.net/niuhuihui_fei/article/details/72723781 # 介绍博客（Trinity参数）</p>
 
         </div>
         

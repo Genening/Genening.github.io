@@ -170,7 +170,8 @@
             <blockquote>
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
-<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
+<h2 id="blast简介">1. blast简介</h2>
+<p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼： |program|progress| |:----|:----| |blastn|nr--&gt;nr| |blastx|nr--&gt;pro| |tblastn|pro--&gt;nr| |blastp|pro--&gt;pro|</p>
         </div>
         
         

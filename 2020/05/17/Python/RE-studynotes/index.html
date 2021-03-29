@@ -10,19 +10,19 @@
 <title>正则学习笔记 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
+    <meta name="description" content="前言 正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
 <meta name="keywords" content="Regular expression">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则学习笔记">
 <meta property="og:url" content="https://genening.github.io/2020/05/17/Python/RE-studynotes/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
+<meta property="og:description" content="前言 正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-05-17T01:28:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则学习笔记">
-<meta name="twitter:description" content="前言正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
+<meta name="twitter:description" content="前言 正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,149 +158,159 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。</p>
-<a id="more"></a>
-
-<h2 id="1-普通字符"><a href="#1-普通字符" class="headerlink" title="1. 普通字符"></a>1. 普通字符</h2><p>“普通字符”顾名思义，就是在文本中最主要的构成部分，包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。这些字符可以直接写在正则中，匹配指定特征的文本。</p>
-<h2 id="2-非打印字符"><a href="#2-非打印字符" class="headerlink" title="2. 非打印字符"></a>2. 非打印字符</h2><p>“非打印字符”指的是在文本的构建中会使用到用于格式化文本但是在打印显示中无法直接看到的字符，是文本编辑排版中必备的内容，但是就像是空气一样，作用与无形。下标列出了一些常见的非打印字符及含义。</p>
+            <h2 id="前言">前言</h2>
+<p>正则表达式，也可以称之为“标准表达式”，是通用的字符匹配工具，在各种文本中，采用正则都可以匹配自己想要的内容，即使不同文本的编写格式各异。这也是正则的强大之处。正则由普通字符、非打印字符、特殊字符、限定符、定位符5部分构成，通过这5部分的排列组合，可以用于匹配各种特征的字符，在我们需要动态查找、匹配、替换时，意义重大。 <a id="more"></a></p>
+<h2 id="普通字符">1. 普通字符</h2>
+<p>“普通字符”顾名思义，就是在文本中最主要的构成部分，包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。这些字符可以直接写在正则中，匹配指定特征的文本。</p>
+<h2 id="非打印字符">2. 非打印字符</h2>
+<p>“非打印字符”指的是在文本的构建中会使用到用于格式化文本但是在打印显示中无法直接看到的字符，是文本编辑排版中必备的内容，但是就像是空气一样，作用与无形。下标列出了一些常见的非打印字符及含义。</p>
 <table>
 <thead>
-<tr>
-<th align="center">字符</th>
-<th align="left">描述</th>
+<tr class="header">
+<th style="text-align: center;">字符</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">\cx</td>
-<td align="left">x指的是A-Z a-z中的某个字符，和\c组合起来表达特定的含义。</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: left;">x指的是A-Z a-z中的某个字符，和。</td>
 </tr>
-<tr>
-<td align="center">\f</td>
-<td align="left">匹配一个换页符，等价于\x0c和\cL</td>
+<tr class="even">
+<td style="text-align: center;">匹配一个换页符，等价于0c和</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td align="center">\n</td>
-<td align="left">匹配一个换行符</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: left;">匹配一个换行符</td>
 </tr>
-<tr>
-<td align="center">\r</td>
-<td align="left">匹配一个回车符</td>
+<tr class="even">
+<td style="text-align: center;">匹配一个回车符</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td align="center">\t</td>
-<td align="left">匹配一个制表符</td>
+<tr class="odd">
+<td style="text-align: center;">匹配一个制表符</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td align="center">\v</td>
-<td align="left">匹配一个垂直制表符</td>
+<tr class="even">
+<td style="text-align: center;">匹配一个垂直制表符</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td align="center">\s</td>
-<td align="left">匹配任何空白字符，包括空格、制表符、换页符、换行符等</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: left;">匹配任何空白字符，包括空格、制表符、换页符、换行符等</td>
 </tr>
-<tr>
-<td align="center">\S</td>
-<td align="left">匹配任何非空字符</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: left;">匹配任何非空字符</td>
 </tr>
-</tbody></table>
-<h2 id="3-特殊字符"><a href="#3-特殊字符" class="headerlink" title="3. 特殊字符"></a>3. 特殊字符</h2><p>在正则表达式中保留的具有特定含义的字符，在进行通用匹配的时候非常重要。如果要匹配这些保留字符本身，需要使用’&#39;符号来进行转义。下表列出了正则中的特殊字符。</p>
+</tbody>
+</table>
+<h2 id="特殊字符">3. 特殊字符</h2>
+<p>在正则表达式中保留的具有特定含义的字符，在进行通用匹配的时候非常重要。如果要匹配这些保留字符本身，需要使用''符号来进行转义。下表列出了正则中的特殊字符。</p>
 <table>
 <thead>
-<tr>
-<th align="center">特别字符</th>
-<th align="left">描述</th>
+<tr class="header">
+<th style="text-align: center;">特别字符</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">()</td>
-<td align="left">标记一个子表达式的开始和结束位置。提取后子表达式内容将单独保留到结果，其他字段不保留</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">()</td>
+<td style="text-align: left;">标记一个子表达式的开始和结束位置。提取后子表达式内容将单独保留到结果，其他字段不保留</td>
 </tr>
-<tr>
-<td align="center">*</td>
-<td align="left">匹配前一个表达式零次或者多次</td>
+<tr class="even">
+<td style="text-align: center;">*</td>
+<td style="text-align: left;">匹配前一个表达式零次或者多次</td>
 </tr>
-<tr>
-<td align="center">+</td>
-<td align="left">匹配前一个表达式一次或者多次，不包括零次</td>
+<tr class="odd">
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">匹配前一个表达式一次或者多次，不包括零次</td>
 </tr>
-<tr>
-<td align="center">?</td>
-<td align="left">匹配前一个表达式零次或者一次，也可表达匹配为非贪婪（贪婪往长了匹配，非贪婪寻找最短匹配目标）</td>
+<tr class="even">
+<td style="text-align: center;">?</td>
+<td style="text-align: left;">匹配前一个表达式零次或者一次，也可表达匹配为非贪婪（贪婪往长了匹配，非贪婪寻找最短匹配目标）</td>
 </tr>
-<tr>
-<td align="center">.</td>
-<td align="left">匹配除\n之外的任何单字符，在通用匹配时很重要。</td>
+<tr class="odd">
+<td style="text-align: center;">.</td>
+<td style="text-align: left;">匹配除，在通用匹配时很重要。</td>
 </tr>
-<tr>
-<td align="center">[]</td>
-<td align="left">中括号表达式，标记中括号表达式</td>
+<tr class="even">
+<td style="text-align: center;">[]</td>
+<td style="text-align: left;">中括号表达式，标记中括号表达式</td>
 </tr>
-<tr>
-<td align="center">{}</td>
-<td align="left">标记限定符表达式的开始。</td>
+<tr class="odd">
+<td style="text-align: center;">{}</td>
+<td style="text-align: left;">标记限定符表达式的开始。</td>
 </tr>
-<tr>
-<td align="center">|转义字符，标志其他特殊字符转化为普通字符</td>
-<td align="left"></td>
+<tr class="even">
+<td style="text-align: center;">|转义字符，标志其他特殊字符转化为普通字符</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td align="center">$</td>
-<td align="left">匹配输入字符串的结尾位置</td>
+<tr class="odd">
+<td style="text-align: center;">$</td>
+<td style="text-align: left;">匹配输入字符串的结尾位置</td>
 </tr>
-<tr>
-<td align="center">^</td>
-<td align="left">匹配输入字符串的开始位置，在[]内时表示取反含义。</td>
+<tr class="even">
+<td style="text-align: center;">^</td>
+<td style="text-align: left;">匹配输入字符串的开始位置，在[]内时表示取反含义。</td>
 </tr>
-<tr>
-<td align="center">|</td>
-<td align="left">选择字符，在两项之中匹配一项</td>
+<tr class="odd">
+<td style="text-align: center;">|</td>
+<td style="text-align: left;">选择字符，在两项之中匹配一项</td>
 </tr>
-</tbody></table>
-<h2 id="4-限定符"><a href="#4-限定符" class="headerlink" title="4. 限定符"></a>4. 限定符</h2><p>限定符用来指定特定表达式出现的次数设定，比如某个相同特征在同一个段区间内要重复几次或者未知若干次，那此时就可以使用限定符来限定次数。</p>
+</tbody>
+</table>
+<h2 id="限定符">4. 限定符</h2>
+<p>限定符用来指定特定表达式出现的次数设定，比如某个相同特征在同一个段区间内要重复几次或者未知若干次，那此时就可以使用限定符来限定次数。</p>
 <table>
 <thead>
-<tr>
-<th align="center">字符</th>
-<th align="left">描述</th>
+<tr class="header">
+<th style="text-align: center;">字符</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">*</td>
-<td align="left">匹配前一个表达式零次或者多次</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">*</td>
+<td style="text-align: left;">匹配前一个表达式零次或者多次</td>
 </tr>
-<tr>
-<td align="center">+</td>
-<td align="left">匹配前一个表达式一次或者多次，不包括零次</td>
+<tr class="even">
+<td style="text-align: center;">+</td>
+<td style="text-align: left;">匹配前一个表达式一次或者多次，不包括零次</td>
 </tr>
-<tr>
-<td align="center">?</td>
-<td align="left">匹配前一个表达式零次或者一次，也可表达匹配为非贪婪（贪婪往长了匹配，非贪婪寻找最短匹配目标）</td>
+<tr class="odd">
+<td style="text-align: center;">?</td>
+<td style="text-align: left;">匹配前一个表达式零次或者一次，也可表达匹配为非贪婪（贪婪往长了匹配，非贪婪寻找最短匹配目标）</td>
 </tr>
-<tr>
-<td align="center">{n}</td>
-<td align="left">n为非负整数，表示匹配n次</td>
+<tr class="even">
+<td style="text-align: center;">{n}</td>
+<td style="text-align: left;">n为非负整数，表示匹配n次</td>
 </tr>
-<tr>
-<td align="center">{n,}</td>
-<td align="left">表示至少匹配n次，无上限</td>
+<tr class="odd">
+<td style="text-align: center;">{n,}</td>
+<td style="text-align: left;">表示至少匹配n次，无上限</td>
 </tr>
-<tr>
-<td align="center">{n, m}</td>
-<td align="left">至少匹配n次，至多匹配m次</td>
+<tr class="even">
+<td style="text-align: center;">{n, m}</td>
+<td style="text-align: left;">至少匹配n次，至多匹配m次</td>
 </tr>
-</tbody></table>
-<h2 id="5-定位符"><a href="#5-定位符" class="headerlink" title="5. 定位符"></a>5. 定位符</h2><p>定位符可以将正则表达式固定到行首或者行尾。定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。</p>
-<blockquote>
-<p>注意：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。<br>若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。<br>若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。</p>
-</blockquote>
-<h2 id="6-补充拓展"><a href="#6-补充拓展" class="headerlink" title="6. 补充拓展"></a>6. 补充拓展</h2><ol>
-<li><p>pattern使用<br><img src="/2020/05/17/Python/RE-studynotes/pattern.png" alt="pattern"></p>
-</li>
-<li><p>精确匹配<br><img src="/2020/05/17/Python/RE-studynotes/specific.png" alt="specific"></p>
-</li>
+</tbody>
+</table>
+<h2 id="定位符">5. 定位符</h2>
+<p>定位符可以将正则表达式固定到行首或者行尾。定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，，表示非单词边界。 &gt;注意：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。<br>若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。<br>若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。</p>
+<h2 id="补充拓展">6. 补充拓展</h2>
+<ol type="1">
+<li><p>pattern使用 <img src="/2020/05/17/Python/RE-studynotes/pattern.png" alt="pattern"></p></li>
+<li><p>精确匹配 <img src="/2020/05/17/Python/RE-studynotes/specific.png" alt="specific"></p></li>
 </ol>
-<h2 id="7-优先级"><a href="#7-优先级" class="headerlink" title="7. 优先级"></a>7. 优先级</h2><p><img src="/2020/05/17/Python/RE-studynotes/%E4%BC%98%E5%85%88%E7%BA%A7.png" alt="优先级"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在学习完一遍之后，发现其实正则也并不难，在我们观察文本找到我们需要匹配的文本时，只要选择好明确的特征，然后把这个特征用正则描述出来就能匹配到我们需要的内容，有些时候目标文本本身特点不好描述时，如果该目标文本内容的前后有一些特殊的字符串，那也可以使用这些特殊的字符串当特征来进行匹配，只需要使用“()”来将中间的目标字符串的表达式包括起来，那么在返回的结果中就会只返回这个子表达式的匹配内容，而其他的正则表达式就充当了定位符的作用。总而言之，熟能生巧，今天学习一遍之后并不觉得难，但是如果不常使用，终归是会淡忘的，所以要多注意，多尝试使用，温故而知新。</p>
+<h2 id="优先级">7. 优先级</h2>
+<figure>
+<img src="/2020/05/17/Python/RE-studynotes/优先级.png" alt="优先级"><figcaption aria-hidden="true">优先级</figcaption>
+</figure>
+<h2 id="总结">总结</h2>
+<p>在学习完一遍之后，发现其实正则也并不难，在我们观察文本找到我们需要匹配的文本时，只要选择好明确的特征，然后把这个特征用正则描述出来就能匹配到我们需要的内容，有些时候目标文本本身特点不好描述时，如果该目标文本内容的前后有一些特殊的字符串，那也可以使用这些特殊的字符串当特征来进行匹配，只需要使用“()”来将中间的目标字符串的表达式包括起来，那么在返回的结果中就会只返回这个子表达式的匹配内容，而其他的正则表达式就充当了定位符的作用。总而言之，熟能生巧，今天学习一遍之后并不觉得难，但是如果不常使用，终归是会淡忘的，所以要多注意，多尝试使用，温故而知新。</p>
 
         </div>
         

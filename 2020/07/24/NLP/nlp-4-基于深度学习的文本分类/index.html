@@ -10,19 +10,19 @@
 <title>nlp-4-基于深度学习的文本分类 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
+    <meta name="description" content="前言 与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
 <meta name="keywords" content="文本分类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nlp-4-基于深度学习的文本分类">
 <meta property="og:url" content="https://genening.github.io/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
+<meta property="og:description" content="前言 与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-07-24T02:17:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nlp-4-基于深度学习的文本分类">
-<meta name="twitter:description" content="前言与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
+<meta name="twitter:description" content="前言 与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,9 +158,11 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。</p>
+            <h2 id="前言">前言</h2>
+<p>与传统机器学习不同，深度学习既提供特征提取功能，也可以完成分类的功能。从本章开始我们将学习如何使用深度学习来完成文本表示。</p>
 <a id="more"></a>
-<h2 id="文本表示方法-Part2"><a href="#文本表示方法-Part2" class="headerlink" title="文本表示方法 Part2"></a><strong>文本表示方法 Part2</strong></h2><p>在上一章节，我们介绍几种文本表示方法：</p>
+<h2 id="文本表示方法-part2"><strong>文本表示方法 Part2</strong></h2>
+<p>在上一章节，我们介绍几种文本表示方法：</p>
 <ul>
 <li>One-hot</li>
 <li>Bag of Words</li>
@@ -169,31 +171,32 @@
 </ul>
 <p>也通过sklean进行了相应的实践，有了初步的认知。但上述方法都或多或少存在一定的问题：转换得到的<strong>向量维度很高</strong>，需要较长的训练实践；<strong>没有考虑单词与单词之间的关系</strong>，只是进行了统计。</p>
 <p>与这些表示方法不同，深度学习也可以用于文本表示，还可以将其映射到一个低纬空间。其中比较典型的例子有：<em>FastText</em>、<em>Word2Vec</em>和<em>Bert</em>。在本章我们将介绍FastText，将在后面的内容介绍Word2Vec和Bert。</p>
-<h2 id="FastText"><a href="#FastText" class="headerlink" title="FastText"></a><strong>FastText</strong></h2><p>FastText是一种典型的深度学习词向量的表示方法，它非常简单，通过Embedding层将单词映射到稠密空间，然后将句子中所有的单词在Embedding空间中进行平均，进而完成分类操作。<strong>所以FastText是一个三层的神经网络，输入层、隐含层和输出层。</strong></p>
-<p><img src="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/layers.png" alt="layers"></p>
-<h2 id="基于FastText的文本分类"><a href="#基于FastText的文本分类" class="headerlink" title="基于FastText的文本分类"></a><strong>基于FastText的文本分类</strong></h2><p>FastText可以快速的在CPU上进行训练，最好的实践方法就是官方开源的版本：<br><a href="https://github.com/facebookresearch/fastText/tree/master/python" target="_blank" rel="noopener">https://github.com/facebookresearch/fastText/tree/master/python</a></p>
-<h3 id="安装fasttext"><a href="#安装fasttext" class="headerlink" title="安装fasttext"></a>安装fasttext</h3><ul>
+<h2 id="fasttext"><strong>FastText</strong></h2>
+<p>FastText是一种典型的深度学习词向量的表示方法，它非常简单，通过Embedding层将单词映射到稠密空间，然后将句子中所有的单词在Embedding空间中进行平均，进而完成分类操作。<strong>所以FastText是一个三层的神经网络，输入层、隐含层和输出层。</strong></p>
+<figure>
+<img src="/2020/07/24/NLP/nlp-4-基于深度学习的文本分类/layers.png" alt="layers"><figcaption aria-hidden="true">layers</figcaption>
+</figure>
+<h2 id="基于fasttext的文本分类"><strong>基于FastText的文本分类</strong></h2>
+<p>FastText可以快速的在CPU上进行训练，最好的实践方法就是官方开源的版本： https://github.com/facebookresearch/fastText/tree/master/python</p>
+<h3 id="安装fasttext">安装fasttext</h3>
+<ul>
 <li>pip安装</li>
 </ul>
 <figure class="highlight cmake hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="hljs-keyword">install</span> fasttext</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>源码安装</li>
 </ul>
 <figure class="highlight crmsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/facebookresearch/fastText.git</span><br><span class="line">cd fastText</span><br><span class="line">sudo pip install .</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>在Windows上安装fasttext时会出现一定的报错，这个时候解决比较繁琐，于是干脆采用第三方python库手动下载好fasttext的wheels文件，手动安装就好。<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">进入python第三方库</a>，按<code>ctrl+f</code>查找我们要的package（即fasttext），然后选择和自己电脑合适的版本，点击下载，下载完毕后，进入下载目录，命令行运行 <code>pip install ./&lt;fasttext_version_file&gt;.wheel</code></p>
 </blockquote>
-<h3 id="代码构建"><a href="#代码构建" class="headerlink" title="代码构建"></a>代码构建</h3><figure class="highlight prolog hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics import f1_score</span><br><span class="line"></span><br><span class="line"># 转换为<span class="hljs-symbol">FastText</span>需要的格式</span><br><span class="line">train_df = pd.read_csv(<span class="hljs-string">'./train_set.csv'</span>, sep=<span class="hljs-string">'\t'</span>, nrows=<span class="hljs-number">15000</span>)</span><br><span class="line">train_df[<span class="hljs-string">'label_ft'</span>] = <span class="hljs-string">'__label__'</span> + train_df[<span class="hljs-string">'label'</span>].astype(str)</span><br><span class="line">train_df[[<span class="hljs-string">'text'</span>,<span class="hljs-string">'label_ft'</span>]].iloc[:-<span class="hljs-number">2500</span>].to_csv(<span class="hljs-string">'train.csv'</span>, index=<span class="hljs-symbol">None</span>, header=<span class="hljs-symbol">None</span>, sep=<span class="hljs-string">'\t'</span>)</span><br><span class="line"></span><br><span class="line">import fasttext</span><br><span class="line">model = fasttext.train_supervised(<span class="hljs-string">'./train_set.csv'</span>, lr=<span class="hljs-number">1.0</span>, wordNgrams=<span class="hljs-number">2</span>, </span><br><span class="line">                                  verbose=<span class="hljs-number">2</span>, minCount=<span class="hljs-number">1</span>, epoch=<span class="hljs-number">25</span>, loss=<span class="hljs-string">"hs"</span>)</span><br><span class="line"></span><br><span class="line">val_pred = [model.predict(x)[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].split(<span class="hljs-string">'__'</span>)[<span class="hljs-number">-1</span>] for x in train_df.iloc[<span class="hljs-number">-2500</span>:][<span class="hljs-string">'text'</span>]]</span><br><span class="line">print(f1_score(train_df[<span class="hljs-string">'label'</span>].values[<span class="hljs-number">-2500</span>:].astype(str), val_pred, average=<span class="hljs-string">'macro'</span>))</span><br></pre></td></tr></table></figure>
-
-<h2 id="调参提升"><a href="#调参提升" class="headerlink" title="调参提升"></a>调参提升</h2><p>在这个模型当中存在一些超参数，合理的调整这些参数可以让我们的模型更加准确，但是该怎么调整这些参数呢？可以采用验证集进行调参。</p>
-<ul>
-<li>通过阅读文档，要弄清楚这些参数的大致含义，那些参数会增加模型的复杂度</li>
-<li>通过在验证集上进行验证模型精度，找到模型在是否过拟合还是欠拟合</li>
-</ul>
+<h3 id="代码构建">代码构建</h3>
+<figure class="highlight prolog hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.metrics import f1_score</span><br><span class="line"></span><br><span class="line"># 转换为<span class="hljs-symbol">FastText</span>需要的格式</span><br><span class="line">train_df = pd.read_csv(<span class="hljs-string">'./train_set.csv'</span>, sep=<span class="hljs-string">'\t'</span>, nrows=<span class="hljs-number">15000</span>)</span><br><span class="line">train_df[<span class="hljs-string">'label_ft'</span>] = <span class="hljs-string">'__label__'</span> + train_df[<span class="hljs-string">'label'</span>].astype(str)</span><br><span class="line">train_df[[<span class="hljs-string">'text'</span>,<span class="hljs-string">'label_ft'</span>]].iloc[:-<span class="hljs-number">2500</span>].to_csv(<span class="hljs-string">'train.csv'</span>, index=<span class="hljs-symbol">None</span>, header=<span class="hljs-symbol">None</span>, sep=<span class="hljs-string">'\t'</span>)</span><br><span class="line"></span><br><span class="line">import fasttext</span><br><span class="line">model = fasttext.train_supervised(<span class="hljs-string">'./train_set.csv'</span>, lr=<span class="hljs-number">1.0</span>, wordNgrams=<span class="hljs-number">2</span>, </span><br><span class="line">                                  verbose=<span class="hljs-number">2</span>, minCount=<span class="hljs-number">1</span>, epoch=<span class="hljs-number">25</span>, loss=<span class="hljs-string">"hs"</span>)</span><br><span class="line"></span><br><span class="line">val_pred = [model.predict(x)[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].split(<span class="hljs-string">'__'</span>)[<span class="hljs-number">-1</span>] for x in train_df.iloc[<span class="hljs-number">-2500</span>:][<span class="hljs-string">'text'</span>]]</span><br><span class="line">print(f1_score(train_df[<span class="hljs-string">'label'</span>].values[<span class="hljs-number">-2500</span>:].astype(str), val_pred, average=<span class="hljs-string">'macro'</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="调参提升">调参提升</h2>
+<p>在这个模型当中存在一些超参数，合理的调整这些参数可以让我们的模型更加准确，但是该怎么调整这些参数呢？可以采用验证集进行调参。 - 通过阅读文档，要弄清楚这些参数的大致含义，那些参数会增加模型的复杂度 - 通过在验证集上进行验证模型精度，找到模型在是否过拟合还是欠拟合</p>
 <p>首先对数据集进行分组，接下来进行交叉验证，选择最后一次验证的验证集的结果来配合调整参数，采用反馈调节——先调整参数，然后观察验证结果，根据结果进行下一次调整。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>fasttext最大的有点就是快，相较于传统的机器学习算法，fasttext映射出来的向量维度更低，有着更快的训练速度，同时在加大训练量时，也能够达到不错的训练结果，能够适应一定场景下的应用。后面还会接着学习word2vec和bert模型，很期待这两种方法能够带来怎样的惊喜。</p>
+<h2 id="总结">总结</h2>
+<p>fasttext最大的有点就是快，相较于传统的机器学习算法，fasttext映射出来的向量维度更低，有着更快的训练速度，同时在加大训练量时，也能够达到不错的训练结果，能够适应一定场景下的应用。后面还会接着学习word2vec和bert模型，很期待这两种方法能够带来怎样的惊喜。</p>
 
         </div>
         
