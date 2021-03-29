@@ -10,19 +10,19 @@
 <title>nlp-2-数据读取与数据分析 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言 昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
+    <meta name="description" content="前言昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
 <meta name="keywords" content="nlp数据处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nlp-2-数据读取与数据分析">
 <meta property="og:url" content="https://genening.github.io/2020/07/22/NLP/nlp-2-数据读取与数据分析/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言 昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
+<meta property="og:description" content="前言昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-07-22T03:09:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nlp-2-数据读取与数据分析">
-<meta name="twitter:description" content="前言 昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
+<meta name="twitter:description" content="前言昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,44 +158,49 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。 <a id="more"></a> ## 1. 数据概况 通过网站的链接，我们下载到了三个数据——train_set/test_a/test_a_sample这三个数据的csv文件，接下来我们来看看这三个数据长啥样。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天我们了解了比赛的基本内容以及一些思路，下载了比赛的数据，今天我们就来探索一下我们现有的数据。</p>
+<a id="more"></a>
+<h2 id="1-数据概况"><a href="#1-数据概况" class="headerlink" title="1. 数据概况"></a>1. 数据概况</h2><p>通过网站的链接，我们下载到了三个数据——train_set/test_a/test_a_sample这三个数据的csv文件，接下来我们来看看这三个数据长啥样。</p>
 <figure class="highlight vala hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta"># 导入工具包</span></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">train_set = pd.read_csv(<span class="hljs-string">'./train_set.csv'</span>, sep=<span class="hljs-string">'\t'</span>, encoding=<span class="hljs-string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta"># 查看基本统计结果</span></span><br><span class="line">train_set.describe()</span><br><span class="line"><span class="hljs-meta"># 查看具体信息</span></span><br><span class="line">train_set.info</span><br><span class="line"><span class="hljs-meta"># 查看前5行数据</span></span><br><span class="line">train_set.head(<span class="hljs-number">5</span>)</span><br></pre></td></tr></table></figure>
-<p>结果如下： <img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/train_set.png" alt="train_set"></p>
-<h2 id="简单探索">2. 简单探索</h2>
-<ol type="1">
-<li>文本长度统计 <figure class="highlight prolog hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_set[<span class="hljs-string">'text_len'</span>] = train_set[<span class="hljs-string">'text'</span>].apply(lambda x: len(x.split(<span class="hljs-string">' '</span>)))</span><br><span class="line">print(train_set[<span class="hljs-string">'text_len'</span>].describe())</span><br></pre></td></tr></table></figure></li>
+
+<p>结果如下：<br><img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/train_set.png" alt="train_set"></p>
+<h2 id="2-简单探索"><a href="#2-简单探索" class="headerlink" title="2. 简单探索"></a>2. 简单探索</h2><ol>
+<li>文本长度统计<figure class="highlight prolog hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_set[<span class="hljs-string">'text_len'</span>] = train_set[<span class="hljs-string">'text'</span>].apply(lambda x: len(x.split(<span class="hljs-string">' '</span>)))</span><br><span class="line">print(train_set[<span class="hljs-string">'text_len'</span>].describe())</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<figure>
-<img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/len.png" alt="len"><figcaption aria-hidden="true">len</figcaption>
-</figure>
-<ol start="2" type="1">
-<li>文本长度直方图 <figure class="highlight xl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt </span><br><span class="line"></span><br><span class="line">_ = plt.hist(train_set[<span class="hljs-string">'text_len'</span>], bins=<span class="hljs-number">200</span>)</span><br><span class="line">plt.xlabel(<span class="hljs-string">'Text char count'</span>)</span><br><span class="line">plt.<span class="hljs-built_in">title</span>(<span class="hljs-string">"Histogram of char count"</span>)</span><br></pre></td></tr></table></figure></li>
+<p><img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/len.png" alt="len"></p>
+<ol start="2">
+<li>文本长度直方图<figure class="highlight xl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt </span><br><span class="line"></span><br><span class="line">_ = plt.hist(train_set[<span class="hljs-string">'text_len'</span>], bins=<span class="hljs-number">200</span>)</span><br><span class="line">plt.xlabel(<span class="hljs-string">'Text char count'</span>)</span><br><span class="line">plt.<span class="hljs-built_in">title</span>(<span class="hljs-string">"Histogram of char count"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<figure>
-<img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/hist.png" alt="hist"><figcaption aria-hidden="true">hist</figcaption>
-</figure>
-<ol start="3" type="1">
-<li>类别统计 <figure class="highlight less hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">train_set</span><span class="hljs-selector-attr">['label']</span><span class="hljs-selector-class">.value_counts</span>()<span class="hljs-selector-class">.plot</span>(kind=<span class="hljs-string">'bar'</span>)</span><br><span class="line"><span class="hljs-selector-tag">plt</span><span class="hljs-selector-class">.title</span>(<span class="hljs-string">'News class count'</span>)</span><br><span class="line"><span class="hljs-selector-tag">plt</span><span class="hljs-selector-class">.xlabel</span>(<span class="hljs-string">"category"</span>)</span><br></pre></td></tr></table></figure></li>
+<p><img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/hist.png" alt="hist"></p>
+<ol start="3">
+<li>类别统计<figure class="highlight less hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">train_set</span><span class="hljs-selector-attr">['label']</span><span class="hljs-selector-class">.value_counts</span>()<span class="hljs-selector-class">.plot</span>(kind=<span class="hljs-string">'bar'</span>)</span><br><span class="line"><span class="hljs-selector-tag">plt</span><span class="hljs-selector-class">.title</span>(<span class="hljs-string">'News class count'</span>)</span><br><span class="line"><span class="hljs-selector-tag">plt</span><span class="hljs-selector-class">.xlabel</span>(<span class="hljs-string">"category"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<figure>
-<img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/bar.png" alt="bar"><figcaption aria-hidden="true">bar</figcaption>
-</figure>
-<ol start="4" type="1">
-<li>字符统计 <figure class="highlight vim hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">all_lines = <span class="hljs-string">' '</span>.<span class="hljs-keyword">join</span>(<span class="hljs-keyword">list</span>(train_set[<span class="hljs-string">'text'</span>]))</span><br><span class="line">word_count = Counter(all_lines.<span class="hljs-keyword">split</span>(<span class="hljs-string">" "</span>))</span><br><span class="line">word_count = sorted(word_count.<span class="hljs-built_in">items</span>(), key=lambda d:d[<span class="hljs-number">1</span>], <span class="hljs-built_in">reverse</span> = True)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(<span class="hljs-built_in">len</span>(word_count))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[-<span class="hljs-number">1</span>])</span><br><span class="line"></span><br><span class="line"># 输出结果</span><br><span class="line"><span class="hljs-number">2405</span></span><br><span class="line">(<span class="hljs-string">'3750'</span>, <span class="hljs-number">3702</span>)</span><br><span class="line">(<span class="hljs-string">'5034'</span>, <span class="hljs-number">1</span>)</span><br></pre></td></tr></table></figure></li>
+<p><img src="/2020/07/22/NLP/nlp-2-数据读取与数据分析/bar.png" alt="bar"></p>
+<ol start="4">
+<li>字符统计<figure class="highlight vim hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">all_lines = <span class="hljs-string">' '</span>.<span class="hljs-keyword">join</span>(<span class="hljs-keyword">list</span>(train_set[<span class="hljs-string">'text'</span>]))</span><br><span class="line">word_count = Counter(all_lines.<span class="hljs-keyword">split</span>(<span class="hljs-string">" "</span>))</span><br><span class="line">word_count = sorted(word_count.<span class="hljs-built_in">items</span>(), key=lambda d:d[<span class="hljs-number">1</span>], <span class="hljs-built_in">reverse</span> = True)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(<span class="hljs-built_in">len</span>(word_count))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[-<span class="hljs-number">1</span>])</span><br><span class="line"></span><br><span class="line"># 输出结果</span><br><span class="line"><span class="hljs-number">2405</span></span><br><span class="line">(<span class="hljs-string">'3750'</span>, <span class="hljs-number">3702</span>)</span><br><span class="line">(<span class="hljs-string">'5034'</span>, <span class="hljs-number">1</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 <figure class="highlight vim hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">train_set[<span class="hljs-string">'text_unique'</span>] = train_set[<span class="hljs-string">'text'</span>].apply(lambda <span class="hljs-keyword">x</span>: <span class="hljs-string">' '</span>.<span class="hljs-keyword">join</span>(<span class="hljs-keyword">list</span>(<span class="hljs-keyword">set</span>(<span class="hljs-keyword">x</span>.<span class="hljs-keyword">split</span>(<span class="hljs-string">' '</span>)))))</span><br><span class="line">all_lines = <span class="hljs-string">' '</span>.<span class="hljs-keyword">join</span>(<span class="hljs-keyword">list</span>(train_set[<span class="hljs-string">'text_unique'</span>]))</span><br><span class="line">word_count = Counter(all_lines.<span class="hljs-keyword">split</span>(<span class="hljs-string">" "</span>))</span><br><span class="line">word_count = sorted(word_count.<span class="hljs-built_in">items</span>(), key=lambda d:<span class="hljs-keyword">int</span>(d[<span class="hljs-number">1</span>]), <span class="hljs-built_in">reverse</span> = True)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[<span class="hljs-number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">print</span>(word_count[<span class="hljs-number">2</span>])</span><br><span class="line"></span><br><span class="line"># 输出结果</span><br><span class="line">(<span class="hljs-string">'3750'</span>, <span class="hljs-number">99</span>)</span><br><span class="line">(<span class="hljs-string">'900'</span>, <span class="hljs-number">99</span>)</span><br><span class="line">(<span class="hljs-string">'648'</span>, <span class="hljs-number">96</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="数据分析的结论"><strong>数据分析的结论</strong></h3>
-<p>通过上述分析我们可以得出以下结论：</p>
-<ol type="1">
+
+<h3 id="数据分析的结论"><a href="#数据分析的结论" class="headerlink" title="数据分析的结论"></a><strong>数据分析的结论</strong></h3><p>通过上述分析我们可以得出以下结论：</p>
+<ol>
 <li>赛题中每个新闻包含的字符个数平均为1000个，还有一些新闻字符较长；</li>
 <li>赛题中新闻类别分布不均匀，科技类新闻样本量接近4w，星座类新闻样本量不到1k；</li>
 <li>赛题总共包括7000-8000个字符；</li>
 </ol>
 <p>通过数据分析，我们还可以得出以下结论：</p>
-<ol type="1">
-<li><p>每个新闻平均字符个数较多，可能需要截断；</p></li>
-<li><p>由于类别不均衡，会严重影响模型的精度；</p></li>
+<ol>
+<li><p>每个新闻平均字符个数较多，可能需要截断；</p>
+</li>
+<li><p>由于类别不均衡，会严重影响模型的精度；</p>
+</li>
 </ol>
 
         </div>
@@ -280,7 +285,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         65
@@ -290,7 +295,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -310,7 +315,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -367,7 +372,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -468,7 +473,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -845,7 +850,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1118,7 +1123,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1552,9 +1557,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

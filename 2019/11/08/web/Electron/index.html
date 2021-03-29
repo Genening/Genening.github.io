@@ -164,25 +164,27 @@
             
         </h1>
         <div class="content">
-            <h2 id="简介">简介</h2>
-<a id="more"></a>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><a id="more"></a>
 <blockquote>
-<p>Electron是由Github开发，用<strong>HTML，CSS和JavaScript</strong>来构建跨平台桌面应用程序的一个开源库。 Electron通过将Chromium和Node.js合并到同一个运行时环境中，并将其打包为<strong>Mac，Windows和Linux</strong>系统下的应用来实现这一目的。<br>简单来说，这是一个强大的工具，可以用于搭建跨平台桌面应用，而且有方便强大的API库提供，所以，开始一场新的探索吧，<strong>如果你永远只做你能做到的事情，那么你永远也只能停在当前的高度。</strong> <img src="/2019/11/08/web/Electron/company.jpg" alt="companies"></p>
+<p>Electron是由Github开发，用<strong>HTML，CSS和JavaScript</strong>来构建跨平台桌面应用程序的一个开源库。 Electron通过将Chromium和Node.js合并到同一个运行时环境中，并将其打包为<strong>Mac，Windows和Linux</strong>系统下的应用来实现这一目的。<br>简单来说，这是一个强大的工具，可以用于搭建跨平台桌面应用，而且有方便强大的API库提供，所以，开始一场新的探索吧，<strong>如果你永远只做你能做到的事情，那么你永远也只能停在当前的高度。</strong><br><img src="/2019/11/08/web/Electron/company.jpg" alt="companies"></p>
 </blockquote>
-<h2 id="目录暂略">目录：暂略</h2>
-<h3 id="环境准备">1. 环境准备</h3>
-<blockquote>
+<h2 id="目录：暂略"><a href="#目录：暂略" class="headerlink" title="目录：暂略"></a>目录：暂略</h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h3><blockquote>
 <ul>
 <li>安装<strong>Node.js</strong> <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js下载页面</a></li>
-<li>npm 安装Node.js的时候已经安装了 &gt;检查npm node是否安装成功，在命令行工具中输入<em>node -v</em> <em>npm -v</em>，显示版本号则便是环境准备完成。就是这么简单，赶紧尝试一下吧！</li>
+<li>npm 安装Node.js的时候已经安装了 <blockquote>
+<p>检查npm node是否安装成功，在命令行工具中输入<em>node -v</em> <em>npm -v</em>，显示版本号则便是环境准备完成。就是这么简单，赶紧尝试一下吧！</p>
+</blockquote>
+</li>
 </ul>
 </blockquote>
-<p><strong>快速开始一个项目</strong> <figure class="highlight crmsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 克隆示例项目的仓库</span></span><br><span class="line">$ git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/electron/electron-quick-<span class="hljs-literal">start</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 进入这个仓库</span></span><br><span class="line">$ cd electron-quick-<span class="hljs-literal">start</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 安装依赖并运行</span></span><br><span class="line">$ npm install &amp;&amp; npm <span class="hljs-literal">start</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下： <img src="/2019/11/08/web/Electron/quick-start.jpg" alt="quick-start"></p>
+<p><strong>快速开始一个项目</strong></p>
+<figure class="highlight crmsh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 克隆示例项目的仓库</span></span><br><span class="line">$ git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/electron/electron-quick-<span class="hljs-literal">start</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 进入这个仓库</span></span><br><span class="line">$ cd electron-quick-<span class="hljs-literal">start</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 安装依赖并运行</span></span><br><span class="line">$ npm install &amp;&amp; npm <span class="hljs-literal">start</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br><img src="/2019/11/08/web/Electron/quick-start.jpg" alt="quick-start"></p>
 <blockquote>
 <p>这个quick-start项目提供了一个非常简约的模板，可以在这个基础上搭建自己的应用。看起来还是不错的，很期待打包成桌面应用的效果。</p>
 </blockquote>
-<p><strong>quick-start目录解析</strong> <img src="/2019/11/08/web/Electron/content.jpg" alt="content"></p>
+<p><strong>quick-start目录解析</strong><br><img src="/2019/11/08/web/Electron/content.jpg" alt="content"></p>
 <ul>
 <li>node_modules：模块依赖</li>
 <li>package.json：描述包的文件，这里默认已经将主进程入口文件配置为main.js</li>
@@ -272,7 +274,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         65
@@ -282,7 +284,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -302,7 +304,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -359,7 +361,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -460,7 +462,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -837,7 +839,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1110,7 +1112,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1544,9 +1546,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
