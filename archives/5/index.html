@@ -164,7 +164,8 @@
         </h1>
         <div class="content">
             <blockquote>
-<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。</p></blockquote>
+<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。</p>
+</blockquote>
         </div>
         
         
@@ -225,41 +226,33 @@
             <blockquote>
 <p>这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析</p>
 </blockquote>
-<h2 id="一转录组学">一、转录组学</h2>
-<h3 id="概述">概述：</h3>
-<ol type="1">
+<h2 id="一、转录组学"><a href="#一、转录组学" class="headerlink" title="一、转录组学"></a>一、转录组学</h2><h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><ol>
 <li>转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。<br></li>
 <li>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRNA。<br></li>
 <li>转录组具有时间特异性、组织特异性、空间特异性等特点。</li>
 </ol>
 <table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: left;">类型</th>
-<th style="text-align: left;">特点</th>
-<th style="text-align: left;">分析策略</th>
+<tr>
+<th align="left">类型</th>
+<th align="left">特点</th>
+<th align="left">分析策略</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">有参转录组</td>
-<td style="text-align: left;">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
-<td style="text-align: left;">比对—定量—差异分析—功能富集分析（下游分析）</td>
+<tbody><tr>
+<td align="left">有参转录组</td>
+<td align="left">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
+<td align="left">比对—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">无参转录组</td>
-<td style="text-align: left;">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
-<td style="text-align: left;">组装—定量—差异分析—功能富集分析（下游分析）</td>
+<tr>
+<td align="left">无参转录组</td>
+<td align="left">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
+<td align="left">组装—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
-<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p></blockquote>
+<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p>
+</blockquote>
         </div>
         
         
@@ -320,17 +313,29 @@
             <blockquote>
 <p>这是一篇关于python基础知识复习的博客，除了基础之外，还会涉及进阶以及算法设计。</p>
 </blockquote>
-<h1 id="第一部分-python基础语法">第一部分 Python基础语法</h1>
-<h2 id="认识python">1. 认识Python</h2>
-<h3 id="python简介">1.1. Python简介</h3>
-<p>Python的创始人为Guido van Rossum &gt;Python 的设计目标： &gt;* 一门简单直观的语言并与主要竞争者一样强大 &gt;* 开源，以便任何人都可以为它做贡献 &gt;* 代码像纯英语那样容易理解 &gt;* 适用于短期开发的日常任务</p>
+<h1 id="第一部分-Python基础语法"><a href="#第一部分-Python基础语法" class="headerlink" title="第一部分 Python基础语法"></a>第一部分 Python基础语法</h1><h2 id="1-认识Python"><a href="#1-认识Python" class="headerlink" title="1. 认识Python"></a>1. 认识Python</h2><h3 id="1-1-Python简介"><a href="#1-1-Python简介" class="headerlink" title="1.1. Python简介"></a>1.1. Python简介</h3><p>Python的创始人为Guido van Rossum</p>
 <blockquote>
-<p>Python设计哲学 * 优雅、明确、简单</p>
+<p>Python 的设计目标：</p>
+<ul>
+<li>一门简单直观的语言并与主要竞争者一样强大</li>
+<li>开源，以便任何人都可以为它做贡献</li>
+<li>代码像纯英语那样容易理解</li>
+<li>适用于短期开发的日常任务</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Python设计哲学</p>
+<ul>
+<li>优雅、明确、简单</li>
+</ul>
 </blockquote>
 <blockquote>
 <p>Python开发者的哲学是：用一种方法，最好只有一种方法来做一件事</p>
 </blockquote>
-<p>Python是完全面向对象的语言，在Python中一切皆对象 &gt;可扩展性：如果需要一段关键代码运行的更快或者希望某些算法不公开，可以把这部分程序用<code>C</code>或者<code>C++</code>编写，然后在Python程序中使用它们。</p>
+<p>Python是完全面向对象的语言，在Python中一切皆对象</p>
+<blockquote>
+<p>可扩展性：如果需要一段关键代码运行的更快或者希望某些算法不公开，可以把这部分程序用<code>C</code>或者<code>C++</code>编写，然后在Python程序中使用它们。</p>
+</blockquote>
         </div>
         
         
@@ -388,9 +393,10 @@
             
         </h1>
         <div class="content">
-            <div data-align="center">
-<p>----<em>徐志摩</em><br></p>
-<p>轻轻的我走了，<br> 正如我轻轻的来；<br> 我轻轻的招手，<br> 作别西天的云彩。<br> <br> 那河畔的金柳，<br> 是夕阳中的新娘；<br> 波光里的艳影，<br> 在我的心头荡漾。<br> <br> 软泥上的青荇，<br> 油油的在水底招摇；<br> 在康河的柔波里，<br> 我甘心做一条水草！<br> <br> 那榆阴下的一潭，<br> 不是清泉，是天上虹；<br> 揉碎在浮藻间，<br> 沉淀着彩虹似的梦。<br> <br> 寻梦？撑一支长蒿，<br> 向青草更青处漫溯；<br> 载满一船星辉，<br> 在星辉斑斓里放歌。<br> <br> 但是我不能放歌，<br> 悄悄是别离的笙箫；<br> 夏虫也为我沉默，<br> 沉默是今晚的康桥！<br> <br> 悄悄的我走了，<br> 正如我悄悄的来；<br> 我挥一挥衣袖，<br> 不带走一片云彩。<br></p>
+            <div align="center">
+
+<p>—-<em>徐志摩</em><br></p>
+<p>轻轻的我走了，<br><br>正如我轻轻的来；<br><br>我轻轻的招手，<br><br>作别西天的云彩。<br><br><br><br>那河畔的金柳，<br><br>是夕阳中的新娘；<br><br>波光里的艳影，<br><br>在我的心头荡漾。<br><br><br><br>软泥上的青荇，<br><br>油油的在水底招摇；<br><br>在康河的柔波里，<br><br>我甘心做一条水草！<br><br><br><br>那榆阴下的一潭，<br><br>不是清泉，是天上虹；<br><br>揉碎在浮藻间，<br><br>沉淀着彩虹似的梦。<br><br><br><br>寻梦？撑一支长蒿，<br><br>向青草更青处漫溯；<br><br>载满一船星辉，<br><br>在星辉斑斓里放歌。<br><br><br><br>但是我不能放歌，<br><br>悄悄是别离的笙箫；<br><br>夏虫也为我沉默，<br><br>沉默是今晚的康桥！<br><br><br><br>悄悄的我走了，<br><br>正如我悄悄的来；<br><br>我挥一挥衣袖，<br><br>不带走一片云彩。<br></p>
 </div>
         </div>
         
@@ -449,8 +455,9 @@
             
         </h1>
         <div class="content">
-            <div data-align="center">
-<p><em>----海子</em><br></p>
+            <div align="center">
+
+<p><em>—-海子</em><br></p>
 <p>你是我的半截的诗，不许别人更改一个字。<br></p></div>
         </div>
         
@@ -509,8 +516,9 @@
             
         </h1>
         <div class="content">
-            <div data-align="center">
-<p><em>----席慕蓉</em><br></p>
+            <div align="center">
+
+<p><em>—-席慕蓉</em><br></p>
 <p>在一个年轻的夜里<br></p>
 <p>听过一首歌<br></p>
 <p>清冽 缠绵<br></p>
@@ -586,8 +594,9 @@
             
         </h1>
         <div class="content">
-            <div data-align="center">
-<p><em>----席慕蓉</em><br></p>
+            <div align="center">
+
+<p><em>—-席慕蓉</em><br></p>
 <p>美丽的诗和美丽的梦一样<br></p>
 <p>都是可遇不可求的<br></p>
 <p>常常在最没料的时刻里出现<br></p>
@@ -661,10 +670,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="第一部分js介绍及基础知识"><strong>第一部分：JS介绍及基础知识</strong></h2>
-<blockquote>
-<h3 id="目录">目录</h3>
-<ol type="1">
+            <h2 id="第一部分：JS介绍及基础知识"><a href="#第一部分：JS介绍及基础知识" class="headerlink" title="第一部分：JS介绍及基础知识"></a><strong>第一部分：JS介绍及基础知识</strong></h2><blockquote>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ol>
 <li>初识JavaScript</li>
 <li>变量和常量的知识</li>
 <li>基本数据类型</li>
@@ -673,9 +680,14 @@
 <li>流程控制语句</li>
 </ol>
 </blockquote>
-<h3 id="初识javascript">1. <strong>初识JavaScript</strong></h3>
-<p><strong>概述</strong>： &gt;<strong>JavaScript</strong>一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为<strong>JavaScript引擎</strong>，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。<br></p>
-<p><strong>javascript组成</strong> &gt;（1）<strong>ECMAScript</strong>，描述了该语言的语法和基本对象。<br> （2）文档对象模型（<strong>DOM</strong>），描述处理网页内容的方法和接口。<br> （3）浏览器对象模型（<strong>BOM</strong>），描述与浏览器进行交互的方法和接口<br> <img src="/2019/09/07/web/JS学习笔记/js组成.jpg" alt="javascript组成"></p>
+<h3 id="1-初识JavaScript"><a href="#1-初识JavaScript" class="headerlink" title="1. 初识JavaScript"></a>1. <strong>初识JavaScript</strong></h3><p><strong>概述</strong>：</p>
+<blockquote>
+<p><strong>JavaScript</strong>一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为<strong>JavaScript引擎</strong>，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。<br></p>
+</blockquote>
+<p><strong>javascript组成</strong> </p>
+<blockquote>
+<p>（1）<strong>ECMAScript</strong>，描述了该语言的语法和基本对象。<br><br>（2）文档对象模型（<strong>DOM</strong>），描述处理网页内容的方法和接口。<br><br>（3）浏览器对象模型（<strong>BOM</strong>），描述与浏览器进行交互的方法和接口<br><br><img src="/2019/09/07/web/JS学习笔记/js%E7%BB%84%E6%88%90.jpg" alt="javascript组成"></p>
+</blockquote>
         </div>
         
         
@@ -733,9 +745,9 @@
             
         </h1>
         <div class="content">
-            <section id="偶然" data-align="center">
-<h2>偶然<br></h2>
-<p>----徐志摩<br></p>
+            <div align="center">
+
+<h2 id="偶然"><a href="#偶然" class="headerlink" title="偶然"></a>偶然<br></h2><p>—-徐志摩<br></p>
 <p>我是天空里的一片云，<br></p>
 <p>偶尔投影在你的波心。<br></p>
 <p>你不必讶异，更无须欢喜，<br></p>
@@ -744,7 +756,7 @@
 <p>你有你的，我有我的，方向；<br></p>
 <p>你记得也好，最好你忘掉，<br></p>
 <p>在这交会时互放的光亮！<br></p>
-</section>
+</div>
         </div>
         
         
@@ -802,36 +814,32 @@
             
         </h1>
         <div class="content">
-            <h2 id="写在前面">写在前面</h2>
-<blockquote>
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><blockquote>
 <p>这是篇为了记录计算机基础知识学习笔记的博客，希望自己能够充分利用博客这个工具，提高自己的学习效率和改善学习效果。另外，这也是在接下来的计算机二级考试的备考内容之一。这会是一篇持续更新的博客，希望能够写得完善一些。</p>
 </blockquote>
-<h2 id="什么是算法">1. 什么是算法？</h2>
-<blockquote>
+<h2 id="1-什么是算法？"><a href="#1-什么是算法？" class="headerlink" title="1. 什么是算法？"></a>1. 什么是算法？</h2><blockquote>
 <p><strong>算法是指对解决方案的准确而完整的描述，简单来说，就是解决问题的步骤。</strong></p>
 </blockquote>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>基本特征</th>
 <th>具体描述</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td>可行性</td>
 <td>步骤可以实现，执行能够达到预期目的</td>
 </tr>
-<tr class="even">
+<tr>
 <td>确定性</td>
 <td>步骤明确，每一步意义清晰</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>有穷性</td>
 <td>有限步骤，有限时间内能完成</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
         </div>
         
         
@@ -859,10 +867,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/4/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/4/">Préc</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/6/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/6/">Suiv</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -921,7 +929,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         66
@@ -931,7 +939,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -951,7 +959,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -1008,7 +1016,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1109,7 +1117,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -1493,7 +1501,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1777,7 +1785,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -2222,9 +2230,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

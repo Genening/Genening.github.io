@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: Bioinformatics - Genening&#39;s blog</title>
+<title>Catégorie: Bioinformatics - Genening&#39;s blog</title>
 
 
     <meta name="description" content="nothing is everything">
@@ -131,7 +131,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">Catégories</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">Bioinformatics</a></li>
         </ul>
@@ -168,8 +168,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>最近在做毕设内容，也是转录组的基因数据挖掘工作。这个项目题目是：<em>“黄鳍鲷脑组织转录组性别相关功能基因的数据挖掘”</em>。在前面的分析中，我们已经得到了黄鳍鲷的样本的RNA数据，并进行了无参转录组的组装，salmon的定量mapping，R中edgeR的差异分析，得到了差异基因的table文件，并且将这些差异基因进行了blastx到nr数据库的注释工作，得到了nr注释的table文件，有了这些文件后，我们就可以着手筛选我们的目标基因了。当然，另一个工作是对nr的注释结果进行GO、KEGG的注释与富集分析，这个是从整体层面上来了解我们差异分析得到的差异基因的总体情况，与我们现在进行的特定功能的基因的筛选关联性并不密切。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在做毕设内容，也是转录组的基因数据挖掘工作。这个项目题目是：<em>“黄鳍鲷脑组织转录组性别相关功能基因的数据挖掘”</em>。在前面的分析中，我们已经得到了黄鳍鲷的样本的RNA数据，并进行了无参转录组的组装，salmon的定量mapping，R中edgeR的差异分析，得到了差异基因的table文件，并且将这些差异基因进行了blastx到nr数据库的注释工作，得到了nr注释的table文件，有了这些文件后，我们就可以着手筛选我们的目标基因了。当然，另一个工作是对nr的注释结果进行GO、KEGG的注释与富集分析，这个是从整体层面上来了解我们差异分析得到的差异基因的总体情况，与我们现在进行的特定功能的基因的筛选关联性并不密切。</p>
         </div>
         
         
@@ -221,8 +220,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是实验室的一个新项目，探讨的是Yellowseabream在生长发育中雄转雌现象的调控基因，这个项目有两个部分，取的样品有脑组织和普通组织，普通组织部分的分析结果已经完成，我负责完成脑组织转录组的分析。因此我将在这篇博客中记录下我在整个项目的过程中的操作，方便以后进行结果整理以及纠错。</p>
         </div>
         
         
@@ -274,8 +272,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。 &gt;为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。</p>
+<blockquote>
+<p>为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+</blockquote>
         </div>
         
         
@@ -327,8 +327,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。 &gt;二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。</p>
+<blockquote>
+<p>二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
+</blockquote>
         </div>
         
         
@@ -380,8 +382,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
         </div>
         
         
@@ -436,8 +437,7 @@
             <blockquote>
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
-<h2 id="blast简介">1. blast简介</h2>
-<p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼： |program|progress| |:----|:----| |blastn|nr--&gt;nr| |blastx|nr--&gt;pro| |tblastn|pro--&gt;nr| |blastp|pro--&gt;pro|</p>
+<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
         </div>
         
         
@@ -492,12 +492,13 @@
             <blockquote>
 <p>这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。</p>
 </blockquote>
-<h2 id="前言">前言</h2>
-<p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
-<h2 id="环境准备">1. 环境准备</h2>
-<ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
+<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
 <li>安装R，可以到官网download</li>
-<li>安装相应包，如下 &gt;if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager") &gt;if (!requireNamespace("edgeR", quietly = TRUE)) BiocManager::install("edgeR") &gt;if (!requireNamespace("airway", quietly = TRUE)) BiocManager::install("airway")</li>
+<li>安装相应包，如下<blockquote>
+<p>if (!requireNamespace(“BiocManager”, quietly = TRUE))<br>  install.packages(“BiocManager”)<br>if (!requireNamespace(“edgeR”, quietly = TRUE))<br>  BiocManager::install(“edgeR”)<br>if (!requireNamespace(“airway”, quietly = TRUE))<br>  BiocManager::install(“airway”)</p>
+</blockquote>
+</li>
 </ul>
         </div>
         
@@ -557,7 +558,8 @@
         </h1>
         <div class="content">
             <blockquote>
-<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。</p></blockquote>
+<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。</p>
+</blockquote>
         </div>
         
         
@@ -618,41 +620,33 @@
             <blockquote>
 <p>这是一篇关于使用Trinity进行无参转录组分析的文章，首先会简单介绍转录组学，接着会介绍Trinity软件的使用，最后会记录相关的下游分析</p>
 </blockquote>
-<h2 id="一转录组学">一、转录组学</h2>
-<h3 id="概述">概述：</h3>
-<ol type="1">
+<h2 id="一、转录组学"><a href="#一、转录组学" class="headerlink" title="一、转录组学"></a>一、转录组学</h2><h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><ol>
 <li>转录组广义上指在某一生理条件下，细胞内所有转录组产物的集合，包括：mRNA、ncRNA、rRNA等；狭义上指所有mRNA的集合。<br></li>
 <li>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有RNA的总和，主要包括mRNA和ncRNA。<br></li>
 <li>转录组具有时间特异性、组织特异性、空间特异性等特点。</li>
 </ol>
 <table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: left;">类型</th>
-<th style="text-align: left;">特点</th>
-<th style="text-align: left;">分析策略</th>
+<tr>
+<th align="left">类型</th>
+<th align="left">特点</th>
+<th align="left">分析策略</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">有参转录组</td>
-<td style="text-align: left;">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
-<td style="text-align: left;">比对—定量—差异分析—功能富集分析（下游分析）</td>
+<tbody><tr>
+<td align="left">有参转录组</td>
+<td align="left">需要所研究的物种有组装注释质量较好基因组序列，<br>一般来说比对效率达到70%以上才能满足后续分析。</td>
+<td align="left">比对—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">无参转录组</td>
-<td style="text-align: left;">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
-<td style="text-align: left;">组装—定量—差异分析—功能富集分析（下游分析）</td>
+<tr>
+<td align="left">无参转录组</td>
+<td align="left">缺乏相应的质量较高的基因信息，需要从零开始组装分析</td>
+<td align="left">组装—定量—差异分析—功能富集分析（下游分析）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
-<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p></blockquote>
+<p>下游分析包括：GO基因功能注释、KEGG通路分析、mRNA表达量计算、差异基因筛选、功能和通路富集分析、时间序列分析、共表达网络分析等</p>
+</blockquote>
         </div>
         
         
@@ -715,7 +709,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         66
@@ -725,7 +719,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -745,7 +739,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -802,7 +796,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -903,7 +897,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -1287,7 +1281,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1571,7 +1565,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -2016,9 +2010,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
