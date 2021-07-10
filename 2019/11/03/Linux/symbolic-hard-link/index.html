@@ -159,64 +159,49 @@
         </h1>
         <div class="content">
             <blockquote>
-<p>在Linux的应用当中，掌握软硬链接的方法很重要，学会软硬链接可以让我们更方便的使用Linux系统中的文件，特别是以项目的方式去管理文件时，可以在单个项目之内创建软硬链接，而在其他的项目当中也可以创建同样的软硬链接指向同样的脚本、软件等，这样子可以实现文件个高效复用，既能便捷实用，又能避免重复造轮子。</p>
+<p>在Linux的应用当中，掌握软硬链接的方法很重要，学会软硬链接可以让我们更方便的使用Linux系统中的文件，特别是以项目的方式去管理文件时，可以在单个项目之内创建软硬链接，而在其他的项目当中也可以创建同样的软硬链接指向同样的脚本、软件等，这样子可以实现文件个高效复用，既能便捷实用，又能避免重复造轮子。 <a id="more"></a> ### 1. 硬链接 hard link 创建方法： <figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -d dir1<span class="hljs-regexp">/source_file dir2/</span>hard-link_file</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<a id="more"></a>
-<h3 id="1-硬链接-hard-link"><a href="#1-硬链接-hard-link" class="headerlink" title="1. 硬链接 hard link"></a>1. 硬链接 hard link</h3><p>创建方法：</p>
-<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -d dir1<span class="hljs-regexp">/source_file dir2/</span>hard-link_file</span><br></pre></td></tr></table></figure>
-
-<p><strong>理解</strong>：</p>
-<ul>
-<li>在Linux系统之中，文件储存在某一些储存空间上，删除文件的方式其实就是把对应的索引链接都删除就可以了，那么这一片空间就没有索引来访问了，那么这样就相当于是删除了文件，下次写文件的时候就会新建对应的索引链接，然后直接开始写入文件到储存空间，实现覆盖。</li>
-<li>对于硬链接来说，就是创建一个新的索引，和原来文件的索引同级（原文件索引即原文件的名字），相当于是给文件创建了一个新的名字，但是没有创建新的文件，当原文件的索引被删除时，不会影响到硬链接，仍然可以通过硬链接访问文件，并且进行编辑。</li>
-<li>如果需要彻底删除文件，那就意味着必须把所有的硬链接都删除掉，这样才是真正的删除，系统文件才无法找到这片空间中的原文件。</li>
-<li>硬链接有点像是到一座小岛上的另一座桥，和原来通往这座岛的桥一样，都连接着同样的一个小岛，所以并没有创建新的文件，但是却多了一个保障，一旦原来的桥塌了（误删），仍然可以通过这座桥登上小岛。而不管通过哪座桥登上小岛进行建设规划，都会直接改动小岛真实的面目。</li>
-</ul>
-<h3 id="2-软连接-symbolic-link"><a href="#2-软连接-symbolic-link" class="headerlink" title="2. 软连接 symbolic link"></a>2. 软连接 symbolic link</h3><p>创建方法：</p>
-<figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s dir1<span class="hljs-regexp">/souce_file dir2/</span>symbolic_link</span><br></pre></td></tr></table></figure>
-
-<p><strong>理解</strong></p>
-<ul>
-<li>软连接是真正的快捷方式既视感。软连接是一个文件，这个文件的内容是原文件的储存路径之类的，但是也只有这些，并没有原文件的具体内容，所以只是一个快捷方式，通过这个快捷方式可以快速的访问到文件，并进行使用。</li>
-<li>因此，当在删除了原文件后，软连接就失效了，无法再访问原文件。</li>
-<li>同样是用小岛来打比方，软连接就像是路标，指明了哪里有桥可以上岛，对于具体的小岛来说，软连接就指向了原来那座桥所在的方位，所以可以很快的找到桥然后上岛。所以拆掉路标不会影响桥的存在，但是一旦把桥拆了，那么路标也就没有用了，小岛已经再也上不去了，相当于在世界上消失了。</li>
-</ul>
-<h3 id="3-软硬链接的区别"><a href="#3-软硬链接的区别" class="headerlink" title="3. 软硬链接的区别"></a>3. 软硬链接的区别</h3><table>
+<p><strong>理解</strong>： * 在Linux系统之中，文件储存在某一些储存空间上，删除文件的方式其实就是把对应的索引链接都删除就可以了，那么这一片空间就没有索引来访问了，那么这样就相当于是删除了文件，下次写文件的时候就会新建对应的索引链接，然后直接开始写入文件到储存空间，实现覆盖。 * 对于硬链接来说，就是创建一个新的索引，和原来文件的索引同级（原文件索引即原文件的名字），相当于是给文件创建了一个新的名字，但是没有创建新的文件，当原文件的索引被删除时，不会影响到硬链接，仍然可以通过硬链接访问文件，并且进行编辑。 * 如果需要彻底删除文件，那就意味着必须把所有的硬链接都删除掉，这样才是真正的删除，系统文件才无法找到这片空间中的原文件。 * 硬链接有点像是到一座小岛上的另一座桥，和原来通往这座岛的桥一样，都连接着同样的一个小岛，所以并没有创建新的文件，但是却多了一个保障，一旦原来的桥塌了（误删），仍然可以通过这座桥登上小岛。而不管通过哪座桥登上小岛进行建设规划，都会直接改动小岛真实的面目。</p>
+<h3 id="软连接-symbolic-link">2. 软连接 symbolic link</h3>
+<p>创建方法： <figure class="highlight awk hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s dir1<span class="hljs-regexp">/souce_file dir2/</span>symbolic_link</span><br></pre></td></tr></table></figure></p>
+<p><strong>理解</strong> * 软连接是真正的快捷方式既视感。软连接是一个文件，这个文件的内容是原文件的储存路径之类的，但是也只有这些，并没有原文件的具体内容，所以只是一个快捷方式，通过这个快捷方式可以快速的访问到文件，并进行使用。 * 因此，当在删除了原文件后，软连接就失效了，无法再访问原文件。 * 同样是用小岛来打比方，软连接就像是路标，指明了哪里有桥可以上岛，对于具体的小岛来说，软连接就指向了原来那座桥所在的方位，所以可以很快的找到桥然后上岛。所以拆掉路标不会影响桥的存在，但是一旦把桥拆了，那么路标也就没有用了，小岛已经再也上不去了，相当于在世界上消失了。</p>
+<h3 id="软硬链接的区别">3. 软硬链接的区别</h3>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
-<tr>
-<th align="left">硬链接 hard link</th>
-<th align="left">软链接 symbolic link</th>
+<tr class="header">
+<th style="text-align: left;">硬链接 hard link</th>
+<th style="text-align: left;">软链接 symbolic link</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">不能给目录创建硬链接</td>
-<td align="left">可以给目录创建软链接</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">不能给目录创建硬链接</td>
+<td style="text-align: left;">可以给目录创建软链接</td>
 </tr>
-<tr>
-<td align="left">不能跨文件系统创建链接</td>
-<td align="left">可以跨文件系统创建软链接</td>
+<tr class="even">
+<td style="text-align: left;">不能跨文件系统创建链接</td>
+<td style="text-align: left;">可以跨文件系统创建软链接</td>
 </tr>
-<tr>
-<td align="left">文件的新索引，和原文件名互为别名</td>
-<td align="left">新文件，保存原文件路径，相当于快捷方式</td>
+<tr class="odd">
+<td style="text-align: left;">文件的新索引，和原文件名互为别名</td>
+<td style="text-align: left;">新文件，保存原文件路径，相当于快捷方式</td>
 </tr>
-<tr>
-<td align="left">不能给不存在的文件创建硬链接，<br>因为硬链接存在即表示原文件存在，<br>而不存在的文件就表示没有文件，<br>也就没有链接可言。</td>
-<td align="left">可以给不存在的文件创建链接，<br>因为路标可以随便建，有没有效<br>无所谓，反正可以建。</td>
+<tr class="even">
+<td style="text-align: left;">不能给不存在的文件创建硬链接，<br>因为硬链接存在即表示原文件存在，<br>而不存在的文件就表示没有文件，<br>也就没有链接可言。</td>
+<td style="text-align: left;">可以给不存在的文件创建链接，<br>因为路标可以随便建，有没有效<br>无所谓，反正可以建。</td>
 </tr>
-</tbody></table>
-<h3 id="4-ln-命令"><a href="#4-ln-命令" class="headerlink" title="4. ln 命令"></a>4. ln 命令</h3><p>使用方法：” ln [options] 目标 “</p>
-<ul>
-<li>参数如下</li>
-<li><blockquote>
-<p>-b 删除，覆盖以前建立的链接<br></p>
-</blockquote>
-</li>
-</ul>
-<p>-d 允许超级用户制作目录的硬链接<br><br>-f 强制执行<br><br>-i 交互模式，文件存在则提示用户是否覆盖<br><br>-n 把符号链接视为一般目录<br><br>-s 软链接(符号链接)<br><br>-v 显示详细的处理过程<br></p>
-<h3 id="5-实践"><a href="#5-实践" class="headerlink" title="5. 实践"></a>5. 实践</h3><ol>
-<li>硬链接 hard link<br><img src="/2019/11/03/Linux/symbolic-hard-link/hard-link.jpg" alt="hard-link"></li>
-<li>软链接 symbolic link<br><img src="/2019/11/03/Linux/symbolic-hard-link/symbolic.jpg" alt="symbolic-link"></li>
+</tbody>
+</table>
+<h3 id="ln-命令">4. ln 命令</h3>
+<p>使用方法：" ln [options] 目标 " * 参数如下 * &gt;-b 删除，覆盖以前建立的链接<br> -d 允许超级用户制作目录的硬链接<br> -f 强制执行<br> -i 交互模式，文件存在则提示用户是否覆盖<br> -n 把符号链接视为一般目录<br> -s 软链接(符号链接)<br> -v 显示详细的处理过程<br></p>
+<h3 id="实践">5. 实践</h3>
+<ol type="1">
+<li>硬链接 hard link <img src="/2019/11/03/Linux/symbolic-hard-link/hard-link.jpg" alt="hard-link"></li>
+<li>软链接 symbolic link <img src="/2019/11/03/Linux/symbolic-hard-link/symbolic.jpg" alt="symbolic-link"></li>
 </ol>
 
         </div>
@@ -301,7 +286,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         67
@@ -311,7 +296,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -321,7 +306,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         52
@@ -331,7 +316,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -388,7 +373,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -489,7 +474,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -500,7 +485,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -880,7 +865,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -986,7 +971,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1175,7 +1160,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -1281,7 +1266,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1631,10 +1616,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
