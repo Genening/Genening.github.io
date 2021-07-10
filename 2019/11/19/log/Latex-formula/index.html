@@ -158,50 +158,56 @@
             
         </h1>
         <div class="content">
-            <p><strong>前言</strong>：LaTeX在表达数学公式方面有着得天独厚的优势，表达简便，渲染效果良好，是用来展示数学公式的最佳工具。当然，LaTeX本身是一个非常好的排版工具，在发表文章时一般可以采用LaTeX进行排版，美观专业。</p>
-<a id="more"></a>
-<blockquote>
-<p>接下来我将学习一下LaTeX关于数学公式方面的内容。</p>
-</blockquote>
-<h3 id="嵌入方法："><a href="#嵌入方法：" class="headerlink" title="嵌入方法："></a>嵌入方法：</h3><ul>
-<li>行内嵌入：’$..$‘</li>
-</ul>
-<p>例如：$\sum_i^nx_i$</p>
+            <p><strong>前言</strong>：LaTeX在表达数学公式方面有着得天独厚的优势，表达简便，渲染效果良好，是用来展示数学公式的最佳工具。当然，LaTeX本身是一个非常好的排版工具，在发表文章时一般可以采用LaTeX进行排版，美观专业。 <a id="more"></a> &gt;接下来我将学习一下LaTeX关于数学公式方面的内容。</p>
+<h3 id="嵌入方法">嵌入方法：</h3>
 <ul>
-<li>单独成行：’$$..$$‘</li>
+<li>行内嵌入：'$..$'</li>
 </ul>
-<p>例如：<br>$$y_i=\sum_i^nx_i$$</p>
-<h3 id="1-The-Greek-alphabet"><a href="#1-The-Greek-alphabet" class="headerlink" title="1. The Greek alphabet"></a>1. The Greek alphabet</h3><blockquote>
+<p>例如：<span class="math inline">\(\sum_i^nx_i\)</span></p>
+<ul>
+<li>单独成行：'$$..$$'</li>
+</ul>
+<p>例如： <span class="math display">\[y_i=\sum_i^nx_i\]</span></p>
+<h3 id="the-greek-alphabet">1. The Greek alphabet</h3>
+<blockquote>
 <p>希腊字母是数学表达式中常用的符号，几乎所有数学公式包含着希腊字母，希腊字母的在数学中的地位举足轻重。</p>
 </blockquote>
-<p><img src="/2019/11/19/log/Latex-formula/greek-alphabet.jpg" alt="greek-alphabet"></p>
+<figure>
+<img src="/2019/11/19/log/Latex-formula/greek-alphabet.jpg" alt="greek-alphabet"><figcaption aria-hidden="true">greek-alphabet</figcaption>
+</figure>
 <p>示例：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">效果：$\alpha\beta,\delta,\zeta,\eta,\theta,\Pi,\Delta,\rho$</span><br><span class="line"></span><br><span class="line">### 2. 上下标</span><br><span class="line">&gt;在数学表达式中，经常会有上下标，不管是指数还是表示平均数、向量、积分上下限等等，这类都需要上下标的形式展现。在LaTeX中以`_`为下标，`^`为上标，其他效果见下图。</span><br><span class="line"></span><br><span class="line">![up-bottom](Latex-formula/up-bottom.jpg)</span><br><span class="line"></span><br><span class="line">示例：```$x_i^2,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\widehat&#123;x&#125;,\ddot&#123;a&#125;$```&lt;br&gt;</span><br><span class="line">效果：$x_i^2,x_&#123;i=1&#125;^&#123;n+2&#125;,\hat&#123;x&#125;,\bar&#123;y&#125;,\vec&#123;a&#125;,\dot&#123;n&#125;,\ddot&#123;a&#125;$</span><br><span class="line"></span><br><span class="line">### 补充：</span><br><span class="line">* 在LaTeX中的log函数表示`$\log_2 x$`，效果：$\log_2 x$，$\log_&#123;10&#125; y$</span><br><span class="line">* 在LaTeX中的空格为`$\quad$`，效果：$ab,\qquad a\quad b$</span><br><span class="line"></span><br><span class="line">### 3. 括号</span><br><span class="line">&gt;在数学表达式中，一般会存在嵌套关系，也就是不能用简单的一次线性关系表示完整，所以需要额外的符号进行辅助，也就是需要括号帮忙了，具体见下图：</span><br><span class="line"></span><br><span class="line">![括号](Latex-formula/kuohao.jpg)</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
-<p>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$<br>```<br>效果：<br>$$f(x)=\begin{cases} x = \cos(t) \y=\sin(t) \z=\frac xy \end{cases}$$</p>
-<h3 id="4-矩阵"><a href="#4-矩阵" class="headerlink" title="4. 矩阵"></a>4. 矩阵</h3><blockquote>
+<p><span class="math display">\[f(x)=\begin{cases} x = \cos(t) \\y=\sin(t) \\z=\frac xy \end{cases}\]</span> ``` 效果： <span class="math display">\[f(x)=\begin{cases} x = \cos(t) \\y=\sin(t) \\z=\frac xy \end{cases}\]</span></p>
+<h3 id="矩阵">4. 矩阵</h3>
+<blockquote>
 <p>矩阵，一般很难渲染得好看，让我们来看看LaTeX的本领</p>
 </blockquote>
-<p><img src="/2019/11/19/log/Latex-formula/matrix.jpg" alt="matrix"></p>
-<p>示例：<code>$\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}$</code><br><br>效果：<br>$$A=\begin{bmatrix} 0 &amp; -1 \ 1 &amp; 0 \end{bmatrix}$$<br>$$B=\begin{matrix} 0 &amp; -1 \ 1 &amp; 0 \end{matrix}$$</p>
-<h3 id="5-求和、积分、开方、分数"><a href="#5-求和、积分、开方、分数" class="headerlink" title="5. 求和、积分、开方、分数"></a>5. 求和、积分、开方、分数</h3><blockquote>
+<figure>
+<img src="/2019/11/19/log/Latex-formula/matrix.jpg" alt="matrix"><figcaption aria-hidden="true">matrix</figcaption>
+</figure>
+<p>示例：<code>$\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}$</code><br> 效果： <span class="math display">\[A=\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}\]</span> <span class="math display">\[B=\begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix}\]</span></p>
+<h3 id="求和积分开方分数">5. 求和、积分、开方、分数</h3>
+<blockquote>
 <p>这些也是数学表达式中很常见的符号和表达方式了，需要掌握。</p>
 </blockquote>
-<p><img src="/2019/11/19/log/Latex-formula/sum.jpg" alt="sum"><br>示例：<code>$\sum,\int_\infty^\infty xdx$</code><br><br>效果：$y_i=\sum_{i=1}^nx_i,F(x)=\int_{-\infty}^\infty xdx$</p>
-<p><img src="/2019/11/19/log/Latex-formula/sqrt.jpg" alt="sqrt"><br>示例：<code>$\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}$</code><br><br>效果：$\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}$</p>
-<p><img src="/2019/11/19/log/Latex-formula/frac.jpg" alt="frac"><br>示例：<code>$\frac {a-1}{b-2}={a-1\over b-2}$</code><br><br>效果：$\frac {a-1}{b-2}={a-1\over b-2}$</p>
-<h3 id="6-特殊符号"><a href="#6-特殊符号" class="headerlink" title="6. 特殊符号"></a>6. 特殊符号</h3><blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/sum.jpg" alt="sum"> 示例：<code>$\sum,\int_\infty^\infty xdx$</code><br> 效果：<span class="math inline">\(y_i=\sum_{i=1}^nx_i,F(x)=\int_{-\infty}^\infty xdx\)</span></p>
+<p><img src="/2019/11/19/log/Latex-formula/sqrt.jpg" alt="sqrt"> 示例：<code>$\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}$</code><br> 效果：<span class="math inline">\(\sqrt{x^3},\sqrt[3]{x^4-2},\sqrt[4]{\frac xy}\)</span></p>
+<p><img src="/2019/11/19/log/Latex-formula/frac.jpg" alt="frac"> 示例：<code>$\frac {a-1}{b-2}={a-1\over b-2}$</code><br> 效果：<span class="math inline">\(\frac {a-1}{b-2}={a-1\over b-2}\)</span></p>
+<h3 id="特殊符号">6. 特殊符号</h3>
+<blockquote>
 <p>见下图</p>
 </blockquote>
-<p><img src="/2019/11/19/log/Latex-formula/special-func.jpg" alt="special-func"><br>示例：<code>$\sin {x^2} + \cos {x^2}=1$</code><br><br>效果：<br>$$\sin {x^2} + \cos {x^2}=1,\quad\lim_{x\to\infty}{1\over x}=0$$</p>
-<p><img src="/2019/11/19/log/Latex-formula/special.jpg" alt="special"><br>示例：<code>$\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq$</code><br><br>效果：$\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq$</p>
-<h3 id="7-换字体"><a href="#7-换字体" class="headerlink" title="7. 换字体"></a>7. 换字体</h3><blockquote>
+<p><img src="/2019/11/19/log/Latex-formula/special-func.jpg" alt="special-func"> 示例：<code>$\sin {x^2} + \cos {x^2}=1$</code><br> 效果： <span class="math display">\[\sin {x^2} + \cos {x^2}=1,\quad\lim_{x\to\infty}{1\over x}=0\]</span></p>
+<p><img src="/2019/11/19/log/Latex-formula/special.jpg" alt="special"> 示例：<code>$\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq$</code><br> 效果：<span class="math inline">\(\times,\quad \div,\quad \pm,\quad \lt,\quad \gt,\quad \simeq\)</span></p>
+<h3 id="换字体">7. 换字体</h3>
+<blockquote>
 <p>这个不是很care了，随便看看。</p>
 </blockquote>
-<p><img src="/2019/11/19/log/Latex-formula/front-style.jpg" alt="front-style"></p>
-<p>示例：<code>$\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}$</code><br><br>效果：$\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}$</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LaTeX确实是论文排版非常重要的一个工具，在表示数学表达式的时候尤为重要，为了能够更好的排版，让论文更加专业，LaTeX很值得一学。并且，LaTeX的语法也并不复杂，对于数学表达式，有很多都是可以笔下代码脑中图像，非常流畅。LaTeX语法就是每当有特殊标记的时候就会使用<code>\</code>来标记，如<code>\lim</code>等等，每个符号后面一般默认作用为一个字符，当需要作用到字符串上时，采用<code>{}</code>框住表达式即可,</p>
-<blockquote>
-<p>举个栗子：<code>$\sum_x-y$</code>：$\sum_x-y$中<code>-y</code>不会被包括近下标中；<code>$\sum_{x-y}$</code>：$\sum_{x-y}$，当用<code>{}</code>框住后就会包括进下标中。</p>
-</blockquote>
+<figure>
+<img src="/2019/11/19/log/Latex-formula/front-style.jpg" alt="front-style"><figcaption aria-hidden="true">front-style</figcaption>
+</figure>
+<p>示例：<code>$\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}$</code><br> 效果：<span class="math inline">\(\mathbb{ABCDE},\mathrm{ABCED},\mathcal{ABCDE},\mathscr{ABCDE},\mathfrak{ABCED},\mathsf{ABCDE}\)</span></p>
+<h2 id="总结">总结</h2>
+<p>LaTeX确实是论文排版非常重要的一个工具，在表示数学表达式的时候尤为重要，为了能够更好的排版，让论文更加专业，LaTeX很值得一学。并且，LaTeX的语法也并不复杂，对于数学表达式，有很多都是可以笔下代码脑中图像，非常流畅。LaTeX语法就是每当有特殊标记的时候就会使用<code>\</code>来标记，如<code>\lim</code>等等，每个符号后面一般默认作用为一个字符，当需要作用到字符串上时，采用<code>{}</code>框住表达式即可, &gt;举个栗子：<code>$\sum_x-y$</code>：<span class="math inline">\(\sum_x-y\)</span>中<code>-y</code>不会被包括近下标中；<code>$\sum_{x-y}$</code>：<span class="math inline">\(\sum_{x-y}\)</span>，当用<code>{}</code>框住后就会包括进下标中。</p>
 
         </div>
         
@@ -288,7 +294,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -308,7 +314,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -429,7 +435,7 @@
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -475,7 +481,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -498,6 +504,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -862,6 +875,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -936,25 +968,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -966,6 +979,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1146,6 +1170,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1220,25 +1263,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1250,6 +1274,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1555,7 +1590,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

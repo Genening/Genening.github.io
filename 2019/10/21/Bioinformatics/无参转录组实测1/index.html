@@ -165,254 +165,304 @@
         </h1>
         <div class="content">
             <blockquote>
-<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。</p>
+<p>这是来自实验室的数据，开始做无参转录组第一次尝试，在此记录过程。这个记录会详尽的记录在时间过程中遇到的问题以及一些学习的细节，但是为了避免文章过于冗长，采用了Markdown中插入HTML标签的方式进行折叠，需要查看即点击查看即可。 <a id="more"></a> ## 前情提要：分析流程 <img src="/2019/10/21/Bioinformatics/无参转录组实测1/process.png" alt="process"></p>
 </blockquote>
-<a id="more"></a>
-<h2 id="前情提要：分析流程"><a href="#前情提要：分析流程" class="headerlink" title="前情提要：分析流程"></a>前情提要：分析流程</h2><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/process.png" alt="process"></p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<h1 id="目录">目录</h1>
+<ol type="1">
 <li>序列拼接</li>
 <li>去冗余 cd-hit-est</li>
 <li>拼接结果参数统计 TrinityStats.pl</li>
 <li>表达水平评估 align_and_estimate_abundance.pl</li>
 <li>生成数量矩阵 abundance_estimates_to_matrix.pl</li>
-<li><a href="#downstream">下游分析</a><ul>
+<li><a href="#downstream">下游分析</a>
+<ul>
 <li>差异表达分析 run_DE_analysis.pl</li>
 <li>提取最长链</li>
 <li>提取蛋白编码区 transcripts_to_best_scoring_ORFs.pl</li>
 <li>功能注释</li>
-</ul>
-</li>
+</ul></li>
 <li>生成报告</li>
-<li><a href="#visualization">数据可视化</a></li>
+<li><h2 id="数据可视化"><a href="#visualization">数据可视化</a></h2></li>
 </ol>
-<hr>
-<h2 id="1-拼接序列-Trinity"><a href="#1-拼接序列-Trinity" class="headerlink" title="1. 拼接序列  Trinity"></a><strong>1. 拼接序列</strong>  Trinity</h2><blockquote>
-<p>Trinity  –seqType fq –max_memory 50G –output trinity_out_dir3 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 25 –min_kmer_cov 2+</p>
+<h2 id="拼接序列-trinity"><strong>1. 拼接序列</strong> Trinity</h2>
+<blockquote>
+<p>Trinity --seqType fq --max_memory 50G --output trinity_out_dir3 --left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543new_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed --right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543new_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xnew_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed --CPU 25 --min_kmer_cov 2+</p>
 </blockquote>
 <blockquote>
-<p>nohup Trinity –seqType fq –max_memory 100G –min_glue 10 –full_cleanup –output trinity_out_dir –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543all_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543all_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed –CPU 30 –min_kmer_cov 2 &amp;</p>
+<p>nohup Trinity --seqType fq --max_memory 100G --min_glue 10 --full_cleanup --output trinity_out_dir --left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed,LJG-144_TGACCA_L008_R1_001.fastq_trimmed,LJG-155_ACAGTG_L008_R1_001.fastq_trimmed,LJG-531_GCCAAT_L008_R1_001.fastq_trimmed,LJG-543all_CAGATC_L008_R1_001.fastq_trimmed,LJG-556_ACTTGA_L008_R1_001.fastq_trimmed,LJG-B1_CGATGT_L008_R1_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed --right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed,LJG-144_TGACCA_L008_R2_001.fastq_trimmed,LJG-155_ACAGTG_L008_R2_001.fastq_trimmed,LJG-531_GCCAAT_L008_R2_001.fastq_trimmed,LJG-543all_CAGATC_L008_R2_001.fastq_trimmed,LJG-556_ACTTGA_L008_R2_001.fastq_trimmed,LJG-B1_CGATGT_L008_R2_001.fastq_trimmed,LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed,LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed --CPU 30 --min_kmer_cov 2 &amp;</p>
 </blockquote>
-<h1 id="补充：Trinity-–show-full-usage-info-可以查看Trinity所有参数"><a href="#补充：Trinity-–show-full-usage-info-可以查看Trinity所有参数" class="headerlink" title="补充：Trinity –show_full_usage_info    可以查看Trinity所有参数"></a>补充：Trinity –show_full_usage_info    可以查看Trinity所有参数</h1><ul>
-<li>–min_glue 5  # a small trick to get a better output</li>
+<h1 id="补充trinity---show_full_usage_info-可以查看trinity所有参数">补充：Trinity --show_full_usage_info 可以查看Trinity所有参数</h1>
+<ul>
+<li>--min_glue 5 # a small trick to get a better output</li>
 </ul>
-<p>输出文件：trinity_out_dir/</p>
-<!--more-->
-<p><strong>反馈如下</strong></p>
-<details><summary>展开查看</summary><pre>
-
-<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/Trinity_p1.jpg" alt="Trinity"></p>
-<p><strong>（1）实测失败，报错如下</strong></p>
+<p>输出文件：trinity_out_dir/ <!--more--> <strong>反馈如下</strong></p>
+<details>
+<summary>
+展开查看
+</summary>
+<pre>
+<figure>
+<img src="/2019/10/21/Bioinformatics/无参转录组实测1/Trinity_p1.jpg" alt="Trinity"><figcaption aria-hidden="true">Trinity</figcaption>
+</figure>
+<p><strong>（1）实测失败，报错如下</strong> &gt;Error, not recognizing read name formatting: [GWZHISEQ02:77:C3VBWACXX:8:1203:2388:] &gt;<br>If your data come from SRA, be sure to dump the fastq file like so: &gt; &gt; SRA_TOOLKIT/fastq-dump --defline-seq '@<span class="math inline">\(sn[_\)</span>rn]/$ri' --split-files file.sra &gt; &gt;<br>Thread 2 terminated abnormally: Error, cmd: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa died with ret 512 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 762. Error, conversion thread failed at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 333. Error, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl</p>
+<p><strong>已解决</strong> &gt;通过 <em>df -h</em>查看到系统中内存不足，切换到新的文件夹后可以运行，同时将.fastq文件替换成了.fastq_trimed</p>
+<p>新反馈如下 <img src="/2019/10/21/Bioinformatics/无参转录组实测1/clustering.jpg" alt="clustering"> <img src="/2019/10/21/Bioinformatics/无参转录组实测1/jellyfish.jpg" alt="jellyfish"></p>
+<h3 id="补充linux技巧">补充：Linux技巧</h3>
 <blockquote>
-<p>Error, not recognizing read name formatting: [GWZHISEQ02:77:C3VBWACXX:8:1203:2388:]<br><br>If your data come from SRA, be sure to dump the fastq file like so:</p>
-<p>   SRA_TOOLKIT/fastq-dump –defline-seq ‘@$sn[_$rn]/$ri’ –split-files file.sra </p>
-<p><br>Thread 2 terminated abnormally: Error, cmd: seqtk-trinity seq -A /home/gaodong/Zhangjlin/LJG-144_TGACCA_L008_R2_001.fastq &gt;&gt; right.fa died with ret 512 at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 762.<br>Error, conversion thread failed at /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl line 333.<br>Error, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/insilico_read_normalization.pl </p>
-</blockquote>
-<p><strong>已解决</strong></p>
-<blockquote>
-<p>通过 <em>df -h</em>查看到系统中内存不足，切换到新的文件夹后可以运行，同时将.fastq文件替换成了.fastq_trimed</p>
-</blockquote>
-<p>新反馈如下<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/clustering.jpg" alt="clustering"><br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/jellyfish.jpg" alt="jellyfish"></p>
-<h3 id="补充：Linux技巧"><a href="#补充：Linux技巧" class="headerlink" title="补充：Linux技巧"></a>补充：Linux技巧</h3><blockquote>
 <p>考虑到在运行过程中可能会突然断网，在运行程序是切换到后台运行，有两种方法，第一种是<em>nohub</em>，第二种是<em>screen</em>，具体的操作方法可以使用-h参数查看</p>
 </blockquote>
-<p><strong>（2）报错如下</strong></p>
-<blockquote>
-<p>Trinity run failed. Must investigate error above.<br>There is insufficient memory for the Java Runtime Environment to continue.<br>Cannot create GC thread. Out of system resources.<br>An error report file with more information is saved as:<br>/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_23/c2318.trinity.reads.fa.out/hs_err_pid142493.log<br>warning, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/support_scripts/../../Trinity –single “/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa” –output “/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out” –CPU 1 –max_memory 1G –run_as_paired –seqType fa –trinity_complete –full_cleanup –min_kmer_cov 2   failed with ret: 65280, going to retry.</p>
-</blockquote>
-<p><strong>（3）报错如下</strong></p>
-<blockquote>
-<p>Thursday, October 24, 2019: 00:40:07    CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c recursive_trinity.cmds -CPU 30 -v -shuffle<br>Number of Commands: 38759<br>succeeded(1)   0.00258005% completed.    Error occurred during initialization of VM</p>
-</blockquote>
-<p>(4)<strong>报错如下</strong></p>
-<blockquote>
-<p>Error encountered::  &lt;!—-<br>CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c /B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out/chrysalis/butterfly_commands -shuffle -CPU 1 -failed_cmds failed_butterfly_commands.138858.txt  2&gt;tmp.138858.1571848809.stderr<br></p></blockquote></pre></details><p></p>
+<p><strong>（2）报错如下</strong> &gt;Trinity run failed. Must investigate error above. &gt; There is insufficient memory for the Java Runtime Environment to continue. &gt; Cannot create GC thread. Out of system resources. &gt; An error report file with more information is saved as: &gt; /B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_23/c2318.trinity.reads.fa.out/hs_err_pid142493.log warning, cmd: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/support_scripts/../../Trinity --single "/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa" --output "/B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out" --CPU 1 --max_memory 1G --run_as_paired --seqType fa --trinity_complete --full_cleanup --min_kmer_cov 2 failed with ret: 65280, going to retry.</p>
+<p><strong>（3）报错如下</strong> &gt;Thursday, October 24, 2019: 00:40:07 CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c recursive_trinity.cmds -CPU 30 -v -shuffle Number of Commands: 38759 succeeded(1) 0.00258005% completed. Error occurred during initialization of VM</p>
+<p>(4)<strong>报错如下</strong> &gt;Error encountered:: <!----
+CMD: /B313/public_software/trinityrnaseq-Trinity-v2.8.4/trinity-plugins/BIN/ParaFly -c /B313/gaodong/Zhangjlin/trinity_out_dir/read_partitions/Fb_0/CBin_163/c16382.trinity.reads.fa.out/chrysalis/butterfly_commands -shuffle -CPU 1 -failed_cmds failed_butterfly_commands.138858.txt  2>tmp.138858.1571848809.stderr
+</pre></details>
+### **拼接结果**
+![result](无参转录组实测1/result.jpg)
 
-<h3 id="拼接结果"><a href="#拼接结果" class="headerlink" title="拼接结果"></a><strong>拼接结果</strong></h3><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/result.jpg" alt="result"></p>
-<h2 id="2-1-去冗余-cd-hit-est"><a href="#2-1-去冗余-cd-hit-est" class="headerlink" title="2.1 去冗余 cd-hit-est"></a>2.1 去冗余 cd-hit-est</h2><p>命令如下</p>
-<blockquote>
-<p>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12 </p>
-</blockquote>
-<p>输出文件：output.fasta</p>
-<p>反馈如下</p>
+## 2.1 去冗余 cd-hit-est
+命令如下
+>cd-hit-est -i input.fasta -o output.fasta -c 0.90 -n 8 -T 12 
+
+输出文件：output.fasta
+
+反馈如下
+
 <details><summary>展开查看</summary><pre>
 
-<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-hit-est.jpg" alt="cd-hit"></p>
-<p><strong>参数注释</strong><br>|参数|参数注释|<br>|:—-:|:—-:|<br>| <strong>-i</strong>|input filename in fasta format, required, can be in .gz format|<br>| <strong>-o</strong>|output filename, required|<br>|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit’s “global sequence identity” calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence|<br>|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don’t use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS|<br>|-b|band_width of alignment, default 20|<br>|-M|memory limit (in MB) for the program, default 800; 0 for unlimitted;|<br>|-T|number of threads, default 1; with 0, all CPUs will be used|<br>|-n|word_length, default 5, see user’s guide for choosing it|<br>|-l|length of throw_away_sequences, default 10|<br>|-t|tolerance for redundance, default 2|<br>|-d|length of description in .clstr file, default 20|<br>|if|set to 0, it takes the fasta defline and stops at first space|<br>|-s|length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|<br>|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|<br>|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AL|alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-aS|alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|<br>|-AS|alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be &gt;= 340 (400-60) residues|<br>|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover &gt;= this value for both sequences|<br>|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|<br>|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|<br>|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|<br>|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|<br>|-g|1 or 0, default 0, by cd-hit’s default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won’t change the representatives of final clusters|<br>|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|<br>|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|<br>|-bak|write backup cluster file (1 or 0, default 0)|<br>|-h| print this help|</p>
-<p></p></pre></details><p></p>
-<p>再做一次结果统计</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta</p>
-</blockquote>
-<p>结果如下：<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/cd-result.jpg" alt="cd-result"></p>
-<h2 id="2-2-corset-聚类去冗余"><a href="#2-2-corset-聚类去冗余" class="headerlink" title="2.2 corset 聚类去冗余"></a>2.2 corset 聚类去冗余</h2><h3 id="2-2-1-bowtie多序列比对得到-bam文件"><a href="#2-2-1-bowtie多序列比对得到-bam文件" class="headerlink" title="2.2.1 bowtie多序列比对得到.bam文件"></a>2.2.1 bowtie多序列比对得到.bam文件</h3><p>Step1：</p>
-<blockquote>
-<p>nohup bowtie2-build Trinity.fasta Trinity &gt;bow-nohup.out 2&gt;&amp;1 &amp;    #建立索引<br>bowtie2 -p 10 -x Trinity -1 input_1.fq -2 input_2.fq | samtools sort -O bam -@ 10 -o - &gt; 134.bam #开始比对，-p是线程数，-x是索引文件，-1 -2是双端比对的左右端，使用通配符把结果输入给samtools转换为.bam文件格式</p>
-</blockquote>
-<h3 id="2-2-2-corset使用"><a href="#2-2-2-corset使用" class="headerlink" title="2.2.2 corset使用"></a>2.2.2 corset使用</h3><blockquote>
-<p>corset [options] bowtie.bam</p>
-</blockquote>
-<p>需要在表达丰度定量操作中得到的bowtie.bam文件来进行下一步的操作，最终得到counts.txt和clusters.txt两个文件，可以进行下一步的拼接和差异表达分析。</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>通过counts.txt clusters.txt文件反向提取fasta文件</p>
-<blockquote>
-<p>nohup python /home/gaodong/software_private/corset-1.09-linux64/Corset-tools-master/fetchClusterSeqs.py -i Trinity.fasta -t interest_cluster.csv -o Trinity-corset.fasta -c clusters.txt &gt;cluster-nohup.out 2&gt;&amp;1 &amp; # 说明：Trinity.fasta文件是转录本文件，interest_cluster.csv是一个cluster_id的单列数据，clusters.txt是corset输入的结果文件，最终输出文件为Trinity-corset.fasta文件，再重新进行表达丰度评估，接着做表达差异分析</p>
-</blockquote>
-<ul>
-<li>注意：进入Python2.7环境运行</li>
-</ul>
-<blockquote>
-<p>nohup corset -l ../rsem_outdir134/bowtie.bam ../rsem_outdir144/bowtie.bam ../rsem_outdir155/bowtie.bam ../rsem_outdir531/bowtie.bam ../rsem_outdir543all/bowtie.bam ../rsem_outdir556/bowtie.bam ../rsem_outdirB1/bowtie.bam ../rsem_outdirXall/bowtie.bam ../rsem_outdirY1/bowtie.bam &gt;corset-nohup.out 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<h2 id="3-拼接结果参数统计-TrinityStats-pl"><a href="#3-拼接结果参数统计-TrinityStats-pl" class="headerlink" title="3. 拼接结果参数统计 TrinityStats.pl"></a>3. 拼接结果参数统计 TrinityStats.pl</h2><blockquote>
-<p>统计结果包括统计在文件里面，各种长度的contig的数量，然后进行筛选。在筛选Contig的时候可以采用225作为一个阈值，这相当于是75个氨基酸的长度，这是针对于整个基因组寻找一些经典基因而采用的经验阈值，当然，也可以根据具体的分析目的进行设计。<br>要熟悉在Linux中例如像Excel中常用的一些数据处理的指令。</p>
-</blockquote>
+![cd-hit](无参转录组实测1/cd-hit-est.jpg)
+
+**参数注释**
+|参数|参数注释|
+|:----:|:----:|
+| **-i**|input filename in fasta format, required, can be in .gz format|
+| **-o**|output filename, required|
+|-c|sequence identity threshold, default 0.9<br>this is the default cd-hit's "global sequence identity" calculated as:<br>number of identical amino acids or bases in alignment<br>divided by the full length of the shorter sequence|
+|-G|use global sequence identity, default 1<br>if set to 0, then use local sequence identity, calculated as :<br>number of identical amino acids or bases in alignment<br>divided by the length of the alignment<br>NOTE!!! don't use -G 0 unless you use alignment coverage controls<br>see options -aL, -AL, -aS, -AS|
+|-b|band_width of alignment, default 20|
+|-M|memory limit (in MB) for the program, default 800; 0 for unlimitted;|
+|-T|number of threads, default 1; with 0, all CPUs will be used|
+|-n|word_length, default 5, see user's guide for choosing it|
+|-l|length of throw_away_sequences, default 10|
+|-t|tolerance for redundance, default 2|
+|-d|length of description in .clstr file, default 20|
+|if|set to 0, it takes the fasta defline and stops at first space|
+|-s|length difference cutoff, default 0.0<br>|if set to 0.9, the shorter sequences need to be<br>at least 90% length of the representative of the cluster|
+|-S|length difference cutoff in amino acid, default 999999<br>if set to 60, the length difference between the shorter sequences<br>and the representative of the cluster can not be bigger than 60|
+|-aL|alignment coverage for the longer sequence, default 0.0,if set to 0.9, the alignment must covers 90% of the sequence|
+|-AL|alignment coverage control for the longer sequence, default 99999999<br>if set to 60, and the length of the sequence is 400,then the alignment must be >= 340 (400-60) residues|
+|-aS|alignment coverage for the shorter sequence, default 0.0, if set to 0.9, the alignment must covers 90% of the sequence|
+|-AS|alignment coverage control for the shorter sequence, default 99999999, if set to 60, and the length of the sequence is 400,then the alignment must be >= 340 (400-60) residues|
+|-A|minimal alignment coverage control for the both sequences, default 0, alignment must cover >= this value for both sequences|
+|-uL|maximum unmatched percentage for the longer sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|
+|-uS|maximum unmatched percentage for the shorter sequence, default 1.0, if set to 0.1, the unmatched region (excluding leading and tailing gaps), must not be more than 10% of the sequence|
+|-U|maximum unmatched length, default 99999999, if set to 10, the unmatched region (excluding leading and tailing gaps), must not be more than 10 bases|
+|-B|1 or 0, default 0, by default, sequences are stored in RAM, if set to 1, sequence are stored on hard drive !! No longer supported !!|
+|-p|1 or 0, default 0, if set to 1, print alignment overlap in .clstr file|
+|-g|1 or 0, default 0, by cd-hit's default algorithm, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold(accurate but slow mode), but either 1 or 0 won't change the representatives of final clusters|
+|-sc|sort clusters by size (number of sequences), default 0, output clusters by decreasing length, if set to 1, output clusters by decreasing size|
+|-sf|sort fasta/fastq by cluster size (number of sequences), default 0, no sorting, if set to 1, output sequences by decreasing cluster size, this can be very slow if the input is in .gz format|
+|-bak|write backup cluster file (1 or 0, default 0)|
+|-h| print this help|
+
+</pre></details>
+
+再做一次结果统计
+>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl /B313/gaodong/Zhangjlin/trinity_out_dir/Trinity90.fasta
+
+结果如下：
+![cd-result](无参转录组实测1/cd-result.jpg)
+
+## 2.2 corset 聚类去冗余
+
+### 2.2.1 bowtie多序列比对得到.bam文件
+Step1：
+>nohup bowtie2-build Trinity.fasta Trinity >bow-nohup.out 2>&1 &    #建立索引
+>bowtie2 -p 10 -x Trinity -1 input_1.fq -2 input_2.fq | samtools sort -O bam -@ 10 -o - > 134.bam #开始比对，-p是线程数，-x是索引文件，-1 -2是双端比对的左右端，使用通配符把结果输入给samtools转换为.bam文件格式
+
+### 2.2.2 corset使用
+>corset [options] bowtie.bam
+
+需要在表达丰度定量操作中得到的bowtie.bam文件来进行下一步的操作，最终得到counts.txt和clusters.txt两个文件，可以进行下一步的拼接和差异表达分析。
+
+### 补充
+通过counts.txt clusters.txt文件反向提取fasta文件
+>nohup python /home/gaodong/software_private/corset-1.09-linux64/Corset-tools-master/fetchClusterSeqs.py -i Trinity.fasta -t interest_cluster.csv -o Trinity-corset.fasta -c clusters.txt >cluster-nohup.out 2>&1 & # 说明：Trinity.fasta文件是转录本文件，interest_cluster.csv是一个cluster_id的单列数据，clusters.txt是corset输入的结果文件，最终输出文件为Trinity-corset.fasta文件，再重新进行表达丰度评估，接着做表达差异分析
+
+* 注意：进入Python2.7环境运行
+
+>nohup corset -l ../rsem_outdir134/bowtie.bam ../rsem_outdir144/bowtie.bam ../rsem_outdir155/bowtie.bam ../rsem_outdir531/bowtie.bam ../rsem_outdir543all/bowtie.bam ../rsem_outdir556/bowtie.bam ../rsem_outdirB1/bowtie.bam ../rsem_outdirXall/bowtie.bam ../rsem_outdirY1/bowtie.bam >corset-nohup.out 2>&1 &
+
+## 3. 拼接结果参数统计 TrinityStats.pl
+>统计结果包括统计在文件里面，各种长度的contig的数量，然后进行筛选。在筛选Contig的时候可以采用225作为一个阈值，这相当于是75个氨基酸的长度，这是针对于整个基因组寻找一些经典基因而采用的经验阈值，当然，也可以根据具体的分析目的进行设计。<br>要熟悉在Linux中例如像Excel中常用的一些数据处理的指令。
+
 <!-- cat TPM|awk '{sum+=$1} END {print "Average = ", sum/NR}' > average2
-awk '{print $6}' RSEM.isoforms.results > TPM -->
-
-<p>命令如下</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl Trinity.fasta</p>
-</blockquote>
+awk '{print $6}' RSEM.isoforms.results > TPM --></p>
+<p>命令如下 &gt;/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/TrinityStats.pl Trinity.fasta</p>
 <p>结果反馈如下：</p>
-<details><summary>展开查看</summary><pre>
+<details>
+<summary>
+展开查看
+</summary>
+<pre>
 
-<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/result_counts.jpg" alt="counts"></p>
-<p></p></pre></details><p></p>
-<p>数据处理：</p>
+![counts](无参转录组实测1/result_counts.jpg)
+
+
+</pre>
+</details>
+<p>数据处理： &gt;perl /home/gaodong/length_calculate.pl Trinity90.fasta &gt; Trinity90_counts #读取Trinity90.fasta文件中的length参数进行统计，并输出到Trinity90_counts中</p>
 <blockquote>
-<p>perl /home/gaodong/length_calculate.pl Trinity90.fasta &gt; Trinity90_counts  #读取Trinity90.fasta文件中的length参数进行统计，并输出到Trinity90_counts中</p>
+<p>awk '$4&gt;225' Trinity90_counts &gt; Trinity90_counts_225 # 使用awk处理文件，筛选其中长度大于225的行</p>
 </blockquote>
 <blockquote>
-<p>awk ‘$4&gt;225’ Trinity90_counts &gt; Trinity90_counts_225   # 使用awk处理文件，筛选其中长度大于225的行</p>
+<p>awk '{print $2}' Trinity90_counts_225 &gt; Trinity90_counts_lens # 使用awk处理文件，筛选第二行</p>
 </blockquote>
 <blockquote>
-<p>awk ‘{print $2}’ Trinity90_counts_225 &gt; Trinity90_counts_lens   # 使用awk处理文件，筛选第二行</p>
+<p>awk -F '[=]' '{print $NF}' Trinity90_counts_lens &gt; Trinity90_counts_list #使用awk处理文件，处理第二行中的字符串，输出所有数据到list里</p>
 </blockquote>
 <blockquote>
-<p>awk -F ‘[=]’ ‘{print $NF}’ Trinity90_counts_lens &gt; Trinity90_counts_list   #使用awk处理文件，处理第二行中的字符串，输出所有数据到list里</p>
-</blockquote>
-<blockquote>
-<p>sort -n -r number.txt -o number.txt  #按照数值（-n）进行倒序（-r）排序，输出文件（-o）</p>
+<p>sort -n -r number.txt -o number.txt #按照数值（-n）进行倒序（-r）排序，输出文件（-o）</p>
 </blockquote>
 <p>参数如下：</p>
-<details><summary>展开查看</summary><pre>
+<details>
+<summary>
+展开查看
+</summary>
+<pre>
 
-<p>-f：忽略大小写；<br><br>-b：忽略每行前面的空白部分；<br><br>-n：以数值型进行排序，默认使用字符串排序；<br><br>-r：反向排序；<br><br>-u：删除重复行。就是 uniq 命令；<br><br>-t：指定分隔符，默认分隔符是制表符；<br><br>-k [n,m]：按照指定的字段范围排序。从第 n 个字段开始，到第 m 个字（默认到行尾）；<br></p>
-<p></p></pre></details><p></p>
-<h2 id="补充：提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#补充：提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="补充：提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>补充：提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h2><blockquote>
+-f：忽略大小写；<br>
+-b：忽略每行前面的空白部分；<br>
+-n：以数值型进行排序，默认使用字符串排序；<br>
+-r：反向排序；<br>
+-u：删除重复行。就是 uniq 命令；<br> 
+-t：指定分隔符，默认分隔符是制表符；<br>
+-k [n,m]：按照指定的字段范围排序。从第 n 个字段开始，到第 m 个字（默认到行尾）；<br>
+
+</pre>
+</details>
+<h2 id="补充提取最长链-get_longest_isoform_seq_per_trinity_gene.pl">补充：提取最长链 get_longest_isoform_seq_per_trinity_gene.pl</h2>
+<blockquote>
 <p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta</p>
 </blockquote>
 <p>输出文件：longest_transcript.fasta</p>
 <blockquote>
 <p>坑：这里输入的文件第一行是统计数据，第二行是序列，两列一组，然后由长到短排序，如果要提取某一行序列数据，则设置提取偶数行即可。</p>
 </blockquote>
-<h2 id="4-表达水平评估-align-and-estimate-abundance-pl"><a href="#4-表达水平评估-align-and-estimate-abundance-pl" class="headerlink" title="4. 表达水平评估 align_and_estimate_abundance.pl"></a>4. 表达水平评估 align_and_estimate_abundance.pl</h2><p>命令如下：<br><em>注意：每一对reads要单独mapping</em></p>
+<h2 id="表达水平评估-align_and_estimate_abundance.pl">4. 表达水平评估 align_and_estimate_abundance.pl</h2>
+<p>命令如下： <em>注意：每一对reads要单独mapping</em></p>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirY1 –left LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed –right LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed &gt;nohupY1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdirY1 --left LJG-Y1_ATCACG_L008_R1_001.fastq_trimmed --right LJG-Y1_ATCACG_L008_R2_001.fastq_trimmed &gt;nohupY1.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta  –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirXall –left LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed –right LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed &gt;nohupXnew.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdirXall --left LJG-Xall_GATCAG_L008_R1_001.fastq_trimmed --right LJG-Xall_GATCAG_L008_R2_001.fastq_trimmed &gt;nohupXnew.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdirB1 –left LJG-B1_CGATGT_L008_R1_001.fastq_trimmed –right LJG-B1_CGATGT_L008_R2_001.fastq_trimmed &gt;nohupB1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdirB1 --left LJG-B1_CGATGT_L008_R1_001.fastq_trimmed --right LJG-B1_CGATGT_L008_R2_001.fastq_trimmed &gt;nohupB1.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir556 –left LJG-556_ACTTGA_L008_R1_001.fastq_trimmed –right LJG-556_ACTTGA_L008_R2_001.fastq_trimmed &gt;nohup556.out 2&gt;&amp;1 &amp; </p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir556 --left LJG-556_ACTTGA_L008_R1_001.fastq_trimmed --right LJG-556_ACTTGA_L008_R2_001.fastq_trimmed &gt;nohup556.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir543all –left LJG-543all_CAGATC_L008_R1_001.fastq_trimmed –right LJG-543all_CAGATC_L008_R2_001.fastq_trimmed &gt;nohup543all.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir543all --left LJG-543all_CAGATC_L008_R1_001.fastq_trimmed --right LJG-543all_CAGATC_L008_R2_001.fastq_trimmed &gt;nohup543all.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir531 –left LJG-531_GCCAAT_L008_R1_001.fastq_trimmed –right LJG-531_GCCAAT_L008_R2_001.fastq_trimmed &gt;nohup531.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir531 --left LJG-531_GCCAAT_L008_R1_001.fastq_trimmed --right LJG-531_GCCAAT_L008_R2_001.fastq_trimmed &gt;nohup531.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir155 –left LJG-155_ACAGTG_L008_R1_001.fastq_trimmed –right LJG-155_ACAGTG_L008_R2_001.fastq_trimmed &gt;nohup155.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir155 --left LJG-155_ACAGTG_L008_R1_001.fastq_trimmed --right LJG-155_ACAGTG_L008_R2_001.fastq_trimmed &gt;nohup155.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir144 –left LJG-144_TGACCA_L008_R1_001.fastq_trimmed –right LJG-144_TGACCA_L008_R2_001.fastq_trimmed &gt;nohup144.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir144 --left LJG-144_TGACCA_L008_R1_001.fastq_trimmed --right LJG-144_TGACCA_L008_R2_001.fastq_trimmed &gt;nohup144.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl –transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta –seqType fq –est_method RSEM –aln_method bowtie –trinity_mode –prep_reference –output_dir rsem_outdir134 –left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed –right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed &gt;nohup134.out 2&gt;&amp;1 &amp;</p>
+<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/align_and_estimate_abundance.pl --transcripts ./glue5-trinity_out_dir/Trinity-corset.fasta --seqType fq --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir134 --left LJG-134_TTAGGC_L008_R1_001.fastq_trimmed --right LJG-134_TTAGGC_L008_R2_001.fastq_trimmed &gt;nohup134.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
-<p>输出文件如下<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/abundance_RSEM.jpg" alt="abundance_RSEM"></p>
-<h2 id="4-1-根据表达量（如FPKM）筛选"><a href="#4-1-根据表达量（如FPKM）筛选" class="headerlink" title="4.1 根据表达量（如FPKM）筛选"></a>4.1 根据表达量（如FPKM）筛选</h2><p>将RSEM的结果中的FPKM提取出来组成新矩阵，根据平均值大于0.5的标准筛选出表达量高的转录本，在筛选完后，要根据这些高表达的转录本的id回到原来的RSEM结果文件中把这些转录本的信息提取出来，这里可以使用如下指令<code>cat trans_id |while read line;do grep $line ../glue5-trinity_out_dir/Trinity-corset.fasta &gt;&gt; transcripts;done</code>，这个指令可以按行读取trans_id中的id，然后在Trinity-corset.fasta文件中搜索这个id，再将结果追加写入transcript文件中，好处是使用Linux自带的命令工具，效率比较高。</p>
-<h2 id="5-生成数量矩阵-abundance-estimates-to-matrix-pl"><a href="#5-生成数量矩阵-abundance-estimates-to-matrix-pl" class="headerlink" title="5. 生成数量矩阵  abundance_estimates_to_matrix.pl"></a>5. 生成数量矩阵  abundance_estimates_to_matrix.pl</h2><p>命令如下：</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl –est_method RSEM –gene_trans_map none RSEM.isoforms.results</p>
-</blockquote>
-<h3 id="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上"><a href="#翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上" class="headerlink" title="翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上"></a>翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行—–标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上</h3><p>结果如下(自动输出文件到当前目录)<br><img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
+<p>输出文件如下 <img src="/2019/10/21/Bioinformatics/无参转录组实测1/abundance_RSEM.jpg" alt="abundance_RSEM"></p>
+<h2 id="根据表达量如fpkm筛选">4.1 根据表达量（如FPKM）筛选</h2>
+<p>将RSEM的结果中的FPKM提取出来组成新矩阵，根据平均值大于0.5的标准筛选出表达量高的转录本，在筛选完后，要根据这些高表达的转录本的id回到原来的RSEM结果文件中把这些转录本的信息提取出来，这里可以使用如下指令<code>cat trans_id |while read line;do grep $line ../glue5-trinity_out_dir/Trinity-corset.fasta &gt;&gt; transcripts;done</code>，这个指令可以按行读取trans_id中的id，然后在Trinity-corset.fasta文件中搜索这个id，再将结果追加写入transcript文件中，好处是使用Linux自带的命令工具，效率比较高。</p>
+<h2 id="生成数量矩阵-abundance_estimates_to_matrix.pl">5. 生成数量矩阵 abundance_estimates_to_matrix.pl</h2>
+<p>命令如下： &gt;/B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map none RSEM.isoforms.results</p>
+<h3 id="翻车提示这里转换后id对不上原来的id这里是怎么回事在进行匹配提取序列的时候失败blast无法进行-----标注这里没有翻车对得上尝试手动搜索后能够匹配上">翻车提示：这里转换后，id对不上原来的id，这里是怎么回事？在进行匹配提取序列的时候失败，blast无法进行-----标注：这里没有翻车，对得上，尝试手动搜索后能够匹配上</h3>
+<p>结果如下(自动输出文件到当前目录) <img src="/2019/10/21/Bioinformatics/无参转录组实测1/matrix.jpg" alt="matrix"></p>
 <p>相关参数</p>
-<details><summary>展开查看</summary><pre>
+<details>
+<summary>
+展开查看
+</summary>
+<pre>
 
-<blockquote>
-<p>Usage:  ./abundance_estimates_to_matrix.pl –est_method <method> sample1.results sample2.results … <br><br>or 如下<br><br>./abundance_estimates_to_matrix.pl –est_method <method> –quant_files file.listing_target_files.txt<br><br> Note, if only a single input file is given, it’s expected to contain<br> the paths to all the target abundance estimation files.</method></method></p>
-</blockquote>
-<p>Required:<br><br>–est_method <string>           RSEM|eXpress|kallisto|salmon  (needs to know what format to expect)<br><br>–gene_trans_map <string>           the gene-to-transcript mapping file. (if you don’t want gene estimates, indicate ‘none’.</string></string></p>
-<p>Options:<br><br>–cross_sample_norm <string>      TMM|UpperQuartile|none   (default: TMM)<br><br>–name_sample_by_basedir      name sample column by dirname instead of filename<br><br>–basedir_index <int>         default(-2)<br><br>–out_prefix <string>         default: value for –est_method<br><br>–quant_files <string>        file containing a list of all the target files.</string></string></int></string></p>
-<p></p></pre></details><p></p>
-<span id="downstream">
+>Usage:  ./abundance_estimates_to_matrix.pl --est_method <method> sample1.results sample2.results ... <br>
+or 如下<br>
+./abundance_estimates_to_matrix.pl --est_method <method> --quant_files file.listing_target_files.txt<br>
+ Note, if only a single input file is given, it's expected to contain
+ the paths to all the target abundance estimation files.
 
-<h2 id="6-下游分析"><a href="#6-下游分析" class="headerlink" title="6. 下游分析"></a>6. 下游分析</h2></span>
+Required:
+<br>--est_method <string>           RSEM|eXpress|kallisto|salmon  (needs to know what format to expect)
+<br>--gene_trans_map <string>           the gene-to-transcript mapping file. (if you don't want gene estimates, indicate 'none'.
 
-<h3 id="6-1-差异表达分析-run-DE-analysis-pl"><a href="#6-1-差异表达分析-run-DE-analysis-pl" class="headerlink" title="6.1 差异表达分析   run_DE_analysis.pl"></a>6.1 差异表达分析   run_DE_analysis.pl</h3><p><em>注意，这一步需要第5步中输出文件*</em>RSEM.isoform.counts.matrix***<br>命令如下：</p>
-<blockquote>
-<p>/B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl –matrix RSEM.isoform.counts.matrix –method edgeR –output edgeR_results</p>
-</blockquote>
-<p>实际使用：</p>
-<blockquote>
-<p>nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl –matrix rsem_outdir134/0.5-134RSEM.isoform.counts.matrix rsem_outdir531/0.5-531RSEM.isoform.counts.matrix  –method edgeR –output 13vs53-edgeR_results &amp;</p>
-</blockquote>
+Options:
+<br>--cross_sample_norm <string>      TMM|UpperQuartile|none   (default: TMM)
+<br>--name_sample_by_basedir      name sample column by dirname instead of filename
+<br>--basedir_index <int>         default(-2)
+<br>--out_prefix <string>         default: value for --est_method
+<br>--quant_files <string>        file containing a list of all the target files.
+
+</string></string></int></string></string></string></method></method></pre>
+</details>
+<p><span id="downstream"></span></p>
+<h2 id="下游分析">6. 下游分析</h2>
+<p></p>
+<h3 id="差异表达分析-run_de_analysis.pl">6.1 差异表达分析 run_DE_analysis.pl</h3>
+<p><em>注意，这一步需要第5步中输出文件<strong>RSEM.isoform.counts.matrix</strong></em> 命令如下： &gt;/B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix RSEM.isoform.counts.matrix --method edgeR --output edgeR_results</p>
+<p>实际使用： &gt;nohup /B313/public_software/trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix rsem_outdir134/0.5-134RSEM.isoform.counts.matrix rsem_outdir531/0.5-531RSEM.isoform.counts.matrix --method edgeR --output 13vs53-edgeR_results &amp;</p>
 <p>参数如下：</p>
-<details><summary>展开查看</summary><pre>
+<details>
+<summary>
+展开查看
+</summary>
+<pre>
 
-<p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/edgeR_options.jpg" alt="edgeR_options"></p>
-<p></p></pre></details><p></p>
+![edgeR_options](无参转录组实测1/edgeR_options.jpg)
+
+</pre>
+</details>
 <!-- ### 6.2 提取蛋白编码区
 命令如下：
 >trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl -t transcripts.fasta -m 100 -->
-
-<h2 id="补充-1"><a href="#补充-1" class="headerlink" title="补充"></a>补充</h2><blockquote>
+<h2 id="补充">补充</h2>
+<blockquote>
 <p>根据得到的上下调基因的id提取出对应的序列，应用的脚本是fetchClusterSeqs.py</p>
 </blockquote>
-<p>命令如下：</p>
+<p>命令如下： &gt;nohup python fetchClusterSeqs.py -i Trinity90.fasta -t upgenes.csv -o upgenes.fasta &amp; &gt;nohup python fetchClusterSeqs.py -i Trinity90.fasta -t downgenes.csv -o downgenes.fasta &gt;nohup2.out 2&gt;&amp;1 &amp;</p>
+<h3 id="提取最长链-get_longest_isoform_seq_per_trinity_gene.pl">6.2 提取最长链 get_longest_isoform_seq_per_trinity_gene.pl</h3>
 <blockquote>
-<p>nohup python fetchClusterSeqs.py -i Trinity90.fasta -t upgenes.csv -o upgenes.fasta &amp;<br>nohup python fetchClusterSeqs.py -i Trinity90.fasta -t downgenes.csv -o downgenes.fasta &gt;nohup2.out 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<h3 id="6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl"><a href="#6-2-提取最长链-get-longest-isoform-seq-per-trinity-gene-pl" class="headerlink" title="6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl"></a>6.2 提取最长链  get_longest_isoform_seq_per_trinity_gene.pl</h3><blockquote>
-<p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta  # 这里输出的是一个排序好的文件，最长链排在最前面，需要使用awk提取一下才是真正的最长链</p>
+<p>perl /B313/public_software/trinityrnaseq-Trinity-v2.8.4/util/misc/get_longest_isoform_seq_per_trinity_gene.pl Trinity90.fasta &gt; longest_transcript.fasta # 这里输出的是一个排序好的文件，最长链排在最前面，需要使用awk提取一下才是真正的最长链</p>
 </blockquote>
 <p>输出文件：longest_transcript.fasta</p>
 <blockquote>
 <p>坑：这里输入的文件第一行是统计数据，第二行是序列，两列一组，然后由长到短排序，如果要提取某一行序列数据，则设置提取偶数行即可。</p>
 </blockquote>
-<h3 id="7-功能注释"><a href="#7-功能注释" class="headerlink" title="7. 功能注释"></a>7. 功能注释</h3><p>下载的软件：Trinotate、Trinity、sqlite、NCBI Blast、HMMER、signalP v4、tmhmm v2、RNAMMER</p>
-<p>比对数据库：SwissProt、Uniref90、Pfam domains </p>
-<ol>
-<li><p>标准化数据：</p>
-<figure class="highlight elm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-title">makeblastdb</span> -<span class="hljs-keyword">in</span> uniprot_sprot.fasta -db<span class="hljs-keyword">type</span> prot</span><br><span class="line"><span class="hljs-title">makeblastdb</span> -<span class="hljs-keyword">in</span> uniref90.fasta -db<span class="hljs-keyword">type</span> prot</span><br><span class="line"><span class="hljs-title">hmmpress</span> <span class="hljs-type">Pfam</span>-<span class="hljs-type">A</span>.hmm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>blast比对（比对的数据库可以换成nr/Uniref90）</p>
-<figure class="highlight lsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># search Trinity transcripts</span><br><span class="line">blastx -query Trinity.fasta -db uniprot_sprot.fasta -num_threads <span class="hljs-number">8</span> -max_target_seqs <span class="hljs-number">1</span> -outfmt <span class="hljs-number">6</span> -evalue <span class="hljs-number">1e-5</span> &gt; blastx.outfmt6</span><br><span class="line"></span><br><span class="line"># search Transdecoder-predicted proteins</span><br><span class="line">blastp -query transdecoder.pep -db uniprot_sprot.fasta -num_threads <span class="hljs-number">8</span> -max_target_seqs <span class="hljs-number">1</span> -outfmt <span class="hljs-number">6</span> -evalue <span class="hljs-number">1e-5</span> &gt; blastp.outfmt6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>功能域</p>
-<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmmscan --cpu <span class="hljs-number">8</span> --domtblout TrinotatePFAM<span class="hljs-selector-class">.out</span> Pfam-A<span class="hljs-selector-class">.hmm</span> transdecoder<span class="hljs-selector-class">.pep</span> &gt; pfam.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>信号肽</p>
-<figure class="highlight cs hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmhmm --<span class="hljs-keyword">short</span> &lt; transdecoder.pep &gt; tmhmm.<span class="hljs-keyword">out</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>识别rRNA</p>
-<figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">/TRINOTATE_HOME/util/rnammer_support/RnammerTranscriptome.pl</span> <span class="hljs-params">--transcriptome</span> Trinity.fasta  <span class="hljs-params">--path_to_rnammer</span> <span class="hljs-string">/usr/bin/software/rnammer_v1.2/rnammer</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 输出：Trinity.fasta.rnammer.gff</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<h3 id="功能注释">7. 功能注释</h3>
+<p>下载的软件：Trinotate、Trinity、sqlite、NCBI Blast、HMMER、signalP v4、tmhmm v2、RNAMMER</p>
+<p>比对数据库：SwissProt、Uniref90、Pfam domains</p>
+<ol type="1">
+<li><p>标准化数据： <figure class="highlight elm hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-title">makeblastdb</span> -<span class="hljs-keyword">in</span> uniprot_sprot.fasta -db<span class="hljs-keyword">type</span> prot</span><br><span class="line"><span class="hljs-title">makeblastdb</span> -<span class="hljs-keyword">in</span> uniref90.fasta -db<span class="hljs-keyword">type</span> prot</span><br><span class="line"><span class="hljs-title">hmmpress</span> <span class="hljs-type">Pfam</span>-<span class="hljs-type">A</span>.hmm</span><br></pre></td></tr></table></figure></p></li>
+<li><p>blast比对（比对的数据库可以换成nr/Uniref90） <figure class="highlight lsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># search Trinity transcripts</span><br><span class="line">blastx -query Trinity.fasta -db uniprot_sprot.fasta -num_threads <span class="hljs-number">8</span> -max_target_seqs <span class="hljs-number">1</span> -outfmt <span class="hljs-number">6</span> -evalue <span class="hljs-number">1e-5</span> &gt; blastx.outfmt6</span><br><span class="line"></span><br><span class="line"># search Transdecoder-predicted proteins</span><br><span class="line">blastp -query transdecoder.pep -db uniprot_sprot.fasta -num_threads <span class="hljs-number">8</span> -max_target_seqs <span class="hljs-number">1</span> -outfmt <span class="hljs-number">6</span> -evalue <span class="hljs-number">1e-5</span> &gt; blastp.outfmt6</span><br></pre></td></tr></table></figure></p></li>
+<li><p>功能域 <figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmmscan --cpu <span class="hljs-number">8</span> --domtblout TrinotatePFAM<span class="hljs-selector-class">.out</span> Pfam-A<span class="hljs-selector-class">.hmm</span> transdecoder<span class="hljs-selector-class">.pep</span> &gt; pfam.log</span><br></pre></td></tr></table></figure></p></li>
+<li><p>信号肽 <figure class="highlight cs hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmhmm --<span class="hljs-keyword">short</span> &lt; transdecoder.pep &gt; tmhmm.<span class="hljs-keyword">out</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>识别rRNA <figure class="highlight jboss-cli hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">/TRINOTATE_HOME/util/rnammer_support/RnammerTranscriptome.pl</span> <span class="hljs-params">--transcriptome</span> Trinity.fasta  <span class="hljs-params">--path_to_rnammer</span> <span class="hljs-string">/usr/bin/software/rnammer_v1.2/rnammer</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 输出：Trinity.fasta.rnammer.gff</span></span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h4 id="Tips：功能富集分析工具"><a href="#Tips：功能富集分析工具" class="headerlink" title="Tips：功能富集分析工具"></a>Tips：功能富集分析工具</h4><p><img src="/2019/10/21/Bioinformatics/无参转录组实测1/tools.png" alt="tools"></p>
-<h2 id="7-Load-transcripts-and-coding-regions"><a href="#7-Load-transcripts-and-coding-regions" class="headerlink" title="7. Load transcripts and coding regions"></a>7. Load transcripts and coding regions</h2><h2 id="8-Output-an-Annotation-Report"><a href="#8-Output-an-Annotation-Report" class="headerlink" title="8. Output an Annotation Report"></a>8. Output an Annotation Report</h2><span id="visualization">
-
-<h2 id="9-数据可视化（见下一篇）"><a href="#9-数据可视化（见下一篇）" class="headerlink" title="9. 数据可视化（见下一篇）"></a>9. 数据可视化（见下一篇）</h2></span>
-
-
-
-
-
+<h4 id="tips功能富集分析工具">Tips：功能富集分析工具</h4>
+<figure>
+<img src="/2019/10/21/Bioinformatics/无参转录组实测1/tools.png" alt="tools"><figcaption aria-hidden="true">tools</figcaption>
+</figure>
+<h2 id="load-transcripts-and-coding-regions">7. Load transcripts and coding regions</h2>
+<h2 id="output-an-annotation-report">8. Output an Annotation Report</h2>
+<p><span id="visualization"></span></p>
+<h2 id="数据可视化见下一篇">9. 数据可视化（见下一篇）</h2>
+<p></p>
+</pre></details>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -498,7 +548,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -518,7 +568,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -639,7 +689,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -685,7 +735,7 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -708,6 +758,13 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1072,6 +1129,25 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1146,25 +1222,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1176,6 +1233,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1356,6 +1424,25 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1430,25 +1517,6 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1460,6 +1528,17 @@ awk '{print $6}' RSEM.isoforms.results > TPM -->
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1765,7 +1844,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

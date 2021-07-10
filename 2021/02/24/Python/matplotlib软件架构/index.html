@@ -10,19 +10,19 @@
 <title>matplotlib软件架构 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地查询">
+    <meta name="description" content="前言 在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地">
 <meta name="keywords" content="matplotlib软件架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="matplotlib软件架构">
 <meta property="og:url" content="https://genening.github.io/2021/02/24/Python/matplotlib软件架构/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地查询">
+<meta property="og:description" content="前言 在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2021-02-24T01:33:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib软件架构">
-<meta name="twitter:description" content="前言在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地查询">
+<meta name="twitter:description" content="前言 在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,63 +158,53 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地查询了matplotlib的软件架构。</p>
-<a id="more"></a>
-<h2 id="1-matplotlib概述"><a href="#1-matplotlib概述" class="headerlink" title="1.matplotlib概述"></a>1.matplotlib概述</h2><p>matplotlib是基于Python的绘图库，广泛用于Python科学计算界。它完整支持二维绘图以及部分支持三维绘图。该绘图库致力于能适应广泛的用户需求。它可以根据所选的用户接口工具来嵌入绘图算法。与此同时，对于使用GTK+、Qt、Tk、FLTK、wxWidgets与Cocoa的所有主要桌面操作系统，matplotlib能支持交互式绘图。在Python的交互式shell中，我们可以使用简单的、过程式的命令交互式地调用matplotlib来生成图形，与使用Mathematica、IDL或者MATLAB绘图非常相似。matplotlib也可以嵌入到无报文头的Web服务器中，以提供基于光栅（如PNG格式）与向量（如Postscript、PDF以及纸面效果很好的SVG格式）这两种格式的图形硬拷贝。</p>
+            <h2 id="前言">前言</h2>
+<p>在之前的时间里，我学习过matplotlib这个python包，了解了一些画图的技巧，但是在那时便有一些疑惑无法解答，比如为什么画出同一幅图的操作途径有好几种，这些困惑一直都在，以及为什么在matplotlib这个包下属的方法里，到底有几个方法，这些方法间又是什么关系。因为这些疑惑都无从求解，所以对matplotlib的理解也只是皮毛而已，因此为了更加通透的理解matplotlib，我特地查询了matplotlib的软件架构。 <a id="more"></a> ## 1.matplotlib概述 matplotlib是基于Python的绘图库，广泛用于Python科学计算界。它完整支持二维绘图以及部分支持三维绘图。该绘图库致力于能适应广泛的用户需求。它可以根据所选的用户接口工具来嵌入绘图算法。与此同时，对于使用GTK+、Qt、Tk、FLTK、wxWidgets与Cocoa的所有主要桌面操作系统，matplotlib能支持交互式绘图。在Python的交互式shell中，我们可以使用简单的、过程式的命令交互式地调用matplotlib来生成图形，与使用Mathematica、IDL或者MATLAB绘图非常相似。matplotlib也可以嵌入到无报文头的Web服务器中，以提供基于光栅（如PNG格式）与向量（如Postscript、PDF以及纸面效果很好的SVG格式）这两种格式的图形硬拷贝。</p>
 <p>顶层的matplotlib对象名为Figure，它包含与管理某个图形的所有元素。matplotlib必须完成的一个核心架构性任务是实现Figure的绘制与操作框架，并且做到该框架与Figure到用户视窗接口或硬拷贝渲染行为是分离的。这使得我们可以为Figure添加越来越复杂的特性与逻辑，同时保持“后端”或输出设备的相对简化。matplotlib不仅封装了用于向多种设备渲染的绘图接口，还封装了基本事件处理以及多数流行的用户界面工具的视窗功能。因此，用户可以创建相当丰富的交互式图形算法与用户界面工具（用到可能存在的鼠标与键盘），而又不必修改matplotlib已经支持的6种界面工具。</p>
 <p>matplotlib的架构可以自下而上分为“后端——美工——脚本”，上一层可以调用下一层完成功能，对下一层而言，上一层是透明的。这三层的层次差别明显，能够完成的任务也有所不同，在我们最常见的使用场景中，我们使用的是脚本层，这个层会对基本的绘图进行封装，我们直接调用接口使用即可，因此使用的门槛低，比较易学。但是要想完全掌控整个画板，就不得不了解matplotlib更加底层的东西。</p>
 <blockquote>
 <p>补充：matplotlib可以进行作图，seaborn也可以进行作图，其中seaborn是基于matplotlib进行更高程度的封装而来的，相当于更加的简单易用，但是可定制化的程度降低了。除了使用编程进行绘图，还可以使用PS、AI、PPT、EXCEL、oringin等软件进行绘图，不要局限了绘图的思维，要灵活使用软件进行绘图，还可以灵活组合，搭配不同软件完成绘图工作，不一定非要完全采用编程完成。</p>
 </blockquote>
-<h2 id="2-matplotlib后端"><a href="#2-matplotlib后端" class="headerlink" title="2.matplotlib后端"></a>2.matplotlib后端</h2><p>matplotlib逻辑栈最底层是后端，它具体实现了下面的抽象接口类：</p>
-<ul>
-<li>FigureCanvas对绘图表面（如“绘图纸”）的概念进行封装。</li>
-<li>Renderer执行绘图动作（如“画笔”）。</li>
-<li>Event处理键盘与鼠标事件这样的用户输入。</li>
-</ul>
+<h2 id="matplotlib后端">2.matplotlib后端</h2>
+<p>matplotlib逻辑栈最底层是后端，它具体实现了下面的抽象接口类： * FigureCanvas对绘图表面（如“绘图纸”）的概念进行封装。 * Renderer执行绘图动作（如“画笔”）。 * Event处理键盘与鼠标事件这样的用户输入。</p>
 <p><strong>FigureCanvas中包含的具体实现可以完成三个任务：</strong>将自身嵌入到原生的Qt视窗（QtGui.QMainWindow）中，能将matplotlib的Renderer命令转换到canvas上（QtGui.QPainter），以及将原生Qt事件转换到matplotlib的Event框架下（后者产生回调信号让上行监听者进行处理）。抽象基类定义在matplotlib.backend_bases中，且所有派生类都定义在如matplotlib.backends.backend_qt4agg这样的专用模块中。对于专门生成硬拷贝输出（如PDF、PNG、SVG或PS）的纯图像后端而言，FigureCanvas的实现可能只是简单地建立一个类似文件的对象，其中定义默认的文件头、字体与宏函数，以及Renderer创建的个别对象（如直线、文本与矩形等）。</p>
 <p><strong>Renderer的任务是提供底层的绘图接口</strong>，即在画布上绘图的动作。上文已经提到，最初的matplotlib程序是一个基于GTK+的ECoG查看器，而且很多早期设计灵感都源自当时已有的GDK/GTK+的API。最初Renderer的API源自GDK的Drawable接口，后者实现了draw_point、draw_line、draw_rectangle、draw_image、draw_polygon以及draw_glyphs这样的基本方法。我们完成的每个不同后端——最早有PostScript与GD——都实现了GDK的Drawable，并将其转换为独立于后端的原生绘图命令。如上所述，这毫无必要地增加了后端的实现复杂度，原因是单独实现Drawable造成函数泛滥。此后，Renderer已经被极大的简化，将matplotlib移植到新的用户界面或文件格式已经是非常简单的过程。</p>
 <p>一个对matplotlib有利的设计决定是支持使用C++模板库Anti-Grain Geometry（缩写为agg[She06]）的基于像素点的核心渲染器。这是一个高性能库，可以进行2D反锯齿渲染，生成的图像非常漂亮。matplotlib支持将agg后端渲染的像素缓存插入到每种支持的用户界面中，所以在不同的UI与操作系统下都能得到精确像素点的图形。因为matplotlib生成的PNG输出也使用agg渲染器，所以硬拷贝与屏幕显示完全相同，也就是说在不同的UI与操作系统下，PNG的输出所见即所得。</p>
 <p>matplotlib的Event框架将key-press-event或mouse-motion-event这样的潜在UI事件映射到KeyEvent或MouseEvent类。用户可以连接到这些事件进行函数回调，以及图形与数据的交互，如要pick一个或一组数据点，或对图形或其元素的某方面性质进行操作。下面的示例代码演示了当用户键入‘t’时，对Axes窗口中的线段进行显示开关。</p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_press</span><span class="hljs-params">(event)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">if</span> event.inaxes <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-keyword">return</span></span><br><span class="line">    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> event.inaxes.lines:</span><br><span class="line">        <span class="hljs-keyword">if</span> event.key==<span class="hljs-string">'t'</span>:</span><br><span class="line">            visible = line.get_visible()</span><br><span class="line">            line.set_visible(<span class="hljs-keyword">not</span> visible)</span><br><span class="line">    event.inaxes.figure.canvas.draw()</span><br><span class="line"> </span><br><span class="line">fig, ax = plt.subplots(<span class="hljs-number">1</span>)</span><br><span class="line"> </span><br><span class="line">fig.canvas.mpl_connect(<span class="hljs-string">'key_press_event'</span>, on_press)</span><br><span class="line"> </span><br><span class="line">ax.plot(np.random.rand(<span class="hljs-number">2</span>, <span class="hljs-number">20</span>))</span><br><span class="line"> </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p>对底层UI事件框架的抽象使得matplotlib的开发者与最终用户都可以编写UI事件处理代码，而且“一次编写，随处运行”。譬如，在所有用户界面下都可以对matplotlib图像进行交互式平移与放缩，这种交互式操作就是在matplotlib的事件框架下实现的。</p>
-<h2 id="3-matplotlib-Artis层"><a href="#3-matplotlib-Artis层" class="headerlink" title="3.matplotlib Artis层"></a>3.matplotlib Artis层</h2><p>称之为“ 美工”其实是一个汉化的形象说法，因为“ 在哪里画，用什么画，画什么图？ ”这不正是美工的工作么？</p>
+<h2 id="matplotlib-artis层">3.matplotlib Artis层</h2>
+<p>称之为“ 美工”其实是一个汉化的形象说法，因为“ 在哪里画，用什么画，画什么图？ ”这不正是美工的工作么？</p>
 <p>Artist层次结构处于matplotlib的中间层，负责很大一部分繁重的计算任务。延续之前将后端的FigureCanvas看作画纸的比喻，Artis对象知道如何用Renderer（画笔）在画布上画出墨迹。matplotlib中的Figure就是一个Artist对象实例。标题、直线、刻度标记以及图像等等都对应某个Artist实例（如图11.3）。Artist的基类是matplotlib.artist.Artist，其中包含所有Artist的共享属性，包括从美工坐标系统到画布坐标系统的变换（后面将详细介绍）、可见性、定义用户可绘制区域的剪切板、标签，以及处理“选中”这样的用户交互动作的接口，即在美工层检测鼠标点击事件。</p>
-<p>以下两幅图很好的展示了matplotlib绘图的层级：<br><img src="/2021/02/24/Python/matplotlib软件架构/simple.png" alt="simple"></p>
-<p><img src="/2021/02/24/Python/matplotlib软件架构/levels.png" alt="levels"></p>
+<p>以下两幅图很好的展示了matplotlib绘图的层级： <img src="/2021/02/24/Python/matplotlib软件架构/simple.png" alt="simple"></p>
+<figure>
+<img src="/2021/02/24/Python/matplotlib软件架构/levels.png" alt="levels"><figcaption aria-hidden="true">levels</figcaption>
+</figure>
 <p>注意观察两幅图中的层次关系，这对于我们理解matplotlib绘图并且更好使用具有很大帮助。</p>
 <p>下面这个简单的Python脚本解释了以上架构。它定义了后端，将Figure链接至该后端，然后使用数组库numpy创建10,000个正太分布的随机数，最后绘制出它们的柱状图。</p>
 <figure class="highlight nix hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># Import the FigureCanvas from the backend of your choice</span></span><br><span class="line"><span class="hljs-comment">#  and attach the Figure artist to it.</span></span><br><span class="line">from matplotlib.backends.backend_agg <span class="hljs-built_in">import</span> FigureCanvasAgg as FigureCanvas</span><br><span class="line">from matplotlib.figure <span class="hljs-built_in">import</span> Figure</span><br><span class="line"><span class="hljs-attr">fig</span> = Figure()</span><br><span class="line"><span class="hljs-attr">canvas</span> = FigureCanvas(fig)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Import the numpy library to generate the random numbers.</span></span><br><span class="line"><span class="hljs-built_in">import</span> numpy as np</span><br><span class="line"><span class="hljs-attr">x</span> = np.random.randn(<span class="hljs-number">10000</span>)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Now use a figure method to create an Axes artist; the Axes artist is</span></span><br><span class="line"><span class="hljs-comment">#  added automatically to the figure container fig.axes.</span></span><br><span class="line"><span class="hljs-comment"># Here "111" is from the MATLAB convention: create a grid with 1 row and 1</span></span><br><span class="line"><span class="hljs-comment">#  column, and use the first cell in that grid for the location of the new</span></span><br><span class="line"><span class="hljs-comment">#  Axes.</span></span><br><span class="line"><span class="hljs-attr">ax</span> = fig.add_subplot(<span class="hljs-number">111</span>)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Call the Axes method hist to generate the histogram; hist creates a</span></span><br><span class="line"><span class="hljs-comment">#  sequence of Rectangle artists for each histogram bar and adds them</span></span><br><span class="line"><span class="hljs-comment">#  to the Axes container.  Here "100" means create 100 bins.</span></span><br><span class="line">ax.hist(x, <span class="hljs-number">100</span>)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment"># Decorate the figure with a title and save it.</span></span><br><span class="line">ax.set_title('Normal distribution <span class="hljs-keyword">with</span> $\<span class="hljs-attr">mu=0,</span> \<span class="hljs-attr">sigma=1$')</span></span><br><span class="line">fig.savefig('matplotlib_histogram.png')</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-matplotlib脚本层（pyplot）"><a href="#4-matplotlib脚本层（pyplot）" class="headerlink" title="4.matplotlib脚本层（pyplot）"></a>4.matplotlib脚本层（pyplot）</h3><p>使用以上API的脚本效果很好，尤其是对于程序员而言，并且在编写Web应用服务器、UI应用程序或者是与其他开发人员共享的脚本时，这通常是比较合适的编程范式。对于日常用途，尤其对于非专业程序员而要完成一些交互式的研究工作的实验科学家而言，以上API的语法可能有些难以掌握。大多数用于数据分析与可视化的专用语言都会提供轻量级的脚本接口来简化一些常见任务。matplotlib在其matplotlib.pyplot接口中便实现了这一点。以上代码改用pyplot之后如下所示。</p>
+<h3 id="matplotlib脚本层pyplot">4.matplotlib脚本层（pyplot）</h3>
+<p>使用以上API的脚本效果很好，尤其是对于程序员而言，并且在编写Web应用服务器、UI应用程序或者是与其他开发人员共享的脚本时，这通常是比较合适的编程范式。对于日常用途，尤其对于非专业程序员而要完成一些交互式的研究工作的实验科学家而言，以上API的语法可能有些难以掌握。大多数用于数据分析与可视化的专用语言都会提供轻量级的脚本接口来简化一些常见任务。matplotlib在其matplotlib.pyplot接口中便实现了这一点。以上代码改用pyplot之后如下所示。</p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">x = np.random.randn(<span class="hljs-number">10000</span>)</span><br><span class="line">plt.hist(x, <span class="hljs-number">100</span>)</span><br><span class="line">plt.title(<span class="hljs-string">r'Normal distribution with $\mu=0, \sigma=1$'</span>)</span><br><span class="line">plt.savefig(<span class="hljs-string">'matplotlib_histogram.png'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p>显而易见，这一份代码要比上一份代码简易多了，更加利于掌握和使用。</p>
-<p><img src="/2021/02/24/Python/matplotlib软件架构/sigma.png" alt="sigma"></p>
+<figure>
+<img src="/2021/02/24/Python/matplotlib软件架构/sigma.png" alt="sigma"><figcaption aria-hidden="true">sigma</figcaption>
+</figure>
 <p>pyplot是一个状态化接口，大部分工作是处理样本文件的图形与坐标的生成，以及与所选后端的连接。它还维护了模块级的内部数据结构。这些数据结构表示了直接接收绘图命令的当前图形与坐标</p>
-<p>下面仔细分析示例脚本中比较重要的几行，观察其内部状态的管理方式。</p>
-<ul>
-<li>import matplotlib.pyplot as plt：当pyplot模块被加载时，它分析本地配置文件。配置文件除了完成一些其他工作外，主要声明了默认的后端。可能是类似QtAgg的用户接口后端，于是上面的脚本将导入GUI框架并启动嵌入了图形的Qt窗口；或者可以是一个类似Agg的纯图像后端，这样脚本会生成硬拷贝输出然后退出。</li>
-<li>plt.hist(x, 100)：这是脚本中第一个绘图命令。pyplot会检测其内部数据结构已查看是否存在当前Figure实例。如果存在，则提取当前Axes，并将绘图行为导向Axes.hist的API调用。在该脚本中不存在Figure实例，所以会生成一个FIgure与Axes，并将它们设为当前值，然后将绘图行为导向Axes.hist。</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li><p>matplotlib是一个非常庞大的系统，而且从诞生到现在繁荣发展经历了几十年的时间，里面所涉及到的软件架构很是复杂。</p>
-</li>
-<li><p>matplotlib的使用可以从三个层面上去入手，即“后端——美工——脚本”。</p>
-</li>
+<p>下面仔细分析示例脚本中比较重要的几行，观察其内部状态的管理方式。 * import matplotlib.pyplot as plt：当pyplot模块被加载时，它分析本地配置文件。配置文件除了完成一些其他工作外，主要声明了默认的后端。可能是类似QtAgg的用户接口后端，于是上面的脚本将导入GUI框架并启动嵌入了图形的Qt窗口；或者可以是一个类似Agg的纯图像后端，这样脚本会生成硬拷贝输出然后退出。 * plt.hist(x, 100)：这是脚本中第一个绘图命令。pyplot会检测其内部数据结构已查看是否存在当前Figure实例。如果存在，则提取当前Axes，并将绘图行为导向Axes.hist的API调用。在该脚本中不存在Figure实例，所以会生成一个FIgure与Axes，并将它们设为当前值，然后将绘图行为导向Axes.hist。</p>
+<h2 id="总结">总结</h2>
+<ol type="1">
+<li><p>matplotlib是一个非常庞大的系统，而且从诞生到现在繁荣发展经历了几十年的时间，里面所涉及到的软件架构很是复杂。</p></li>
+<li><p>matplotlib的使用可以从三个层面上去入手，即“后端——美工——脚本”。</p></li>
 </ol>
 <ul>
-<li><p>（1）后端：我们当然可以从最底层的后端搭建一个图形，负责软件与绘图硬件的交互，图形的各种渲染等等，这异常困难，而且对于程序员的开发效率来说，十分缓慢，因为绘图的框架整个都要自己去搭建，很麻烦。</p>
-</li>
-<li><p>（2）美工：这是在后端的基础之上的进一步封装，有一点类似于GDI+绘图方式，我们只关心“ 在哪里画 、用什么笔、 画什么图 ”，所用的笔，所用的颜料，画的图形类型（折线图，条形图，散点图等等）这些已经封装好了，封装是通过一系列的类去完成的。</p>
-</li>
-<li><p>（3）脚本：脚本是matplotlib的更高层封装，也就是我们平时所用的pyplot模块的高级封装，使用脚本，我们再也不用关心这个图形到底是怎么画的了，我们只需要关心画图的效果即可。适用“ 后端 ”、“ 美工 ”、要很多代码才能完成的事，使用脚本一句话就可以实现，如：</p>
-</li>
-<li><p><code>plt.plot(x,y,color=&#39;red&#39;,linewidth=3,linestyle=&#39;--&#39;)</code>就是这么简单的一句话，如果要自己从头搭建，是一件很困难的事情。</p>
-</li>
+<li><p>（1）后端：我们当然可以从最底层的后端搭建一个图形，负责软件与绘图硬件的交互，图形的各种渲染等等，这异常困难，而且对于程序员的开发效率来说，十分缓慢，因为绘图的框架整个都要自己去搭建，很麻烦。</p></li>
+<li><p>（2）美工：这是在后端的基础之上的进一步封装，有一点类似于GDI+绘图方式，我们只关心“ 在哪里画 、用什么笔、 画什么图 ”，所用的笔，所用的颜料，画的图形类型（折线图，条形图，散点图等等）这些已经封装好了，封装是通过一系列的类去完成的。</p></li>
+<li><p>（3）脚本：脚本是matplotlib的更高层封装，也就是我们平时所用的pyplot模块的高级封装，使用脚本，我们再也不用关心这个图形到底是怎么画的了，我们只需要关心画图的效果即可。适用“ 后端 ”、“ 美工 ”、要很多代码才能完成的事，使用脚本一句话就可以实现，如：</p></li>
+<li><p><code>plt.plot(x,y,color='red',linewidth=3,linestyle='--')</code>就是这么简单的一句话，如果要自己从头搭建，是一件很困难的事情。</p></li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
 <li>matplotlib教程——matplotlib的软件架构 作者LoveMIss-Y <a href="https://blog.csdn.net/qq_27825451/article/details/81481534" target="_blank" rel="noopener">CSDN博客</a></li>
 </ol>
 
@@ -303,7 +293,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -323,7 +313,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -444,7 +434,7 @@
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -490,7 +480,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -513,6 +503,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -877,6 +874,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -951,25 +967,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -981,6 +978,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1161,6 +1169,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1235,25 +1262,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1265,6 +1273,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1570,7 +1589,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

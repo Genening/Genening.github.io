@@ -134,6 +134,59 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-16T06:51:12.000Z">2020-04-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 minutes read (About 2316 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/">fastqc_multiqc结果解读</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言">1. 前言</h2>
+<p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。 &gt;为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/16/Bioinformatics/fastqc-multiqc结果解读/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-14T00:43:59.000Z">2020-04-14</time>
                 
                 <div class="level-item">
@@ -157,10 +210,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。</p>
-<blockquote>
-<p>二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
-</blockquote>
+            <h2 id="前言">1. 前言</h2>
+<p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。 &gt;二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
         </div>
         
         
@@ -218,9 +269,10 @@
             
         </h1>
         <div class="content">
-            <div align="center">
-
-<h3 id="面朝大海，春暖花开"><a href="#面朝大海，春暖花开" class="headerlink" title="面朝大海，春暖花开"></a><strong>面朝大海，春暖花开</strong></h3><h4 id="—-海子"><a href="#—-海子" class="headerlink" title="—-海子"></a>—-海子</h4><p>从明天起，做一个幸福的人<br></p>
+            <section id="面朝大海春暖花开" data-align="center">
+<h3><strong>面朝大海，春暖花开</strong></h3>
+<h4 id="海子">----海子</h4>
+<p>从明天起，做一个幸福的人<br></p>
 <p>喂马，劈柴，周游世界<br></p>
 <p>从明天起，关心粮食和蔬菜<br></p>
 <p>我有一所房子，面朝大海，春暖花开<br></p>
@@ -233,7 +285,7 @@
 <p>愿你有情人终成眷属<br></p>
 <p>愿你在尘世获得幸福<br></p>
 <p>我也愿面朝大海，春暖花开<br></p>
-</div>
+</section>
         </div>
         
         
@@ -285,7 +337,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
+            <h2 id="前言">前言</h2>
+<p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
         </div>
         
         
@@ -337,7 +390,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我可以直接在脚本里使用我在命令行里使用的工具，就像是把所有指令写到一起，但是又能够采用编程的方式进行组织，工作效率plus，接下来就让我们学习一下shell script吧。</p>
+            <h2 id="前言">前言</h2>
+<p>shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我可以直接在脚本里使用我在命令行里使用的工具，就像是把所有指令写到一起，但是又能够采用编程的方式进行组织，工作效率plus，接下来就让我们学习一下shell script吧。</p>
         </div>
         
         
@@ -389,8 +443,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
-<h2 id="1-Shell介绍"><a href="#1-Shell介绍" class="headerlink" title="1. Shell介绍"></a>1. Shell介绍</h2><p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。</p>
+            <h2 id="前言">前言</h2>
+<p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
+<h2 id="shell介绍">1. Shell介绍</h2>
+<p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。</p>
         </div>
         
         
@@ -445,7 +501,8 @@
             <blockquote>
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
-<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
+<h2 id="blast简介">1. blast简介</h2>
+<p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼： |program|progress| |:----|:----| |blastn|nr--&gt;nr| |blastx|nr--&gt;pro| |tblastn|pro--&gt;nr| |blastp|pro--&gt;pro|</p>
         </div>
         
         
@@ -497,8 +554,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。</p>
-<h2 id="GNU与Linux"><a href="#GNU与Linux" class="headerlink" title="GNU与Linux"></a>GNU与Linux</h2><p>在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统。这是为什么呢？这就得从上世纪90年代说起了。</p>
+            <h2 id="概述">概述</h2>
+<p>第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。 ## GNU与Linux 在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统。这是为什么呢？这就得从上世纪90年代说起了。</p>
         </div>
         
         
@@ -553,13 +610,12 @@
             <blockquote>
 <p>这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
-<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
+<h2 id="前言">前言</h2>
+<p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
+<h2 id="环境准备">1. 环境准备</h2>
+<ul>
 <li>安装R，可以到官网download</li>
-<li>安装相应包，如下<blockquote>
-<p>if (!requireNamespace(“BiocManager”, quietly = TRUE))<br>  install.packages(“BiocManager”)<br>if (!requireNamespace(“edgeR”, quietly = TRUE))<br>  BiocManager::install(“edgeR”)<br>if (!requireNamespace(“airway”, quietly = TRUE))<br>  BiocManager::install(“airway”)</p>
-</blockquote>
-</li>
+<li>安装相应包，如下 &gt;if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager") &gt;if (!requireNamespace("edgeR", quietly = TRUE)) BiocManager::install("edgeR") &gt;if (!requireNamespace("airway", quietly = TRUE)) BiocManager::install("airway")</li>
 </ul>
         </div>
         
@@ -613,7 +669,7 @@
         </h1>
         <div class="content">
             <p>前言：最近参加比赛，要求是LaTeX排版，所以顺便学习了一下。在毕业论文排版的时候也能够用得上，也算是有点作用，在此记录一下学习笔记的模板，这里只记录代码了，至于效果暂时不展示了。</p>
-<h2 id="完整论文框架代码"><a href="#完整论文框架代码" class="headerlink" title="完整论文框架代码"></a>完整论文框架代码</h2>
+<h2 id="完整论文框架代码">完整论文框架代码</h2>
         </div>
         
         
@@ -621,58 +677,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/12/01/Practical skills/latex-layout/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-19T14:06:24.000Z">2019-11-19</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/log/">log</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1003 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/19/log/Latex-formula/">Latex-formula</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>前言</strong>：LaTeX在表达数学公式方面有着得天独厚的优势，表达简便，渲染效果良好，是用来展示数学公式的最佳工具。当然，LaTeX本身是一个非常好的排版工具，在发表文章时一般可以采用LaTeX进行排版，美观专业。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/19/log/Latex-formula/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -758,7 +762,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -778,7 +782,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -899,7 +903,7 @@
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -945,7 +949,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -968,6 +972,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1332,6 +1343,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1406,25 +1436,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1436,6 +1447,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1616,6 +1638,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1690,25 +1731,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1720,6 +1742,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -2025,7 +2058,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

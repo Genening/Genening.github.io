@@ -10,19 +10,19 @@
 <title>spider-introduction - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网民在">
+    <meta name="description" content="前言 什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网">
 <meta name="keywords" content="爬虫概述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spider-introduction">
 <meta property="og:url" content="https://genening.github.io/2021/03/29/Python/spider-introduction/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网民在">
+<meta property="og:description" content="前言 什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2021-03-29T03:04:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spider-introduction">
-<meta name="twitter:description" content="前言什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网民在">
+<meta name="twitter:description" content="前言 什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,41 +158,50 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网民在网上获取信息时都会使用搜索引擎，甚至我们每天都需要使用这些服务，与我们的生活和工作都分不开，而搜索引擎的服务就是建立在爬虫获取全网信息的基础上的。那我们能不能也利用爬虫来帮自己获取信息呢？当然可以。所以接下来我们先系统了解一下爬虫。</p>
+            <h2 id="前言">前言</h2>
+<p>什么是爬虫？爬虫有什么作用？在哪有爬虫？对于数据分析师而言并不陌生，但是对于毫无编程经验的人来说，这可能就是一个很迷惑的名词了。其实“爬虫”指的是在互联网中的自动下载器，因为这个自动下载的过程就像是虫子在互联网的大网上爬动寻找到的，所以生动形象的称为“爬虫”，如百度、Google等搜索引擎的网页索引，都是通过对全网的数据进行爬取下载后建立的，所以其实爬虫和我们的生活非常密切，毕竟每个互联网民在网上获取信息时都会使用搜索引擎，甚至我们每天都需要使用这些服务，与我们的生活和工作都分不开，而搜索引擎的服务就是建立在爬虫获取全网信息的基础上的。那我们能不能也利用爬虫来帮自己获取信息呢？当然可以。所以接下来我们先系统了解一下爬虫。</p>
 <a id="more"></a>
-
-<h2 id="1-爬虫的工作原理"><a href="#1-爬虫的工作原理" class="headerlink" title="1. 爬虫的工作原理"></a>1. 爬虫的工作原理</h2><p>我们可以把互联网比作一张大网，而爬虫就是熟练爬走在网上的蜘蛛，把网的结点比作一个个网页，每当爬虫爬到一个节点上时，就相当于访问了这个网页，获取了这个网页的信息。网页与网页之间的链接就是结点之间连起来的线，通过这些线，我们可以从一个结点爬到另外一个结点。</p>
+<h2 id="爬虫的工作原理">1. 爬虫的工作原理</h2>
+<p>我们可以把互联网比作一张大网，而爬虫就是熟练爬走在网上的蜘蛛，把网的结点比作一个个网页，每当爬虫爬到一个节点上时，就相当于访问了这个网页，获取了这个网页的信息。网页与网页之间的链接就是结点之间连起来的线，通过这些线，我们可以从一个结点爬到另外一个结点。</p>
 <p>我们用直白的语言来说，爬虫的工作可以分为三部分，如下：</p>
 <table>
 <thead>
-<tr>
-<th align="left">部分</th>
-<th align="left">功能描述</th>
+<tr class="header">
+<th style="text-align: left;">部分</th>
+<th style="text-align: left;">功能描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1. 获取网页</td>
-<td align="left">爬虫的首要工作就是先把网页的源代码下载下来备用</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. 获取网页</td>
+<td style="text-align: left;">爬虫的首要工作就是先把网页的源代码下载下来备用</td>
 </tr>
-<tr>
-<td align="left">2. 提取信息</td>
-<td align="left">这个爬虫的核心操作，把所需信息从源代码中下载下来</td>
+<tr class="even">
+<td style="text-align: left;">2. 提取信息</td>
+<td style="text-align: left;">这个爬虫的核心操作，把所需信息从源代码中下载下来</td>
 </tr>
-<tr>
-<td align="left">3. 保存数据</td>
-<td align="left">收尾工作，把提取的信息以方便的形式保存下来，方便使用</td>
+<tr class="odd">
+<td style="text-align: left;">3. 保存数据</td>
+<td style="text-align: left;">收尾工作，把提取的信息以方便的形式保存下来，方便使用</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>爬虫说到底是自动化下载程序，所以爬虫做的工作是我们可以手动完成的工作，在工作量比较小的时候我们确实可以手动完成，但是当我们需要处理比较大的量而且需要比较多的重复时，那么自动化下载程序的优势就体现出来了。</p>
-<p><img src="/2021/03/29/Python/spider-introduction/comparation.png" alt="comparation"></p>
-<h2 id="2-获取网页"><a href="#2-获取网页" class="headerlink" title="2. 获取网页"></a>2. 获取网页</h2><p>当我们向网页发送一个请求的时候，服务器的响应返回就是网页的源代码，一般情况，这是浏览器自动完成的，所以我们不需要手动操作，但是现在我们需要自己编程获取网页，所以这个工作需要我们自己完成，但是难道要我们自己手动一个个网页源代码的去下载？当然不用。</p>
+<figure>
+<img src="/2021/03/29/Python/spider-introduction/comparation.png" alt="comparation"><figcaption aria-hidden="true">comparation</figcaption>
+</figure>
+<h2 id="获取网页">2. 获取网页</h2>
+<p>当我们向网页发送一个请求的时候，服务器的响应返回就是网页的源代码，一般情况，这是浏览器自动完成的，所以我们不需要手动操作，但是现在我们需要自己编程获取网页，所以这个工作需要我们自己完成，但是难道要我们自己手动一个个网页源代码的去下载？当然不用。</p>
 <p>python提供了许多的package来帮我们解决这个问题，如urllib、requests等。我们可以使用这些库来我们实现HTTP请求，然后获取网页源码，得到网页响应之后我们只需要结构数据中的Body即可。这就是我们通过库来获取网页的源代码的过程了。</p>
 <p>因此我们需要学习python的urllib和requests库，两个库各有优缺点，其实我们只需要学会一种即可，另一种可以但当涉猎。</p>
-<h2 id="3-提取信息"><a href="#3-提取信息" class="headerlink" title="3. 提取信息"></a>3. 提取信息</h2><p>获取到网页的源代码之后，接下来就是分析这些源代码，从中找到我们需要的信息，这个信息可以是网页中的文字信息，也可以是视频、图片、音乐等。最通用的提取方式是采用正则表达式进行匹配获取，只要正则学得好，可以编写出任何匹配的规则匹配你要的任何信息，但是问题就在于正则表达式很难学，而且写的时候还容易出错，所以对于新手并不友好。不过python依然提供了一些友好的方式供我们使用。因为网页的源代码是HTML语言，所以都有一定的结构性，因此我们可以根据网页的一些节点属性、CSS选择器或Xpath来获取信息，支持这些操作的package有Beautiful Soup、lxml等。有这些库，我们可以高效的完成提取信息的操作。</p>
+<h2 id="提取信息">3. 提取信息</h2>
+<p>获取到网页的源代码之后，接下来就是分析这些源代码，从中找到我们需要的信息，这个信息可以是网页中的文字信息，也可以是视频、图片、音乐等。最通用的提取方式是采用正则表达式进行匹配获取，只要正则学得好，可以编写出任何匹配的规则匹配你要的任何信息，但是问题就在于正则表达式很难学，而且写的时候还容易出错，所以对于新手并不友好。不过python依然提供了一些友好的方式供我们使用。因为网页的源代码是HTML语言，所以都有一定的结构性，因此我们可以根据网页的一些节点属性、CSS选择器或Xpath来获取信息，支持这些操作的package有Beautiful Soup、lxml等。有这些库，我们可以高效的完成提取信息的操作。</p>
 <p>提取信息是爬虫非常重要的组成部分，它可以使杂乱的数据变得条理清晰，以便我们后续处理和分析数据。</p>
-<h2 id="4-保存数据"><a href="#4-保存数据" class="headerlink" title="4. 保存数据"></a>4. 保存数据</h2><p>获取到信息之后，我们一般会进行保存，方便后续的使用。所以保存数据也很重要。对于一般使用而言，我们只需要保存成文件即可，比如txt文件和csv文件，当然，如果需要，我们也可以保存到数据可中，不过我们普通的使用，没有必要费工夫去学数据库操作。</p>
+<h2 id="保存数据">4. 保存数据</h2>
+<p>获取到信息之后，我们一般会进行保存，方便后续的使用。所以保存数据也很重要。对于一般使用而言，我们只需要保存成文件即可，比如txt文件和csv文件，当然，如果需要，我们也可以保存到数据可中，不过我们普通的使用，没有必要费工夫去学数据库操作。</p>
 <p>要完成这个工作主要就是学会文件操作和numpy、pandas库。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>爬虫是在数据分析工作中的上游（收集数据）这一步中，对于我们平常的数据分析工作而言非常重要，因此很有必要好好学习一下。收集保存好了数据，我们就可以进行数据的清洗、数据的探索、数据的建模、数据的可视化工作了。</p>
+<h2 id="结语">结语</h2>
+<p>爬虫是在数据分析工作中的上游（收集数据）这一步中，对于我们平常的数据分析工作而言非常重要，因此很有必要好好学习一下。收集保存好了数据，我们就可以进行数据的清洗、数据的探索、数据的建模、数据的可视化工作了。</p>
 <p>另外，我们也可以利用爬虫来完成一些有趣的小功能，比如爬取豆瓣的书单、批量下载图片等等。只要有一颗爱折腾的心，自然会发现新的乐趣。</p>
 
         </div>
@@ -280,7 +289,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -300,7 +309,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -421,7 +430,7 @@
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -467,7 +476,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -490,6 +499,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -854,6 +870,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -928,25 +963,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -958,6 +974,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1138,6 +1165,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1212,25 +1258,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1242,6 +1269,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1547,7 +1585,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

@@ -10,19 +10,19 @@
 <title>edgeR基因差异分析 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1. 环境准备 安">
+    <meta name="description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言 这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1.">
 <meta name="keywords" content="edgeR,基因差异分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="edgeR基因差异分析">
 <meta property="og:url" content="https://genening.github.io/2019/12/05/Bioinformatics/edgeR基因差异分析/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1. 环境准备 安">
+<meta property="og:description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言 这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1.">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-12-05T01:02:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="edgeR基因差异分析">
-<meta name="twitter:description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1. 环境准备 安">
+<meta name="twitter:description" content="这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。  前言 这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。 1.">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -161,20 +161,22 @@
             <blockquote>
 <p>这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
-<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
+<h2 id="前言">前言</h2>
+<p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
+<h2 id="环境准备">1. 环境准备</h2>
+<ul>
 <li>安装R，可以到官网download</li>
-<li>安装相应包，如下<blockquote>
-<p>if (!requireNamespace(“BiocManager”, quietly = TRUE))<br>  install.packages(“BiocManager”)<br>if (!requireNamespace(“edgeR”, quietly = TRUE))<br>  BiocManager::install(“edgeR”)<br>if (!requireNamespace(“airway”, quietly = TRUE))<br>  BiocManager::install(“airway”)</p>
-</blockquote>
-</li>
+<li>安装相应包，如下 &gt;if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager") &gt;if (!requireNamespace("edgeR", quietly = TRUE)) BiocManager::install("edgeR") &gt;if (!requireNamespace("airway", quietly = TRUE)) BiocManager::install("airway")</li>
 </ul>
 <a id="more"></a>
-<h2 id="2-全过程代码"><a href="#2-全过程代码" class="headerlink" title="2. 全过程代码"></a>2. 全过程代码</h2><figure class="highlight clean hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"># 导入依赖包</span><br><span class="line">library(limma)</span><br><span class="line">library(edgeR)</span><br><span class="line">library(ggplot2)</span><br><span class="line"></span><br><span class="line"># 设置工作区</span><br><span class="line">setwd(<span class="hljs-string">'E://Desktop//Transcript'</span>)</span><br><span class="line"></span><br><span class="line">#读取数据，设置分组</span><br><span class="line">targets &lt;- data.frame(read.csv(<span class="hljs-string">'all_counts.csv'</span>,header=<span class="hljs-number">1</span>,row.names=<span class="hljs-number">1</span>))</span><br><span class="line">group &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">2</span></span><br><span class="line">counts &lt;- targets[,<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">#构建DGEList对象</span><br><span class="line">dgelist &lt;- DGEList(counts = counts, group = group)</span><br><span class="line">dgelist</span><br><span class="line"></span><br><span class="line">#CPM 标准化，过滤低表达counts</span><br><span class="line">keep &lt;- rowSums(cpm(dgelist) &gt; <span class="hljs-number">1</span> ) &gt;= <span class="hljs-number">2</span>  #这里的设置很重要，会很大程度影响结果</span><br><span class="line">dgelist &lt;- dgelist[keep, ,keep.lib.sizes = FALSE]</span><br><span class="line"></span><br><span class="line">#TMM 标准化</span><br><span class="line">dgelist_norm &lt;- calcNormFactors(dgelist, method = <span class="hljs-string">'TMM'</span>)</span><br><span class="line">dgelist_norm</span><br><span class="line"></span><br><span class="line">#估算离散值</span><br><span class="line">design &lt;- model.matrix(~group) #构建分组矩阵</span><br><span class="line">#dge &lt;- estimateDisp(dgelist_norm, design, robust = TRUE) #估算离散值</span><br><span class="line">dgelist_norm$common.dispersion &lt;- <span class="hljs-number">0.1</span></span><br><span class="line"></span><br><span class="line">#差异基因分析</span><br><span class="line">#negative binomial generalized log-linear model #拟合</span><br><span class="line">fit &lt;- glmFit(dgelist_norm, design, robust = TRUE)     #拟合模型</span><br><span class="line">lrt &lt;- glmLRT(fit)   #统计检验</span><br><span class="line"></span><br><span class="line">#查看默认方法获得的差异基因</span><br><span class="line">dge_de &lt;- decideTestsDGE(lrt, adjust.method = <span class="hljs-string">'fdr'</span>, p.value = <span class="hljs-number">0.01</span>)  </span><br><span class="line">summary(dge_de)</span><br><span class="line"></span><br><span class="line"># 添加标签，区别up down no三种基因</span><br><span class="line">diff_stat &lt;- lrt$table</span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &gt;= <span class="hljs-number">2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'up'</span></span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &lt;= <span class="hljs-number">-2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'down'</span></span><br><span class="line">diff_stat[!(diff_stat$diff %<span class="hljs-keyword">in</span>% c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>)),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'no'</span></span><br><span class="line"></span><br><span class="line"># 查看并保存添加标签后的数据</span><br><span class="line">head(diff_stat,n=<span class="hljs-number">10</span>)</span><br><span class="line">write.csv(diff_stat,file = <span class="hljs-string">"edgeR.csv"</span>)</span><br><span class="line"></span><br><span class="line"># 做火山图</span><br><span class="line">ggplot(diff_stat, aes(x=logFC, y=-log10(diff_stat$PValue))) +</span><br><span class="line">geom_point(aes(color = diff), size = <span class="hljs-number">0.5</span>) +</span><br><span class="line">scale_colour_manual(limits = c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>, <span class="hljs-string">'no'</span>), values = c(<span class="hljs-string">'blue'</span>, <span class="hljs-string">'red'</span>, <span class="hljs-string">'gray40'</span>), labels = c(<span class="hljs-string">'Up OTUs'</span>, <span class="hljs-string">'Down OTUs'</span>, <span class="hljs-string">'No diff OTUs'</span>)) +</span><br><span class="line">labs(title=<span class="hljs-string">"Groups 13vs15"</span>,x = <span class="hljs-string">'log2 Fold Change'</span>, y = <span class="hljs-string">'-log10 p-value'</span>)</span><br></pre></td></tr></table></figure>
-
+<h2 id="全过程代码">2. 全过程代码</h2>
+<figure class="highlight clean hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"># 导入依赖包</span><br><span class="line">library(limma)</span><br><span class="line">library(edgeR)</span><br><span class="line">library(ggplot2)</span><br><span class="line"></span><br><span class="line"># 设置工作区</span><br><span class="line">setwd(<span class="hljs-string">'E://Desktop//Transcript'</span>)</span><br><span class="line"></span><br><span class="line">#读取数据，设置分组</span><br><span class="line">targets &lt;- data.frame(read.csv(<span class="hljs-string">'all_counts.csv'</span>,header=<span class="hljs-number">1</span>,row.names=<span class="hljs-number">1</span>))</span><br><span class="line">group &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">2</span></span><br><span class="line">counts &lt;- targets[,<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">#构建DGEList对象</span><br><span class="line">dgelist &lt;- DGEList(counts = counts, group = group)</span><br><span class="line">dgelist</span><br><span class="line"></span><br><span class="line">#CPM 标准化，过滤低表达counts</span><br><span class="line">keep &lt;- rowSums(cpm(dgelist) &gt; <span class="hljs-number">1</span> ) &gt;= <span class="hljs-number">2</span>  #这里的设置很重要，会很大程度影响结果</span><br><span class="line">dgelist &lt;- dgelist[keep, ,keep.lib.sizes = FALSE]</span><br><span class="line"></span><br><span class="line">#TMM 标准化</span><br><span class="line">dgelist_norm &lt;- calcNormFactors(dgelist, method = <span class="hljs-string">'TMM'</span>)</span><br><span class="line">dgelist_norm</span><br><span class="line"></span><br><span class="line">#估算离散值</span><br><span class="line">design &lt;- model.matrix(~group) #构建分组矩阵</span><br><span class="line">#dge &lt;- estimateDisp(dgelist_norm, design, robust = TRUE) #估算离散值</span><br><span class="line">dgelist_norm$common.dispersion &lt;- <span class="hljs-number">0.1</span></span><br><span class="line"></span><br><span class="line">#差异基因分析</span><br><span class="line">#negative binomial generalized log-linear model #拟合</span><br><span class="line">fit &lt;- glmFit(dgelist_norm, design, robust = TRUE)     #拟合模型</span><br><span class="line">lrt &lt;- glmLRT(fit)   #统计检验</span><br><span class="line"></span><br><span class="line">#查看默认方法获得的差异基因</span><br><span class="line">dge_de &lt;- decideTestsDGE(lrt, adjust.method = <span class="hljs-string">'fdr'</span>, p.value = <span class="hljs-number">0.01</span>)  </span><br><span class="line">summary(dge_de)</span><br><span class="line"></span><br><span class="line"># 添加标签，区别up down no三种基因</span><br><span class="line">diff_stat &lt;- lrt$table</span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &gt;= <span class="hljs-number">2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'up'</span></span><br><span class="line">diff_stat[which(diff_stat$PValue &lt; <span class="hljs-number">0.01</span> &amp; diff_stat$logFC &lt;= <span class="hljs-number">-2</span>),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'down'</span></span><br><span class="line">diff_stat[!(diff_stat$diff %<span class="hljs-keyword">in</span>% c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>)),<span class="hljs-string">'diff'</span>] &lt;- <span class="hljs-string">'no'</span></span><br><span class="line"></span><br><span class="line"># 查看并保存添加标签后的数据</span><br><span class="line">head(diff_stat,n=<span class="hljs-number">10</span>)</span><br><span class="line">write.csv(diff_stat,file = <span class="hljs-string">"edgeR.csv"</span>)</span><br><span class="line"></span><br><span class="line"># 做火山图</span><br><span class="line">ggplot(diff_stat, aes(x=logFC, y=-log10(diff_stat$PValue))) +</span><br><span class="line">geom_point(aes(color = diff), size = <span class="hljs-number">0.5</span>) +</span><br><span class="line">scale_colour_manual(limits = c(<span class="hljs-string">'up'</span>, <span class="hljs-string">'down'</span>, <span class="hljs-string">'no'</span>), values = c(<span class="hljs-string">'blue'</span>, <span class="hljs-string">'red'</span>, <span class="hljs-string">'gray40'</span>), labels = c(<span class="hljs-string">'Up OTUs'</span>, <span class="hljs-string">'Down OTUs'</span>, <span class="hljs-string">'No diff OTUs'</span>)) +</span><br><span class="line">labs(title=<span class="hljs-string">"Groups 13vs15"</span>,x = <span class="hljs-string">'log2 Fold Change'</span>, y = <span class="hljs-string">'-log10 p-value'</span>)</span><br></pre></td></tr></table></figure>
 <p>成果示例：</p>
-<p><img src="/2019/12/05/Bioinformatics/edgeR基因差异分析/groups13vs15.png" alt="results-img"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<figure>
+<img src="/2019/12/05/Bioinformatics/edgeR基因差异分析/groups13vs15.png" alt="results-img"><figcaption aria-hidden="true">results-img</figcaption>
+</figure>
+<h2 id="总结">总结</h2>
+<ol type="1">
 <li>在这个包的分析过程中，可以调整dispersion/pvalue/logFC这3个参数以及CPM 标准化的过滤阈值来调控我们最终获取的差异基因的数量，一般我们能分别获得几千个上下调基因就可以了，可以适当调整参数，方便下一步分析。</li>
 <li>在提取出来后，我们只是得到对应的id和它的down或者up标签，还需要把他们从原来的fasta文件中提取出来，这样才能接着做blast分析，这里使用的工具是TBtools这个软件，可以很好的做到这一点，但是建议还是得自己编程摸索一下，避免对别人的软件过渡依赖。</li>
 <li>在Linux中还有专门的split命令，可以直接一句命令进行文件拆分，拆分的依据可以是行数，也可以是大小（如10M），还可以是其他标准，这个非常方便，能够快速的进行拆分，然后我们只需要对拆分的文件进行重命名就好了。</li>
@@ -266,7 +268,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -286,7 +288,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -407,7 +409,7 @@
                 <span class="level-item">Practical skills</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Python/">
@@ -453,7 +455,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -476,6 +478,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DEgenes-selecting/">
                         <span class="tag">DEgenes_selecting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English-grammer/">
+                        <span class="tag">English grammer</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -840,6 +849,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -914,25 +942,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -944,6 +953,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1124,6 +1144,25 @@
         
         <article class="media">
             
+            <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_grammer_structure">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time></div>
+                    <a href="/2021/07/10/Practical skills/English-grammer-structure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_grammer_structure</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/04/17/Bioinformatics/selecting-DEgenes/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="selecting_DEgenes">
@@ -1198,25 +1237,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/19/Practical skills/English-learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="English_learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-19T12:20:11.000Z">2021-03-19</time></div>
-                    <a href="/2021/03/19/Practical skills/English-learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">English_learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Practical-skills/">Practical skills</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1228,6 +1248,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/04/">
@@ -1533,7 +1564,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
