@@ -157,8 +157,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。 &gt;为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>在得到了测序结果之后，我们需要评估一下测序的质量，因此我们需要对测序的数据进行统计评价，这里采用的软件组合就是fastqc和multiqc，fastqc用于对每一组的测序结果进行评价并且输出html结果文件，但是当同时有比较多组的测序数据时，一份份html文件去翻阅是非常麻烦的，此时multiqc就派上用场了，multiqc可以对这些结果进行整合，生成一份html文件，方便查阅。</p>
+<blockquote>
+<p>为什么要进行质量评价呢？因为我们后期的所有分析都是基于测序数据展开的，测序数据质量的高低直接影响了我们分析的结果，因此在所有分析步骤之前，我们必须要对测序的数据的质量进行评价，只有达到我们的要求的测序数据才能用于下一步分析。</p>
+</blockquote>
         </div>
         
         
@@ -210,8 +212,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。 &gt;二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>质量控制是在测序信息的分析开始之前的尤为重要的一步，因为后期的分析都是建立在这些数据的基础上的，所以前期数据的好坏直接影响了后期分析结果的质量高低、优良，因此做好质量控制非常重要。在二代测序中，测出来的片段都不长，而且还有一些PCR使用的接头也在其中，这些都会影响到后面的分析，因此我们要做的就是先把接头去掉，然后再筛选掉比较短的序列，比如使用Trinity进行拼接时，kmer的长度最小为50bp，小于这个阈值就无法拼接，因此在这个基础上，我们可以开始做质量控制了。</p>
+<blockquote>
+<p>二代测序数据的特点：大量的短序列（150-250bp）、双末端测序、末端质量较低。因此，在利用我们的测序数据进行分析之前，首先需要过滤掉低质量的碱基与序列，以确保分析结果的准确性。</p>
+</blockquote>
         </div>
         
         
@@ -269,10 +273,9 @@
             
         </h1>
         <div class="content">
-            <section id="面朝大海春暖花开" data-align="center">
-<h3><strong>面朝大海，春暖花开</strong></h3>
-<h4 id="海子">----海子</h4>
-<p>从明天起，做一个幸福的人<br></p>
+            <div align="center">
+
+<h3 id="面朝大海，春暖花开"><a href="#面朝大海，春暖花开" class="headerlink" title="面朝大海，春暖花开"></a><strong>面朝大海，春暖花开</strong></h3><h4 id="—-海子"><a href="#—-海子" class="headerlink" title="—-海子"></a>—-海子</h4><p>从明天起，做一个幸福的人<br></p>
 <p>喂马，劈柴，周游世界<br></p>
 <p>从明天起，关心粮食和蔬菜<br></p>
 <p>我有一所房子，面朝大海，春暖花开<br></p>
@@ -285,7 +288,7 @@
 <p>愿你有情人终成眷属<br></p>
 <p>愿你在尘世获得幸福<br></p>
 <p>我也愿面朝大海，春暖花开<br></p>
-</section>
+</div>
         </div>
         
         
@@ -337,8 +340,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在转录组的下游分析中，GO和KEGG注释是非常常规的分析，也是基础工作。blast2go这个软件则是一个可视化的工具，可以帮助我们做好这两个分析，不过这也有些可惜，那便是会受制于人，因为这个软件是一个商业软件，所以最好不要过分依赖这种工具，不过这一次分析是初次，而且稍微时间比较紧，所以暂且用一下，如果后续有时间，一定要学习一下如何利用编程，自己完成这些工作。</p>
         </div>
         
         
@@ -390,8 +392,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我可以直接在脚本里使用我在命令行里使用的工具，就像是把所有指令写到一起，但是又能够采用编程的方式进行组织，工作效率plus，接下来就让我们学习一下shell script吧。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>shell是一种专门用于和计算机内核通信并控制内核工作的窗口程序，因此，要想真正的掌握Linux的使用，学习使用shell是必不可少的。bash是Linux中默认的shell，使用者众，同时还有很多其他shell，如csh/tsh/bsh/ash等，这些都是shell，shell script可以在一般的like Unix系统上运行。个人感悟是shell script还是非常高效方便的，因为我可以直接在脚本里使用我在命令行里使用的工具，就像是把所有指令写到一起，但是又能够采用编程的方式进行组织，工作效率plus，接下来就让我们学习一下shell script吧。</p>
         </div>
         
         
@@ -443,10 +444,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
-<h2 id="shell介绍">1. Shell介绍</h2>
-<p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
+<h2 id="1-Shell介绍"><a href="#1-Shell介绍" class="headerlink" title="1. Shell介绍"></a>1. Shell介绍</h2><p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。</p>
         </div>
         
         
@@ -501,8 +500,7 @@
             <blockquote>
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
-<h2 id="blast简介">1. blast简介</h2>
-<p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼： |program|progress| |:----|:----| |blastn|nr--&gt;nr| |blastx|nr--&gt;pro| |tblastn|pro--&gt;nr| |blastp|pro--&gt;pro|</p>
+<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
         </div>
         
         
@@ -554,8 +552,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="概述">概述</h2>
-<p>第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。 ## GNU与Linux 在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统。这是为什么呢？这就得从上世纪90年代说起了。</p>
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>第一次听说的bash时是一脸懵逼的，不明白此为何物，最近看了一下相关书籍，捋了捋关于shell/bash/linux/GNU之间的关系，也加深了对于操作系统的理解，顺便还了解了一下shell编程的一些知识，接下来我们按顺序聊聊。</p>
+<h2 id="GNU与Linux"><a href="#GNU与Linux" class="headerlink" title="GNU与Linux"></a>GNU与Linux</h2><p>在谈论Linux的时候，就不得不提到GUN，虽然现在大家一般把某些操作系统称之为Linux，但是实际上，更准确的称呼应该是GUN/Linux操作系统。这是为什么呢？这就得从上世纪90年代说起了。</p>
         </div>
         
         
@@ -610,12 +608,13 @@
             <blockquote>
 <p>这部分内容还是第一次转录组的实操练习，之前已经完成了序列的拼接、去冗余，并且已经做了层次聚类，统计了每个transcript的raw counts，现在进入了差异基因分析的步骤。因为不管采用什么软件，本质的方法是一致的，因此也具有一定的通用性，或者可以迁移到其他基因分析的项目中，因此要用心学习。</p>
 </blockquote>
-<h2 id="前言">前言</h2>
-<p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
-<h2 id="环境准备">1. 环境准备</h2>
-<ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里采用的是R中的edgeR包来进行分析，因此需要先做环境准备，现在开始。</p>
+<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
 <li>安装R，可以到官网download</li>
-<li>安装相应包，如下 &gt;if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager") &gt;if (!requireNamespace("edgeR", quietly = TRUE)) BiocManager::install("edgeR") &gt;if (!requireNamespace("airway", quietly = TRUE)) BiocManager::install("airway")</li>
+<li>安装相应包，如下<blockquote>
+<p>if (!requireNamespace(“BiocManager”, quietly = TRUE))<br>  install.packages(“BiocManager”)<br>if (!requireNamespace(“edgeR”, quietly = TRUE))<br>  BiocManager::install(“edgeR”)<br>if (!requireNamespace(“airway”, quietly = TRUE))<br>  BiocManager::install(“airway”)</p>
+</blockquote>
+</li>
 </ul>
         </div>
         
@@ -669,7 +668,7 @@
         </h1>
         <div class="content">
             <p>前言：最近参加比赛，要求是LaTeX排版，所以顺便学习了一下。在毕业论文排版的时候也能够用得上，也算是有点作用，在此记录一下学习笔记的模板，这里只记录代码了，至于效果暂时不展示了。</p>
-<h2 id="完整论文框架代码">完整论文框架代码</h2>
+<h2 id="完整论文框架代码"><a href="#完整论文框架代码" class="headerlink" title="完整论文框架代码"></a>完整论文框架代码</h2>
         </div>
         
         
