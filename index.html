@@ -134,6 +134,84 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-07-16T02:55:33.000Z">2021-07-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1384 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/07/16/Mathematics/statistic-correlation/">statistic_correlation</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言">1. 前言</h2>
+<p>常见的相关系数有三种：pearson、spearman、kendall。皮尔森（pearson）相关系数、斯皮尔曼（spearman）相关系数和肯德尔（kendall）相关系数并称为统计学三大相关系数。其中，spearman和kendall属于等级相关系数亦称为“秩相关系数”，是反映等级相关程度的统计分析指标。pearson是用来反应俩变量之间相似程度的统计量，在机器学习中可以用来计算特征与类别间的相似度，即可判断所提取到的特征和类别是正相关、负相关还是没有相关程度。 三种相关系数各有特点，但是相同的是，三种相关系数都是计算变量之间的相关性，接下来我们一一介绍：</p>
+<h2 id="pearson相关系数">2. pearson相关系数</h2>
+<p>pearson相关系数衡量的是线性相关关系 ，是最常用的一种相关系数，记为r。若r=0，只能说x与y之间无线性相关关系，不能说无相关关系。相关系数的绝对值越大，相关性越强：相关系数越接近于1或-1，相关度越强，相关系数越接近于0，相关度越弱。</p>
+<p>定义： 两个变量X、Y之间的协方差和两者标准差乘积的比值</p>
+<figure>
+<img src="/2021/07/16/Mathematics/statistic-correlation/definition-formula.png" alt="definition-formula"><figcaption aria-hidden="true">definition-formula</figcaption>
+</figure>
+<p>代入样本的协方差和标准差可得计算公式：</p>
+<figure>
+<img src="/2021/07/16/Mathematics/statistic-correlation/calculation-formula.png" alt="calculation-formula"><figcaption aria-hidden="true">calculation-formula</figcaption>
+</figure>
+<p>公式推导过程：</p>
+<figure>
+<img src="/2021/07/16/Mathematics/statistic-correlation/deduce-process.png" alt="deduce-process"><figcaption aria-hidden="true">deduce-process</figcaption>
+</figure>
+<h2 id="spearman相关系数">3. spearman相关系数</h2>
+<p>斯皮尔曼相关性系数，通常也叫斯皮尔曼秩相关系数。“秩”，可以理解成就是一种顺序或者排序，那么它就是根据原始数据的排序位置进行求解，这种表征形式就没有了求皮尔森相关性系数时那些限制。</p>
+<p>计算公式：</p>
+<figure>
+<img src="/2021/07/16/Mathematics/statistic-correlation/spearman.png" alt="spearman"><figcaption aria-hidden="true">spearman</figcaption>
+</figure>
+<p>斯皮尔曼相关系数表明X(独立变量)和Y(依赖变量)的相关方向。如果当X增加时，Y趋向于增加，斯皮尔曼相关系数则为正。如果当X增加时，Y趋向于减少，斯皮尔曼相关系数则为负。斯皮尔曼相关系数为零表明当X增加时Y没有任何趋向性。当X和Y越来越接近完全的单调相关时，斯皮尔曼相关系数会在绝对值上增加。当X和Y完全单调相关时，斯皮尔曼相关系数的绝对值为1。</p>
+<p>斯皮尔曼相关系数经常被称作"非参数"的。这里有两层含义。首先，当X和Y的关系是由任意单调函数描述的，则它们是完全皮尔逊相关的。与此相应的，皮尔逊相关系数只能给出由线性方程描述的X和Y的相关性。其次，斯皮尔曼不需要先验知识(也就是说，知道其参数)便可以准确获取XandY的采样概率分布。</p>
+<p>一般地，斯皮尔曼相关系数在有三个或更多条件的情况下是有用的。并且，它预测观测数据有一个特定的顺序。 例如，在同一任务中，一系列的个体会被尝试多次，并预测在多次尝试过程中，性能会得到提升。在这种情况下，对条件间趋势的显著性检验由E. B. Page发展了，并通常称为给定序列下的Page趋势测验。</p>
+<h2 id="kendall相关系数">4. kendall相关系数</h2>
+<p>肯德尔相关性系数，又称肯德尔秩相关系数，它也是一种秩相关系数，不过它所计算的对象是分类变量。 分类变量可以理解成有类别的变量，可以分为 无序的，比如性别（男、女）、血型（A、B、O、AB）； 有序的，比如肥胖等级（重度肥胖，中度肥胖、轻度肥胖、不肥胖）。 通常需要求相关性系数的都是有序分类变量。</p>
+<figure>
+<img src="/2021/07/16/Mathematics/statistic-correlation/kendall.png" alt="kendall"><figcaption aria-hidden="true">kendall</figcaption>
+</figure>
+<p>n个同类的统计对象按特定属性排序，其他属性通常是乱序的。同序对（concordant pairs）和异序对（discordant pairs）之差与总对数（n*(n-1)/2)的比值定义为Kendall(肯德尔)系数。</p>
+<p>肯德尔相关系数是一个用来测量两个随机变量相关性的统计值。一个肯德尔检验是一个无参数假设检验，它使用计算而得的相关系数去检验两个随机变量的统计依赖性。肯德尔相关系数的取值范围在-1到1之间，当τ为1时，表示两个随机变量拥有一致的等级相关性；当τ为-1时，表示两个随机变量拥有完全相反的等级相关性；当τ为0时，表示两个随机变量是相互独立的。</p>
+<h2 id="结语">5. 结语</h2>
+<p>三种相关性系数的使用场景不尽相同，因此我们可以根据实际的使用场景来选择使用哪一种相关系数。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-07-10T12:33:00.000Z">2021-07-10</time>
                 
                 <div class="level-item">
@@ -606,69 +684,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-07-26T02:44:52.000Z">2020-07-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1032 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/">nlp-6-基于深度学习的文本分类3</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言">前言</h2>
-<p>在昨天我们实践了word2vec模型，今天还是来学习一个深度学习文本分类模型——bert，这是一个在文本分类中非常著名的模型。接下来让我们来学习一下这个模型。</p>
-<p><img src="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/history.png" alt="history"></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/07/26/NLP/nlp-6-基于深度学习的文本分类3/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -723,17 +747,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        67
+                        68
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -743,17 +767,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
-                        52
+                        53
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -810,7 +834,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -843,7 +867,7 @@
                 <span class="level-item">Mathematics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/NLP/">
@@ -911,9 +935,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -922,7 +946,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1165,6 +1189,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/statistic-parameters/">
+                        <span class="tag">statistic-parameters</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/《终极算法》/">
                         <span class="tag">《终极算法》</span>
                         <span class="tag is-grey">1</span>
@@ -1302,8 +1333,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/07/16/Mathematics/statistic-correlation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="statistic_correlation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-16T02:55:33.000Z">2021-07-16</time></div>
+                    <a href="/2021/07/16/Mathematics/statistic-correlation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">statistic_correlation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1381,25 +1431,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/22/Machinelearning/TheMasterAlgorithm/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="TheMasterAlgorithm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-22T09:10:37.000Z">2021-03-22</time></div>
-                    <a href="/2021/03/22/Machinelearning/TheMasterAlgorithm/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TheMasterAlgorithm</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Machinelearning/">Machinelearning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1408,7 +1439,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1418,7 +1449,7 @@
                     <span class="level-item">July 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1597,8 +1628,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/07/16/Mathematics/statistic-correlation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="statistic_correlation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-16T02:55:33.000Z">2021-07-16</time></div>
+                    <a href="/2021/07/16/Mathematics/statistic-correlation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">statistic_correlation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Mathematics/">Mathematics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1676,25 +1726,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/03/22/Machinelearning/TheMasterAlgorithm/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="TheMasterAlgorithm">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-22T09:10:37.000Z">2021-03-22</time></div>
-                    <a href="/2021/03/22/Machinelearning/TheMasterAlgorithm/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TheMasterAlgorithm</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Machinelearning/">Machinelearning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1703,7 +1734,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1713,7 +1744,7 @@
                     <span class="level-item">July 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2053,10 +2084,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
