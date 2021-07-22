@@ -10,19 +10,19 @@
 <title>bash - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言 bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍 shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bas">
+    <meta name="description" content="前言bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Lin">
 <meta name="keywords" content="bash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bash">
 <meta property="og:url" content="https://genening.github.io/2019/12/17/Linux/bash/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言 bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍 shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bas">
+<meta property="og:description" content="前言bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Lin">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-12-17T08:39:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bash">
-<meta name="twitter:description" content="前言 bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍 shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bas">
+<meta name="twitter:description" content="前言bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。 1. Shell介绍shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Lin">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,21 +158,38 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
-<h2 id="shell介绍">1. Shell介绍</h2>
-<p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。 <a id="more"></a></p>
-<h2 id="bash特点">2. bash特点</h2>
-<ol type="1">
-<li><p>history命令<br> history命令会列出记录的所有bash命令!number：执行.bash_history文件中第n条命令!!：执行上一条命令!command：执行以command开头的最近的一条命令<br><br> <strong>bash下组合按键</strong><br> ctrl+C：终止目前的命令<br> ctrl+D：输入结束（EOF)<br> ctrl+Z：暂停目前的命令</p></li>
-<li><p>通配符<br> *：代表0到无穷多个任意字符<br> ?：代表一定有一个任意字符<br> []: 代表一定有一个在中括号内的字符（非任意字符），例如[abcd]，代表一定有一个字符，可能是a,b,c,d这四个中任意一个<br> [-]：若有减号在中括号内，代表在编码顺序内的所有顺序，例如[0-9]代表0到9之间的所有数字<br> [<sup>]：若中括号内的第一个字符为指数符号</sup>，那表示原向选择，例如[ ^abc]代表一定有一个字符，只要是非a,b,c的其他字符就接受的意思<br></p></li>
-<li><p>bash其他符号<br> #：注释符号，后面内容不执行<br> ：转移符号<br> |：管道符号，分隔两个管道命令的界定<br> ～：用户的主文件夹<br> ;：连续命令执行分隔符<br> <span class="math inline">\(：变量前导符&lt;br&gt; &amp;：作业控制，将命令变成背景下工作&lt;br&gt; ！：逻辑运算符非&lt;br&gt; /：目录符号&lt;br&gt; ** &gt;,&gt;&gt; **：数据流重定向，分别是“替换”和“累加”,1&gt;表示输出正确信息，2&gt;表示输出错误信息，同时输出则为2&gt;&amp;1&lt;br&gt; \&lt;,&lt;&lt;：数据流重定向，输入导向&lt;br&gt; “：两个反单引号中间为先执行命令，也可使用\)</span>()<br></p></li>
-<li><p>数据管理命令<br> cut：对于比较规整的信息，cut可以截取每一行特定部分的字符<br> grep：对输出结果进行查询筛选<br> sort：对输入内容进行排序<br> uniq：对输入去重的操作<br> wc：对输入进行统计计数<br> tee：同时将数据屏幕输出和保存到文件<br> xargs：将输入通过空格符或者断行符分开作为参数<br> -的用途：有些命令需要用到文件名作为参数，可以用-代指srdout和stdin输出的文件名<br> awk: 编辑文档，方便列操作<br> paste: 合并文档，可以用'-d'指定分隔符<br> cat: 查看文档，也可以重定向成合并文档<br></p></li>
-<li><p>正则表达式<br> <strong>字符集</strong><br> [:alnum:]：代表英文大小写字符及数字，即0-9,A-Z，a-z<br> [:alpha:]：代表任何英文大小写字符，即A-Z,a-z<br> [:blank:]：代表空格键与[Tab]按键<br> [:cntrl:]：代表键盘上面的控制按键，即包括CR，LF，Tab，Del等<br> [:digit:]：代表数字字符，即0-9<br> [:graph:]：除了空格符（空格键与[Tab]按键）外的其他所有按键<br> [:lower:]：代表小写字符，即a-z<br> [:print:]：代表任何可以被打印出来的字符<br> [:punct:]：代表标点符号<br> [:upper:]：代表大写字符，即A-Z<br> [:space:]：任何会产生空白的字符，包括空格键[Tab]CR等<br> [:xdigit:]：代表十六进制的数字类型，因此包括0-9,A-F,a-f等<br><br> <strong>基础字符表达式与应用</strong><br> .：代表一定有一个任意字符<br> *：代表重复前一个0到无穷次<br> ^word：待查找的字符串在行首<br> word<span class="math inline">\(：待查找的字符串在行尾&lt;br&gt; [list]：从字符集合的RE字符里面找出想要选取的字符&lt;br&gt; [^list]：从字符集合的RE字符里面中找出不要的字符串或范围&lt;br&gt; [n1-n2]：从字符集合的RE字符里面找出想要选取的字符范围&lt;br&gt; [^\)</span>]：指定空白行<br> {n1,n2}：连续n到m个的前一个RE字符，若为{n}则是连续n个的前一个RE字符，若为{n,}则是连续n个以上的前一个RE字符<br> <br><strong>扩展的正则表达式</strong><br> +：重复一个或者一个以上的前一个RE字符<br> ?：零个或者一个的前一个RE字符<br> |：用或（or）的方法找出数个字符串<br> ()：找出”组“字符串<br> ()+：多个重复组的判别<br></p></li>
-<li><p>文本工具</p></li>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>bash是Linux中默认的shell，通过bash及bash提供的工具我们可以很高效的使用Linux完成我们的工作，接下来让我们来学习学习bash。</p>
+<h2 id="1-Shell介绍"><a href="#1-Shell介绍" class="headerlink" title="1. Shell介绍"></a>1. Shell介绍</h2><p>shell是一个程序，可以实现外部与内核的通信功能，通过shell我们可以控制内核完成一些复杂的工作，从而完成我们的任务。Linux中常见的shell有bash/bsh/ash/tsh/zsh/ksh等，其中bash是Linux中默认的shell，这些shell本质上差异不大，只是一些语法的实现上有些区别。因为bash是Linux默认的shell，而且bash确实功能强大，使用也方便，所以接下来我们主要来学习bash，不过shell也和编程类似，可以触类旁通。</p>
+<a id="more"></a>
+
+<h2 id="2-bash特点"><a href="#2-bash特点" class="headerlink" title="2. bash特点"></a>2. bash特点</h2><ol>
+<li>history命令<br><br>history命令会列出记录的所有bash命令!number：执行.bash_history文件中第n条命令!!：执行上一条命令!command：执行以command开头的最近的一条命令<br><br></li>
+</ol>
+<p><strong>bash下组合按键</strong><br><br>ctrl+C：终止目前的命令<br><br>ctrl+D：输入结束（EOF)<br><br>ctrl+Z：暂停目前的命令</p>
+<ol start="2">
+<li>通配符<br></li>
+</ol>
+<p>*：代表0到无穷多个任意字符<br><br>?：代表一定有一个任意字符<br><br>[]: 代表一定有一个在中括号内的字符（非任意字符），例如[abcd]，代表一定有一个字符，可能是a,b,c,d这四个中任意一个<br><br>[-]：若有减号在中括号内，代表在编码顺序内的所有顺序，例如[0-9]代表0到9之间的所有数字<br><br>[^]：若中括号内的第一个字符为指数符号^，那表示原向选择，例如[ ^abc]代表一定有一个字符，只要是非a,b,c的其他字符就接受的意思<br></p>
+<ol start="3">
+<li>bash其他符号<br><br>#：注释符号，后面内容不执行<br><br>\：转移符号<br><br>|：管道符号，分隔两个管道命令的界定<br><br>～：用户的主文件夹<br><br>;：连续命令执行分隔符<br><br>$：变量前导符<br><br>&amp;：作业控制，将命令变成背景下工作<br><br>！：逻辑运算符非<br><br>/：目录符号<br></li>
+</ol>
+<p>** &gt;,&gt;&gt; **：数据流重定向，分别是“替换”和“累加”,1&gt;表示输出正确信息，2&gt;表示输出错误信息，同时输出则为2&gt;&amp;1<br><br>&lt;,&lt;&lt;：数据流重定向，输入导向<br><br>“：两个反单引号中间为先执行命令，也可使用$()<br></p>
+<ol start="4">
+<li>数据管理命令<br><br>cut：对于比较规整的信息，cut可以截取每一行特定部分的字符<br><br>grep：对输出结果进行查询筛选<br><br>sort：对输入内容进行排序<br><br>uniq：对输入去重的操作<br><br>wc：对输入进行统计计数<br><br>tee：同时将数据屏幕输出和保存到文件<br><br>xargs：将输入通过空格符或者断行符分开作为参数<br></li>
+</ol>
+<p>-的用途：有些命令需要用到文件名作为参数，可以用-代指srdout和stdin输出的文件名<br><br>awk: 编辑文档，方便列操作<br><br>paste: 合并文档，可以用’-d’指定分隔符<br><br>cat: 查看文档，也可以重定向成合并文档<br></p>
+<ol start="5">
+<li>正则表达式<br></li>
+</ol>
+<p><strong>字符集</strong><br><br>[:alnum:]：代表英文大小写字符及数字，即0-9,A-Z，a-z<br><br>[:alpha:]：代表任何英文大小写字符，即A-Z,a-z<br><br>[:blank:]：代表空格键与[Tab]按键<br><br>[:cntrl:]：代表键盘上面的控制按键，即包括CR，LF，Tab，Del等<br><br>[:digit:]：代表数字字符，即0-9<br><br>[:graph:]：除了空格符（空格键与[Tab]按键）外的其他所有按键<br><br>[:lower:]：代表小写字符，即a-z<br><br>[:print:]：代表任何可以被打印出来的字符<br><br>[:punct:]：代表标点符号<br><br>[:upper:]：代表大写字符，即A-Z<br><br>[:space:]：任何会产生空白的字符，包括空格键[Tab]CR等<br><br>[:xdigit:]：代表十六进制的数字类型，因此包括0-9,A-F,a-f等<br><br><br><strong>基础字符表达式与应用</strong><br><br>.：代表一定有一个任意字符<br><br><em>：代表重复前一个0到无穷次<br><br>^word：待查找的字符串在行首<br><br>word$：待查找的字符串在行尾<br><br>[list]：从字符集合的RE字符里面找出想要选取的字符<br><br>[^list]：从字符集合的RE字符里面中找出不要的字符串或范围<br><br>[n1-n2]：从字符集合的RE字符里面找出想要选取的字符范围<br><br>[^$]：指定空白行<br><br>{n1,n2}：连续n到m个的前一个RE字符，若为{n}则是连续n个的前一个RE字符，若为{n,}则是连续n个以上的前一个RE字符<br><br><br>*</em>扩展的正则表达式**<br><br>+：重复一个或者一个以上的前一个RE字符<br><br>?：零个或者一个的前一个RE字符<br><br>|：用或（or）的方法找出数个字符串<br><br>()：找出”组“字符串<br><br>()+：多个重复组的判别<br></p>
+<ol start="6">
+<li>文本工具</li>
 </ol>
 <ul>
-<li>sed命令 作用：sed本身是一个管道命令，可以分析stdin，还可以将数据进行替换、删除、新增、选取特定行的功能 &gt;语法：sed [n1] [n2] function;function选项如下所示</li>
+<li>sed命令<br>作用：sed本身是一个管道命令，可以分析stdin，还可以将数据进行替换、删除、新增、选取特定行的功能<blockquote>
+<p>语法：sed [n1] [n2] function;function选项如下所示</p>
+</blockquote>
+</li>
 <li>a:新增，a后面可以接字符串，而这些字符串会在新的一行中出现</li>
 <li>c：替换，c的后面可以接字符串，这些字符串可以替换n1,n2之间的行</li>
 <li>d：删除，因为是删除，所以d后面通常不接任何参数</li>
@@ -180,16 +197,21 @@
 <li>p：打印，也就是将某一个选择的数据打印出来，通常p会与sed -n一起运行</li>
 <li>s：替换，可以直接进行替换的工作，通常这个s的动作可以搭配正则表达式，例如1,20s/word1/word2/g,即将1到20行中word1替换成word2</li>
 </ul>
-<ol start="7" type="1">
+<ol start="7">
 <li>文件比较工具</li>
 </ol>
 <ul>
 <li>diff [-bBi] from-file to-file：比较from-file和to-file的差别，注意不要用diff命令去比较不相干的文件，这样没有比较的结果</li>
 <li>cmp [-s] file1 file2：比较file1和file2，返回第一个发现的不同点字节处和行数</li>
 </ul>
-<h2 id="bash理解">3. bash理解</h2>
-<p>在翻看了许多资料之后，对于bash的理解又有了新的进步。bash是一个默认的shell，当我们进入Linux系统是，Linux就会给每一个账户分配一个shell，因此，当我们开始进入了以后，就是已经开始在使用bash了，原本我以为是只在调用bash的时候才使用，没想到bash一直都是我工作的环境，正是在这个环境下，我们能够方便的使用上下键查看历史命令、使用tab键补全路径、还有直接使用grep、awk、sed等这些工具进行工作等等，还有数据重定向、命令管道符等等，非常的方便，bash果然是非常实用、好用。</p>
-<p>如果需要切换shell的话，也是可以的，可以有如下操作： 1. 方法一: chsh -s /bin/ksh 2. 方法二: usermod -s /bin/ksh root 3. 查看当前shell：echo $SHELL或者egrep 'root' /etc/passwd 4. 查看所有shell：cat /etc/shells或者chsh -l</p>
+<h2 id="3-bash理解"><a href="#3-bash理解" class="headerlink" title="3. bash理解"></a>3. bash理解</h2><p>在翻看了许多资料之后，对于bash的理解又有了新的进步。bash是一个默认的shell，当我们进入Linux系统是，Linux就会给每一个账户分配一个shell，因此，当我们开始进入了以后，就是已经开始在使用bash了，原本我以为是只在调用bash的时候才使用，没想到bash一直都是我工作的环境，正是在这个环境下，我们能够方便的使用上下键查看历史命令、使用tab键补全路径、还有直接使用grep、awk、sed等这些工具进行工作等等，还有数据重定向、命令管道符等等，非常的方便，bash果然是非常实用、好用。</p>
+<p>如果需要切换shell的话，也是可以的，可以有如下操作：</p>
+<ol>
+<li>方法一: chsh -s /bin/ksh</li>
+<li>方法二: usermod -s /bin/ksh root</li>
+<li>查看当前shell：echo $SHELL或者egrep ‘root’ /etc/passwd</li>
+<li>查看所有shell：cat /etc/shells或者chsh -l</li>
+</ol>
 
         </div>
         
@@ -273,7 +295,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         69
@@ -283,7 +305,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -293,7 +315,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         54
@@ -303,7 +325,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -360,7 +382,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -461,7 +483,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -472,7 +494,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -866,7 +888,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -972,7 +994,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1161,7 +1183,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1267,7 +1289,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1617,10 +1639,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
