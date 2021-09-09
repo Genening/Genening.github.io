@@ -10,19 +10,19 @@
 <title>numpy - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="1. 前言 Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表">
+    <meta name="description" content="1. 前言Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模">
 <meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="numpy">
 <meta property="og:url" content="https://genening.github.io/2020/04/20/Python/numpy/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="1. 前言 Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表">
+<meta property="og:description" content="1. 前言Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-04-20T07:33:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="numpy">
-<meta name="twitter:description" content="1. 前言 Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表">
+<meta name="twitter:description" content="1. 前言Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,97 +158,98 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">1. 前言</h2>
-<p>Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模具，而整理好相应格式的数据就是原料，numpy和pandas就是整理数据的工具。接下来让我们开始学习这两个package吧。在这一篇博客中我们先学习numpy。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>Numpy和pandas是python当中两个非常重要的库，用于配合科学运算和矩阵处理。程序是算法与数据的结合，二者缺一不可，而numpy和pandas就是python中用于处理数据的利器，因此学习这两个package的使用非常重要。在使用matplotlib和seaborn进行数据可视化的时候，就会发现，所有作图的关键在于数据格式的把控，这两个package所提供的API就像是图表的模具，而整理好相应格式的数据就是原料，numpy和pandas就是整理数据的工具。接下来让我们开始学习这两个package吧。在这一篇博客中我们先学习numpy。</p>
 <blockquote>
-<p><img src="/2020/04/20/Python/numpy/python_packages.png" alt="python-packages"> <em>这是一幅python_package的总览图，由此我们可以大概了解，有哪些很值得我们学习的package。</em> <a id="more"></a> ## 2. Numpy学习 1. 理解 Numpy是一个科学运算包，里面包含了最重要的的内容就是一个ndarray（N dimension array）模型，即n维数组模型，如果学习过线性代数的数值运算，我们就会知道矩阵运算对于计算机而言有多重要，那我们就会知道ndarray模型对于python来说有多重要，可以说，正是因为这个模型，python才被赋予了科学运算的能力。除了ndarray模型的属性及其相关方法，在numpy包里面还包括了大量的数学函数、统计函数、字符串函数、随机函数等这些可以表达数学语言的内容，为我们构建复杂的数学算法奠定了基础，其中很多函数对于我们进行科学运算尤为重要。接下来我们先学习第一部分内容，ndarray的属性及其方法。 <img src="/2020/04/20/Python/numpy/numpy.png" alt="numpy"></p>
+<p><img src="/2020/04/20/Python/numpy/python_packages.png" alt="python-packages"><br><em>这是一幅python_package的总览图，由此我们可以大概了解，有哪些很值得我们学习的package。</em></p>
 </blockquote>
-<ol start="2" type="1">
-<li><p>ndarray的属性 <img src="/2020/04/20/Python/numpy/ndarray_attribution.png" alt="ndarray_attribution"> <figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">In</span> [1]: import numpy as np</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [2]: a = np.arange(15)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [3]: a</span><br><span class="line">Out[3]: array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [4]: <span class="hljs-builtin-name">print</span>(a.shape)</span><br><span class="line">(15,)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [5]: <span class="hljs-builtin-name">print</span>(a.ndim)</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [6]: b = a.reshape(3, 5)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [8]: <span class="hljs-builtin-name">print</span>(b.ndim)</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [9]: <span class="hljs-builtin-name">print</span>(b)</span><br><span class="line">[[ 0  1  2  3  4]</span><br><span class="line"> [ 5  6  7  8  9]</span><br><span class="line"> [10 11 12 13 14]]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [10]: <span class="hljs-builtin-name">print</span>(a.flags)</span><br><span class="line">  C_CONTIGUOUS : <span class="hljs-literal">True</span></span><br><span class="line">  F_CONTIGUOUS : <span class="hljs-literal">True</span></span><br><span class="line">  OWNDATA : <span class="hljs-literal">True</span></span><br><span class="line">  WRITEABLE : <span class="hljs-literal">True</span></span><br><span class="line">  ALIGNED : <span class="hljs-literal">True</span></span><br><span class="line">  WRITEBACKIFCOPY : <span class="hljs-literal">False</span></span><br><span class="line">  UPDATEIFCOPY : <span class="hljs-literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [11]: <span class="hljs-builtin-name">print</span>(a.itemsize)</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [12]: y = np.array(a, <span class="hljs-attribute">dtype</span>=np.float64)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [13]: <span class="hljs-builtin-name">print</span>(y.itemsize)</span><br><span class="line">8</span><br></pre></td></tr></table></figure></p></li>
-<li><p>ndarray操作方法</p></li>
+<a id="more"></a>
+<h2 id="2-Numpy学习"><a href="#2-Numpy学习" class="headerlink" title="2. Numpy学习"></a>2. Numpy学习</h2><ol>
+<li><p>理解<br>Numpy是一个科学运算包，里面包含了最重要的的内容就是一个ndarray（N dimension array）模型，即n维数组模型，如果学习过线性代数的数值运算，我们就会知道矩阵运算对于计算机而言有多重要，那我们就会知道ndarray模型对于python来说有多重要，可以说，正是因为这个模型，python才被赋予了科学运算的能力。除了ndarray模型的属性及其相关方法，在numpy包里面还包括了大量的数学函数、统计函数、字符串函数、随机函数等这些可以表达数学语言的内容，为我们构建复杂的数学算法奠定了基础，其中很多函数对于我们进行科学运算尤为重要。接下来我们先学习第一部分内容，ndarray的属性及其方法。</p>
+<blockquote>
+<p><img src="/2020/04/20/Python/numpy/numpy.png" alt="numpy"></p>
+</blockquote>
+</li>
+<li><p>ndarray的属性<br><img src="/2020/04/20/Python/numpy/ndarray_attribution.png" alt="ndarray_attribution"></p>
+<figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">In</span> [1]: import numpy as np</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [2]: a = np.arange(15)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [3]: a</span><br><span class="line">Out[3]: array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [4]: <span class="hljs-builtin-name">print</span>(a.shape)</span><br><span class="line">(15,)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [5]: <span class="hljs-builtin-name">print</span>(a.ndim)</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [6]: b = a.reshape(3, 5)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [8]: <span class="hljs-builtin-name">print</span>(b.ndim)</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [9]: <span class="hljs-builtin-name">print</span>(b)</span><br><span class="line">[[ 0  1  2  3  4]</span><br><span class="line"> [ 5  6  7  8  9]</span><br><span class="line"> [10 11 12 13 14]]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [10]: <span class="hljs-builtin-name">print</span>(a.flags)</span><br><span class="line">  C_CONTIGUOUS : <span class="hljs-literal">True</span></span><br><span class="line">  F_CONTIGUOUS : <span class="hljs-literal">True</span></span><br><span class="line">  OWNDATA : <span class="hljs-literal">True</span></span><br><span class="line">  WRITEABLE : <span class="hljs-literal">True</span></span><br><span class="line">  ALIGNED : <span class="hljs-literal">True</span></span><br><span class="line">  WRITEBACKIFCOPY : <span class="hljs-literal">False</span></span><br><span class="line">  UPDATEIFCOPY : <span class="hljs-literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [11]: <span class="hljs-builtin-name">print</span>(a.itemsize)</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [12]: y = np.array(a, <span class="hljs-attribute">dtype</span>=np.float64)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">In</span> [13]: <span class="hljs-builtin-name">print</span>(y.itemsize)</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ndarray操作方法</p>
+</li>
 </ol>
 <ul>
-<li>创建数组 &gt;创建有5种方式，其中包括0矩阵，单位矩阵，内容随机矩阵以及自定义的矩阵，还有arange方法，可以便捷的创建一维矩阵。 <figure class="highlight inform7 hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">In <span class="hljs-comment">[14]</span>: x = np.empty(<span class="hljs-comment">[3,2]</span>, dtype=int)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[15]</span>: x</span><br><span class="line">Out<span class="hljs-comment">[15]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[ 2063158980,       32765]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[ -536194544,         632]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[          0, -2147483648]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[16]</span>: y = np.zeros(<span class="hljs-comment">[3,2]</span>, dtype=float)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[17]</span>: y</span><br><span class="line">Out<span class="hljs-comment">[17]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[0., 0.]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[0., 0.]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[0., 0.]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[18]</span>: z = np.ones(<span class="hljs-comment">[3,2]</span>, dtype=int)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[19]</span>: z</span><br><span class="line">Out<span class="hljs-comment">[19]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[1, 1]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[1, 1]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[1, 1]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[23]</span>: m = np.arange(15)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[24]</span>: m</span><br><span class="line">Out<span class="hljs-comment">[24]</span>: array(<span class="hljs-comment">[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[25]</span>: a = np.array(<span class="hljs-comment">[1,2,3,4,5,6]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[26]</span>: a</span><br><span class="line">Out<span class="hljs-comment">[26]</span>: array(<span class="hljs-comment">[1, 2, 3, 4, 5, 6]</span>)</span><br></pre></td></tr></table></figure></li>
+<li>创建数组<blockquote>
+<p>创建有5种方式，其中包括0矩阵，单位矩阵，内容随机矩阵以及自定义的矩阵，还有arange方法，可以便捷的创建一维矩阵。</p>
+</blockquote>
+<figure class="highlight inform7 hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">In <span class="hljs-comment">[14]</span>: x = np.empty(<span class="hljs-comment">[3,2]</span>, dtype=int)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[15]</span>: x</span><br><span class="line">Out<span class="hljs-comment">[15]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[ 2063158980,       32765]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[ -536194544,         632]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[          0, -2147483648]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[16]</span>: y = np.zeros(<span class="hljs-comment">[3,2]</span>, dtype=float)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[17]</span>: y</span><br><span class="line">Out<span class="hljs-comment">[17]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[0., 0.]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[0., 0.]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[0., 0.]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[18]</span>: z = np.ones(<span class="hljs-comment">[3,2]</span>, dtype=int)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[19]</span>: z</span><br><span class="line">Out<span class="hljs-comment">[19]</span>:</span><br><span class="line">array(<span class="hljs-comment">[<span class="hljs-comment">[1, 1]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[1, 1]</span>,</span></span><br><span class="line"><span class="hljs-comment">       <span class="hljs-comment">[1, 1]</span>]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[23]</span>: m = np.arange(15)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[24]</span>: m</span><br><span class="line">Out<span class="hljs-comment">[24]</span>: array(<span class="hljs-comment">[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[25]</span>: a = np.array(<span class="hljs-comment">[1,2,3,4,5,6]</span>)</span><br><span class="line"></span><br><span class="line">In <span class="hljs-comment">[26]</span>: a</span><br><span class="line">Out<span class="hljs-comment">[26]</span>: array(<span class="hljs-comment">[1, 2, 3, 4, 5, 6]</span>)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="4" type="1">
+<ol start="4">
 <li>np常用数学函数</li>
 </ol>
-<figure>
-<img src="/2020/04/20/Python/numpy/np_func.png" alt="np_func"><figcaption aria-hidden="true">np_func</figcaption>
-</figure>
-<ol start="5" type="1">
+<p><img src="/2020/04/20/Python/numpy/np_func.png" alt="np_func"></p>
+<ol start="5">
 <li>np线性代数运算</li>
 </ol>
-<figure>
-<img src="/2020/04/20/Python/numpy/liner_algebra.png" alt="liner_algebra"><figcaption aria-hidden="true">liner_algebra</figcaption>
-</figure>
-<ol start="6" type="1">
+<p><img src="/2020/04/20/Python/numpy/liner_algebra.png" alt="liner_algebra"></p>
+<ol start="6">
 <li>np random函数</li>
 </ol>
 <table>
-<colgroup>
-<col style="width: 37%">
-<col style="width: 31%">
-<col style="width: 31%">
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: center;">function</th>
-<th style="text-align: left;">introduction</th>
-<th style="text-align: left;">理解</th>
+<tr>
+<th align="center">function</th>
+<th align="left">introduction</th>
+<th align="left">理解</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">randn(d1, d2)</td>
-<td style="text-align: left;">返回一个符合标准正太分布的随机数据，array对象</td>
-<td style="text-align: left;">重点在于符合标准正太分布</td>
+<tbody><tr>
+<td align="center">randn(d1, d2)</td>
+<td align="left">返回一个符合标准正太分布的随机数据，array对象</td>
+<td align="left">重点在于符合标准正太分布</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">randint(low, high, size)</td>
-<td style="text-align: left;">返回size个[low, high)范围内的随机整数，array对象</td>
-<td style="text-align: left;">生成整数时使用，与random_integers相似</td>
+<tr>
+<td align="center">randint(low, high, size)</td>
+<td align="left">返回size个[low, high)范围内的随机整数，array对象</td>
+<td align="left">生成整数时使用，与random_integers相似</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">random_integers(low, high, size)</td>
-<td style="text-align: left;">返回size个在[low, high]闭区间内的随机整数，array对象</td>
-<td style="text-align: left;">生成整数，但是不建议使用这个方法，直接使用randint即可</td>
+<tr>
+<td align="center">random_integers(low, high, size)</td>
+<td align="left">返回size个在[low, high]闭区间内的随机整数，array对象</td>
+<td align="left">生成整数，但是不建议使用这个方法，直接使用randint即可</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">rand(d1, d2)</td>
-<td style="text-align: left;">返回[0.0,1.0)范围内的随机数，array对象</td>
-<td style="text-align: left;">产生大于等于0并小于1的随机浮点数</td>
+<tr>
+<td align="center">rand(d1, d2)</td>
+<td align="left">返回[0.0,1.0)范围内的随机数，array对象</td>
+<td align="left">产生大于等于0并小于1的随机浮点数</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">random_sample([size])</td>
-<td style="text-align: left;">返回size个在[0.0, 1.0)之间的随机浮点数，array对象</td>
-<td style="text-align: left;">产生大于等于0并小于1的随机浮点数</td>
+<tr>
+<td align="center">random_sample([size])</td>
+<td align="left">返回size个在[0.0, 1.0)之间的随机浮点数，array对象</td>
+<td align="left">产生大于等于0并小于1的随机浮点数</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">random([size])</td>
-<td style="text-align: left;">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
-<td style="text-align: left;">产生大于等于0并小于1的随机浮点数</td>
+<tr>
+<td align="center">random([size])</td>
+<td align="left">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
+<td align="left">产生大于等于0并小于1的随机浮点数</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ranf(size)</td>
-<td style="text-align: left;">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
-<td style="text-align: left;">产生大于等于0并小于1的随机浮点数</td>
+<tr>
+<td align="center">ranf(size)</td>
+<td align="left">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
+<td align="left">产生大于等于0并小于1的随机浮点数</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">sample(size)</td>
-<td style="text-align: left;">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
-<td style="text-align: left;">产生大于等于0并小于1的随机浮点数</td>
+<tr>
+<td align="center">sample(size)</td>
+<td align="left">返回size个[0.0, 1.0)范围内的随机浮点数，array对象</td>
+<td align="left">产生大于等于0并小于1的随机浮点数</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">seed([seed])</td>
-<td style="text-align: left;">在生成随机数的算法中设定初始值，保证每次random函数生成同一批随机数</td>
-<td style="text-align: left;">设定随机数种子，每批随机数一样，在生成数据样本时用得上</td>
+<tr>
+<td align="center">seed([seed])</td>
+<td align="left">在生成随机数的算法中设定初始值，保证每次random函数生成同一批随机数</td>
+<td align="left">设定随机数种子，每批随机数一样，在生成数据样本时用得上</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight lua hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="hljs-number">119</span>]: np.<span class="hljs-built_in">random</span>.rand(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)</span><br><span class="line">Out[<span class="hljs-number">119</span>]:</span><br><span class="line">array(<span class="hljs-string">[[0.05794981, 0.25660757, 0.51033178],</span></span><br><span class="line"><span class="hljs-string">       [0.99525878, 0.14651568, 0.44951478]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">120</span>]: np.<span class="hljs-built_in">random</span>.<span class="hljs-built_in">random</span>(size=(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">Out[<span class="hljs-number">120</span>]:</span><br><span class="line">array(<span class="hljs-string">[[0.60144038, 0.09727249, 0.28873488],</span></span><br><span class="line"><span class="hljs-string">       [0.7207999 , 0.55080606, 0.83857702]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">121</span>]: np.<span class="hljs-built_in">random</span>.ranf((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">Out[<span class="hljs-number">121</span>]:</span><br><span class="line">array(<span class="hljs-string">[[0.58033135, 0.18457174, 0.61550212],</span></span><br><span class="line"><span class="hljs-string">       [0.88695509, 0.51678928, 0.62614367]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">122</span>]: np.<span class="hljs-built_in">random</span>.sample((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">Out[<span class="hljs-number">122</span>]:</span><br><span class="line">array(<span class="hljs-string">[[0.50505912, 0.90966258, 0.41330466],</span></span><br><span class="line"><span class="hljs-string">       [0.53546872, 0.34264313, 0.12957678]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">123</span>]: np.<span class="hljs-built_in">random</span>.random_sample((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">Out[<span class="hljs-number">123</span>]:</span><br><span class="line">array(<span class="hljs-string">[[0.66282175, 0.93567   , 0.61272918],</span></span><br><span class="line"><span class="hljs-string">       [0.8427385 , 0.21790844, 0.90317174]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">124</span>]: np.<span class="hljs-built_in">random</span>.randn(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)</span><br><span class="line">Out[<span class="hljs-number">124</span>]:</span><br><span class="line">array(<span class="hljs-string">[[ 0.16390425,  0.82951248,  0.75529996],</span></span><br><span class="line"><span class="hljs-string">       [ 0.87948569, -0.2399563 , -0.69505665]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">125</span>]: np.<span class="hljs-built_in">random</span>.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,size=(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">Out[<span class="hljs-number">125</span>]:</span><br><span class="line">array(<span class="hljs-string">[[3, 4, 5],</span></span><br><span class="line"><span class="hljs-string">       [7, 5, 3]]</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="hljs-number">126</span>]: np.<span class="hljs-built_in">random</span>.random_integers(<span class="hljs-number">1</span>,<span class="hljs-number">9</span>,size=(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))</span><br><span class="line">C:\Users\<span class="hljs-number">13560</span>\Anaconda\Scripts\ipython:<span class="hljs-number">1</span>: DeprecationWarning: This <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">is</span> <span class="hljs-title">deprecated</span>. <span class="hljs-title">Please</span> <span class="hljs-title">call</span> <span class="hljs-title">randint</span><span class="hljs-params">(1, 9 + 1)</span></span> instead</span><br><span class="line">Out[<span class="hljs-number">126</span>]:</span><br><span class="line">array(<span class="hljs-string">[[7, 9, 9],</span></span><br><span class="line"><span class="hljs-string">       [5, 5, 8]]</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="总结">总结</h2>
 
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -331,7 +332,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artigos
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         73
@@ -341,7 +342,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -361,7 +362,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -418,7 +419,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -519,7 +520,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuvem de tags
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -952,7 +953,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recentes
+            Recent
         </h3>
         
         <article class="media">
@@ -1058,7 +1059,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arquivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1258,7 +1259,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recentes
+            Recent
         </h3>
         
         <article class="media">
@@ -1364,7 +1365,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arquivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1713,7 +1714,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Digite alguma coisa..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1725,9 +1726,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artigos',
-                PAGES: 'Paginas',
-                CATEGORIES: 'Categorias',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

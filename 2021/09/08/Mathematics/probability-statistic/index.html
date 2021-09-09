@@ -10,19 +10,19 @@
 <title>probability&amp;statistic - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言  先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。   interpretation">
+    <meta name="description" content="前言 先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。">
 <meta name="keywords" content="new_interpretation_of_P&amp;S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="probability&amp;statistic">
 <meta property="og:url" content="https://genening.github.io/2021/09/08/Mathematics/probability-statistic/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言  先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。   interpretation">
+<meta property="og:description" content="前言 先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2021-09-08T03:25:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="probability&amp;statistic">
-<meta name="twitter:description" content="前言  先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。   interpretation">
+<meta name="twitter:description" content="前言 先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,53 +158,44 @@
             
         </h1>
         <div class="content">
-            <h3 id="前言">前言</h3>
-<blockquote>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
 <p>先看幅图（如下），最近重新读了读概率论与统计学的一些知识点，结合一些应用场景，有了一些新的理解，因此便来随便聊聊。</p>
 </blockquote>
-<figure>
-<img src="/2021/09/08/Mathematics/probability-statistic/interpretation.jpg" alt="interpretation"><figcaption aria-hidden="true">interpretation</figcaption>
-</figure>
+<p><img src="/2021/09/08/Mathematics/probability-statistic/interpretation.jpg" alt="interpretation"></p>
 <a id="more"></a>
-<h3 id="随便聊聊">1. 随便聊聊</h3>
-<p>概率统计知识应该学了有几年了，这几年反反复复学，学了忘，忘了学。在没有实际的应用场景时，知识就像是屠龙术，毫无用武之地，一段时间后也就忘了。真正透彻理解知识的方法应该就是应用知识。最近在看生信转录组分析中的基因富集分析，其中，富集的原理就是超几何分布。在进行富集分析之前，我们有总体所有样品的注释数量（以GO注释为例），具体某一个GO term的总体注释数量，以及在一个差异分析组中注释到这个GO term的数量，那么怎么得知，在这个总体注释背景下，这个差异组中的注释量是否显著呢？如果不用统计学的方法进行分析，很难有一个严谨的特征值用来表示是否显著，比如差异组中表达次数占背景基因中的5%为显著，那么为什么4.999%就不算显著了吗？理论依据是什么呢？因此，为了让我们的特征值具有科学解释性，引入统计量就是理所当然的了。我们现在需要了解，在从总体的注释基因中抽取n个基因，其中抽取到这个GO term（共m个）的基因中有该差异组的基因（共a个）的概率有多大，此时的事件模型就和超几何分布一致了，因此我们可以用超几何分布的模型进行统计量概率统计，从而判断该差异组中表达基因是否显著。</p>
+<h3 id="1-随便聊聊"><a href="#1-随便聊聊" class="headerlink" title="1. 随便聊聊"></a>1. 随便聊聊</h3><p>概率统计知识应该学了有几年了，这几年反反复复学，学了忘，忘了学。在没有实际的应用场景时，知识就像是屠龙术，毫无用武之地，一段时间后也就忘了。真正透彻理解知识的方法应该就是应用知识。最近在看生信转录组分析中的基因富集分析，其中，富集的原理就是超几何分布。在进行富集分析之前，我们有总体所有样品的注释数量（以GO注释为例），具体某一个GO term的总体注释数量，以及在一个差异分析组中注释到这个GO term的数量，那么怎么得知，在这个总体注释背景下，这个差异组中的注释量是否显著呢？如果不用统计学的方法进行分析，很难有一个严谨的特征值用来表示是否显著，比如差异组中表达次数占背景基因中的5%为显著，那么为什么4.999%就不算显著了吗？理论依据是什么呢？因此，为了让我们的特征值具有科学解释性，引入统计量就是理所当然的了。我们现在需要了解，在从总体的注释基因中抽取n个基因，其中抽取到这个GO term（共m个）的基因中有该差异组的基因（共a个）的概率有多大，此时的事件模型就和超几何分布一致了，因此我们可以用超几何分布的模型进行统计量概率统计，从而判断该差异组中表达基因是否显著。</p>
 <p>也就是说，我们之所以使用统计学的知识进行分析，就是为了能够避免主观的经验判断，而通过统计量的方式来研究对应的统计量变化，相当于从不可控经验迈向了相对稳定的统计学科。</p>
 <p>那么为什么要学习常见的分布呢？其实在概率论与统计学的发展过程中，这些分布模型是相继出现的，也就是一个个陆续发现的。以前的统计学家在研究时间/变量/统计量的分布规律时，发现有一些概率分布形状经常出现，于是乎统计学家们便研究这一类的形状到底有什么特别的，慢慢总结出了相对应的模型，也就是我们现在所接触到的常见分布。有了这些常见分布，在我们使用概率统计去解决问题的时候，我们可以通过判断当前事件符不符合某个常见分布的成立条件来选择使用常见分布，因为常见分布的规律我们已经研究得很透彻了，因此，灵活利用这些常见的分布，我们可以高效准确的解决我们面临的事件和问题。比如非常常见的离散分布：二项分布/负二项分布/几何分布/超几何分布/泊松分布和常见的连续分布：正态分布/t分布，这些分布都对应着各自的假设条件，符合这些条件的事件都可以使用这些分布来进行研究。</p>
 <p>在我们有了对应的分布模型的时候，我们好像忘了一个问题，我们使用这些分布模型研究问题的关注点是什么呢？实际上来说，我们使用统计学分析的关注点可以分为两点，第一点：了解这个分布的集中度，我们可以使用平均数/众数来表征；第二点：了解分布的离散度，可以使用方差/标准差/极差来表征。当然，有了分布模型，我们自然可以很方便的求取对应事件的发生概率。现在已经开发出来的分布模型数量很多，不过相对常见的也就几种，我们只需要掌握这些常见的分布，并且会用来解决问题即可。不过，万一某一天发现另外一个几乎全新的分布模型也不是不可能，只不过那就得另当别论了。至少，目前来说，我们并不需要去做这个工作。</p>
-<h3 id="常见分布">2. 常见分布</h3>
-<p>学习常见的额分布规律，可以帮助我们更快更好地解决实际问题。我们来瞧瞧这些分布。</p>
-<h4 id="泊松分布">2.1 泊松分布</h4>
-<p>Poisson分布，是一种统计与概率学里常见到的离散概率分布，由法国数学家西莫恩·德尼·泊松（Siméon-Denis Poisson）在1838年时发表。</p>
+<h3 id="2-常见分布"><a href="#2-常见分布" class="headerlink" title="2. 常见分布"></a>2. 常见分布</h3><p>学习常见的额分布规律，可以帮助我们更快更好地解决实际问题。我们来瞧瞧这些分布。</p>
+<h4 id="2-1-泊松分布"><a href="#2-1-泊松分布" class="headerlink" title="2.1 泊松分布"></a>2.1 泊松分布</h4><p>Poisson分布，是一种统计与概率学里常见到的离散概率分布，由法国数学家西莫恩·德尼·泊松（Siméon-Denis Poisson）在1838年时发表。</p>
 <ul>
-<li>应用场景 在实际事例中，当一个随机事件，例如某电话交换台收到的呼叫、来到某公共汽车站的乘客、某放射性物质发射出的粒子、显微镜下某区域中的白血球等等，以固定的平均瞬时速率λ（或称密度）随机且独立地出现时，那么这个事件在单位时间（面积或体积）内出现的次数或个数就近似地服从泊松分布P(λ)。因此,泊松分布在管理科学、运筹学以及自然科学的某些问题中都占有重要的地位。（在早期学界认为人类行为是服从泊松分布，2005年在nature上发表的文章揭示了人类行为具有高度非均匀性。）</li>
+<li>应用场景<br>在实际事例中，当一个随机事件，例如某电话交换台收到的呼叫、来到某公共汽车站的乘客、某放射性物质发射出的粒子、显微镜下某区域中的白血球等等，以固定的平均瞬时速率λ（或称密度）随机且独立地出现时，那么这个事件在单位时间（面积或体积）内出现的次数或个数就近似地服从泊松分布P(λ)。因此,泊松分布在管理科学、运筹学以及自然科学的某些问题中都占有重要的地位。（在早期学界认为人类行为是服从泊松分布，2005年在nature上发表的文章揭示了人类行为具有高度非均匀性。）</li>
 </ul>
-<h4 id="二项分布">2.2 二项分布</h4>
-<p>在n次独立重复的伯努利试验中，设每次试验中事件A发生的概率为p。用X表示n重伯努利试验中事件A发生的次数，则X的可能取值为0，1，…，n,且对每一个k（0≤k≤n）,事件{X=k}即为“n次试验中事件A恰好发生k次”，随机变量X的离散概率分布即为二项分布（Binomial Distribution）。</p>
+<h4 id="2-2-二项分布"><a href="#2-2-二项分布" class="headerlink" title="2.2 二项分布"></a>2.2 二项分布</h4><p>在n次独立重复的伯努利试验中，设每次试验中事件A发生的概率为p。用X表示n重伯努利试验中事件A发生的次数，则X的可能取值为0，1，…，n,且对每一个k（0≤k≤n）,事件{X=k}即为“n次试验中事件A恰好发生k次”，随机变量X的离散概率分布即为二项分布（Binomial Distribution）。</p>
 <ul>
-<li>应用场景 在生产实践过程中会有来自很多方面因素的影响，所有这些因素的综合作用导致过程动荡，从而体现出一些质量特性的不稳定性. 概率论与数理统计一些统计技术可以帮助我们了解和监控这些波动，帮助我们朝着有利于我们的方向发展。在生产实践中有一类现象，我们研究的对象只产生两种可能结果，他们的分布规律就是二项分布，二项分布应用很广泛。</li>
+<li>应用场景<br>在生产实践过程中会有来自很多方面因素的影响，所有这些因素的综合作用导致过程动荡，从而体现出一些质量特性的不稳定性. 概率论与数理统计一些统计技术可以帮助我们了解和监控这些波动，帮助我们朝着有利于我们的方向发展。在生产实践中有一类现象，我们研究的对象只产生两种可能结果，他们的分布规律就是二项分布，二项分布应用很广泛。</li>
 </ul>
-<h4 id="几何分布">2.3 几何分布</h4>
-<p>几何分布（Geometric distribution）是离散型概率分布。其中一种定义为：在n次伯努利试验中，试验k次才得到第一次成功的机率。详细地说，是：前k-1次皆失败，第k次成功的概率。</p>
+<h4 id="2-3-几何分布"><a href="#2-3-几何分布" class="headerlink" title="2.3 几何分布"></a>2.3 几何分布</h4><p>几何分布（Geometric distribution）是离散型概率分布。其中一种定义为：在n次伯努利试验中，试验k次才得到第一次成功的机率。详细地说，是：前k-1次皆失败，第k次成功的概率。</p>
 <p>在伯努利试验中，成功的概率为p，若ξ表示出现首次成功时的试验次数，则ξ是离散型随机变量，它只取正整数，且有P(ξ=k)=(1-p)^(k-1) * p，其中(k=1，2，…，0&lt;p&lt;1)，此时称随机变量ξ服从几何分布。它的期望为1/p，方差为(1-p)/(p^2)。</p>
 <ul>
-<li>应用场景 实际中有不少随机变量服从几何分布，譬如，某产品的不合格率为0.05，则首次查到不合格品的检查次数X ～ GE(0.05) ；比如，假设不停地掷骰子，直到得到1。投掷次数是随机分布的，取值范围是无穷集合{ 1, 2, 3, ... }，并且是一个p= 1/6的几何分布。</li>
+<li>应用场景<br>实际中有不少随机变量服从几何分布，譬如，某产品的不合格率为0.05，则首次查到不合格品的检查次数X ～ GE(0.05) ；比如，假设不停地掷骰子，直到得到1。投掷次数是随机分布的，取值范围是无穷集合{ 1, 2, 3, … }，并且是一个p= 1/6的几何分布。</li>
 </ul>
-<h4 id="正态分布">2.4 正态分布</h4>
-<p>正态分布（Normal distribution），也称“常态分布”，又名高斯分布（Gaussian distribution），最早由棣莫弗（Abraham de Moivre）在求二项分布的渐近公式中得到。C.F.高斯在研究测量误差时从另一个角度导出了它。P.S.拉普拉斯和高斯研究了它的性质。是一个在数学、物理及工程等领域都非常重要的概率分布，在统计学的许多方面有着重大的影响力。</p>
+<h4 id="2-4-正态分布"><a href="#2-4-正态分布" class="headerlink" title="2.4 正态分布"></a>2.4 正态分布</h4><p>正态分布（Normal distribution），也称“常态分布”，又名高斯分布（Gaussian distribution），最早由棣莫弗（Abraham de Moivre）在求二项分布的渐近公式中得到。C.F.高斯在研究测量误差时从另一个角度导出了它。P.S.拉普拉斯和高斯研究了它的性质。是一个在数学、物理及工程等领域都非常重要的概率分布，在统计学的许多方面有着重大的影响力。</p>
 <p>正态曲线呈钟型，两头低，中间高，左右对称因其曲线呈钟形，因此人们又经常称之为钟形曲线。</p>
 <p>若随机变量X服从一个数学期望为μ、方差为σ2的正态分布，记为N(μ，σ2)。其概率密度函数为正态分布的期望值μ决定了其位置，其标准差σ决定了分布的幅度。当μ = 0,σ = 1时的正态分布是标准正态分布。</p>
 <ul>
-<li>应用场景 <strong>教育统计学</strong>统计规律表明，学生的智力水平，包括学习能力，实际动手能力等呈正态分布。因而正常的考试成绩分布应基本服从正态分布。考试分析要求绘制出学生成绩分布的直方图，以“中间高、两头低”来衡量成绩符合正态分布的程度。其评价标准认为：考生成绩分布情况直方图，基本呈正态曲线状，属于好，如果略呈正（负）态状，属于中等，如果呈严重偏态或无规律，就是差的。 <strong>某些医学现象</strong>，如同质群体的身高、红细胞数、血红蛋白量，以及实验中的随机误差，呈现为正态或近似正态分布；有些指标（变量）虽服从偏态分布，但经数据转换后的新变量可服从正态或近似正态分布，可按正态分布规律处理。其中经对数转换后服从正态分布的指标，被称为服从对数正态分布。</li>
+<li>应用场景</li>
+<li><em>教育统计学*</em>统计规律表明，学生的智力水平，包括学习能力，实际动手能力等呈正态分布。因而正常的考试成绩分布应基本服从正态分布。考试分析要求绘制出学生成绩分布的直方图，以“中间高、两头低”来衡量成绩符合正态分布的程度。其评价标准认为：考生成绩分布情况直方图，基本呈正态曲线状，属于好，如果略呈正（负）态状，属于中等，如果呈严重偏态或无规律，就是差的。</li>
+<li><em>某些医学现象*</em>，如同质群体的身高、红细胞数、血红蛋白量，以及实验中的随机误差，呈现为正态或近似正态分布；有些指标（变量）虽服从偏态分布，但经数据转换后的新变量可服从正态或近似正态分布，可按正态分布规律处理。其中经对数转换后服从正态分布的指标，被称为服从对数正态分布。</li>
 </ul>
-<h4 id="t分布">2.5 t分布</h4>
-<p>在概率论和统计学中，t-分布（t-distribution）用于根据小样本来估计呈正态分布且方差未知的总体的均值。如果总体方差已知（例如在样本数量足够多时），则应该用正态分布来估计总体均值。</p>
+<h4 id="2-5-t分布"><a href="#2-5-t分布" class="headerlink" title="2.5 t分布"></a>2.5 t分布</h4><p>在概率论和统计学中，t-分布（t-distribution）用于根据小样本来估计呈正态分布且方差未知的总体的均值。如果总体方差已知（例如在样本数量足够多时），则应该用正态分布来估计总体均值。</p>
 <p>t分布曲线形态与n（确切地说与自由度df）大小有关。与标准正态分布曲线相比，自由度df越小，t分布曲线愈平坦，曲线中间愈低，曲线双侧尾部翘得愈高；自由度df愈大，t分布曲线愈接近正态分布曲线，当自由度df=∞时，t分布曲线为标准正态分布曲线。</p>
 <ul>
-<li>应用场景 在<strong>概率论和统计学</strong>中，学生t-分布（Student's t-distribution）经常应用在对呈正态分布的总体的均值进行估计。它是对两个样本均值差异进行显著性测试的学生t测定的基础。t检定改进了Z检定（en:Z-test），不论样本数量大或小皆可应用。在样本数量大（超过120等）时，可以应用Z检定，但Z检定用在小的样本会产生很大的误差，因此样本很小的情况下得改用学生t检定。在数据有三组以上时，因为误差无法压低，此时可以用变异数分析代替学生t检定。</li>
+<li>应用场景<br>在<strong>概率论和统计学</strong>中，学生t-分布（Student’s t-distribution）经常应用在对呈正态分布的总体的均值进行估计。它是对两个样本均值差异进行显著性测试的学生t测定的基础。t检定改进了Z检定（en:Z-test），不论样本数量大或小皆可应用。在样本数量大（超过120等）时，可以应用Z检定，但Z检定用在小的样本会产生很大的误差，因此样本很小的情况下得改用学生t检定。在数据有三组以上时，因为误差无法压低，此时可以用变异数分析代替学生t检定。</li>
 </ul>
 <p>当母群体的标准差是未知的但却又需要估计时，我们可以运用学生t-分布。</p>
-<h3 id="结语">3. 结语</h3>
-<p>实践出真知，只有对应的应用才能够加深我们对于概率统计学科的理解，所以应该多加以实践。</p>
+<h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3. 结语"></a>3. 结语</h3><p>实践出真知，只有对应的应用才能够加深我们对于概率统计学科的理解，所以应该多加以实践。</p>
 <p>在我们日常生活中进行一些决策的时候，其实是可以利用概率统计知识来提高我们决策的科学性的，不过具体怎么用呢？值得进一步探索。</p>
 
         </div>
@@ -289,7 +280,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artigos
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         73
@@ -299,7 +290,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -319,7 +310,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -376,7 +367,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -477,7 +468,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuvem de tags
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -910,7 +901,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recentes
+            Recent
         </h3>
         
         <article class="media">
@@ -1016,7 +1007,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arquivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1216,7 +1207,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recentes
+            Recent
         </h3>
         
         <article class="media">
@@ -1322,7 +1313,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arquivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1671,7 +1662,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Digite alguma coisa..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1683,9 +1674,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artigos',
-                PAGES: 'Paginas',
-                CATEGORIES: 'Categorias',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
