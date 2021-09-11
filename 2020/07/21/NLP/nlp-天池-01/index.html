@@ -10,19 +10,19 @@
 <title>nlp_天池_01 - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="一、前言 NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
+    <meta name="description" content="一、前言  NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
 <meta name="keywords" content="-nlp -天池">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nlp_天池_01">
 <meta property="og:url" content="https://genening.github.io/2020/07/21/NLP/nlp-天池-01/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="一、前言 NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
+<meta property="og:description" content="一、前言  NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-07-21T15:34:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nlp_天池_01">
-<meta name="twitter:description" content="一、前言 NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
+<meta name="twitter:description" content="一、前言  NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,58 +158,32 @@
             
         </h1>
         <div class="content">
-            <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><blockquote>
-<p>NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。</p>
+            <h2 id="一前言">一、前言</h2>
+<blockquote>
+<p>NLP是机器学习当中的掌上明珠，只有通过nlp才可能真正的达到“知情达意”的AI。这是一个从零开始学习NLP的项目，通过对项目的探索来达到了解、掌握基本nlp知识的目的。此项目来源于阿里云天池竞赛中的一个新闻文本分类的nlp赛题。 <a id="more"></a> ## 二、什么是NLP NLP全称是nature language process，也就是自然语言处理。在理解自然语言处理之前，我们需要先知道什么是自然语言。自然语言是人类在进化过程中的智慧的结晶，通过最原始的不同声音表达一定的含义，到提炼出音节，再构成词，最终连成句，这样的一个发展的过程看似简单，实则是经历了漫长的人类文明变迁史的淘洗，洗尽铅华，终于得到了“语言”这一瑰宝。现存的人类语言大概有1900多种，人类历史进程中学习到的知识超过80%通过文字语言记录下来。</p>
 </blockquote>
-<a id="more"></a>
-<h2 id="二、什么是NLP"><a href="#二、什么是NLP" class="headerlink" title="二、什么是NLP"></a>二、什么是NLP</h2><p>NLP全称是nature language process，也就是自然语言处理。在理解自然语言处理之前，我们需要先知道什么是自然语言。自然语言是人类在进化过程中的智慧的结晶，通过最原始的不同声音表达一定的含义，到提炼出音节，再构成词，最终连成句，这样的一个发展的过程看似简单，实则是经历了漫长的人类文明变迁史的淘洗，洗尽铅华，终于得到了“语言”这一瑰宝。现存的人类语言大概有1900多种，人类历史进程中学习到的知识超过80%通过文字语言记录下来。</p>
-<p><em>几个概念</em></p>
-<ul>
-<li>语音学：语音学（Phonetics）是一种非常基本的理论，一个正常的人类，有着相同的人体器官和相同的发声结构，就会遵循着相同的发声规则和原理。</li>
-<li>语音体系：语音体系（Phonology）是有语义的声音的合集，不同的文明都有着各自的语音体系。</li>
-<li>音素：音素（Phoneme）是语音中划分出来的最小语音单位，分为元音和辅音。<blockquote>
-<p>整体来理解就是，人类的语言通过音素进行构建，搭建语音体系，形成语言交流系统，再通过符号化演变成文字，这样人类的语言就诞生了。人类的语言对于人类的发展来说意义重大，这是帮助人类文明不断演化的最大助力。到了信息时代，怎么让计算机来理解人类的语言文字就成了一个非常自然的课题，如果能够做到这一点，那么人类和计算机之间的交互融合将达到质的飞跃，人类文明很可能进入下一个时代。因此，现在这方面的研究都意义非凡，现在就让我们开始来进行学习吧。</p>
+<p><em>几个概念</em> * 语音学：语音学（Phonetics）是一种非常基本的理论，一个正常的人类，有着相同的人体器官和相同的发声结构，就会遵循着相同的发声规则和原理。 * 语音体系：语音体系（Phonology）是有语义的声音的合集，不同的文明都有着各自的语音体系。 * 音素：音素（Phoneme）是语音中划分出来的最小语音单位，分为元音和辅音。 &gt;整体来理解就是，人类的语言通过音素进行构建，搭建语音体系，形成语言交流系统，再通过符号化演变成文字，这样人类的语言就诞生了。人类的语言对于人类的发展来说意义重大，这是帮助人类文明不断演化的最大助力。到了信息时代，怎么让计算机来理解人类的语言文字就成了一个非常自然的课题，如果能够做到这一点，那么人类和计算机之间的交互融合将达到质的飞跃，人类文明很可能进入下一个时代。因此，现在这方面的研究都意义非凡，现在就让我们开始来进行学习吧。</p>
+<h2 id="三nlp包括了什么">三、nlp包括了什么</h2>
+<p>NLP是人工智能的一个子领域，在这个领域里，研究又分成了很多具体的方向，每个具体的研究方向又有着许多的研究课题及成果，下图就大概罗列了一下nlp包括的研究方向。 <img src="/2020/07/21/NLP/nlp-天池-01/nlp_domains.png" alt="nlp研究方向"></p>
+<h2 id="四天池新闻文本分类比赛">四、天池新闻文本分类比赛</h2>
+<h3 id="赛题">1. 赛题</h3>
+<blockquote>
+<p>赛题以自然语言处理为背景，要求选手根据新闻文本字符对新闻的类别进行分类，这是一个经典文本分类问题。通过这道赛题可以引导大家走入自然语言处理的世界，带大家接触NLP的<strong>预处理</strong>、<strong>模型构建</strong>和<strong>模型训练</strong>等知识点。 * 赛题名称：零基础入门NLP之新闻文本分类 * 赛题目标：通过这道赛题可以引导大家走入自然语言处理的世界，带大家接触NLP的预处理、模型构建和模型训练等知识点。 * 赛题任务：赛题以自然语言处理为背景，要求选手对新闻文本进行分类，这是一个典型的字符识别问题。</p>
 </blockquote>
-</li>
-</ul>
-<h2 id="三、nlp包括了什么"><a href="#三、nlp包括了什么" class="headerlink" title="三、nlp包括了什么"></a>三、nlp包括了什么</h2><p>NLP是人工智能的一个子领域，在这个领域里，研究又分成了很多具体的方向，每个具体的研究方向又有着许多的研究课题及成果，下图就大概罗列了一下nlp包括的研究方向。<br><img src="/2020/07/21/NLP/nlp-天池-01/nlp_domains.png" alt="nlp研究方向"></p>
-<h2 id="四、天池新闻文本分类比赛"><a href="#四、天池新闻文本分类比赛" class="headerlink" title="四、天池新闻文本分类比赛"></a>四、天池新闻文本分类比赛</h2><h3 id="1-赛题"><a href="#1-赛题" class="headerlink" title="1. 赛题"></a>1. 赛题</h3><blockquote>
-<p>赛题以自然语言处理为背景，要求选手根据新闻文本字符对新闻的类别进行分类，这是一个经典文本分类问题。通过这道赛题可以引导大家走入自然语言处理的世界，带大家接触NLP的<strong>预处理</strong>、<strong>模型构建</strong>和<strong>模型训练</strong>等知识点。</p>
-<ul>
-<li>赛题名称：零基础入门NLP之新闻文本分类</li>
-<li>赛题目标：通过这道赛题可以引导大家走入自然语言处理的世界，带大家接触NLP的预处理、模型构建和模型训练等知识点。</li>
-<li>赛题任务：赛题以自然语言处理为背景，要求选手对新闻文本进行分类，这是一个典型的字符识别问题。</li>
-</ul>
-</blockquote>
-<h3 id="2-赛题难点"><a href="#2-赛题难点" class="headerlink" title="2. 赛题难点"></a>2. 赛题难点</h3><blockquote>
+<h3 id="赛题难点">2. 赛题难点</h3>
+<blockquote>
 <p>本题原本是一道普通的文本分类的题目，比较常见于日常生活，但是在此次比赛中，为了避免一些其他情况出现，数据被进行了匿名化处理，统一转换成了字符，即不可所见即所得，因此需要先对当前的数据进行一定的了解，之后再通过一些独特的建模方式来达到分类的目的。</p>
 </blockquote>
-<h3 id="3-解题思路"><a href="#3-解题思路" class="headerlink" title="3. 解题思路"></a>3. 解题思路</h3><p>如何进行文本的分类呢？分类的基础是不同的文本在使用的词汇、句式等特征上存在差异，而这些差异就是区分不同文本的依据，那我们做的第一步就是要选取有效特征，并且将这些特征量化表示，用来评价不同的文本，从而达到分类的目的。在这个比赛的过程中，有个难点就是文本数据进行了匿名化处理，也就是进行了转码，我们能够看到的数据并不是我们常规认识的数据，因此我们没有办法进行简单的分词、统计等等，这给我们提取特征造成了困扰。但是，其实对于计算机来说，不同的字符表达是等效的，只要采用的是统一的文本字符映射方法，那么在原文本中存在的特征，在新数据当中也存在，只不过表现形式可能不太相同，因此，我们可以通过相同的方式来进行<strong>特征提取</strong>，最终用这些特征来标记不同的文本，从而搭建<strong>分类模型</strong>进行分类。</p>
-<p>官方提供了一些基本的解题思路，如下：</p>
+<h3 id="解题思路">3. 解题思路</h3>
+<p>如何进行文本的分类呢？分类的基础是不同的文本在使用的词汇、句式等特征上存在差异，而这些差异就是区分不同文本的依据，那我们做的第一步就是要选取有效特征，并且将这些特征量化表示，用来评价不同的文本，从而达到分类的目的。在这个比赛的过程中，有个难点就是文本数据进行了匿名化处理，也就是进行了转码，我们能够看到的数据并不是我们常规认识的数据，因此我们没有办法进行简单的分词、统计等等，这给我们提取特征造成了困扰。但是，其实对于计算机来说，不同的字符表达是等效的，只要采用的是统一的文本字符映射方法，那么在原文本中存在的特征，在新数据当中也存在，只不过表现形式可能不太相同，因此，我们可以通过相同的方式来进行<strong>特征提取</strong>，最终用这些特征来标记不同的文本，从而搭建<strong>分类模型</strong>进行分类。</p>
+<p>官方提供了一些基本的解题思路，如下： * 思路1：TF-IDF + 机器学习分类器 &gt;直接使用TF-IDF对文本提取特征，并使用分类器进行分类。在分类器的选择上，可以使用SVM、LR、或者XGBoost。</p>
 <ul>
-<li><p>思路1：TF-IDF + 机器学习分类器</p>
-<blockquote>
-<p>直接使用TF-IDF对文本提取特征，并使用分类器进行分类。在分类器的选择上，可以使用SVM、LR、或者XGBoost。</p>
-</blockquote>
-</li>
-<li><p>思路2：FastText</p>
-<blockquote>
-<p>FastText是入门款的词向量，利用Facebook提供的FastText工具，可以快速构建出分类器。</p>
-</blockquote>
-</li>
-<li><p>思路3：WordVec + 深度学习分类器</p>
-<blockquote>
-<p>WordVec是进阶款的词向量，并通过构建深度学习分类完成分类。深度学习分类的网络结构可以选择TextCNN、TextRNN或者BiLSTM。</p>
-</blockquote>
-</li>
-<li><p>思路4：Bert词向量</p>
-<blockquote>
-<p>Bert是高配款的词向量，具有强大的建模学习能力。</p>
-</blockquote>
-</li>
+<li><p>思路2：FastText &gt;FastText是入门款的词向量，利用Facebook提供的FastText工具，可以快速构建出分类器。</p></li>
+<li><p>思路3：WordVec + 深度学习分类器 &gt;WordVec是进阶款的词向量，并通过构建深度学习分类完成分类。深度学习分类的网络结构可以选择TextCNN、TextRNN或者BiLSTM。</p></li>
+<li><p>思路4：Bert词向量 &gt; Bert是高配款的词向量，具有强大的建模学习能力。</p></li>
 </ul>
-<ol start="4">
-<li>实践<br>上一部分中阐述的解题思路都可以进行尝试，在尝试的过程中要尝试去理解算法的含义，不能简单的调包了事，这样才能真正的有所学。实践将在后面的系列博客中逐一记录。</li>
+<ol start="4" type="1">
+<li>实践 上一部分中阐述的解题思路都可以进行尝试，在尝试的过程中要尝试去理解算法的含义，不能简单的调包了事，这样才能真正的有所学。实践将在后面的系列博客中逐一记录。</li>
 </ol>
 
         </div>
@@ -294,7 +268,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         73
@@ -304,7 +278,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -324,7 +298,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -381,7 +355,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -482,7 +456,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -915,7 +889,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1221,7 +1195,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1688,9 +1662,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

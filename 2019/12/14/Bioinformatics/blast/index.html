@@ -10,19 +10,19 @@
 <title>blast - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时">
+    <meta name="description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量">
 <meta name="keywords" content="blast,gene anotation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="blast">
 <meta property="og:url" content="https://genening.github.io/2019/12/14/Bioinformatics/blast/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时">
+<meta property="og:description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-12-14T01:42:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blast">
-<meta name="twitter:description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时">
+<meta name="twitter:description" content="继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -161,86 +161,77 @@
             <blockquote>
 <p>继上一篇edgeR基因差异分析，通过采用R中的edgeR/limma这两个包，完成了差异基因的分析。在这个分析中总共分为了9组进行差异分析，最终结果取了并集，然后对并集进行blast，进而统一进行blast2go注释，再对每一组差异分析单独的从结果中匹配出相应的注释。现在，我需要做的就是这个并集的blast，为blast2go做准备。值得注意的是，这里的blast效率可能并不高，因此会耗费大量时间，可以考虑拆分文件，开启多个进程同时比对。</p>
 </blockquote>
-<h2 id="1-blast简介"><a href="#1-blast简介" class="headerlink" title="1. blast简介"></a>1. blast简介</h2><p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼：<br>|program|progress|<br>|:—-|:—-|<br>|blastn|nr–&gt;nr|<br>|blastx|nr–&gt;pro|<br>|tblastn|pro–&gt;nr|<br>|blastp|pro–&gt;pro|</p>
+<h2 id="blast简介">1. blast简介</h2>
+<p>blast全称是Basic Local Alignment Search Tool，是NCBI运营的一个基础序列比对软件，通过这个软件可以做到很好的多序列比对，比对到蛋白质或者核酸数据库中。众所周知，序列比对是生信分析的基础，不管是哪一个组学的内容，都必须进行比对才能开启下一步的工作。blast不是单纯的一个program，而是多个program的综合称呼： |program|progress| |:----|:----| |blastn|nr--&gt;nr| |blastx|nr--&gt;pro| |tblastn|pro--&gt;nr| |blastp|pro--&gt;pro|</p>
 <a id="more"></a>
 <p>现在在这个项目中，我们需要做的下一步是比对到nr数据库，nr数据库是一个蛋白质序列库，我们的序列是核酸序列，因此我们使用的是blastx program，即核酸比对到蛋白质。还有另外一个数据库——nt，这个数据库是一个核酸数据库，如果需要比对到核酸的话，就可以选择这个数据库进行比对。</p>
-<h2 id="2-blast使用"><a href="#2-blast使用" class="headerlink" title="2. blast使用"></a>2. blast使用</h2><p>如果是第一次使用blast，那么需要做一些前期的准备工作，不过这个准备工作是通用的，完成一次后，下一次可以直接使用，现在我们从准备工作开始做起。</p>
-<h3 id="2-1-下载安装blast"><a href="#2-1-下载安装blast" class="headerlink" title="2.1 下载安装blast"></a>2.1 下载安装blast</h3><p>可以进入官网寻找到下载地址<code>ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/</code>，点击网址进入选择合适的版本，download到自己的服务器或者本地中。</p>
-<ol>
-<li>解压blast文件，将bin目录下内容copy到/usr/local/bin中<blockquote>
-<p>这一步的目的是为了让blast能够直接在服务器任何一个地方使用，而不用输入绝对路径，相当于是添加到了环境变量中，因为/usr/local/bin就是环境变量中的一个，所以同样也可以通过添加新环境变量的方式来达到以上目的。</p>
-</blockquote>
-</li>
-<li>制作软链接，将解压后的的bin目录软链接到/home/username</li>
-<li>编辑.bashrc文件，添加<code>export PATH=/home/username/bin/:$PATH;</code>，即添加环境变量<h3 id="2-2-准备数据库"><a href="#2-2-准备数据库" class="headerlink" title="2.2 准备数据库"></a>2.2 准备数据库</h3>在这里除了blast程序之外，还得有本地的数据库才行。so，第一步，先下载blast对应的一些数据库。</li>
-<li>下载数据库（nr nt等）：<a href="ftp://ftp.ncbi.nlm.nih.gov/blast/" target="_blank" rel="noopener">ftp://ftp.ncbi.nlm.nih.gov/blast/</a><blockquote>
-<p>也可以先浏览一下这个网站：<a href="https://www.ncbi.nlm.nih.gov/books/NBK62345/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK62345/</a></p>
-</blockquote>
-</li>
-<li>通过2.1中下载的blast软件构建索引|makeblastdb<blockquote>
-<p>makeblastdb -in mature.fa -input_type fasta -dbtype nucl -title miRBase -parse_seqids -out miRBase -logfile File_Name</p>
-</blockquote>
-</li>
-</ol>
+<h2 id="blast使用">2. blast使用</h2>
+<p>如果是第一次使用blast，那么需要做一些前期的准备工作，不过这个准备工作是通用的，完成一次后，下一次可以直接使用，现在我们从准备工作开始做起。 ### 2.1 下载安装blast 可以进入官网寻找到下载地址<code>ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/</code>，点击网址进入选择合适的版本，download到自己的服务器或者本地中。 1. 解压blast文件，将bin目录下内容copy到/usr/local/bin中 &gt;这一步的目的是为了让blast能够直接在服务器任何一个地方使用，而不用输入绝对路径，相当于是添加到了环境变量中，因为/usr/local/bin就是环境变量中的一个，所以同样也可以通过添加新环境变量的方式来达到以上目的。 2. 制作软链接，将解压后的的bin目录软链接到/home/username 3. 编辑.bashrc文件，添加<code>export PATH=/home/username/bin/:$PATH;</code>，即添加环境变量 ### 2.2 准备数据库 在这里除了blast程序之外，还得有本地的数据库才行。so，第一步，先下载blast对应的一些数据库。 1. 下载数据库（nr nt等）：ftp://ftp.ncbi.nlm.nih.gov/blast/ &gt;也可以先浏览一下这个网站：https://www.ncbi.nlm.nih.gov/books/NBK62345/ 2. 通过2.1中下载的blast软件构建索引|makeblastdb &gt;makeblastdb -in mature.fa -input_type fasta -dbtype nucl -title miRBase -parse_seqids -out miRBase -logfile File_Name</p>
 <table>
 <thead>
-<tr>
-<th align="left">options</th>
-<th align="left">explain</th>
+<tr class="header">
+<th style="text-align: left;">options</th>
+<th style="text-align: left;">explain</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">-in</td>
-<td align="left">你要格式化的fasta序列</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">-in</td>
+<td style="text-align: left;">你要格式化的fasta序列</td>
 </tr>
-<tr>
-<td align="left">-dbtype</td>
-<td align="left">database的类型，nucl为核酸，prot为蛋白</td>
+<tr class="even">
+<td style="text-align: left;">-dbtype</td>
+<td style="text-align: left;">database的类型，nucl为核酸，prot为蛋白</td>
 </tr>
-<tr>
-<td align="left">-title</td>
-<td align="left">给数据库起名字，不能作为-db的参数使用</td>
+<tr class="odd">
+<td style="text-align: left;">-title</td>
+<td style="text-align: left;">给数据库起名字，不能作为-db的参数使用</td>
 </tr>
-<tr>
-<td align="left">-parse_seqids</td>
-<td align="left">暂时未知</td>
+<tr class="even">
+<td style="text-align: left;">-parse_seqids</td>
+<td style="text-align: left;">暂时未知</td>
 </tr>
-<tr>
-<td align="left">-out</td>
-<td align="left">给数据库起个名字，能在blast+时作为-db的参数使用</td>
+<tr class="odd">
+<td style="text-align: left;">-out</td>
+<td style="text-align: left;">给数据库起个名字，能在blast+时作为-db的参数使用</td>
 </tr>
-<tr>
-<td align="left">-logfile</td>
-<td align="left">日志文件，默认输出到屏幕</td>
+<tr class="even">
+<td style="text-align: left;">-logfile</td>
+<td style="text-align: left;">日志文件，默认输出到屏幕</td>
 </tr>
-</tbody></table>
-<h3 id="2-3-开始使用blast"><a href="#2-3-开始使用blast" class="headerlink" title="2.3 开始使用blast"></a>2.3 开始使用blast</h3><p>最好保持一个良好习惯，先新建好文件目录，整理好文件，做好记录，然后再进行blast比对。</p>
+</tbody>
+</table>
+<h3 id="开始使用blast">2.3 开始使用blast</h3>
+<p>最好保持一个良好习惯，先新建好文件目录，整理好文件，做好记录，然后再进行blast比对。 &gt; nohup blastx -query ../up1.fasta -db /B313/public_db/blast/nr -outfmt 5 -num_threads 20 -out up1-blastx &gt;log1.out 2&gt;&amp;1 &amp;</p>
 <blockquote>
-<p>nohup blastx -query ../up1.fasta -db /B313/public_db/blast/nr -outfmt 5  -num_threads 20 -out up1-blastx &gt;log1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../up4.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out up4-blastx &gt;log4.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup blastx -query ../up4.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out up4-blastx &gt;log4.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../down1.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out down1-blastx &gt;dlog1.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup blastx -query ../down1.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out down1-blastx &gt;dlog1.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../gene_data/53vsX-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out 53vsXdown-blastx &gt;dlog_53.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup blastx -query ../gene_data/53vsX-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 53vsXdown-blastx &gt;dlog_53.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../gene_data/53vsX-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out 53vsXup-blastx &gt;ulog_53.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup blastx -query ../gene_data/53vsX-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 53vsXup-blastx &gt;ulog_53.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../gene_data/54vsY-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out 54vsYdown-blastx &gt;dlog_54.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
 <blockquote>
-<p>nohup blastx -query ../gene_data/54vsY-downgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 54vsYdown-blastx &gt;dlog_54.out 2&gt;&amp;1 &amp;</p>
+<p>nohup blastx -query ../gene_data/54vsY-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5 -num_threads 8 -out 54vsYup-blastx &gt;ulog_54.out 2&gt;&amp;1 &amp;</p>
 </blockquote>
-<blockquote>
-<p>nohup blastx -query ../gene_data/54vsY-upgenes.fasta -db /B313/public_db/blast/fish_prot -outfmt 5  -num_threads 8 -out 54vsYup-blastx &gt;ulog_54.out 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<p>参数解释：<br>|options|explain|<br>|:—-|:—-|<br>|-query|序列，需要比对的序列文件，fasta格式|<br>|-db|database，在上一步中构建时取得名字，常用为nr、nt两个数据库|<br>|-outfmt|选择比对输出的类型，有0-14可以选，5是xml文件输出，方便blast2go的进行|<br>|-out|输出文件|<br>|-num_threads|线程数量，即使用逻辑CPU的数量，可以加快速度|<br>注：还有其他的一些参数，可以进一步查询blast官网文档</p>
-<p><img src="/2019/12/14/Bioinformatics/blast/moptions.png" alt="-moptions"></p>
-<h3 id="2-4-blast结果"><a href="#2-4-blast结果" class="headerlink" title="2.4 blast结果"></a>2.4 blast结果</h3><p>我还没有跑完出来，不太清楚，但是可以先留个位置，等结果出来后进行展示。</p>
-<p><img src="/2019/12/14/Bioinformatics/blast/results.png" alt="blast-results"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<p>参数解释： |options|explain| |:----|:----| |-query|序列，需要比对的序列文件，fasta格式| |-db|database，在上一步中构建时取得名字，常用为nr、nt两个数据库| |-outfmt|选择比对输出的类型，有0-14可以选，5是xml文件输出，方便blast2go的进行| |-out|输出文件| |-num_threads|线程数量，即使用逻辑CPU的数量，可以加快速度| 注：还有其他的一些参数，可以进一步查询blast官网文档</p>
+<figure>
+<img src="/2019/12/14/Bioinformatics/blast/moptions.png" alt="-moptions"><figcaption aria-hidden="true">-moptions</figcaption>
+</figure>
+<h3 id="blast结果">2.4 blast结果</h3>
+<p>我还没有跑完出来，不太清楚，但是可以先留个位置，等结果出来后进行展示。</p>
+<figure>
+<img src="/2019/12/14/Bioinformatics/blast/results.png" alt="blast-results"><figcaption aria-hidden="true">blast-results</figcaption>
+</figure>
+<h2 id="总结">总结</h2>
+<ol type="1">
 <li>blast基本使用，生信基本工作</li>
 <li>构建数据库，这一个要掌握好，以后很有可能要自己搭建数据库，满足个性化需求</li>
 <li>结果文件的输出，选择xml，方便接下来进行注释</li>
@@ -328,7 +319,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
                         73
@@ -338,7 +329,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -358,7 +349,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -415,7 +406,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -516,7 +507,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -949,7 +940,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1255,7 +1246,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
         
         <article class="media">
@@ -1722,9 +1713,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
