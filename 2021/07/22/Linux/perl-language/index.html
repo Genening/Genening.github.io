@@ -10,19 +10,19 @@
 <title>perl_language - Genening&#39;s blog</title>
 
 
-    <meta name="description" content="前言 最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
+    <meta name="description" content="前言最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
 <meta name="keywords" content="perl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="perl_language">
 <meta property="og:url" content="https://genening.github.io/2021/07/22/Linux/perl-language/index.html">
 <meta property="og:site_name" content="Genening&#39;s blog">
-<meta property="og:description" content="前言 最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
+<meta property="og:description" content="前言最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://genening.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2021-07-22T07:22:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="perl_language">
-<meta name="twitter:description" content="前言 最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
+<meta name="twitter:description" content="前言最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。">
 <meta name="twitter:image" content="https://genening.github.io/images/og_image.png">
 
 
@@ -158,146 +158,161 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言">前言</h2>
-<p>最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习Linux系统，Perl是Linux上常用的开发语言，和Linux中的shell script有很多相似之处，可以很方便地处理文本数据，也能够很好地支持正则，并且拥有齐全的工具库和优秀的社区，因此，比起Linux shell script而言，Perl功能更强大而且更好编写，所以为了能够更好地使用Linux完成工作任务，Perl值得一学。</p>
 <a id="more"></a>
-<h2 id="perl基本知识">1.perl基本知识</h2>
-<ul>
-<li><p>非常适合用于文本处理并生成更多文本</p></li>
-<li><p>语法宽松，可以自己增强要求</p></li>
-<li><p>强制严格语法 <figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;</span><br><span class="line"><span class="hljs-keyword">use</span> <span class="hljs-keyword">warning</span>;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>脚本式运行，无交互式</p></li>
-<li><p>弱类型 不区分变量内容是数字还是字符串，只有当使用的时候才会编译器自动判断</p></li>
-<li><p>区分字符串操作符（gt/lt/eq等）和数值操作符（== &lt;= &gt;=等），与shell script设定类似</p></li>
+
+<h2 id="1-perl基本知识"><a href="#1-perl基本知识" class="headerlink" title="1.perl基本知识"></a>1.perl基本知识</h2><ul>
+<li><p>非常适合用于文本处理并生成更多文本</p>
+</li>
+<li><p>语法宽松，可以自己增强要求</p>
+</li>
+<li><p>强制严格语法</p>
+<figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">use</span> <span class="hljs-keyword">strict</span>;</span><br><span class="line"><span class="hljs-keyword">use</span> <span class="hljs-keyword">warning</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>脚本式运行，无交互式</p>
+</li>
+<li><p>弱类型  不区分变量内容是数字还是字符串，只有当使用的时候才会编译器自动判断</p>
+</li>
+<li><p>区分字符串操作符（gt/lt/eq等）和数值操作符（==  &lt;=  &gt;=等），与shell script设定类似</p>
+</li>
 </ul>
-<h2 id="变量类型">2.变量类型</h2>
-<ol type="1">
+<h2 id="2-变量类型"><a href="#2-变量类型" class="headerlink" title="2.变量类型"></a>2.变量类型</h2><ol>
 <li>scalar（标量）</li>
 </ol>
 <figure class="highlight gams hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my <span class="hljs-symbol">$</span><span class="hljs-keyword">scalar</span> = 1</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>array（数组） 用@array 声明变量，没有限制长度，超出长度的索引会返回undef</li>
+
+<ol start="2">
+<li>array（数组）  用@array 声明变量，没有限制长度，超出长度的索引会返回undef</li>
 </ol>
 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> @array = (<span class="hljs-string">"hello"</span>, <span class="hljs-string">"world"</span>, <span class="hljs-string">"hi"</span>, <span class="hljs-string">"friend"</span>)   <span class="hljs-comment">#用小括号()声明一个array</span></span><br><span class="line"><span class="hljs-keyword">my</span> $arrayRef = [<span class="hljs-string">"hello"</span>, <span class="hljs-string">"world"</span>, <span class="hljs-string">"hi"</span>, <span class="hljs-string">"friend"</span>] <span class="hljs-comment">#用中括号[]声明一个引用</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>$#var 内置值，表示数组的最后一位</li>
+<li>$#var   内置值，表示数组的最后一位</li>
 <li>方法：pop/push/shift/unshift/splice</li>
 <li>reverse()</li>
 <li>map()</li>
 <li>grep()</li>
-<li>sort <span class="citation" data-cites="array">@array</span></li>
+<li>sort @array</li>
 </ul>
-<ol start="3" type="1">
-<li>hash（哈希）</li>
+<ol start="3">
+<li>hash（哈希）  </li>
 </ol>
 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> %hash = (</span><br><span class="line">    <span class="hljs-string">"Newton"</span> =&gt; value1,</span><br><span class="line">    <span class="hljs-string">"Enistan"</span> =&gt; value2</span><br><span class="line">);   <span class="hljs-comment">#用小括号()声明hash类型</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> $hashRef = &#123;</span><br><span class="line">    <span class="hljs-string">"Newton"</span> =&gt; value1,</span><br><span class="line">    <span class="hljs-string">"Enistan"</span> =&gt; value2</span><br><span class="line">&#125;  <span class="hljs-comment">#用大括号&#123;&#125;声明hash引用</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">my</span> @k = <span class="hljs-keyword">keys</span>  %hash    返回<span class="hljs-keyword">keys</span>列表</span><br><span class="line"><span class="hljs-keyword">my</span> @v = <span class="hljs-keyword">values</span> %hash  返回<span class="hljs-keyword">values</span>的列表</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">exists</span> %hash&#123;<span class="hljs-string">'key'</span>&#125;   判断<span class="hljs-string">'key'</span>在不在hash中</span><br><span class="line"><span class="hljs-keyword">delete</span> $hash&#123;<span class="hljs-string">'key'</span>&#125;   删除hash中键值对</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li><p>string（字符串） <figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">$string</span> = <span class="hljs-string">"strings"</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">join</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">reverse</span><span class="hljs-params">()</span></span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>list（列表）----数组、字符串、哈希</p></li>
+
+<ol start="4">
+<li><p>string（字符串）</p>
+<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">$string</span> = <span class="hljs-string">"strings"</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">join</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">reverse</span><span class="hljs-params">()</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list（列表）—-数组、字符串、哈希</p>
+</li>
 </ol>
 <ul>
-<li>(value1, value2, 'value3', 4) 这种形式就是列表</li>
-<li>boolean（布尔值） perl中没有布尔值，只有一些特定的内容会被认为是false，如0/""/undef</li>
+<li>(value1, value2, ‘value3’, 4)   这种形式就是列表</li>
+<li>boolean（布尔值）  perl中没有布尔值，只有一些特定的内容会被认为是false，如0/“”/undef</li>
 </ul>
-<h2 id="常用函数">3.常用函数</h2>
-<ul>
-<li>chomp($variable) 去除字符串末尾换行符</li>
-<li>split($variable) 默认分割符+</li>
+<h2 id="3-常用函数"><a href="#3-常用函数" class="headerlink" title="3.常用函数"></a>3.常用函数</h2><ul>
+<li>chomp($variable)   去除字符串末尾换行符\n</li>
+<li>split($variable)   默认分割符\s+</li>
 <li>index()</li>
 <li>join()</li>
 <li>map()</li>
-<li>reverse() 用在字符串上会将字符串按单个字母进行逆转</li>
+<li>reverse()  用在字符串上会将字符串按单个字母进行逆转</li>
 <li>splice()</li>
 <li>grep()</li>
 </ul>
-<h2 id="上下文perl最大特点代码上下文语境敏感通过上下文判断表意">4.上下文——perl最大特点，代码上下文/语境敏感，通过上下文判断表意</h2>
-<ul>
-<li>字符串上下文 前一个变量或函数期待一个字符串返回，后一句话就会返回一个字符串</li>
-<li>数组上下文 前一个变量或函数期待一个数组返回，后一句话就会返回一个数组</li>
+<h2 id="4-上下文——perl最大特点，代码上下文-语境敏感，通过上下文判断表意"><a href="#4-上下文——perl最大特点，代码上下文-语境敏感，通过上下文判断表意" class="headerlink" title="4.上下文——perl最大特点，代码上下文/语境敏感，通过上下文判断表意"></a>4.上下文——perl最大特点，代码上下文/语境敏感，通过上下文判断表意</h2><ul>
+<li>字符串上下文   前一个变量或函数期待一个字符串返回，后一句话就会返回一个字符串</li>
+<li>数组上下文    前一个变量或函数期待一个数组返回，后一句话就会返回一个数组</li>
 <li>哈希上下文 前一个变量或函数期待一个哈希返回，后一句话就会返回一个哈希</li>
-<li>print reverse "hello world" 因为print期待一个列表输入，所以reverse会返回一个列表结果</li>
-<li>print scalar reverse "hello world" 因为scalar期待一个字符串输入，所以reverse会返回一个字符串结果</li>
+<li>print reverse “hello world”     因为print期待一个列表输入，所以reverse会返回一个列表结果</li>
+<li>print scalar reverse “hello world”  因为scalar期待一个字符串输入，所以reverse会返回一个字符串结果</li>
 </ul>
-<h2 id="作用域---命名代码块匿名代码块">5.作用域---命名代码块、匿名代码块</h2>
-<ul>
+<h2 id="5-作用域—命名代码块、匿名代码块"><a href="#5-作用域—命名代码块、匿名代码块" class="headerlink" title="5.作用域—命名代码块、匿名代码块"></a>5.作用域—命名代码块、匿名代码块</h2><ul>
 <li>代码块中可以操作全局变量，进行修改，修改会保存到全局</li>
 <li>如果代码块中重新声明一个与全局变量相同的变量，两者互相独立，作用域不同</li>
 <li>代码块可以命名，意义在于格式更清晰；整个程序相当于一个全局的匿名代码块</li>
 </ul>
-<h2 id="引用">6.引用</h2>
-<ul>
+<h2 id="6-引用"><a href="#6-引用" class="headerlink" title="6.引用"></a>6.引用</h2><ul>
 <li>相当于是个标量</li>
-<li>引用可以嵌套 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> $arrayRef = \@array     <span class="hljs-comment">#用反斜杠来引用</span></span><br><span class="line"><span class="hljs-keyword">print</span> $($arrayRef)</span><br><span class="line"><span class="hljs-keyword">my</span> $hashRef = \%hash</span><br><span class="line"><span class="hljs-keyword">print</span> %&#123;$hashRef&#123;<span class="hljs-string">"hash"</span>&#125; [<span class="hljs-number">0</span>]&#125;  <span class="hljs-comment">#返回引用里的第一个hash引用的hash类型本身</span></span><br><span class="line"><span class="hljs-keyword">print</span> $hashRef&#123;<span class="hljs-string">"hash"</span>&#125; -&gt; [<span class="hljs-number">1</span>] -&gt; <span class="hljs-string">"name"</span>   <span class="hljs-comment">#返回第二个引用中的第一个值scalar</span></span><br><span class="line"><span class="hljs-keyword">my</span> $scalarRef = \$scalar</span><br></pre></td></tr></table></figure></li>
+<li>引用可以嵌套<figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> $arrayRef = \@array     <span class="hljs-comment">#用反斜杠来引用</span></span><br><span class="line"><span class="hljs-keyword">print</span> $($arrayRef)</span><br><span class="line"><span class="hljs-keyword">my</span> $hashRef = \%hash</span><br><span class="line"><span class="hljs-keyword">print</span> %&#123;$hashRef&#123;<span class="hljs-string">"hash"</span>&#125; [<span class="hljs-number">0</span>]&#125;  <span class="hljs-comment">#返回引用里的第一个hash引用的hash类型本身</span></span><br><span class="line"><span class="hljs-keyword">print</span> $hashRef&#123;<span class="hljs-string">"hash"</span>&#125; -&gt; [<span class="hljs-number">1</span>] -&gt; <span class="hljs-string">"name"</span>   <span class="hljs-comment">#返回第二个引用中的第一个值scalar</span></span><br><span class="line"><span class="hljs-keyword">my</span> $scalarRef = \$scalar</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 <p>引用可以用于面向对象编程，可以构造复杂的数据结构满足需求</p>
-<h2 id="流程控制">7.流程控制</h2>
-<ol type="1">
-<li><p>条件判断 <figure class="highlight nimrod hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>()<span class="hljs-meta">&#123;....&#125;</span>elsif()<span class="hljs-meta">&#123;....&#125;</span><span class="hljs-keyword">else</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">unless()&#123;&#125;<span class="hljs-keyword">else</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">print <span class="hljs-string">"you have"</span>, $eggs == <span class="hljs-number">0</span> ? <span class="hljs-string">"no eggs"</span>:  $eggs == <span class="hljs-number">1</span>? <span class="hljs-string">"an egg"</span>: <span class="hljs-string">"some eggs"</span>;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>循环控制</p></li>
+<h2 id="7-流程控制"><a href="#7-流程控制" class="headerlink" title="7.流程控制"></a>7.流程控制</h2><ol>
+<li><p>条件判断</p>
+<figure class="highlight nimrod hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>()<span class="hljs-meta">&#123;....&#125;</span>elsif()<span class="hljs-meta">&#123;....&#125;</span><span class="hljs-keyword">else</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">unless()&#123;&#125;<span class="hljs-keyword">else</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">print <span class="hljs-string">"you have"</span>, $eggs == <span class="hljs-number">0</span> ? <span class="hljs-string">"no eggs"</span>:  $eggs == <span class="hljs-number">1</span>? <span class="hljs-string">"an egg"</span>: <span class="hljs-string">"some eggs"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环控制</p>
+</li>
 </ol>
 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">until</span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">my</span> $i = <span class="hljs-number">0</span>; $i &lt;=<span class="hljs-number">30</span>; $i++)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">do</span>&#123;&#125;<span class="hljs-keyword">while</span>()</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> <span class="hljs-keyword">my</span> $key (<span class="hljs-keyword">keys</span> %scientists)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">next</span>/<span class="hljs-keyword">last</span>   <span class="hljs-comment">#等价于其他语言中continue/break</span></span><br></pre></td></tr></table></figure>
-<h2 id="perl正则三种形式匹配替换转换">8. perl正则三种形式（匹配、替换、转换）</h2>
-<ul>
-<li>=~ 表示匹配 !~ 表示不匹配</li>
+
+<h2 id="8-perl正则三种形式（匹配、替换、转换）"><a href="#8-perl正则三种形式（匹配、替换、转换）" class="headerlink" title="8. perl正则三种形式（匹配、替换、转换）"></a>8. perl正则三种形式（匹配、替换、转换）</h2><ul>
+<li>=~  表示匹配   !~ 表示不匹配</li>
 <li>m/pattern/</li>
 <li>s/pattern/subsitution/</li>
 <li>tr/pattern/transformation/</li>
 </ul>
 <figure class="highlight routeros hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my <span class="hljs-variable">$string</span> = <span class="hljs-string">"~~Hello World~~"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span>(<span class="hljs-variable">$string</span> =~ m/(\w+)\s+(\w+)/)&#123;</span><br><span class="line">    <span class="hljs-builtin-name">print</span> <span class="hljs-string">"success\n"</span></span><br><span class="line">&#125;  # string 中匹配上的内容会存储到默认的变量序列里 <span class="hljs-variable">$1</span>/<span class="hljs-variable">$2</span>/<span class="hljs-variable">$3</span><span class="hljs-built_in">..</span><span class="hljs-built_in">..</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-builtin-name">print</span> <span class="hljs-string">"<span class="hljs-variable">$1</span>\n"</span>  # Hello</span><br><span class="line"><span class="hljs-builtin-name">print</span> <span class="hljs-string">"<span class="hljs-variable">$2</span>\n"</span>  # World</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p>$` 匹配区间前面的非匹配部分内容</p></li>
-<li><p>$&amp; 匹配区间内的匹配部分内容</p></li>
-<li><p>$' 匹配区间后面的非匹配部分内容</p></li>
-<li><p>修饰符：i/o/s/g</p></li>
+<li><p>$`  匹配区间前面的非匹配部分内容</p>
+</li>
+<li><p>$&amp;  匹配区间内的匹配部分内容</p>
+</li>
+<li><p>$’  匹配区间后面的非匹配部分内容</p>
+</li>
+<li><p>修饰符：i/o/s/g </p>
+</li>
 </ul>
-<h3 id="更多正则表达式">更多正则表达式</h3>
-<p><code>.   x?  x*  x+  .*  .+  .?  {m} {m, n} {m, }  [] [^]</code></p>
+<h3 id="更多正则表达式"><a href="#更多正则表达式" class="headerlink" title="更多正则表达式"></a>更多正则表达式</h3><p><code>.   x?  x*  x+  .*  .+  .?  {m} {m, n} {m, }  [] [^]</code></p>
 <p>这些正则表达式是对基本正则符号的扩展，可以让正则的匹配功能更强大。其实正则的理解可以分为两部分，一部分是字符匹配，另一部分是次数匹配。字符匹配指的是通过正则表达式匹配一个特定的字符，不管是字母/数字/打印字符/空白字符等等内容，这些都是明确的字符对象，我们可以通过字符匹配正则表达式去匹配他们；次数匹配指的是我们指定字符匹配的发生次数，例如我们在字符匹配中要匹配10个字母字符，我们不用也不必要把同样的字符匹配正则表达式重复写10次，我们只需要添加一个次数匹配正则表达式即可，比如{10}即可指定匹配10次，当然还有其它的一些特定的指定方法，比如? * +分别表示不同的匹配次数。</p>
-<h2 id="文件操作">9.文件操作</h2>
-<ul>
-<li><p>保留字 STDIN STDOUT STDERR DATA ARGV ARGVOUT</p></li>
-<li><p>文件句柄是perl中程序与外界IO操作的名称 <figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> $file = <span class="hljs-string">"text.txt"</span>;</span><br><span class="line"><span class="hljs-keyword">my</span> $out_file = <span class="hljs-string">"out.txt"</span>;</span><br><span class="line"><span class="hljs-keyword">my</span> $log_file = <span class="hljs-string">"log.txt"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">open</span> IN1, <span class="hljs-string">"$file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> IN2, <span class="hljs-string">"&lt; $file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> IN3, <span class="hljs-string">"&lt;"</span>, <span class="hljs-string">"$file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> OUT1, <span class="hljs-string">"&gt; $out_file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> OUT2, <span class="hljs-string">"&gt;&gt; $out_file"</span>;</span><br><span class="line"><span class="hljs-keyword">close</span> IN1</span><br></pre></td></tr></table></figure></p></li>
-<li><p>文件测试</p></li>
+<h2 id="9-文件操作"><a href="#9-文件操作" class="headerlink" title="9.文件操作"></a>9.文件操作</h2><ul>
+<li><p>保留字 STDIN   STDOUT   STDERR   DATA   ARGV   ARGVOUT</p>
+</li>
+<li><p>文件句柄是perl中程序与外界IO操作的名称</p>
+<figure class="highlight perl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">my</span> $file = <span class="hljs-string">"text.txt"</span>;</span><br><span class="line"><span class="hljs-keyword">my</span> $out_file = <span class="hljs-string">"out.txt"</span>;</span><br><span class="line"><span class="hljs-keyword">my</span> $log_file = <span class="hljs-string">"log.txt"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">open</span> IN1, <span class="hljs-string">"$file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> IN2, <span class="hljs-string">"&lt; $file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> IN3, <span class="hljs-string">"&lt;"</span>, <span class="hljs-string">"$file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> OUT1, <span class="hljs-string">"&gt; $out_file"</span>;</span><br><span class="line"><span class="hljs-keyword">open</span> OUT2, <span class="hljs-string">"&gt;&gt; $out_file"</span>;</span><br><span class="line"><span class="hljs-keyword">close</span> IN1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件测试</p>
+</li>
 </ul>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">表达式</th>
-<th style="text-align: left;">描述</th>
+<tr>
+<th align="left">表达式</th>
+<th align="left">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">-e</td>
-<td style="text-align: left;">是否存在</td>
+<tbody><tr>
+<td align="left">-e</td>
+<td align="left">是否存在</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">-s</td>
-<td style="text-align: left;">是否存在且有内容</td>
+<tr>
+<td align="left">-s</td>
+<td align="left">是否存在且有内容</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">-d</td>
-<td style="text-align: left;">是否目录</td>
+<tr>
+<td align="left">-d</td>
+<td align="left">是否目录</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">-f</td>
-<td style="text-align: left;">是否文本</td>
+<tr>
+<td align="left">-f</td>
+<td align="left">是否文本</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">-r</td>
-<td style="text-align: left;">是否可读</td>
+<tr>
+<td align="left">-r</td>
+<td align="left">是否可读</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">-w</td>
-<td style="text-align: left;">是否可写</td>
+<tr>
+<td align="left">-w</td>
+<td align="left">是否可写</td>
 </tr>
-</tbody>
-</table>
-<h3 id="拓展">拓展</h3>
-<p>perl中也同样有系统调用、子程序、模块，这些内容倒是和Python并无两异，因此不用太多纠结，理解即可。</p>
-<h2 id="结语">结语</h2>
-<p>这一次的学习是从零开始学习的，之前我并没有perl的编程经验，当然，我有着丰富的Python编程经验，因此基础比较扎实。在这一次的学习过程中，很明显地感觉到在学习一门新的语言时，应该把握的重点是一门语言的数据类型或者说数据结构。数据结构的功能范围决定了我们怎么去使用一门语言，它决定了我们怎么获取数据、控制数据流和数据输出。因此，当我们把握了一门新语言的数据结构内容，那么我们就可以自信地说，我们已经基本掌握了这门新语言了，接下来要做的就是在日常生活的练习中，不断掌握更多的内置方法和基本技巧，直至不断达到更高的编程水平。</p>
+</tbody></table>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>perl中也同样有系统调用、子程序、模块，这些内容倒是和Python并无两异，因此不用太多纠结，理解即可。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一次的学习是从零开始学习的，之前我并没有perl的编程经验，当然，我有着丰富的Python编程经验，因此基础比较扎实。在这一次的学习过程中，很明显地感觉到在学习一门新的语言时，应该把握的重点是一门语言的数据类型或者说数据结构。数据结构的功能范围决定了我们怎么去使用一门语言，它决定了我们怎么获取数据、控制数据流和数据输出。因此，当我们把握了一门新语言的数据结构内容，那么我们就可以自信地说，我们已经基本掌握了这门新语言了，接下来要做的就是在日常生活的练习中，不断掌握更多的内置方法和基本技巧，直至不断达到更高的编程水平。</p>
 <ul>
 <li>数据类型定义</li>
 <li>数据结构定义与使用方法</li>
@@ -387,7 +402,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         73
@@ -397,7 +412,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -407,7 +422,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         58
@@ -417,7 +432,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -474,7 +489,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -575,7 +590,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
@@ -586,7 +601,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1008,7 +1023,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1114,7 +1129,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1314,7 +1329,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1420,7 +1435,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1781,10 +1796,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
