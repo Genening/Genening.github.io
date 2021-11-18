@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Etiqueta: tencent_map_practice - Genening&#39;s blog</title>
+<title>Tag: tencent_map_practice - Genening&#39;s blog</title>
 
 
     <meta name="description" content="nothing is everything">
@@ -131,7 +131,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Etiquetas</a></li>
+            <li><a href="/tags">Tags</a></li>
             <li class="is-active"><a href="#" aria-current="page">tencent_map_practice</a></li>
         </ul>
         </nav>
@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1137 words)
+                    8 minutes read (About 1138 words)
                 </span>
                 
                 
@@ -170,22 +170,16 @@
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因为工作原因，需要在通过地图接口下载数据，于是尝试了一下通过腾讯地图的接口进行下载，下载效果还不错，所以在此记录一下过程。</p>
 <h3 id="腾讯地图接口"><a href="#腾讯地图接口" class="headerlink" title="腾讯地图接口"></a>腾讯地图接口</h3><p>由下图可知，腾讯地图的位置服务提供了对应的开发者接口，通过调用这些接口，我们可以获取对应的一些数据，比如城市的位置/名称/经纬度等等信息，当我们需要批量采集数据的时候，用起来效果还不多。如下图，这就是开发者文档，根据文档进行操作，我们就可以流畅的使用接口下载数据了。<a href="https://lbs.qq.com/service/webService/webServiceGuide/webServiceOverview" target="_blank" rel="noopener">学习文档链接</a></p>
 <p><img src="/2021/11/04/Python/tencent-map-download/tencent_map1.png" alt="tencent_map1"></p>
-<h3 id="接口使用"><a href="#接口使用" class="headerlink" title="接口使用"></a>接口使用</h3><p>使用接口的第一步当然是进行注册了，需要先拥有腾讯地图的对应的用户账号，才能够使用这个账号进行数据申请，也是进入腾讯地图位置服务官网进行注册就可以了，具体注册完毕之后，还需要添加个人密匙用于数据请求，具体的操作<a href="https://blog.csdn.net/chenwen112/article/details/102910337" target="_blank" rel="noopener">可以看这</a>。</p>
-<p>在注册完毕后，我们拥有了对应的密匙，接下来就是阅读文档的使用方法了，比如我这次使用的是地点搜索功能，因此我阅读了对应的文档内容，<a href="https://lbs.qq.com/service/webService/webServiceGuide/webServiceSearch" target="_blank" rel="noopener">地点搜索文档</a>。在阅读文档的时候要特别注意接口使用的输入内容和输出内容，关注输入内容是为了方便我们调整数据格式，输入正确的数据内容，使得接口正常运作；关注输出内容是为了方便我们使用返回的结果，只用清晰知道返回的结果的结构，我们才能够有条不紊的处理数据，并且最终得到我们想要的结果。</p>
-<p><img src="/2021/11/04/Python/tencent-map-download/map_doc1.png" alt="map_doc"></p>
-<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p>文档中还提供了使用案例用于参考学习，我们也可以关注一下，这样可以给我们省很多力气。</p>
-<p><img src="/2021/11/04/Python/tencent-map-download/doc_case.jpg" alt="doc_case"></p>
-<p>根据这个案例，我们就可以很好的进行对应的使用了。</p>
-<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><p>根据文档，我们最终可以编写并且调试出我们的代码，如下</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># import packages</span></span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd </span><br><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># function tencent_map</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tencent_map</span><span class="hljs-params">(city, addr)</span>:</span></span><br><span class="line">    url = <span class="hljs-string">"https://apis.map.qq.com/ws/place/v1/search"</span>   <span class="hljs-comment">#腾讯地图API接口</span></span><br><span class="line">    para = &#123;</span><br><span class="line">        <span class="hljs-string">"boundary"</span>: <span class="hljs-string">f"region(<span class="hljs-subst">&#123;city&#125;</span>)"</span>,</span><br><span class="line">        <span class="hljs-string">"keyword"</span>: addr,</span><br><span class="line">        <span class="hljs-string">"key"</span>: <span class="hljs-string">"PFLBZ-XXKCX-HDW4D-TFV54-KJI67-XOF2H"</span>, <span class="hljs-comment">#即腾讯地图API的key</span></span><br><span class="line">        <span class="hljs-string">"page_size"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">        <span class="hljs-string">"page_index"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    req = requests.get(url, para) <span class="hljs-comment">#请求数据</span></span><br><span class="line">    req = req.json() <span class="hljs-comment">#转为json格式</span></span><br><span class="line">    <span class="hljs-comment">#print(req.keys())</span></span><br><span class="line">    <span class="hljs-keyword">return</span> req</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># function func</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    data = pd.read_excel(<span class="hljs-string">'./test.xlsx'</span>) <span class="hljs-comment"># 读取文件，文件包含两列，第一列为市区名，第二列为具体地点</span></span><br><span class="line">    <span class="hljs-comment"># print(data)</span></span><br><span class="line">    result = open(<span class="hljs-string">'test_result.xls'</span>, <span class="hljs-string">'w'</span>)</span><br><span class="line">    <span class="hljs-comment">#result.write('city\ttitle\taddress\ttel\tlat\tlng\n')</span></span><br><span class="line">    result.write(<span class="hljs-string">'市区\t地点\t地址\t电话\t纬度\t经度\n'</span>)</span><br><span class="line">    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> zip(data[<span class="hljs-string">'city'</span>], data[<span class="hljs-string">'destination'</span>]):</span><br><span class="line">        <span class="hljs-comment">#print(name[0], name[1])</span></span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            response = tencent_map(name[<span class="hljs-number">0</span>], name[<span class="hljs-number">1</span>])[<span class="hljs-string">'data'</span>]</span><br><span class="line">            <span class="hljs-keyword">for</span> resp <span class="hljs-keyword">in</span> response:</span><br><span class="line">                <span class="hljs-comment">#print(resp)</span></span><br><span class="line">                <span class="hljs-comment">#resp = resp['data']</span></span><br><span class="line">                city = resp[<span class="hljs-string">'ad_info'</span>][<span class="hljs-string">'city'</span>]</span><br><span class="line">                title = resp[<span class="hljs-string">'title'</span>]</span><br><span class="line">                address = resp[<span class="hljs-string">'address'</span>]</span><br><span class="line">                tel = resp[<span class="hljs-string">'tel'</span>]</span><br><span class="line">                lat = resp[<span class="hljs-string">'location'</span>][<span class="hljs-string">'lat'</span>]</span><br><span class="line">                lng = resp[<span class="hljs-string">'location'</span>][<span class="hljs-string">'lng'</span>]</span><br><span class="line">                <span class="hljs-comment">#print(city + '\t' + title + '\t' + address + '\t' + tel + '\t' + str(lat) + '\t' + str(lng))</span></span><br><span class="line">                result.write(city + <span class="hljs-string">'\t'</span> + title + <span class="hljs-string">'\t'</span> + address + <span class="hljs-string">'\t'</span> + tel + <span class="hljs-string">'\t'</span> + str(lat) + <span class="hljs-string">'\t'</span> + str(lng) + <span class="hljs-string">'\n'</span>)</span><br><span class="line">        <span class="hljs-keyword">except</span> KeyError:</span><br><span class="line">            result.write(name[<span class="hljs-number">0</span>] + <span class="hljs-string">'\t'</span> + name[<span class="hljs-number">1</span>] + <span class="hljs-string">'\tNotFound\tNotFound\tNotFound\tNotFound\n'</span>)</span><br><span class="line">    result.close()</span><br><span class="line">    </span><br><span class="line"><span class="hljs-comment"># run script</span></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    print(<span class="hljs-string">'Start working...'</span>)</span><br><span class="line">    func()</span><br><span class="line">    print(<span class="hljs-string">'All jobs have finished.'</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>运行脚本后，我们可以得到我们最终的结果，并且保存到文件里，示例结果如下：</p>
-<p><img src="/2021/11/04/Python/tencent-map-download/result1.png" alt="result1"></p>
-<p>在这一次的实践中，最大的收获是学习了如何使用这些接口，这个过程还是我的第一次尝试，所以还挺有成就感。因为是互联网的数据接口，所以理所当然，我们使用了request进行数据的get请求，请求不同的接口可以得到不同的数据，要根据自己的需求进行请求。其次，在请求的时候，需要把个人密匙传递进构造的请求中，这样才能顺利访问数据。</p>
-<p><img src="/2021/11/04/Python/tencent-map-download/api_list.jpg" alt="api_list"></p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2021/11/04/Python/tencent-map-download/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -238,17 +232,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        75
+                        76
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         11
@@ -258,17 +252,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        60
+                        61
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/genening" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -325,7 +319,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -398,7 +392,7 @@
                 <span class="level-item">log</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/web/">
@@ -426,9 +420,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/tencent-map-practice/" style="font-size: 10px;">tencent_map_practice</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
+        <a href="/tags/nlp-天池/" style="font-size: 10px;">-nlp -天池</a> <a href="/tags/DEgenes-selecting/" style="font-size: 10px;">DEgenes_selecting</a> <a href="/tags/English-grammer/" style="font-size: 10px;">English grammer</a> <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/KEGG/" style="font-size: 10px;">KEGG</a> <a href="/tags/Linux文本操作/" style="font-size: 10px;">Linux文本操作</a> <a href="/tags/Linux管道符/" style="font-size: 10px;">Linux管道符</a> <a href="/tags/Linux软硬链接/" style="font-size: 10px;">Linux软硬链接</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Quality-Controling/" style="font-size: 10px;">Quality Controling</a> <a href="/tags/R-language/" style="font-size: 10px;">R-language</a> <a href="/tags/Regular-expression/" style="font-size: 10px;">Regular expression</a> <a href="/tags/TPM-RPKM-FPKM/" style="font-size: 10px;">TPM-RPKM-FPKM</a> <a href="/tags/Try-new-thing/" style="font-size: 10px;">Try new thing</a> <a href="/tags/analysis-of-variance/" style="font-size: 10px;">analysis of variance</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/bert/" style="font-size: 10px;">bert</a> <a href="/tags/blast/" style="font-size: 10px;">blast</a> <a href="/tags/blast2go/" style="font-size: 10px;">blast2go</a> <a href="/tags/data-analysis/" style="font-size: 10px;">data analysis</a> <a href="/tags/edgeR/" style="font-size: 10px;">edgeR</a> <a href="/tags/electron开发/" style="font-size: 10px;">electron开发</a> <a href="/tags/gene-anotation/" style="font-size: 10px;">gene anotation</a> <a href="/tags/js学习/" style="font-size: 10px;">js学习</a> <a href="/tags/latex-for-mathematics-formula/" style="font-size: 10px;">latex for mathematics formula</a> <a href="/tags/latex-layout/" style="font-size: 10px;">latex-layout</a> <a href="/tags/linux-shell/" style="font-size: 10px;">linux shell</a> <a href="/tags/matplotlib软件架构/" style="font-size: 10px;">matplotlib软件架构</a> <a href="/tags/new-interpretation-of-P-S/" style="font-size: 10px;">new_interpretation_of_P&S</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/nlp数据处理/" style="font-size: 10px;">nlp数据处理</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/pull-request/" style="font-size: 10px;">pull_request</a> <a href="/tags/python基础/" style="font-size: 10px;">python基础</a> <a href="/tags/seaborn-visualization/" style="font-size: 10px;">seaborn-visualization</a> <a href="/tags/shell-script/" style="font-size: 10px;">shell_script</a> <a href="/tags/statistic-parameters/" style="font-size: 10px;">statistic-parameters</a> <a href="/tags/study-model/" style="font-size: 10px;">study model</a> <a href="/tags/tencent-map-practice/" style="font-size: 10px;">tencent_map_practice</a> <a href="/tags/《终极算法》/" style="font-size: 10px;">《终极算法》</a> <a href="/tags/创业管理/" style="font-size: 10px;">创业管理</a> <a href="/tags/博客建设/" style="font-size: 16.67px;">博客建设</a> <a href="/tags/基因差异分析/" style="font-size: 10px;">基因差异分析</a> <a href="/tags/数学极限/" style="font-size: 10px;">数学极限</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a> <a href="/tags/无参转录组实战/" style="font-size: 10px;">无参转录组实战</a> <a href="/tags/机器学习概览/" style="font-size: 10px;">机器学习概览</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/概率论与数理统计/" style="font-size: 10px;">概率论与数理统计</a> <a href="/tags/爬虫概述/" style="font-size: 10px;">爬虫概述</a> <a href="/tags/生活的诗/" style="font-size: 20px;">生活的诗</a> <a href="/tags/线性方程组/" style="font-size: 10px;">线性方程组</a> <a href="/tags/网络检修思路/" style="font-size: 10px;">网络检修思路</a> <a href="/tags/质控可视化/" style="font-size: 10px;">质控可视化</a> <a href="/tags/转录组/" style="font-size: 10px;">转录组</a> <a href="/tags/转录组分析实践/" style="font-size: 10px;">转录组分析实践</a>
     </div>
 </div>
 
@@ -437,7 +431,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -687,6 +681,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/pull-request/">
+                        <span class="tag">pull_request</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/python基础/">
                         <span class="tag">python基础</span>
                         <span class="tag is-grey">1</span>
@@ -873,8 +874,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/11/19/log/github-pull-request/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="github_pull_request">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-18T16:24:39.000Z">2021-11-19</time></div>
+                    <a href="/2021/11/19/log/github-pull-request/" class="title has-link-black-ter is-size-6 has-text-weight-normal">github_pull_request</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/log/">log</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -952,25 +972,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/07/23/Bioinformatics/R-language/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="R_language">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-23T12:27:02.000Z">2021-07-23</time></div>
-                    <a href="/2021/07/23/Bioinformatics/R-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">R_language</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -979,7 +980,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -989,7 +990,7 @@
                     <span class="level-item">November 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1201,8 +1202,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/11/19/log/github-pull-request/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="github_pull_request">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-18T16:24:39.000Z">2021-11-19</time></div>
+                    <a href="/2021/11/19/log/github-pull-request/" class="title has-link-black-ter is-size-6 has-text-weight-normal">github_pull_request</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/log/">log</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1280,25 +1300,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/07/23/Bioinformatics/R-language/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="R_language">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-07-23T12:27:02.000Z">2021-07-23</time></div>
-                    <a href="/2021/07/23/Bioinformatics/R-language/" class="title has-link-black-ter is-size-6 has-text-weight-normal">R_language</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Bioinformatics/">Bioinformatics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1307,7 +1308,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1317,7 +1318,7 @@
                     <span class="level-item">November 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1690,10 +1691,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
